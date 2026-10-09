@@ -160,7 +160,7 @@ export default function FeaturesPage() {
             <FeatureCard iconPath={icons.chat} title="CRM and lead management" desc="Log walk-in enquiries, schedule follow-ups and open today's follow-up list." />
             <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="Build workout and diet plans day by day and assign them to individual members." />
             <FeatureCard iconPath={icons.star} title="Measurements and progress" desc="Record weight, BMI and body measurements over time. Members see their progress charts in the app." />
-            <FeatureCard iconPath={icons.bell} title="Automated WhatsApp reminders" desc="Renewal and payment reminders go out on WhatsApp, with SMS and push notifications as well." />
+            <FeatureCard iconPath={icons.bell} title="Automated WhatsApp reminders" desc="Members get WhatsApp reminders before their membership ends and after it expires, without you sending anything." />
             <FeatureCard iconPath={icons.bag} title="Online store" desc="List supplements, gear or merchandise. Members add items to a cart and place orders, and you approve or reject each order." />
             <FeatureCard iconPath={icons.creditcard} title="Expense tracking" desc="Record expenses such as rent, utilities and salaries and compare them against revenue." />
             <FeatureCard iconPath={icons.map} title="Multi-branch and franchise" desc="Manage several gym locations under one account, with branch-level views and comparison across locations." />
@@ -198,7 +198,7 @@ export default function FeaturesPage() {
             <FeatureCard iconPath={icons.qr} title="QR check-in and check-out" desc="Members scan your gym's QR code with the app to check in, and scan again to check out. Time spent is recorded." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="View assigned workout routines and diet plans, and mark progress as you go." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.chart} title="Progress tracking" desc="See measurement history, BMI and body progress over time, and add progress photos." iconBg="bg-violet-50" iconColor="text-violet-700" />
-            <FeatureCard iconPath={icons.bell} title="Reminders and alerts" desc="Renewal and payment reminders by WhatsApp and SMS, and push notifications from the gym." iconBg="bg-violet-50" iconColor="text-violet-700" />
+            <FeatureCard iconPath={icons.bell} title="Reminders and alerts" desc="WhatsApp reminders before and after your membership expires, plus notifications from the gym." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.star} title="Referral rewards" desc="Share a referral code. When a friend joins, you both earn rewards." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.building} title="Gym info" desc="Browse gym photos, highlights, opening hours and contact details." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.bag} title="Store" desc="Browse the gym's products, add items to a cart and place orders." iconBg="bg-violet-50" iconColor="text-violet-700" />
@@ -215,8 +215,8 @@ export default function FeaturesPage() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
               ["Razorpay", "UPI, card and net banking for Fitvario subscriptions"],
-              ["WhatsApp", "Renewal and payment reminders"],
-              ["SMS", "OTP and renewal reminders"],
+              ["WhatsApp", "Membership reminders"],
+              ["SMS", "OTP and alerts"],
               ["Android app", "For your members"],
             ].map(([label, sub]) => (
               <div key={label} className="flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-4 text-center shadow-sm">

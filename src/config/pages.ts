@@ -141,6 +141,36 @@ export const pages: PageDef[] = [
     updated: "2026-10-10",
     noindex: true,
   },
+
+  // Feature pages (pilot set). Gated pages publish when their feature goes live.
+  {
+    path: "/features/whatsapp-reminders",
+    kind: "feature",
+    title: "WhatsApp Reminders for Gym Membership Renewals | Fitvario",
+    description:
+      "Fitvario sends automated WhatsApp reminders before a gym membership ends and after it expires. See the schedule, the credits used and what you control.",
+    updated: "2026-10-10",
+    navLabel: "WhatsApp reminders",
+  },
+  {
+    path: "/features/gym-crm",
+    kind: "feature",
+    title: "Gym CRM Software India: Enquiries and Follow-ups | Fitvario",
+    description:
+      "Log every gym enquiry, set follow-up dates and open today's calls in one list. Fitvario's gym CRM keeps walk-in leads from going cold.",
+    updated: "2026-10-10",
+    navLabel: "Gym CRM",
+  },
+  {
+    path: "/features/gst-billing",
+    kind: "feature",
+    title: "Gym Software with GST Billing and Dues Tracking | Fitvario",
+    description:
+      "Create gym invoices with tax lines, take part payments and see pending dues by member. Fitvario billing keeps fee collection organised.",
+    updated: "2026-10-10",
+    navLabel: "Billing and dues",
+    gate: "gst_tax_lines",
+  },
 ];
 
 // A page is public only when it is not a draft, not noindex and its feature gate is live

@@ -1,6 +1,6 @@
 # Brief: /features/gym-crm
 
-Status: planned · Wave: Wave 1 · Kind: feature
+Status: published · Wave: Wave 1 · Kind: feature
 
 ## Keywords
 - Primary: gym crm software india (P1, English, CRM)

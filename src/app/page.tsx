@@ -13,7 +13,7 @@ export const metadata = buildMetadata("/");
 const problems = [
   {
     bad: "Fee reminders lost in WhatsApp groups",
-    good: "Automated WhatsApp and SMS reminders go out before every renewal, so you stop chasing members by hand",
+    good: "Automated WhatsApp reminders go out before every membership ends, so you stop chasing renewals by hand",
   },
   {
     bad: "Paper registers and manual attendance",
@@ -71,7 +71,7 @@ const platformViews = [
       "Scan the gym's QR code to check in and out",
       "Assigned workout and diet plans",
       "Progress charts and measurement history",
-      "Renewal reminders by WhatsApp and SMS",
+      "Renewal reminders on WhatsApp",
       "Referral codes to earn rewards",
     ],
   },
@@ -97,7 +97,7 @@ const features: { d: string; title: string; desc: string; href?: string }[] = [
   {
     d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
     title: "Automated WhatsApp reminders",
-    desc: "Renewal and payment reminders go out on WhatsApp, with SMS and push as well, on a schedule you don't have to run.",
+    desc: "Members get WhatsApp reminders 7, 3 and 1 days before their membership ends, and a message the day after it expires. You don't send them.",
     href: "/features/whatsapp-reminders",
   },
   {
@@ -145,7 +145,7 @@ const faqs = [
   },
   {
     q: "How are fee reminders sent?",
-    a: "Fitvario sends automated WhatsApp reminders, plus SMS and push notifications, when a membership is about to expire or a payment is pending. You do not have to message each member yourself.",
+    a: "Fitvario sends automated WhatsApp reminders to members 7, 3 and 1 days before their membership ends, and one the day after it expires. Each message uses a credit from your gym's messaging wallet.",
   },
   {
     q: "Can I manage multiple branches?",
@@ -212,7 +212,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 sm:text-xl">
-            Fitvario is gym management software for India: digital memberships, QR attendance, automated fee
+            Fitvario is gym management software for India: digital memberships, QR attendance, automated renewal
             reminders, a CRM for leads, workout and diet plans, and a gym-branded Android app for your members.
           </p>
 
