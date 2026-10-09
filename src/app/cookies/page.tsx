@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy",
-  description:
-    "How Fitvario uses cookies, Meta Pixel, and similar tracking technologies on its websites and Android app.",
-  alternates: { canonical: "https://fitvario.com/cookies" },
-};
+export const metadata = buildMetadata("/cookies");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;
@@ -21,7 +16,7 @@ export default function CookiesPage() {
   return (
     <PageShell wide>
       <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Cookie &amp; Tracking Policy — Fitvario</h1>
-      <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
+      <p className="mt-2 text-sm text-slate-500">Last updated: 10 October 2026</p>
       <P>
         This Cookie Policy explains how Fitvario (&quot;we&quot;) uses cookies, pixels, local storage, session
         storage, and mobile SDK identifiers (collectively &quot;tracking technologies&quot;) when you visit our
@@ -71,6 +66,8 @@ export default function CookiesPage() {
           <ul className="mt-3 list-disc space-y-1 pl-5 text-[14px] text-slate-500">
             <li>Page view and session analytics (aggregated, no personally identifiable information shared with analytics providers where possible).</li>
             <li>Error and performance monitoring to detect issues in the platform.</li>
+            <li>Google Analytics 4 on this website, loaded only after you choose Accept all in the cookie banner. It records page views and clicks on contact and demo buttons. If you decline, it is not loaded.</li>
+            <li>When you submit the demo form, we keep the campaign details (UTM tags) and the first page you visited this session with your request, so we know which campaign brought you.</li>
           </ul>
         </div>
 

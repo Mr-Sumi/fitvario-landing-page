@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "About Fitvario — an India-built gym management SaaS with web panels for operators and a branded Android app for members: attendance, CRM, plans, analytics, and ecommerce.",
-  alternates: { canonical: "https://fitvario.com/about" },
-};
+export const metadata = buildMetadata("/about");
 
 export default function AboutPage() {
   return (

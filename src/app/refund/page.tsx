@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Refund Policy",
-  description:
-    "Fitvario refund and cancellation policy for SaaS subscriptions, Razorpay payments, messaging credits, and Google Play purchases.",
-  alternates: { canonical: "https://fitvario.com/refund" },
-};
+export const metadata = buildMetadata("/refund");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;

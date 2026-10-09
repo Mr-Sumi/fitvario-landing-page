@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "Fitvario Terms of Service — acceptable use, subscriptions, Razorpay payments, disclaimers, governing law (India), and Grievance Officer.",
-  alternates: { canonical: "https://fitvario.com/terms" },
-};
+export const metadata = buildMetadata("/terms");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;

@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Pricing",
-  description:
-    "Fitvario gym management software pricing — custom plans based on locations, active members, ecommerce volume, and enabled modules. Contact us for a quote.",
-  alternates: { canonical: "https://fitvario.com/pricing" },
-};
+export const metadata = buildMetadata("/pricing");
 
 const included = [
   "Multi-gym & franchise management",

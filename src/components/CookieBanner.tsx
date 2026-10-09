@@ -21,6 +21,7 @@ export function CookieBanner() {
     } catch {
       // ignore
     }
+    window.dispatchEvent(new Event("fitvario:consent"));
     setVisible(false);
   }
 
@@ -30,6 +31,7 @@ export function CookieBanner() {
     } catch {
       // ignore
     }
+    window.dispatchEvent(new Event("fitvario:consent"));
     setVisible(false);
   }
 

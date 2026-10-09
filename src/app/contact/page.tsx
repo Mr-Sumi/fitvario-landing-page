@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact Fitvario — demo requests, sales, and support. Email: support@fitvario.com. Based in Bhopal, Madhya Pradesh, India.",
-  alternates: { canonical: "https://fitvario.com/contact" },
-};
+export const metadata = buildMetadata("/contact");
 
 export default function ContactPage() {
   return (

@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Features",
-  description:
-    "Fitvario features for gym owners, staff, and members — QR attendance, CRM, workout plans, analytics, ecommerce, WhatsApp messaging, and a branded Android member app.",
-  alternates: { canonical: "https://fitvario.com/features" },
-};
+export const metadata = buildMetadata("/features");
 
 /* ─── Icons ──────────────────────────────────────────────────────────────── */
 function Icon({ path, className = "h-5 w-5" }: { path: string; className?: string }) {

@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "https://fitvario.com" },
-};
+export const metadata = buildMetadata("/");
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const problems = [

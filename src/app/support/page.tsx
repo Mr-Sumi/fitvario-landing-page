@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Support",
-  description:
-    "Fitvario support — get help with gym management software setup, QR attendance, CRM, memberships, and billing. Email: support@fitvario.com",
-  alternates: { canonical: "https://fitvario.com/support" },
-};
+export const metadata = buildMetadata("/support");
 
 export default function SupportPage() {
   return (

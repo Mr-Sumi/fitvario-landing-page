@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "Fitvario Privacy Policy — data collection, third-party processors (Razorpay, Meta, WhatsApp, Zoho, Firebase), security, retention, and your rights under India's DPDP Act 2023.",
-  alternates: { canonical: "https://fitvario.com/privacy" },
-};
+export const metadata = buildMetadata("/privacy");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;

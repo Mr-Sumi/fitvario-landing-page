@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 
-export const metadata: Metadata = {
-  title: "Delete Account",
-  description:
-    "How to delete your Fitvario account and request data erasure under India's DPDP Act 2023.",
-  alternates: { canonical: "https://fitvario.com/delete-account" },
-};
+export const metadata = buildMetadata("/delete-account");
 
 export default function DeleteAccountPage() {
   return (
