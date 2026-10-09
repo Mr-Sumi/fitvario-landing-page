@@ -1,18 +1,23 @@
 import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = buildMetadata("/delete-account");
 
 export default function DeleteAccountPage() {
   return (
     <PageShell>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Delete Your Fitvario Account</h1>
+      <Breadcrumbs path="/delete-account" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Delete Your Fitvario Account</h1>
       <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
         You have the right to delete your account and associated personal data at any time, in line with
         India&apos;s Digital Personal Data Protection Act, 2023 (DPDP Act) and Google Play Store data deletion
         requirements.
       </p>
+
+      <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
+
 
       <div className="mt-10 space-y-6">
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">

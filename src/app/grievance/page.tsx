@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = buildMetadata("/grievance");
 
@@ -14,7 +15,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function GrievancePage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Grievance Officer</h1>
+      <Breadcrumbs path="/grievance" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Grievance Officer</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
 
       <P>

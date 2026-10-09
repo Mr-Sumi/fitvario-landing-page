@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = buildMetadata("/privacy");
 
@@ -14,7 +15,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function PrivacyPage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Privacy Policy — Fitvario</h1>
+      <Breadcrumbs path="/privacy" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Privacy Policy — Fitvario</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
       <P>
         Fitvario (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) provides a cloud-based gym management software
