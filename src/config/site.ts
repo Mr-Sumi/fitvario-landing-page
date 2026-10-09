@@ -19,6 +19,9 @@ export const contact = {
   addressLines: ["Fitvario", "Bhopal, Madhya Pradesh", "India"],
 };
 
+// Byline for editorial pages. Empty = no byline shown (nothing is invented)
+export const author = process.env.NEXT_PUBLIC_AUTHOR_NAME ?? "";
+
 export const playStoreUrl = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? "";
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 export const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
