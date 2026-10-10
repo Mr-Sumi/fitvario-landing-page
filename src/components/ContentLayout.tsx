@@ -124,7 +124,7 @@ export function ScreenshotPlaceholder({ alt, caption }: { alt: string; caption: 
       <div
         role="img"
         aria-label={`Placeholder for screenshot: ${alt}`}
-        className="flex aspect-[16/9] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-100 px-6 text-center text-sm text-slate-500"
+        className="flex aspect-[16/9] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-100 px-6 text-center text-sm text-slate-600"
       >
         Screenshot placeholder. {alt}
       </div>

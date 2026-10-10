@@ -31,7 +31,7 @@ export function ActionBar() {
               target="_blank"
               rel="noopener noreferrer"
               data-cta="action-bar"
-              className="flex h-12 flex-1 items-center justify-center rounded-lg bg-emerald-600 text-sm font-semibold text-white active:bg-emerald-700"
+              className="flex h-12 flex-1 items-center justify-center rounded-lg bg-emerald-700 text-sm font-semibold text-white active:bg-emerald-800"
             >
               WhatsApp
             </a>
@@ -48,7 +48,7 @@ export function ActionBar() {
           <Link
             href="/contact#demo"
             data-cta="action-bar"
-            className="flex h-12 flex-[1.4] items-center justify-center rounded-lg bg-teal-600 text-sm font-semibold text-white active:bg-teal-700"
+            className="flex h-12 flex-[1.4] items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white active:bg-teal-800"
           >
             Book a demo
           </Link>
@@ -62,7 +62,7 @@ export function ActionBar() {
           rel="noopener noreferrer"
           data-cta="floating-whatsapp"
           aria-label="Chat with Fitvario on WhatsApp"
-          className="fixed bottom-6 right-6 z-40 hidden h-14 items-center gap-2 rounded-full bg-emerald-600 px-5 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700 md:flex"
+          className="fixed bottom-6 right-6 z-40 hidden h-14 items-center gap-2 rounded-full bg-emerald-700 px-5 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-800 md:flex"
         >
           Chat on WhatsApp
         </a>

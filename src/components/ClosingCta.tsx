@@ -19,7 +19,7 @@ export function ClosingCta({
         <Link
           href="/contact#demo"
           data-cta={location}
-          className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-500 px-8 text-sm font-bold text-white transition hover:bg-teal-400 sm:w-auto"
+          className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-700 px-8 text-sm font-bold text-white transition hover:bg-teal-600 sm:w-auto"
         >
           Book a free demo
         </Link>

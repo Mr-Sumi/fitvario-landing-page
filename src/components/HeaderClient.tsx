@@ -45,7 +45,7 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
           href="/"
           className="flex shrink-0 items-center gap-2.5 text-[1.0625rem] font-bold tracking-tight text-slate-900"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600 text-sm font-extrabold text-white shadow-sm">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-700 text-sm font-extrabold text-white shadow-sm">
             F
           </span>
           Fitvario
@@ -87,7 +87,7 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
           <Link
             href="/contact#demo"
             data-cta="header"
-            className="inline-flex h-12 items-center rounded-lg bg-teal-600 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 active:bg-teal-800"
+            className="inline-flex h-12 items-center rounded-lg bg-teal-700 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-800 active:bg-teal-800"
           >
             Book a demo
           </Link>
@@ -132,7 +132,7 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
             <Link
               href="/contact#demo"
               data-cta="header-mobile"
-              className="block w-full rounded-xl bg-teal-600 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
+              className="block w-full rounded-xl bg-teal-700 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-teal-800"
             >
               Book a free demo
             </Link>

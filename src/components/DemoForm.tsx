@@ -248,7 +248,7 @@ export function DemoForm({ variant = "demo" }: { variant?: "demo" | "quote" }) {
         type="submit"
         disabled={status === "sending"}
         data-cta={`${variant}-form`}
-        className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-teal-600 px-6 text-sm font-bold text-white transition hover:bg-teal-700 disabled:opacity-60 sm:w-auto"
+        className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-teal-700 px-6 text-sm font-bold text-white transition hover:bg-teal-800 disabled:opacity-60 sm:w-auto"
       >
         {status === "sending" ? "Sending..." : variant === "quote" ? "Request a quote" : "Request a free demo"}
       </button>

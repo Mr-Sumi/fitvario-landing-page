@@ -56,7 +56,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta="contact"
-                className="mt-2 inline-flex h-12 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700"
+                className="mt-2 inline-flex h-12 items-center rounded-lg bg-emerald-700 px-5 text-sm font-semibold text-white hover:bg-emerald-800"
               >
                 Chat with us on WhatsApp
               </a>

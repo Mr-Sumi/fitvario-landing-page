@@ -116,11 +116,11 @@ export default function PricingPage() {
                 ))}
               </ul>
               {t.cta === "signup" && selfServeSignup && signupUrl ? (
-                <a href={signupUrl} data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-600 text-sm font-semibold text-white hover:bg-teal-700">
+                <a href={signupUrl} data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white hover:bg-teal-800">
                   Sign up
                 </a>
               ) : (
-                <Link href="/contact#demo" data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-600 text-sm font-semibold text-white hover:bg-teal-700">
+                <Link href="/contact#demo" data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white hover:bg-teal-800">
                   Book a demo
                 </Link>
               )}

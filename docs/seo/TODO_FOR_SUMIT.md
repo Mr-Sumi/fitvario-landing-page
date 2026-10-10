@@ -82,3 +82,12 @@ I searched the backend again for "faq" as you asked: only a platform-level FAQ e
 - `src/components/AppPreview.tsx` is unused; delete it when convenient.
 - A stray `package.json` and `package-lock.json` sit in `C:\Users\sumit\`. `next.config.ts` pins `turbopack.root` so it no longer breaks the dev server, but consider deleting them.
 - The Cowork audit `.md` and keyword workbook `.xlsx` mentioned in the pack were never in this repo. Drop them in `docs/seo/` if you want them read.
+
+## 9. Added during Phase 5 and 6
+
+- [ ] **Confirm the reminder cron on the live server.** The site now says members get WhatsApp reminders 7, 3 and 1 days before expiry and one the day after. That is `send_membership_alerts`, plus `notify_member_birthdays` for birthdays. As of the 25 Sep audit those two were scheduled; `notify_due_payments`, `notify_expiring_memberships` and `notify_daily_summary` were not. If that is still true, nothing on the site promises due-payment reminders. If you schedule `notify_due_payments`, update the WhatsApp page and the home FAQ.
+- [ ] Check the list of WhatsApp messages on `/features/whatsapp-reminders` (welcome, receipt, expiring, expired, renewed, birthday, plan assigned, order updates, freeze/unfreeze/terminated). It comes from the owner notification catalog; confirm each one really fires today.
+- [ ] Add links from the three pilot pages to a tool, a blog post and a compare page once those exist (Prompts 3, 4 and 6). Until then each page has 10+ internal links but no tool or post link.
+- [ ] Home LCP is 2.7 s on Lighthouse's simulated mobile throttling (target 2.5 s). Check PageSpeed Insights after deploy.
+- [ ] When you edit a page, bump its `updated` date in `src/config/pages.ts`. That date drives the sitemap `lastmod` and the "Last updated" line.
+- [ ] Re-run `node scripts/gen-seo-docs.mjs` after changing the registry to refresh `page-tracker.csv`.

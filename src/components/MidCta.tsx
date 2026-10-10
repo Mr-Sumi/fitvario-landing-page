@@ -13,7 +13,7 @@ export function MidCta({
       <Link
         href="/contact#demo"
         data-cta={location}
-        className="inline-flex h-12 shrink-0 items-center justify-center rounded-lg bg-teal-600 px-6 text-sm font-semibold text-white transition hover:bg-teal-700"
+        className="inline-flex h-12 shrink-0 items-center justify-center rounded-lg bg-teal-700 px-6 text-sm font-semibold text-white transition hover:bg-teal-800"
       >
         Book a free demo
       </Link>

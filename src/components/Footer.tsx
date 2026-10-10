@@ -97,7 +97,7 @@ export function Footer() {
           <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3">
             {columns().map((col) => (
               <div key={col.title}>
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-slate-500">{col.title}</p>
+                <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-slate-400">{col.title}</p>
                 <nav className="flex flex-col" aria-label={col.title}>
                   {col.links.map((p) => (
                     <Link
@@ -117,16 +117,16 @@ export function Footer() {
 
       <div className="border-t border-slate-800">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 sm:flex-row sm:px-6">
-          <p className="text-center text-xs text-slate-500 sm:text-left">
+          <p className="text-center text-xs text-slate-400 sm:text-left">
             © 2026 Fitvario · Bhopal, Madhya Pradesh, India · All rights reserved.
           </p>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             Built by{" "}
             <a
               href="https://sumigyan.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 underline-offset-2 hover:text-slate-300 hover:underline"
+              className="text-slate-400 underline-offset-2 hover:text-white hover:underline"
             >
               Sumigyan.in
             </a>

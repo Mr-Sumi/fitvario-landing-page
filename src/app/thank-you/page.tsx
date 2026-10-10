@@ -34,7 +34,7 @@ export default function ThankYouPage() {
             target="_blank"
             rel="noopener noreferrer"
             data-cta="thank-you"
-            className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-700 px-6 text-sm font-semibold text-white transition hover:bg-emerald-800"
           >
             Message us on WhatsApp
           </a>

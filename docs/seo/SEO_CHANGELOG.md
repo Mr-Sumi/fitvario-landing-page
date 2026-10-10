@@ -38,3 +38,43 @@ Branch: `seo-overhaul`. One commit per phase.
 - `ContentLayout`, `Section`, `Faq`, `ExampleBox`, `ScreenshotPlaceholder`, `MidCta` for feature, segment, tool, template, blog, Hinglish and compare pages. Drafts render for review but 404 on the production deployment (`VERCEL_ENV=production`).
 - `scripts/gen-seo-docs.mjs` generates `SEO_RULES.md` and `keyword-map.md` (verbatim from the pack), `page-tracker.csv`, and 48 briefs in `content-briefs/`.
 - **Deviation from the prompt:** gated pages are not created as stub routes. A route with empty content would ship a thin page the moment a flag is flipped. Their gate lives in the brief and the tracker (status `planned`), and the page is built when the gate is cleared.
+
+### Phase 5: pilot pages (`seo: pilot feature pages`)
+- `/features/whatsapp-reminders` (about 1,050 words), `/features/gym-crm` (about 980), `/features/gst-billing` (about 940, **draft**: noindex, out of sitemap/nav/links, 404 on production until `gst_tax_lines` is live).
+- Written from the backend code, not from the old site copy. What the code showed, and what changed because of it:
+  - **Reminders:** `send_membership_alerts` sends WhatsApp at 7, 3 and 1 days before expiry and the day after, to the member only, skipping frozen, terminated and inactive memberships. Owners can switch each message on or off. Messages cost wallet credits and are skipped when the wallet is empty.
+  - **Payment reminders are not claimed.** `notify_due_payments` exists but, per the 25 Sep audit, had no cron on the live server. Removed "payment reminders" wording from home, features and the page registry.
+  - **CRM:** enquiry with category, type, plan of interest, follow-up history and a "today" list. No automatic messages to leads, and no reminder when a follow-up is due, so the page says so.
+  - **Billing:** tax lines are chosen per invoice (not auto-applied), taxes are worked out after discount, part payments are logged with a timestamp, invoice numbers are automatic per gym. Not claimed: CGST/SGST split, GSTIN printing, HSN/SAC.
+- Keyword coverage: all primary and secondary keywords present, except `whatsapp business api for gym` (deliberately not used, per your Phase 0 answer 6). `gym billing software india` appears as "gym billing software in India", a natural variant. `gym crm software india` is in the title and as a variant in the body.
+
+### Phase 6: QA
+Checks run on the production build (`node scripts/seo-check.mjs`): 16 pages, 14 indexable, **all pass**. That covers title and description length and uniqueness, canonical and `og:url` per page, one H1, JSON-LD parses, sitemap equals the indexable set with real dates, robots, internal links, orphan pages and depth, and duplicate sentences under 25%.
+
+Production-mode behaviour (`next start`):
+- `/api/lead` with no delivery configured returns **503 `not_configured`** (fails loud, never fakes success).
+- `/thank-you` is `noindex, follow`. robots.txt disallows only `/api/` and `/gone`. Unknown URLs return 404. `/og-image.png` returns 200.
+- With `VERCEL_ENV=production`, `/features/gst-billing` returns **404**, and it is not in the sitemap.
+- Dev-mode lead tests: invalid input, valid lead, honeypot, too-fast and missing-consent all behave correctly.
+
+Lighthouse, mobile, local production server (simulated slow 4G):
+
+| Page | Perf | A11y | Best practices | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| / | 97 | 100 | 100 | 100 | 2.7 s | 0 | 30 ms |
+| /pricing | 97 | 100 | 100 | 100 | 2.5 s | 0 | 40 ms |
+| /features | 97 | 100 | 100 | 100 | 2.6 s | 0 | 40 ms |
+| /features/gym-crm | 98 | 96 then fixed* | 100 | 100 | 2.5 s | 0 | 30 ms |
+| /contact | 98 | 100 | 100 | 100 | 2.3 s | 0 | 10 ms |
+
+\* One screenshot-placeholder text colour failed contrast; fixed after this run, not re-measured.
+Accessibility started at 96 everywhere: white text on `teal-600` buttons (3.66:1) and `slate-500` on the dark footer (3.74:1). Buttons are now `teal-700`/`emerald-700` and the footer text `slate-400`.
+**LCP is 2.3 to 2.7 s, so the home page (2.7 s) is slightly over the 2.5 s target** on Lighthouse's simulated throttling. INP is not measurable in a lab run. Re-check with PageSpeed Insights once deployed to see real-user (CrUX) numbers.
+
+Bundle size (`.next/static`, uncompressed): JS 640,790 -> 659,408 bytes (+2.9%), CSS 45,761 -> 49,885 bytes (+9%). The growth is the form, analytics, action bar and layout components. No images are loaded on any page.
+
+Rerun Lighthouse yourself:
+```
+npm run build && npx next start -p 3100
+npx lighthouse http://localhost:3100/ --form-factor=mobile --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless=new"
+```

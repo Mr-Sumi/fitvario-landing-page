@@ -220,7 +220,7 @@ export default function Home() {
             <Link
               href="/contact#demo"
               data-cta="hero"
-              className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-600 px-8 text-sm font-bold text-white shadow-md transition hover:bg-teal-700 active:scale-95 sm:w-auto"
+              className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-700 px-8 text-sm font-bold text-white shadow-md transition hover:bg-teal-800 active:scale-95 sm:w-auto"
             >
               Book a free demo
             </Link>
@@ -406,7 +406,7 @@ export default function Home() {
             <div className="absolute left-[calc(16.67%+1.5rem)] right-[calc(16.67%+1.5rem)] top-8 hidden border-t-2 border-dashed border-slate-200 sm:block" aria-hidden />
             {steps.map((s) => (
               <li key={s.n} className="relative flex flex-col items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:items-center sm:text-center">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-600 text-base font-extrabold text-white shadow-md">{s.n}</div>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-700 text-base font-extrabold text-white shadow-md">{s.n}</div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900">{s.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{s.desc}</p>
