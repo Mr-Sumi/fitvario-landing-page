@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: blog
 ## Keywords
 - Primary: how to reduce gym member churn (P1, English, Problem-led)
 - Secondary: gym member retention strategies india
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "how to reduce gym member churn" in the first 100 words

@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: compare
 ## Keywords
 - Primary: mindbody alternative india (P2, English, Comparison)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial investigation. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 ACCURACY GATE: cited public facts with verified dates; legal read; draft until cleared
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Who each tool is for (mindbody alternative india)

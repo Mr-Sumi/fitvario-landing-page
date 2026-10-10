@@ -18,7 +18,7 @@ const geistSans = Geist({
 
 const DEFAULT_TITLE = "Fitvario | Gym Management Software for Indian Gyms";
 const DEFAULT_DESCRIPTION =
-  "Gym management software for Indian gyms: memberships, QR attendance, fee reminders, CRM, workout and diet plans and analytics.";
+  "Gym management software for Indian gyms: memberships, QR attendance, CRM, billing and analytics.";
 
 // Pages set their own canonical and Open Graph via buildMetadata(); nothing page-specific lives here
 export const metadata: Metadata = {

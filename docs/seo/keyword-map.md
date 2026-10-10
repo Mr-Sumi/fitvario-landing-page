@@ -3,7 +3,7 @@
 Copied verbatim from PROMPT_PACK_v2.md (Prompt 1).
 
 KEYWORD MAP (source of truth; save verbatim as docs/seo/keyword-map.md in Phase 4)
-Notes: 76 keywords across 48 target pages. Priority is judgement, not volume. "primary" is the highest-priority keyword for that page. Pages marked GATE must not be published until the gate is satisfied. Pattern pages such as /gyms/[city]/[area] are templates for Prompt 7, not pages to generate now.
+Notes: 76 keywords across 48 target pages. Keywords tagged DROPPED stay listed for the record but are never targeted, never counted and are reported separately by scripts/keyword-coverage.mjs. A RULE line is a content restriction for that page. Priority is judgement, not volume. "primary" is the highest-priority keyword for that page. Pages marked GATE must not be published until the gate is satisfied. Pattern pages such as /gyms/[city]/[area] are templates for Prompt 7, not pages to generate now.
 
 PAGE /
   wave: Rewrite now
@@ -14,7 +14,7 @@ PAGE /
 PAGE /pricing
   wave: Rewrite now
   primary: gym software price in india [P1, English, Pricing, Commercial investigation]
-  secondary: gym membership software price [P2]; cheap gym software india [P3]; free gym software india [P3]
+  secondary: gym membership software price [P2]; cheap gym software india [P3, DROPPED: no cheap or free plan]; free gym software india [P3, DROPPED: no free plan exists]
   sheet notes: gym software price in india: Needs real price anchor | cheap gym software india: Avoid cheap-positioning unless true | free gym software india: Only if a free tier exists
   GATE: DECISION GATE: rupee figures only from pricing config; "free" and "cheap" keywords only if literally true. Product has self-serve plans (Starter and higher, DB-driven); Sumit decides whether to publish them.
 
@@ -47,8 +47,9 @@ PAGE /features/qr-attendance
 PAGE /features/whatsapp-reminders
   wave: Wave 1
   primary: whatsapp reminders for gym [P1, English, WhatsApp, Commercial]
-  secondary: gym membership renewal reminder [P1]; gym whatsapp automation [P2]; whatsapp business api for gym [P3]
-  sheet notes: whatsapp reminders for gym: Live on Features as WhatsApp Business | whatsapp business api for gym: use only if the provider arrangement is confirmed (code uses Fast2SMS WhatsApp)
+  secondary: gym membership renewal reminder [P1]; gym whatsapp automation [P2]; whatsapp business api for gym [P3, DROPPED: phrase banned]
+  sheet notes: whatsapp reminders for gym: Live on Features as WhatsApp Business | whatsapp business api for gym: dropped, the phrase is banned
+  GATE: FEATURE GATE: draft until whatsapp_expiry_reminders is confirmed live. Never claim automated due-payment reminders (due_payment_reminders is not-live).
 
 PAGE /features/gym-crm
   wave: Wave 1
@@ -72,7 +73,8 @@ PAGE /features/diet-workout-plans
   wave: Wave 3
   primary: gym diet plan software [P3, English, Diet/workout, Commercial]
   secondary: workout plan builder for gym trainers [P3]
-  sheet notes: verified in code: plan builders, assignment, member requests with approval, member progress tracking; template marketplace only if live
+  sheet notes: plan builders exist in code but Sumit says workout and diet plans are not available to users
+  GATE: FEATURE GATE: NOT LIVE. Draft until workout_diet_plans is live in feature-status.json.
 
 PAGE /for/franchise-gyms
   wave: Wave 3
@@ -141,6 +143,7 @@ PAGE /blog/gym-renewal-reminder-message-formats
   wave: Wave 1
   primary: gym membership renewal message format [P1, English, WhatsApp, Informational]
   sheet notes: gym membership renewal message format: Copy-paste templates; high link/share potential
+  RULE: Templates the owner sends by hand. Do not say Fitvario sends them automatically until whatsapp_expiry_reminders is live.
 
 PAGE /blog/gym-lead-follow-up-script
   wave: Wave 2
@@ -183,6 +186,7 @@ PAGE /blog/gym-freeze-policy-template
 PAGE /blog/gym-fee-collection-tips
   wave: Wave 2
   primary: how to collect gym fees on time [P2, English, Problem-led, Informational]
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /blog/how-to-start-a-gym-in-india
   wave: Wave 3
@@ -194,6 +198,7 @@ PAGE /hi/gym-fee-reminder-message
   wave: Wave 2
   primary: gym fee reminder message in hindi [P1, Hinglish, WhatsApp, Informational]
   sheet notes: gym fee reminder message in hindi: Hinglish template page
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /hi/
   wave: Wave 2
@@ -213,6 +218,7 @@ PAGE /hi/gym-software-kaise-chune
 PAGE /hi/whatsapp-reminder
   wave: Wave 2
   primary: gym ka fees reminder whatsapp [P1, Hinglish, Hindi/Hinglish, Informational]
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /hi/blog/gym-me-member-kaise-badhaye
   wave: Wave 3

@@ -2,6 +2,7 @@
 // and the page registry. Run: node scripts/gen-seo-docs.mjs
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { parseMap } from "./lib/keyword-map.mjs";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -25,27 +26,21 @@ writeFileSync(join(docs, "SEO_RULES.md"), `# SEO rules\n\nCopied verbatim from P
 const map = between("KEYWORD MAP (source of truth", "Start with Phase 0 now.");
 writeFileSync(join(docs, "keyword-map.md"), `# Keyword map\n\nCopied verbatim from PROMPT_PACK_v2.md (Prompt 1).\n\n${map}`);
 
-// ---- parse the map ----------------------------------------------------------
-const entries = [];
-let cur = null;
-for (const line of map.split("\n")) {
-  const m = line.match(/^PAGE (\S+)\s*$/);
-  if (m) {
-    cur = { path: m[1], wave: "", primary: "", tag: [], secondary: [], notes: "", gate: "" };
-    entries.push(cur);
-    continue;
-  }
-  if (!cur) continue;
-  let k;
-  if ((k = line.match(/^\s+wave: (.*)$/))) cur.wave = k[1];
-  else if ((k = line.match(/^\s+primary: (.*?) \[(.*)\]\s*$/))) {
-    cur.primary = k[1];
-    cur.tag = k[2].split(",").map((s) => s.trim());
-  } else if ((k = line.match(/^\s+secondary: (.*)$/))) {
-    cur.secondary = k[1].split(";").map((s) => s.replace(/\s*\[.*?\]\s*$/, "").trim()).filter(Boolean);
-  } else if ((k = line.match(/^\s+sheet notes: (.*)$/))) cur.notes = k[1];
-  else if ((k = line.match(/^\s+GATE: (.*)$/))) cur.gate = k[1];
-}
+// ---- parse the map (shared parser) --------------------------------------------
+const entries = parseMap(map).map((e) => ({
+  path: e.path,
+  wave: e.wave,
+  primary: e.primary?.text ?? "",
+  tag: [e.primary?.priority, e.primary?.lang, e.primary?.cluster, e.primary?.intent],
+  secondary: e.secondary.filter((x) => !x.dropped).map((x) => x.text),
+  dropped: [
+    ...(e.primary?.dropped ? [{ text: e.primary.text, reason: e.primary.reason }] : []),
+    ...e.secondary.filter((x) => x.dropped).map((x) => ({ text: x.text, reason: x.reason })),
+  ],
+  notes: e.notes,
+  gate: e.gate,
+  rule: e.rule,
+}));
 
 // ---- registry (read the TS file as text, no TS toolchain needed) ------------
 const regSrc = readFileSync(join(root, "src", "config", "pages.ts"), "utf8");
@@ -209,12 +204,16 @@ Status: ${status} · Wave: ${e.wave} · Kind: ${kind}
 ## Keywords
 - Primary: ${e.primary} (${prio ?? "?"}, ${lang ?? "?"}, ${cluster ?? "?"})
 - Secondary: ${e.secondary.length ? e.secondary.join("; ") : "none"}
+- DROPPED (never target or count): ${e.dropped.length ? e.dropped.map((d) => `${d.text} (${d.reason})`).join("; ") : "none"}
 
 ## Search intent
 ${intent ?? "n/a"}. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 ${e.gate || "None."}
+
+## Content rule
+${e.rule || "None beyond SEO_RULES.md."}
 
 ## Outline (starting point: refine before writing)
 ${outline}
@@ -240,13 +239,14 @@ ${backend[e.path] ?? "None needed, or not a product page."}
 
 // ---- tracker ----------------------------------------------------------------
 const csv = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-const rows = [["URL", "primary_keyword", "secondary_keywords", "status", "wave", "gate", "owner"]];
+const rows = [["URL", "primary_keyword", "secondary_keywords", "dropped_keywords", "status", "wave", "gate", "owner"]];
 for (const e of entries) {
   const gate = e.gate.split(":")[0];
   rows.push([
     e.path,
     e.primary,
     e.secondary.join("; "),
+    e.dropped.map((d) => d.text).join("; "),
     statusOf(e.path),
     e.wave,
     gate,
@@ -255,7 +255,7 @@ for (const e of entries) {
 }
 for (const r of registry) {
   if (entries.some((e) => e.path === r.path)) continue;
-  rows.push([r.path, "(none)", "", statusOf(r.path), "Support", "", "Claude Code"]);
+  rows.push([r.path, "(none)", "", "", statusOf(r.path), "Support", "", "Claude Code"]);
 }
 writeFileSync(join(docs, "page-tracker.csv"), rows.map((r) => r.map(csv).join(",")).join("\n") + "\n");
 

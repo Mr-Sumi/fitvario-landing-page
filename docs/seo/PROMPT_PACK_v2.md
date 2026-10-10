@@ -84,6 +84,7 @@ HARD RULES (apply to every phase and every later session)
 9. DO NOT MIGRATE FRAMEWORKS. Stay on the existing Next.js App Router setup and its conventions, and read its docs first (see REPO FACTS).
 10. COMMUNICATION. After Phase 0, STOP and ask. After my answers, proceed through the phases without asking again; unknowns become config placeholders plus TODO entries. End every phase with a 5-line summary: what changed, files touched, how it was verified, what is left, what I must do.
 11. COMMITS AND COMMENTS. Commit messages are plain `type: message`. Never add Co-Authored-By lines or "Generated with" lines to commits or PRs. Code comments read like a teammate's quick note: short, no AI-style explanations of reasoning. Run no git command beyond what the phases require (branch, add, commit).
+12. NOT-LIVE FEATURES, BANNED PHRASES, DROPPED KEYWORDS. docs/seo/feature-status.json is authoritative. Never claim: automated due-payment reminders (not live, jobs are not scheduled in production); the online store, cart or orders (not live); workout plans or diet plans (not live); expiry or birthday WhatsApp reminders (only after Sumit confirms they run). The phrase "WhatsApp Business API" is banned everywhere on the site; say "automated WhatsApp reminders". Keywords marked DROPPED in the keyword map are never targeted and never counted. Fee-reminder keywords are covered with template messages and manual or expiry-reminder workflows only, never with automated due-payment claims.
 
 PHASE 0: Discovery (read-only, then STOP)
 - Read the Next.js docs in node_modules/next/dist/docs/ that cover metadata, sitemap, robots, redirects and rendering. Summarise the conventions you will follow.
@@ -149,7 +150,7 @@ PAGE STANDARDS (apply to every indexable page)
 - Tone: practical, direct, owner-to-owner. No hype adjectives, no unsourced statistics.
 
 KEYWORD MAP (source of truth; save verbatim as docs/seo/keyword-map.md in Phase 4)
-Notes: 76 keywords across 48 target pages. Priority is judgement, not volume. "primary" is the highest-priority keyword for that page. Pages marked GATE must not be published until the gate is satisfied. Pattern pages such as /gyms/[city]/[area] are templates for Prompt 7, not pages to generate now.
+Notes: 76 keywords across 48 target pages. Keywords tagged DROPPED stay listed for the record but are never targeted, never counted and are reported separately by scripts/keyword-coverage.mjs. A RULE line is a content restriction for that page. Priority is judgement, not volume. "primary" is the highest-priority keyword for that page. Pages marked GATE must not be published until the gate is satisfied. Pattern pages such as /gyms/[city]/[area] are templates for Prompt 7, not pages to generate now.
 
 PAGE /
   wave: Rewrite now
@@ -160,7 +161,7 @@ PAGE /
 PAGE /pricing
   wave: Rewrite now
   primary: gym software price in india [P1, English, Pricing, Commercial investigation]
-  secondary: gym membership software price [P2]; cheap gym software india [P3]; free gym software india [P3]
+  secondary: gym membership software price [P2]; cheap gym software india [P3, DROPPED: no cheap or free plan]; free gym software india [P3, DROPPED: no free plan exists]
   sheet notes: gym software price in india: Needs real price anchor | cheap gym software india: Avoid cheap-positioning unless true | free gym software india: Only if a free tier exists
   GATE: DECISION GATE: rupee figures only from pricing config; "free" and "cheap" keywords only if literally true. Product has self-serve plans (Starter and higher, DB-driven); Sumit decides whether to publish them.
 
@@ -193,8 +194,9 @@ PAGE /features/qr-attendance
 PAGE /features/whatsapp-reminders
   wave: Wave 1
   primary: whatsapp reminders for gym [P1, English, WhatsApp, Commercial]
-  secondary: gym membership renewal reminder [P1]; gym whatsapp automation [P2]; whatsapp business api for gym [P3]
-  sheet notes: whatsapp reminders for gym: Live on Features as WhatsApp Business | whatsapp business api for gym: use only if the provider arrangement is confirmed (code uses Fast2SMS WhatsApp)
+  secondary: gym membership renewal reminder [P1]; gym whatsapp automation [P2]; whatsapp business api for gym [P3, DROPPED: phrase banned]
+  sheet notes: whatsapp reminders for gym: Live on Features as WhatsApp Business | whatsapp business api for gym: dropped, the phrase is banned
+  GATE: FEATURE GATE: draft until whatsapp_expiry_reminders is confirmed live. Never claim automated due-payment reminders (due_payment_reminders is not-live).
 
 PAGE /features/gym-crm
   wave: Wave 1
@@ -218,7 +220,8 @@ PAGE /features/diet-workout-plans
   wave: Wave 3
   primary: gym diet plan software [P3, English, Diet/workout, Commercial]
   secondary: workout plan builder for gym trainers [P3]
-  sheet notes: verified in code: plan builders, assignment, member requests with approval, member progress tracking; template marketplace only if live
+  sheet notes: plan builders exist in code but Sumit says workout and diet plans are not available to users
+  GATE: FEATURE GATE: NOT LIVE. Draft until workout_diet_plans is live in feature-status.json.
 
 PAGE /for/franchise-gyms
   wave: Wave 3
@@ -287,6 +290,7 @@ PAGE /blog/gym-renewal-reminder-message-formats
   wave: Wave 1
   primary: gym membership renewal message format [P1, English, WhatsApp, Informational]
   sheet notes: gym membership renewal message format: Copy-paste templates; high link/share potential
+  RULE: Templates the owner sends by hand. Do not say Fitvario sends them automatically until whatsapp_expiry_reminders is live.
 
 PAGE /blog/gym-lead-follow-up-script
   wave: Wave 2
@@ -329,6 +333,7 @@ PAGE /blog/gym-freeze-policy-template
 PAGE /blog/gym-fee-collection-tips
   wave: Wave 2
   primary: how to collect gym fees on time [P2, English, Problem-led, Informational]
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /blog/how-to-start-a-gym-in-india
   wave: Wave 3
@@ -340,6 +345,7 @@ PAGE /hi/gym-fee-reminder-message
   wave: Wave 2
   primary: gym fee reminder message in hindi [P1, Hinglish, WhatsApp, Informational]
   sheet notes: gym fee reminder message in hindi: Hinglish template page
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /hi/
   wave: Wave 2
@@ -359,6 +365,7 @@ PAGE /hi/gym-software-kaise-chune
 PAGE /hi/whatsapp-reminder
   wave: Wave 2
   primary: gym ka fees reminder whatsapp [P1, Hinglish, Hindi/Hinglish, Informational]
+  RULE: Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 PAGE /hi/blog/gym-me-member-kaise-badhaye
   wave: Wave 3
@@ -433,17 +440,17 @@ TASK
 Build the remaining feature and segment pages from the keyword map. For each page: (1) read its content brief and gate; (2) if the gate is not satisfied, build it as a DRAFT (noindex, not in sitemap, nav or links) and log it in TODO_FOR_SUMIT.md; (3) write unique content; (4) include EVERY primary and secondary keyword of that page from keyword-map.md at least once, naturally; (5) add internal links both ways (hub, siblings, tool, blog, compare); (6) update page-tracker.csv and the sitemap; (7) run scripts/seo-check. Commit after every 2-3 pages. Describe only behaviour in product-facts.md that feature-status.json marks live; read the backend (path in product-facts.md) to confirm details, and cite file paths in the content brief only.
 
 PAGES
-- /features/member-app. Keywords: gym management app india; branded gym app for members; gym member management app (Hinglish query, add a short Hinglish FAQ block). Gate: real store links in config, otherwise no store badges. Android only; do not claim iOS. Member-side features to cover when live: plan and subscription status, QR check-in, workout and diet tracking, progress photos, BMI/BMR/measurements, trainer, referral and coins, notifications, reminder preferences. Login is OTP and password; do not say "passwordless".
+- /features/member-app. Keywords: gym management app india; branded gym app for members; gym member management app (Hinglish query, add a short Hinglish FAQ block). Gate: real store links in config, otherwise no store badges. Android only; do not claim iOS. Member-side features to cover when live: plan and subscription status, QR check-in, (workout and diet tracking only when workout_diet_plans is live), progress photos, BMI/BMR/measurements, trainer, referral and coins, notifications, reminder preferences. Login is OTP and password; do not say "passwordless".
 - /features/biometric-attendance. Keywords: biometric attendance for gym; zkteco gym software; gym fingerprint attendance software; gym access control software india; gym attendance machine software (Hinglish query, add a short Hinglish FAQ block). GATE: ADMS/ZKTeco biometric "live". Make /pricing consistent either way. Describe supported devices only as confirmed by me; the code implements the ZKTeco-style ADMS push protocol (device management, command queue, punch logs, member-to-device user mapping, block/unblock, validity resync) but lists no device models. Do not claim door-lock or access-controller integration unless confirmed ("access control" keyword: describe blocking expired members on the device only if confirmed).
 - /features/qr-attendance. Keyword: gym attendance app qr code. Live per site. Cover member QR check-in, manual and bulk marking by owner/staff, attendance analytics and top attenders, auto-marking absent, and why QR and biometric differ without overselling.
 - /features/white-label-gym-app. Keywords: white label gym app india; gym app with own branding. GATE: white-label live. If not confirmed, use the site's "gym-branded Android app" wording and keep this page draft.
 - /features/multi-branch-gym-software. Keyword: multi branch gym software. Franchise > gyms, branch-scoped staff, multi-branch analytics for revenue, members, attendance and CRM.
-- /features/diet-workout-plans. Keywords: gym diet plan software; workout plan builder for gym trainers. Plan builders, assignment, restart/remove, member plan requests with approval, member progress tracking. Template marketplace only if live.
+- /features/diet-workout-plans. Keywords: gym diet plan software; workout plan builder for gym trainers. GATE: workout_diet_plans is NOT LIVE (Sumit confirmed). Build as a draft: noindex, out of sitemap, nav and links, 404 on production. Write it from the backend code so it is ready, but do not publish and do not link to it. Remove every other workout/diet claim from the site while the flag is not live.
 - /for/small-gyms. Keyword: gym software for small gyms india. Write for the 100-300 member gym owner: what they actually need, what to ignore, a setup checklist. No price claims unless pricing config exists.
 - /for/franchise-gyms. Keywords: franchise gym management software; gym chain management software india. Branch-level permissions, consolidated reports, owner vs branch-manager visibility, only as live.
 - /for/crossfit-yoga-studios. Keywords: crossfit gym software india; yoga studio software india. The product has batches (time slots) and opening hours but no class booking, capacity or enrolment. Write about batches, attendance, membership packs and plan tracking; never promise class booking. If the two audiences would be thin or duplicate, keep one page with two clearly separate sections.
 
-Also refine the three pilot pages (gst-billing, whatsapp-reminders, gym-crm) so all of their keywords are covered: gym software with gst billing; gym billing software india; gym partial payment dues tracking software; whatsapp reminders for gym; gym membership renewal reminder; gym whatsapp automation; whatsapp business api for gym (only per my provider answer); gym crm software india; gym lead management software; gym enquiry follow up app.
+Also refine the three pilot pages (gst-billing, whatsapp-reminders, gym-crm) so all of their keywords are covered: gym software with gst billing; gym billing software india; gym partial payment dues tracking software; whatsapp reminders for gym; gym membership renewal reminder; gym whatsapp automation; gym crm software india; gym lead management software; gym enquiry follow up app.
 
 Update the /features hub, header menu and footer so every page is reachable. Finish with a 5-line summary plus the list of draft pages awaiting my decision.
 ````
@@ -529,8 +536,8 @@ Roman-script Hinglish, written the way a gym owner talks and types on WhatsApp. 
 PAGES (every keyword included naturally)
 - /hi/ hub. Keywords: gym management software hindi; gym ke liye software. Overview in Hinglish, links to all /hi/ pages and to the English feature pages.
 - /hi/gym-billing-software. Keyword: gym ka billing software. Billing, dues, partial payments and invoices as live; tax lines/GST only if live; plain explanation of fee collection and partial payments.
-- /hi/whatsapp-reminder. Keyword: gym ka fees reminder whatsapp. How automated WhatsApp, SMS and push reminders work (expiring memberships, due payments, birthdays, campaigns, credits); sample message flows; placeholder for the Hindi YouTube demo (TODO). Do not say "WhatsApp Business API" unless confirmed.
-- /hi/gym-fee-reminder-message. Keyword: gym fee reminder message in hindi. A template library of Hinglish fee and due reminder messages with copy buttons; different content from the English renewal-template post.
+- /hi/whatsapp-reminder. Keyword: gym ka fees reminder whatsapp. How WhatsApp, SMS and push alerts work, limited to what feature-status.json marks live (expiry and birthday messages only after Sumit confirms; NO automated due-payment reminders). Fee-reminder wording is covered with Hinglish template messages the owner sends by hand. Placeholder for the Hindi YouTube demo (TODO). The phrase "WhatsApp Business API" is banned.
+- /hi/gym-fee-reminder-message. Keyword: gym fee reminder message in hindi. A template library of Hinglish fee and due reminder messages with copy buttons, written for the owner to send by hand; different content from the English renewal-template post. Do not say Fitvario sends due-payment reminders automatically.
 - /hi/gym-software-kaise-chune. Keyword: gym software kaise chune. A neutral buyer's checklist: features, support, data export, pricing, WhatsApp, GST, biometrics; questions to ask any vendor; red flags. No competitor bashing.
 - /hi/blog/gym-me-member-kaise-badhaye. Keyword: gym me member kaise badhaye. Practical member-acquisition guide in Hinglish; YouTube companion placeholder; must not duplicate the English get-more-members post.
 - Also add a short Hinglish FAQ block (4 questions) to /features/member-app and /features/biometric-attendance if not already added in Prompt 2.
@@ -639,7 +646,7 @@ CHECKS (script everything that can be scripted, keep scripts in scripts/)
 1. Build passes. Crawl the built site locally: HTTP status of every internal link, no 404s, no redirect chains, no mixed content, no www/apex links, trailing-slash consistency.
 2. Per page: unique title (50-60 characters), unique description (120-155), exactly one H1, canonical correct, robots meta as intended, Open Graph present, JSON-LD parses, images have alt, no orphan pages, depth from home 3 clicks or fewer.
 3. Sitemap equals the set of indexable pages exactly; drafts, noindex pages, thank-you and 404 are absent; lastmod values are real and differ across pages. robots does not disallow any noindex page.
-4. KEYWORD COVERAGE. Write `scripts/keyword-coverage`. For every one of the 76 keywords in keyword-map.md that belongs to a published page, check that the keyword (or a close natural variant) appears in that page's title, H1, an H2, body or FAQ. Report in a table: keyword, page, where it appears, status (covered / missing / page is draft and blocked by <gate>). Fix every "missing" by editing the copy naturally; never stuff. Pattern keywords are reported as "handled by Prompt 7".
+4. KEYWORD COVERAGE. Use `scripts/keyword-coverage.mjs` (already in the repo; extend it if needed). For every one of the 76 keywords in keyword-map.md that belongs to a published page, check that the keyword (or a close natural variant) appears in that page's title, H1, an H2, body or FAQ. Skip keywords tagged DROPPED and list them in a separate DROPPED section; a dropped keyword, or the banned phrase "WhatsApp Business API", on a published page is a failure. Report in a table: keyword, page, where it appears, status (covered / missing / page is draft and blocked by <gate>). Fix every "missing" by editing the copy naturally; never stuff. Pattern keywords are reported as "handled by Prompt 7".
 5. Duplicate-content check: no two pages share more than 25% identical sentences (scripts/seo-check). Check that primary keywords are not shared by two pages (cannibalisation) except where the map assigns one page to several keywords.
 6. Feature-truth audit: list every capability claimed anywhere on the site and match it to feature-status.json; flag any claim whose status is not "live" or "live-per-site"; fix by removing or drafting. Explicitly re-check the NO-EVIDENCE list in product-facts.md (class booking, staff salary/attendance, per-gym FAQs, Excel/PDF export, passwordless-only login, "WhatsApp Business API") and /pricing vs /features consistency (biometrics, exports).
 7. Conversion audit: every indexable page has a visible demo CTA and WhatsApp/call access on mobile; DemoForm validates, rate-limits, delivers to the webhook/email and fires demo_submit; thank-you page is noindex.

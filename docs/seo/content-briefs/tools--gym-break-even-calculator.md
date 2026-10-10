@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 1 · Kind: tool
 ## Keywords
 - Primary: gym break even calculator (P1, English, Tools)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Tool. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Tool: gym break even calculator (client-side, editable defaults labelled illustrative)

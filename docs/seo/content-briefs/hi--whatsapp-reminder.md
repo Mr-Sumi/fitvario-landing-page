@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: hinglish
 ## Keywords
 - Primary: gym ka fees reminder whatsapp (P1, Hinglish, Hindi/Hinglish)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+Cover with template messages and manual or expiry-reminder workflows only. No automated due-payment claims. Mention expiry reminders only once whatsapp_expiry_reminders is live.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "gym ka fees reminder whatsapp" in Roman-script Hinglish

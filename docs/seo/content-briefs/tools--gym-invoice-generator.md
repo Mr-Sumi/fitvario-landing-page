@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: tool
 ## Keywords
 - Primary: gym invoice format gst (P2, English, GST billing)
 - Secondary: gym fees receipt format
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 CONTENT GATE: CA review of GST wording; do not claim Fitvario auto-generates GST invoices unless GST is live
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Tool: gym invoice format gst (client-side, editable defaults labelled illustrative)

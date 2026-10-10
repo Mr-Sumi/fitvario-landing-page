@@ -51,7 +51,6 @@ export default function SupportPage() {
               "Configuring WhatsApp / SMS messaging credits",
               "Setting up subscription plans and pricing",
               "Staff roles, access controls, and permissions",
-              "Ecommerce and product listings",
               "Billing, invoices, and Razorpay payments",
               "Android member app installation and OTP login",
               "Account deletion requests",

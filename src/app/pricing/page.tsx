@@ -8,6 +8,7 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
 import { pricingTiers, selfServeSignup, signupUrl, typicalSetupExample } from "@/config/pricing";
 import { contact } from "@/config/site";
+import { isLive } from "@/lib/features";
 
 export const metadata = buildMetadata("/pricing");
 
@@ -22,11 +23,11 @@ const factors = [
   },
   {
     title: "Messaging volume",
-    body: "WhatsApp, SMS and push reminders run on credits. A gym that reminds every member before renewal sends far more than one that only messages dues.",
+    body: "WhatsApp, SMS and push messages run on credits. A gym that messages every member often sends far more than one that sends a few alerts.",
   },
   {
     title: "Modules you turn on",
-    body: "Attendance, CRM, workout and diet plans, the online store and franchise reporting are modules. You pay for the ones you use.",
+    body: "Attendance, CRM, billing and franchise reporting are modules. You pay for the ones you use.",
   },
 ];
 
@@ -36,12 +37,12 @@ const included = [
   "Branded Android app for members",
   "QR attendance for members",
   "CRM, enquiries and follow-up reminders",
-  "Workout and diet plan builder",
+  ...(isLive("workout_diet_plans") ? ["Workout and diet plan builder"] : []),
   "Membership, renewal and invoice management",
   "WhatsApp and SMS messaging credits",
   "Push notifications for members",
   "Payments through Razorpay (UPI, card, net banking)",
-  "Online store for gym products",
+  ...(isLive("ecommerce_cart_orders") ? ["Online store for gym products"] : []),
   "Analytics and reports for collections, members and expenses",
   "Multi-branch comparison",
   "Staff access controls and activity logs",

@@ -3,14 +3,18 @@
 Status: planned · Wave: Wave 3 · Kind: local
 
 ## Keywords
-- Primary: [gym name] (area] [city] [P3, English, Local/programmatic)
+- Primary: [gym name] (, English, Local/programmatic)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Navigational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 PATTERN, not a page to generate now; Prompt 7 profile template, opt-in plus quality gate
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Template page for [gym name]. Built in Prompt 7A/7B, not as a standalone page.

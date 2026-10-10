@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: blog
 ## Keywords
 - Primary: gym referral program ideas india (P3, English, CRM)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "gym referral program ideas india" in the first 100 words

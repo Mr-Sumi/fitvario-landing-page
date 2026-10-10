@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: local
 ## Keywords
 - Primary: gyms in bhopal (P2, English, Local/programmatic)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Local. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 QUALITY GATE: Prompt 7A/7B only; indexable hub only when >= 5 qualifying opted-in gyms; no consumer doorway pages
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Template page for gyms in bhopal. Built in Prompt 7A/7B, not as a standalone page.

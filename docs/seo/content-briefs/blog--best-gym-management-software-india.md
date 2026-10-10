@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: blog
 ## Keywords
 - Primary: best gym management software in india (P2, English, Head term)
 - Secondary: best gym software india 2026
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial investigation. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 ACCURACY GATE: same rules as compare pages; disclose that Fitvario makes this site
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "best gym management software in india" in the first 100 words

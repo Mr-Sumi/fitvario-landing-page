@@ -70,7 +70,7 @@ export default function RefundPage() {
       <ul className="mt-3 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
         <li>If you were charged for credits not received due to a system error, contact support within 7 days.</li>
         <li>Credits consumed for messages already delivered are non-refundable.</li>
-        <li>WhatsApp Business API message delivery is subject to Meta&apos;s policies; failures due to Meta&apos;s infrastructure are outside our control.</li>
+        <li>WhatsApp message delivery is subject to Meta&apos;s policies; failures due to Meta&apos;s infrastructure are outside our control.</li>
       </ul>
 
       <H2>4. Google Play Store purchases</H2>

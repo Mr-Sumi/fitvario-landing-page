@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 1 · Kind: feature
 ## Keywords
 - Primary: biometric attendance for gym (P1, English, Biometric)
 - Secondary: zkteco gym software; gym fingerprint attendance software; gym access control software india; gym attendance machine software
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 FEATURE GATE: draft unless ADMS/ZKTeco biometric is "live"; resolve the /pricing "optional biometrics" mention. Code evidence: ADMS push endpoints, device and command management, punch logs, user mapping, block/unblock, validity resync. Device models supported are not listed in code; ask.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what biometric attendance for gym means in Fitvario (first 100 words)

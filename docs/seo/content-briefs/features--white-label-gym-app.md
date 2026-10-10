@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: feature
 ## Keywords
 - Primary: white label gym app india (P2, English, White-label)
 - Secondary: gym app with own branding
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 FEATURE GATE: draft unless white-label is "live"; otherwise use the site's "gym-branded Android app" wording. Code evidence: `owner/whitelabel` endpoint exists; how the Android app is branded per gym is not verified.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what white label gym app india means in Fitvario (first 100 words)

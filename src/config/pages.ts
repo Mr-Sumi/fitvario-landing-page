@@ -37,7 +37,7 @@ export const pages: PageDef[] = [
     kind: "core",
     title: "Gym Management Software India: Billing, CRM | Fitvario",
     description:
-      "Run memberships, QR attendance, fee reminders, CRM and revenue from one place. Gym management software built for Indian gyms. Book a free demo.",
+      "Run memberships, QR attendance, CRM and revenue from one place. Gym management software built for Indian gyms. Book a free demo with Fitvario.",
     updated: "2026-10-10",
   },
   {
@@ -45,7 +45,7 @@ export const pages: PageDef[] = [
     kind: "core",
     title: "Gym Management Software Features for Indian Gyms | Fitvario",
     description:
-      "See what Fitvario does for gym owners, staff and members: memberships, QR attendance, CRM, workout and diet plans, WhatsApp reminders and analytics.",
+      "See what Fitvario does for gym owners, staff and members: memberships, QR attendance, CRM, billing, revenue analytics and a member app for Android.",
     updated: "2026-10-10",
     navLabel: "Features",
   },
@@ -70,7 +70,7 @@ export const pages: PageDef[] = [
   {
     path: "/contact",
     kind: "core",
-    title: "Contact Fitvario | Request a Free Gym Software Demo",
+    title: "Contact Fitvario | Request a Free Demo for Your Gym",
     description:
       "Request a free Fitvario demo or ask a question. Share your gym name, city and member count and we will walk you through the platform. No obligation.",
     updated: "2026-10-10",
@@ -151,6 +151,7 @@ export const pages: PageDef[] = [
       "Fitvario sends automated WhatsApp reminders before a gym membership ends and after it expires. See the schedule, the credits used and what you control.",
     updated: "2026-10-10",
     navLabel: "WhatsApp reminders",
+    gate: "whatsapp_expiry_reminders",
   },
   {
     path: "/features/gym-crm",
@@ -182,6 +183,12 @@ export function isDraft(p: PageDef): boolean {
 
 export function isIndexable(p: PageDef): boolean {
   return !p.noindex && !isDraft(p);
+}
+
+// True when the page exists in the registry and is public (not draft, not noindex)
+export function isPublishedPath(path: string): boolean {
+  const p = pages.find((x) => x.path === path);
+  return !!p && isIndexable(p);
 }
 
 export function getPage(path: string): PageDef {

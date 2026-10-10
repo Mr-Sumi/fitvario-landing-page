@@ -68,8 +68,7 @@ export function Footer() {
               Fitvario
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400">
-              Gym management software for Indian gyms: memberships, QR attendance, fee reminders, CRM and revenue
-              in one place.
+              Gym management software for Indian gyms: memberships, QR attendance, CRM and revenue in one place.
             </p>
             <div className="mt-4 space-y-1 text-xs leading-relaxed text-slate-400">
               <p>Bhopal, Madhya Pradesh, India</p>

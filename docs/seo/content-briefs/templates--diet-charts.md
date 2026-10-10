@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: template
 ## Keywords
 - Primary: indian diet chart for gym members (P3, English, Diet/workout)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 CONTENT GATE: nutritionist review before publishing; build as draft; no medical claims
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: indian diet chart for gym members

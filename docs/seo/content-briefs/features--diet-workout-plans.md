@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: feature
 ## Keywords
 - Primary: gym diet plan software (P3, English, Diet/workout)
 - Secondary: workout plan builder for gym trainers
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
-None.
+FEATURE GATE: NOT LIVE. Draft until workout_diet_plans is live in feature-status.json.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what gym diet plan software means in Fitvario (first 100 words)
@@ -42,7 +46,7 @@ None.
 Book a free demo (/contact#demo) at mid-page and at the end. WhatsApp and call options come from config.
 
 ## Facts to verify before writing
-- verified in code: plan builders, assignment, member requests with approval, member progress tracking; template marketplace only if live
+- plan builders exist in code but Sumit says workout and diet plans are not available to users
 - Every capability named must be "live" or "live-per-site" in feature-status.json.
 
 ## Backend evidence (for the writer; do not cite file paths on the page)

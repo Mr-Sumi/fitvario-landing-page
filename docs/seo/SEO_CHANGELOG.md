@@ -78,3 +78,15 @@ Rerun Lighthouse yourself:
 npm run build && npx next start -p 3100
 npx lighthouse http://localhost:3100/ --form-factor=mobile --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless=new"
 ```
+
+## 2026-10-10 (later): status corrections
+
+Triggered by Sumit: due-payment reminders, online store, workout plans and diet plans are not live; expiry and birthday reminders only after confirmation; "WhatsApp Business API" banned; three keywords dropped.
+
+- `feature-status.json`: new status `not-live`; new keys `due_payment_reminders`, `whatsapp_expiry_reminders`, `whatsapp_birthday_messages`; `ecommerce_cart_orders`, `workout_diet_plans`, `plan_requests_approval` set to `not-live`.
+- Copy on home, features hub, pricing, about, support, footer, layout and JSON-LD no longer mentions the store, workout plans, diet plans or automated reminders. The claims are conditional on the flags, so each returns when its flag is flipped.
+- `/features/whatsapp-reminders` is gated on `whatsapp_expiry_reminders` and is now a draft (noindex, out of sitemap, nav and links, 404 on production). The CRM page only links to it while it is published.
+- `keyword-map.md`: three keywords tagged DROPPED; RULE lines on the fee-reminder and renewal-template pages; GATE on `/features/diet-workout-plans`. `SEO_RULES.md` has a new rule 12.
+- `scripts/keyword-coverage.mjs` (new): skips DROPPED keywords and lists them separately, fails on a missing keyword or a dropped keyword still present. `scripts/lib/keyword-map.mjs` is the shared parser.
+- `scripts/seo-check.mjs`: now fails on the banned phrase, on claims of automated due-payment/fee reminders, and on "free/cheap gym software".
+- Found by the new checks and fixed: `/contact` title contained "Free Gym Software Demo"; the CRM page linked to a draft; home was missing "gym management system in India". Removed the banned phrase from `/refund`.

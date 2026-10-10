@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: hinglish
 ## Keywords
 - Primary: gym management software hindi (P1, Hinglish, Hindi/Hinglish)
 - Secondary: gym ke liye software
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 VALIDATION GATE: Sumit's phone SERP check first (Prompt 5, Step 0)
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "gym management software hindi" in Roman-script Hinglish

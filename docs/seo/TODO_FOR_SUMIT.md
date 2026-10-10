@@ -91,3 +91,13 @@ I searched the backend again for "faq" as you asked: only a platform-level FAQ e
 - [ ] Home LCP is 2.7 s on Lighthouse's simulated mobile throttling (target 2.5 s). Check PageSpeed Insights after deploy.
 - [ ] When you edit a page, bump its `updated` date in `src/config/pages.ts`. That date drives the sitemap `lastmod` and the "Last updated" line.
 - [ ] Re-run `node scripts/gen-seo-docs.mjs` after changing the registry to refresh `page-tracker.csv`.
+
+## 10. Status corrections applied (your 10 Oct message)
+
+Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-live, `ecommerce_cart_orders` not-live, `workout_diet_plans` not-live, `plan_requests_approval` not-live, `whatsapp_expiry_reminders` and `whatsapp_birthday_messages` in-code (live after you confirm).
+
+- [ ] Each claim returns to the site by itself when you set its flag to `"live"` (home, features hub, pricing list, WhatsApp page lines). Flip `whatsapp_expiry_reminders` to publish `/features/whatsapp-reminders` once you have confirmed the cron.
+- [ ] **Legal pages still mention features that are not live.** I left the legal text alone apart from one word. Review: `/privacy` (class bookings, workout/diet data, ecommerce flows), `/terms` (workout and diet content, ecommerce listings, class features), `/privacy` also lists "fee reminders" sent via WhatsApp's "Business Cloud API" (not live, and close to the phrase you banned for marketing copy). `/support` is already fixed.
+- [ ] **One legal edit I made:** `/refund` said "WhatsApp Business API message delivery"; it now says "WhatsApp message delivery" because the phrase is banned. Confirm you are happy with that wording.
+- [ ] `src/components/AppPreview.tsx` still has a "Storefront / Ecommerce" tile. It is unused, so it is not on the site; delete it or fix it before anyone imports it.
+- [ ] Contact page title changed from "...Free Gym Software Demo" to "...Free Demo for Your Gym" so it no longer matches the dropped keyword "free gym software".

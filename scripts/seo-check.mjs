@@ -87,6 +87,13 @@ for (const p of Object.keys(info)) {
   if (i.ogUrl !== want) fail(p, `og:url is ${i.ogUrl}, want ${want}`);
   if (i.h1s !== 1) fail(p, `${i.h1s} <h1> elements in <main> (want 1)`);
   if (/<meta name="keywords"/.test(i.html)) fail(p, "meta keywords tag present");
+  // Claims that must never appear (docs/seo/SEO_RULES.md rule 12)
+  const visible = decode(i.html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ");
+  if (/whatsapp business api/i.test(visible)) fail(p, 'banned phrase "WhatsApp Business API"');
+  if (/automat\w+[^.]{0,50}\b(due|payment|fee)s?\b[^.]{0,25}reminder/i.test(visible)) {
+    fail(p, "claims automated due-payment or fee reminders (not live)");
+  }
+  if (/free gym software|cheap gym software/i.test(visible)) fail(p, "uses a DROPPED keyword (free/cheap gym software)");
   if (/&amp;amp;/.test(i.html)) fail(p, "double-encoded &amp;amp;");
   if (/href="#"/.test(i.html)) fail(p, 'href="#" placeholder link');
   if (/www\.fitvario\.com/.test(i.main.replace(HOST, "")) === false && /https?:\/\/fitvario\.com/.test(i.html)) {

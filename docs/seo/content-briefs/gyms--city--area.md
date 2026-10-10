@@ -3,14 +3,18 @@
 Status: planned · Wave: Wave 3 · Kind: local
 
 ## Keywords
-- Primary: gym fees in (area] [city] [P3, English, Local/programmatic)
+- Primary: gym fees in (, English, Local/programmatic)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Local. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 PATTERN, not a page to generate now; Prompt 7 template, owner-entered fees only
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Template page for gym fees in. Built in Prompt 7A/7B, not as a standalone page.

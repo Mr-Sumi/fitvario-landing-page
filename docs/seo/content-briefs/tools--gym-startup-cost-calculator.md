@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: tool
 ## Keywords
 - Primary: gym business cost in india (P3, English, Start-a-gym)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 CONTENT GATE: state-wise licence and cost rules vary; expert review
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Tool: gym business cost in india (client-side, editable defaults labelled illustrative)

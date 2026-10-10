@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: blog
 ## Keywords
 - Primary: gym management software cost (P1, English, Pricing)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial investigation. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 DECISION GATE: needs real pricing config
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "gym management software cost" in the first 100 words

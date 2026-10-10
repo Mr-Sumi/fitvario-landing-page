@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: tool
 ## Keywords
 - Primary: gym membership gst calculator (P1, English, GST billing)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Tool. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 CONTENT GATE: CA review; editable rate, default 18%
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Tool: gym membership gst calculator (client-side, editable defaults labelled illustrative)

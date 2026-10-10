@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: feature
 ## Keywords
 - Primary: gym member management app (P1, Hinglish, Hindi/Hinglish)
 - Secondary: gym management app india; branded gym app for members
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 STORE-LINK GATE: real store links in config, else no store badges; Android only unless iOS confirmed
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what gym member management app means in Fitvario (first 100 words)

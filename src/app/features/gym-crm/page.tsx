@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
+import { isPublishedPath } from "@/config/pages";
 import { ContentLayout, Section, Faq, ExampleBox, ScreenshotPlaceholder } from "@/components/ContentLayout";
 import { MidCta } from "@/components/MidCta";
 
@@ -128,12 +129,18 @@ export default function Page() {
       <Section id="limits" title="What it does not do">
         <p>
           The CRM does not message or call leads for you, and it does not send you a reminder when a follow-up is
-          due. It is a clear, shared list that your team works through. If you want members, not leads, to get
-          automatic messages, see{" "}
-          <Link href="/features/whatsapp-reminders" className="font-medium text-teal-700 underline-offset-2 hover:underline">
-            WhatsApp reminders for gym membership renewals
-          </Link>
-          .
+          due. It is a clear, shared list that your team works through.{" "}
+          {isPublishedPath("/features/whatsapp-reminders") ? (
+            <>
+              If you want members, not leads, to get automatic messages, see{" "}
+              <Link href="/features/whatsapp-reminders" className="font-medium text-teal-700 underline-offset-2 hover:underline">
+                WhatsApp reminders for gym membership renewals
+              </Link>
+              .
+            </>
+          ) : (
+            "Messages to members are a separate part of the platform."
+          )}
         </p>
       </Section>
 

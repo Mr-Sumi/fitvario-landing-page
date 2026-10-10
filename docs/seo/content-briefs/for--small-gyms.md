@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: segment
 ## Keywords
 - Primary: gym software for small gyms india (P2, English, Segment)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what a gym software for small gyms india owner needs and what to ignore

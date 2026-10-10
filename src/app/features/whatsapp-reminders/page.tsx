@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
+import { isLive } from "@/lib/features";
 import { ContentLayout, Section, Faq, ExampleBox, ScreenshotPlaceholder } from "@/components/ContentLayout";
 import { MidCta } from "@/components/MidCta";
 
@@ -114,9 +115,9 @@ export default function Page() {
           <li>A welcome message when a new member is added.</li>
           <li>A payment receipt after a payment is recorded.</li>
           <li>Membership expiring, membership expired and membership renewed messages.</li>
-          <li>Birthday wishes to the member, with a separate birthday alert to the owner.</li>
-          <li>A note when a workout plan or diet plan is assigned to a member.</li>
-          <li>Updates when a store order is placed, approved or rejected.</li>
+          {isLive("whatsapp_birthday_messages") && <li>Birthday wishes to the member, with a separate birthday alert to the owner.</li>}
+          {isLive("workout_diet_plans") && <li>A note when a workout plan or diet plan is assigned to a member.</li>}
+          {isLive("ecommerce_cart_orders") && <li>Updates when a store order is placed, approved or rejected.</li>}
           <li>Notices when a membership is frozen, unfrozen or terminated.</li>
         </ul>
         <p>

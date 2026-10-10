@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: blog
 ## Keywords
 - Primary: how to get more gym members india (P1, English, Problem-led)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "how to get more gym members india" in the first 100 words

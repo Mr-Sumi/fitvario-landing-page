@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: segment
 ## Keywords
 - Primary: crossfit gym software india (P3, English, Segment)
 - Secondary: yoga studio software india
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 FEATURE GATE: the product has batches (time slots) and opening hours but NO class booking or enrolment. Do not promise class booking, capacity or waitlists unless Sumit confirms they exist elsewhere.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what a crossfit gym software india owner needs and what to ignore

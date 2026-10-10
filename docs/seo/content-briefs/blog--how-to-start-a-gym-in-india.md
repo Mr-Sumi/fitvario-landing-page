@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: blog
 ## Keywords
 - Primary: how to start a gym in india (P2, English, Start-a-gym)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 CONTENT GATE: licences, costs and tax need expert review
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "how to start a gym in india" in the first 100 words

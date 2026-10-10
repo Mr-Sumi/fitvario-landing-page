@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 1 · Kind: blog
 ## Keywords
 - Primary: gym membership renewal message format (P1, English, WhatsApp)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Informational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+Templates the owner sends by hand. Do not say Fitvario sends them automatically until whatsapp_expiry_reminders is live.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer to "gym membership renewal message format" in the first 100 words

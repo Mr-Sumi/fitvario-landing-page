@@ -5,12 +5,16 @@ Status: draft · Wave: Wave 1 · Kind: feature
 ## Keywords
 - Primary: gym software with gst billing (P1, English, GST billing)
 - Secondary: gym billing software india; gym partial payment dues tracking software
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 FEATURE GATE: draft unless GST invoicing is "live" in feature-status.json. Code evidence: per-gym configurable tax lines (name, tax number, percentage) with a per-invoice breakdown, and a company GST field. Not verified: CGST/SGST vs IGST split, GSTIN printed on the invoice, HSN/SAC. Describe only what Sumit confirms.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what gym software with gst billing means in Fitvario (first 100 words)

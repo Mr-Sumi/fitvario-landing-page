@@ -35,3 +35,12 @@ Backend path (read-only from marketing sessions): `D:\coding\Python\django\New f
 ## Understated on the live site (fix copy once confirmed live)
 
 Ecommerce is a full cart > checkout > order > owner-approval flow, not just "express interest". Also: freeze and gift days, dues and partial payments, batches, personal-trainer assignment, plan requests, campaigns and credit wallet, loyalty coins, progress photos and BMR, birthdays, multi-branch CRM analytics.
+
+## Status corrections from Sumit (2026-10-10). These override everything above.
+
+- **Automated due-payment reminders: NOT live.** `notify_due_payments` exists but the job is not scheduled in production (25 Sep audit). No page may claim them. Fee-reminder topics are covered with template messages and manual workflows only.
+- **WhatsApp expiry reminders (7, 3, 1 days before, and the day after) and birthday messages: in code, live only after Sumit confirms they run.** Until then pages use generic wording ("WhatsApp, SMS and push alerts") and the WhatsApp reminders page stays draft.
+- **Online store, cart and orders: NOT live.** Do not mention a store, products, cart or orders.
+- **Workout plans and diet plans: NOT live.** Do not mention them, including plan requests and plan-assigned messages.
+- **The phrase "WhatsApp Business API" is banned.** Use "automated WhatsApp reminders" (once expiry reminders are confirmed) or "WhatsApp alerts".
+- **Dropped keywords:** `whatsapp business api for gym`, `free gym software india`, `cheap gym software india`.

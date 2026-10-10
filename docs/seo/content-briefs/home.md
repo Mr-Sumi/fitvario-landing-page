@@ -5,12 +5,16 @@ Status: published · Wave: Rewrite now · Kind: core
 ## Keywords
 - Primary: fitvario (P1, English, Brand)
 - Secondary: gym management software india; gym management system india; fitvario gym management
+- DROPPED (never target or count): none
 
 ## Search intent
 Navigational. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Core page for fitvario. See the Phase 3 rewrite.

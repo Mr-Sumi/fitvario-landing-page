@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 3 · Kind: local
 ## Keywords
 - Primary: gyms in arera colony bhopal (P2, English, Local/programmatic)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Local. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 QUALITY GATE: Prompt 7A/7B only; same hub threshold
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Template page for gyms in arera colony bhopal. Built in Prompt 7A/7B, not as a standalone page.

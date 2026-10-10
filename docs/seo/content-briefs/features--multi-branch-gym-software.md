@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: feature
 ## Keywords
 - Primary: multi branch gym software (P2, English, Franchise)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what multi branch gym software means in Fitvario (first 100 words)

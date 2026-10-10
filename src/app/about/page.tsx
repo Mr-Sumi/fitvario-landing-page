@@ -24,9 +24,7 @@ export default function AboutPage() {
         Android app for members.
       </p>
       <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
-        What it covers: QR attendance, a CRM with follow-up dates, workout and diet plans, measurement history and
-        progress, expense tracking, analytics dashboards, referral rewards, automated WhatsApp, SMS and push
-        reminders, and an online store for gym products. Payments for Fitvario subscriptions run through Razorpay.
+        What it covers: QR attendance, a CRM with follow-up dates, measurement history and progress, expense tracking, analytics dashboards, referral rewards, and alerts to members by WhatsApp, SMS and push. Payments for Fitvario subscriptions run through Razorpay.
       </p>
       <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
         Whether you run one gym or a franchise group, Fitvario supports several branches under one account, with

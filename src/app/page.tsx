@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { pages, isIndexable, publishedPages } from "@/config/pages";
 import { contact, whatsappLink } from "@/config/site";
 import { pricingTiers } from "@/config/pricing";
+import { isLive } from "@/lib/features";
 import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
 import { Proof } from "@/components/Proof";
 import { ClosingCta } from "@/components/ClosingCta";
@@ -10,10 +11,17 @@ import { ClosingCta } from "@/components/ClosingCta";
 export const metadata = buildMetadata("/");
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
+// Claims only appear while the matching flag is live in docs/seo/feature-status.json
+const diet = isLive("workout_diet_plans");
+const store = isLive("ecommerce_cart_orders");
+const expiry = isLive("whatsapp_expiry_reminders");
+
 const problems = [
   {
     bad: "Fee reminders lost in WhatsApp groups",
-    good: "Automated WhatsApp reminders go out before every membership ends, so you stop chasing renewals by hand",
+    good: expiry
+      ? "Automated WhatsApp reminders go out before every membership ends, so you stop chasing renewals by hand"
+      : "WhatsApp, SMS and push alerts reach members straight from the gym, not from a message lost in a group",
   },
   {
     bad: "Paper registers and manual attendance",
@@ -29,7 +37,7 @@ const problems = [
   },
   {
     bad: "Members forget their plan and stop coming",
-    good: "A gym-branded Android app with their plan, workouts, diet and progress, plus reminder notifications",
+    good: `A gym-branded Android app with their plan, attendance and progress${diet ? ", workouts and diet" : ""}, plus notifications from the gym`,
   },
   {
     bad: "Running multiple branches in separate spreadsheets",
@@ -48,7 +56,7 @@ const platformViews = [
       "Revenue, expense and collection reports",
       "CRM with follow-up dates for every lead",
       "Staff access controls and activity logs",
-      "Online store with orders, and referral rewards",
+      store ? "Online store with orders, and referral rewards" : "Referral rewards for members",
     ],
   },
   {
@@ -69,9 +77,9 @@ const platformViews = [
     points: [
       "Log in with a mobile number and OTP",
       "Scan the gym's QR code to check in and out",
-      "Assigned workout and diet plans",
+      ...(diet ? ["Assigned workout and diet plans"] : []),
       "Progress charts and measurement history",
-      "Renewal reminders on WhatsApp",
+      expiry ? "Renewal reminders on WhatsApp" : "Alerts from the gym on WhatsApp, SMS and push",
       "Referral codes to earn rewards",
     ],
   },
@@ -96,8 +104,10 @@ const features: { d: string; title: string; desc: string; href?: string }[] = [
   },
   {
     d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
-    title: "Automated WhatsApp reminders",
-    desc: "Members get WhatsApp reminders 7, 3 and 1 days before their membership ends, and a message the day after it expires. You don't send them.",
+    title: expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts",
+    desc: expiry
+      ? "Members get WhatsApp reminders 7, 3 and 1 days before their membership ends, and a message the day after it expires. You don't send them."
+      : "Send alerts to your members by WhatsApp, SMS and push notification, instead of relying on a group chat.",
     href: "/features/whatsapp-reminders",
   },
   {
@@ -126,27 +136,32 @@ const steps = [
   {
     n: "3",
     title: "Go live",
-    desc: "Members start using the app. QR attendance, renewals, reminders, CRM and revenue tracking run from day one.",
+    desc: "Members start using the app. QR attendance, renewals, CRM and revenue tracking run from day one.",
   },
 ];
 
 const faqs = [
   {
     q: "Who is Fitvario for?",
-    a: "Fitvario is built for gym owners, fitness studio operators and franchise groups across India who want to replace spreadsheets, paper registers and WhatsApp groups with one gym management system.",
+    a: "Fitvario is a gym management system in India built for gym owners, fitness studio operators and franchise groups who want to replace spreadsheets, paper registers and WhatsApp groups.",
   },
   {
     q: "Does my gym get its own member app?",
-    a: "Yes. Members use a gym-branded Android app with their plan, workout and diet plans, QR attendance, progress charts and alerts.",
+    a: `Yes. Members use a gym-branded Android app with their plan${diet ? ", workout and diet plans" : ""}, QR attendance, progress charts and alerts.`,
   },
   {
     q: "How does QR attendance work?",
     a: "You put your gym's QR code at the entrance. A member scans it with the app to check in and scans again to check out, and Fitvario records the time spent. Staff can scan the same code, and you or your staff can also mark attendance by hand.",
   },
-  {
-    q: "How are fee reminders sent?",
-    a: "Fitvario sends automated WhatsApp reminders to members 7, 3 and 1 days before their membership ends, and one the day after it expires. Each message uses a credit from your gym's messaging wallet.",
-  },
+  expiry
+    ? {
+        q: "How are membership reminders sent?",
+        a: "Fitvario sends automated WhatsApp reminders to members 7, 3 and 1 days before their membership ends, and one the day after it expires. Each message uses a credit from your gym's messaging wallet.",
+      }
+    : {
+        q: "How do members get alerts?",
+        a: "Fitvario can send alerts to members by WhatsApp, SMS and push notification. Ask us in a demo which alerts are active for your gym.",
+      },
   {
     q: "Can I manage multiple branches?",
     a: "Yes. Run several branches from one account, each with its own staff and members, and compare revenue and attendance across them. The number of branches depends on your plan.",
@@ -212,8 +227,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 sm:text-xl">
-            Fitvario is gym management software for India: digital memberships, QR attendance, automated renewal
-            reminders, a CRM for leads, workout and diet plans, and a gym-branded Android app for your members.
+            {`Fitvario is gym management software for India: digital memberships, QR attendance, member alerts, a CRM for leads${diet ? ", workout and diet plans" : ""} and a gym-branded Android app for your members.`}
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -245,7 +259,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
-            {["Payments via Razorpay", "Automated WhatsApp reminders", "Android app for your members", "Registered in Bhopal, India"].map((t) => (
+            {["Payments via Razorpay", expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts", "Android app for your members", "Registered in Bhopal, India"].map((t) => (
               <span key={t} className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
                 <Check className="text-teal-500" />
                 {t}
@@ -471,7 +485,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <ClosingCta
             heading="Ready to run your gym the right way?"
-            body="Book a demo and we will show you memberships, QR attendance, reminders, the CRM and the member app. No commitment."
+            body="Book a demo and we will show you memberships, QR attendance, the CRM and the member app. No commitment."
             location="home-closing"
           />
           <p className="mt-6 text-center text-xs text-slate-500">

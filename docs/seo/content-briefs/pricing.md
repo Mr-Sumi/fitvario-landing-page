@@ -4,13 +4,17 @@ Status: published · Wave: Rewrite now · Kind: core
 
 ## Keywords
 - Primary: gym software price in india (P1, English, Pricing)
-- Secondary: gym membership software price; cheap gym software india; free gym software india
+- Secondary: gym membership software price
+- DROPPED (never target or count): cheap gym software india (no cheap or free plan); free gym software india (no free plan exists)
 
 ## Search intent
 Commercial investigation. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 DECISION GATE: rupee figures only from pricing config; "free" and "cheap" keywords only if literally true. Product has self-serve plans (Starter and higher, DB-driven); Sumit decides whether to publish them.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Core page for gym software price in india. See the Phase 3 rewrite.

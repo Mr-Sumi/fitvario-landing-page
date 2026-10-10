@@ -1,6 +1,6 @@
 import raw from "../../docs/seo/feature-status.json";
 
-type Status = "live" | "live-per-site" | "in-code" | "no-evidence";
+type Status = "live" | "live-per-site" | "in-code" | "not-live" | "no-evidence";
 const features = raw.features as Record<string, { status: Status }>;
 
 export type FeatureKey = keyof typeof raw.features;

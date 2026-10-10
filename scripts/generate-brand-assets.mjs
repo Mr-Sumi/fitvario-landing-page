@@ -32,7 +32,7 @@ const og = `
     <text x="184" y="148" font-family="${FONT}" font-weight="700" font-size="52" fill="${SLATE}">Fitvario</text>
     <text x="80" y="300" font-family="${FONT}" font-weight="700" font-size="68" fill="${SLATE}">Gym management software</text>
     <text x="80" y="384" font-family="${FONT}" font-weight="700" font-size="68" fill="${SLATE}">for Indian gyms</text>
-    <text x="80" y="470" font-family="${FONT}" font-weight="400" font-size="34" fill="#475569">Memberships, QR attendance, fee reminders, CRM and revenue.</text>
+    <text x="80" y="470" font-family="${FONT}" font-weight="400" font-size="34" fill="#475569">Memberships, QR attendance, CRM and revenue.</text>
     <text x="80" y="560" font-family="${FONT}" font-weight="600" font-size="30" fill="${TEAL}">www.fitvario.com</text>
   </svg>`;
 

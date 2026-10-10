@@ -1,16 +1,20 @@
 # Brief: /features/whatsapp-reminders
 
-Status: published · Wave: Wave 1 · Kind: feature
+Status: draft · Wave: Wave 1 · Kind: feature
 
 ## Keywords
 - Primary: whatsapp reminders for gym (P1, English, WhatsApp)
-- Secondary: gym membership renewal reminder; gym whatsapp automation; whatsapp business api for gym
+- Secondary: gym membership renewal reminder; gym whatsapp automation
+- DROPPED (never target or count): whatsapp business api for gym (phrase banned)
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
-None.
+FEATURE GATE: draft until whatsapp_expiry_reminders is confirmed live. Never claim automated due-payment reminders (due_payment_reminders is not-live).
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what whatsapp reminders for gym means in Fitvario (first 100 words)
@@ -43,7 +47,7 @@ Book a free demo (/contact#demo) at mid-page and at the end. WhatsApp and call o
 
 ## Facts to verify before writing
 - whatsapp reminders for gym: Live on Features as WhatsApp Business
-- whatsapp business api for gym: use only if the provider arrangement is confirmed (code uses Fast2SMS WhatsApp)
+- whatsapp business api for gym: dropped, the phrase is banned
 - Every capability named must be "live" or "live-per-site" in feature-status.json.
 
 ## Backend evidence (for the writer; do not cite file paths on the page)

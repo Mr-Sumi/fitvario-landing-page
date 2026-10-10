@@ -5,12 +5,16 @@ Status: planned · Wave: Wave 2 · Kind: feature
 ## Keywords
 - Primary: gym attendance app qr code (P2, English, Biometric)
 - Secondary: none
+- DROPPED (never target or count): none
 
 ## Search intent
 Commercial. One page, one intent. Do not overlap with another page's primary keyword.
 
 ## Gate
 None.
+
+## Content rule
+None beyond SEO_RULES.md.
 
 ## Outline (starting point: refine before writing)
 1. Direct answer: what gym attendance app qr code means in Fitvario (first 100 words)
