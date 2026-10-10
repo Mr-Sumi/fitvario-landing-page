@@ -1,6 +1,6 @@
 {
   "_comment": "Statuses: live-per-site = on the live site AND backed by code; live = confirmed by Sumit; in-code = backend implements it, production not confirmed; not-live = Sumit says it is not available to users today; no-evidence = claimed on the site, no backend support found. Only live and live-per-site may be claimed in copy. Flip a status to 'live' to publish gated pages.",
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "features": {
     "membership_lifecycle": {
       "status": "live-per-site",
@@ -12,7 +12,7 @@
     },
     "invoices_renewals": {
       "status": "live-per-site",
-      "evidence": "invoice_views.py, members/<id>/renew"
+      "evidence": "invoice_views.py, members/<id>/renew | Play listing 'What's new' (Sep 28 2026) mentions editing an invoice's plan, dates and paid amount, and a custom date range on Finance."
     },
     "dues_partial_payments": {
       "status": "in-code",
@@ -44,7 +44,7 @@
     },
     "workout_diet_plans": {
       "status": "not-live",
-      "evidence": "Plan builders exist in code, but Sumit says workout and diet plans are not available to users. Do not mention workout plans or diet plans."
+      "evidence": "Plan builders exist in code, but Sumit says workout and diet plans are not available to users. Do not mention workout plans or diet plans. | The Play listing's feature list covers members, attendance, subscriptions and profile data only; it does not mention workout or diet plans."
     },
     "plan_requests_approval": {
       "status": "not-live",
@@ -72,7 +72,7 @@
     },
     "ecommerce_cart_orders": {
       "status": "not-live",
-      "evidence": "cart_views.py, order_views.py, product_views.py exist, but Sumit says the store is not available to users. Do not mention online store, products, cart or orders."
+      "evidence": "cart_views.py, order_views.py, product_views.py exist, but Sumit says the store is not available to users. Do not mention online store, products, cart or orders. | The Play listing's feature list does not mention a store or orders."
     },
     "multi_branch_franchise": {
       "status": "live-per-site",
@@ -100,7 +100,7 @@
     },
     "white_label": {
       "status": "in-code",
-      "evidence": "owner/whitelabel (OwnerWhitelabelView)"
+      "evidence": "owner/whitelabel (OwnerWhitelabelView) | Play listing 'What's new' (Sep 28 2026) says 'Faster app startup for branded gyms', which suggests branded builds exist. Not confirmed live."
     },
     "razorpay_payments": {
       "status": "live-per-site",
@@ -149,6 +149,18 @@
     "whatsapp_birthday_messages": {
       "status": "in-code",
       "evidence": "notify_member_birthdays. Live only after Sumit confirms the schedule is running."
+    },
+    "play_store_listing": {
+      "status": "live",
+      "verifiedHow": "browser",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Chrome in this run: https://app.fitvario.com 301-redirects to https://play.google.com/store/apps/details?id=com.fitvario.sumigyan. The listing loads with an Install button, 'Fitvario – Gym Management App', last updated Sep 28, 2026. Open question: the listing text is aimed at gym owners and trainers, so confirm whether this single app is also the member app."
+    },
+    "owner_web_dashboard_reachable": {
+      "status": "in-code",
+      "verifiedHow": "not-verified",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Browser verification of the owner dashboard was NOT run: no dashboard hostname could be found (dashboard/web/panel/owner/admin/portal/my/manage/gym/login .fitvario.com do not resolve; app.fitvario.com redirects to Google Play) and no signed-in session or test gym was visible. Waiting for Sumit to supply the dashboard URL and confirm the SEO-TEST gym."
     }
   }
 }

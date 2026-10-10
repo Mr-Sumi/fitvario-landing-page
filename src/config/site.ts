@@ -22,7 +22,10 @@ export const contact = {
 // Byline for editorial pages. Empty = no byline shown (nothing is invented)
 export const author = process.env.NEXT_PUBLIC_AUTHOR_NAME ?? "";
 
-export const playStoreUrl = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? "";
+// Public listing, confirmed in Chrome on 2026-10-11 (see feature-status.json: play_store_listing)
+export const playStoreUrl =
+  process.env.NEXT_PUBLIC_PLAY_STORE_URL ??
+  "https://play.google.com/store/apps/details?id=com.fitvario.sumigyan";
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 export const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
