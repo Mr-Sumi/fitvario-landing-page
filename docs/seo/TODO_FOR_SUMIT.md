@@ -115,3 +115,11 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Expert review** of `/tools/gym-startup-cost-calculator` (draft): licence and cost rules vary by state. The starting figures are placeholders, not market data.
 - [ ] To publish a draft, remove `draft: true` for it in `src/config/pages.ts`.
 - [ ] The four published calculators have illustrative defaults (for example rent per sq ft by city tier). Replace them with numbers you are comfortable standing behind, or leave them labelled as illustrative.
+
+## 14. Added by Prompt 5 (Hinglish)
+
+- [ ] **Phone-SERP check** (skipped, pending). On your phone, in Google India, search: gym management software hindi; gym ke liye software; gym ka billing software; gym software kaise chune; gym ka fees reminder whatsapp; gym fee reminder message in hindi; gym me member kaise badhaye. Tell me for each whether Hindi or Hinglish gym-software pages already rank. Pages where strong results exist stay, with lower expectations.
+- [ ] **Language review:** have someone who writes Hinglish daily read the six pages for tone. I wrote them as spoken Hinglish; native readers will catch phrasing that sounds off.
+- [ ] **Hindi YouTube demos:** two marked placeholders await a recording (WhatsApp fee reminder, Instagram reels for gyms). Replace `VideoPlaceholder` with an embed when ready.
+- [ ] **Devanagari versions** are out of scope for now.
+- [ ] `/hi/gym-billing-software` links to `/tools/gym-gst-calculator` only while that page is public (it is a draft until CA review).

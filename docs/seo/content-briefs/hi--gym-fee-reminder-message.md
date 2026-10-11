@@ -1,6 +1,6 @@
 # Brief: /hi/gym-fee-reminder-message
 
-Status: planned · Wave: Wave 2 · Kind: hinglish
+Status: published · Wave: Wave 2 · Kind: hinglish
 
 ## Keywords
 - Primary: gym fee reminder message in hindi (P1, Hinglish, WhatsApp)

@@ -1,14 +1,14 @@
 # Handoff
 
-Resume from here in a fresh session. Branch `seo-overhaul`. Do not push or deploy. Last updated 2026-10-11, after Prompt 3.
+Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10-11, after Prompt 5. Current branch: `seo-hinglish` (cut from `seo-overhaul`, as Prompt 5 specifies).
 
-1. **Done and committed:** Prompt 1 (foundation, conversion, core pages, 3 pilot pages), status corrections, web-dashboard claim removal, and Prompt 3 (tools and template).
-2. **Prompt 3 output:** 4 published calculators (break-even, membership pricing, churn, revenue) and 4 content-gated drafts (GST calculator, startup cost, invoice generator, `/templates/diet-charts`). Calculation logic is in `src/lib/calc/*.mjs` with 38 passing tests (`npm run test:calc`).
-3. **Drafts and why:** GST calculator and invoice generator and startup cost need CA review; diet charts need a nutritionist. Flip by removing `draft: true` in `src/config/pages.ts` once cleared.
-4. **Checks:** `npm run build`, `node scripts/seo-check.mjs`, `node scripts/keyword-coverage.mjs` all pass (or `npm run seo:check`). Keyword coverage: 13 keywords on 7 published pages, 0 missing.
-5. **Owner answers applied:** no owner web dashboard (owners use the mobile app); `due_payment_reminders` N. Every other flag is still unanswered, see `OWNER_CONFIRM.md` sections 1 and 2.
-6. **Why the chain stopped before Prompt 2:** Prompt 2 builds feature and segment pages that depend on those flags (QR attendance, biometric, white-label, GST, workout/diet, store, member app wording). Do not guess them.
-7. **Open link task:** each tool should be linked from its matching blog post and feature page. Blog posts do not exist yet (Prompt 4), so add those links when they are written.
-8. **Next, once flags are answered:** Prompt 2, then 4, 5, 6 (compare pages as DRAFT only), 8. Skip 7. Prompt 5 Step 0: do not stop; mark phone-SERP validation as pending.
-9. **Rules:** `SEO_RULES.md` rule 12 applies: no claims for flags that are not live, no automated due-payment reminders, no "WhatsApp Business API", dropped keywords stay dropped.
-10. **Local server:** `npm run dev` serves http://localhost:3000. `.env.example` lists every env var; lead delivery needs `LEAD_WEBHOOK_URL` or SMTP in production.
+1. **Branches:** `seo-overhaul` has Prompts 1 and 3 (and the owner-answer and status corrections). `seo-blog` (Prompt 4, blog engine and 11 posts) and `seo-hinglish` (this one) each branch from `seo-overhaul`. Prompt 8 merges them; expect small conflicts in `src/config/pages.ts`, `Footer.tsx` and `scripts/gen-seo-docs.mjs`.
+2. **Prompt 5 output:** six Roman-Hinglish pages under `/hi`: hub, billing software, WhatsApp fee reminder, fee reminder message library (10 copy-ready messages), "gym software kaise chune" checklist, and "gym me member kaise badhaye". All six are public.
+3. **Validation is pending.** Step 0 (Sumit's phone SERP check for the 7 Hinglish queries) was skipped on instruction. The pages are built and public with lower expectations. Run the check on a phone and tell me which queries already have strong Hinglish results.
+4. **Language:** content sits in a `lang="hi-Latn"` wrapper (the site has one root layout, so `<html lang>` stays `en-IN`). Self-referencing canonicals. No hreflang: no Hinglish page is a true equivalent of an English page.
+5. **Rules honoured:** fee-reminder pages are hand-sent templates and routines only; no automated due-payment or expiry-reminder claims; no "WhatsApp Business API"; GST described as "ask your CA", nothing claimed about tax lines.
+6. **Placeholders to replace:** two `VideoPlaceholder` blocks (WhatsApp reminder demo, Instagram reels) wait for Hindi YouTube videos. They are clearly marked and show no fake player.
+7. **Checks:** build, `seo-check` (30 pages, 23 public) and `keyword-coverage` (20 keywords on public pages, 0 missing) pass.
+8. **Not done:** the 4-question Hinglish FAQ blocks for `/features/member-app` and `/features/biometric-attendance`. Those pages do not exist (Prompt 2 is blocked on the owner's flags and the one-app question).
+9. **Next:** Prompt 6 (comparison pages, DRAFT only), then Prompt 8. Prompt 2 stays blocked on `OWNER_CONFIRM.md` sections 1 and 2.
+10. **Local server:** `npm run dev` on http://localhost:3000; Hinglish hub at `/hi`.

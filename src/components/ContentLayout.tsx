@@ -20,6 +20,7 @@ export function ContentLayout({
   lead,
   toc,
   showByline = false,
+  lang,
   related,
   children,
 }: {
@@ -29,6 +30,7 @@ export function ContentLayout({
   lead: string;
   toc?: TocItem[];
   showByline?: boolean;
+  lang?: string;
   related: string[];
   children: React.ReactNode;
 }) {
@@ -37,7 +39,7 @@ export function ContentLayout({
   if (draft && process.env.VERCEL_ENV === "production") notFound();
 
   return (
-    <PageShell wide>
+    <PageShell wide lang={lang}>
       <Breadcrumbs path={path} />
       {draft && (
         <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">

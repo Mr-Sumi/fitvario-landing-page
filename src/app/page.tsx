@@ -268,6 +268,14 @@ export default function Home() {
             ))}
           </div>
         </div>
+        {isPublished("/hi") && (
+          <p className="relative -mt-8 pb-12 text-center text-sm text-slate-600">
+            Hindi aur Hinglish mein padhna hai?{" "}
+            <Link href="/hi" lang="hi-Latn" className="font-semibold text-teal-700 underline-offset-2 hover:underline">
+              Hinglish mein dekhein
+            </Link>
+          </p>
+        )}
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-slate-50" aria-hidden />
       </section>
 

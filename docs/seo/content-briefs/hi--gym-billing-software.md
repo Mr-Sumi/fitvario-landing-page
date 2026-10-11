@@ -1,6 +1,6 @@
 # Brief: /hi/gym-billing-software
 
-Status: planned · Wave: Wave 2 · Kind: hinglish
+Status: published · Wave: Wave 2 · Kind: hinglish
 
 ## Keywords
 - Primary: gym ka billing software (P1, Hinglish, Hindi/Hinglish)

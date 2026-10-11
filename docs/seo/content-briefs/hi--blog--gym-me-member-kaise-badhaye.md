@@ -1,6 +1,6 @@
 # Brief: /hi/blog/gym-me-member-kaise-badhaye
 
-Status: planned · Wave: Wave 3 · Kind: blog
+Status: published · Wave: Wave 3 · Kind: blog
 
 ## Keywords
 - Primary: gym me member kaise badhaye (P2, Hinglish, Hindi/Hinglish)
