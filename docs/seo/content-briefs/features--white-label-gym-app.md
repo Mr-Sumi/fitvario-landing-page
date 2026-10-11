@@ -1,6 +1,6 @@
 # Brief: /features/white-label-gym-app
 
-Status: planned · Wave: Wave 2 · Kind: feature
+Status: published · Wave: Wave 2 · Kind: feature
 
 ## Keywords
 - Primary: white label gym app india (P2, English, White-label)

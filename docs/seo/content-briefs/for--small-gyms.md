@@ -1,6 +1,6 @@
 # Brief: /for/small-gyms
 
-Status: planned · Wave: Wave 3 · Kind: segment
+Status: published · Wave: Wave 3 · Kind: segment
 
 ## Keywords
 - Primary: gym software for small gyms india (P2, English, Segment)

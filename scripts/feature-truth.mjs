@@ -68,7 +68,15 @@ for (const [path, file] of walk(appDir)) {
 
   for (const [flag, re, label] of FAIL) {
     if (flag !== "whatsapp_business_api_banned" && flag !== "dropped_keyword" && live(flag)) continue;
-    const m = text.match(new RegExp(`.{0,60}(${re.source}).{0,60}`, "i"));
+    // A statement that the product does NOT do something is honest copy, so a negation just before the match is skipped.
+    // The banned phrase and dropped keywords are never excused this way.
+    const never = flag === "whatsapp_business_api_banned" || flag === "dropped_keyword";
+    const all = [...text.matchAll(new RegExp(`.{0,60}(${re.source}).{0,60}`, "gi"))];
+    const m = all.find((x) => {
+      if (never) return true;
+      const before = x[0].slice(0, x[0].toLowerCase().indexOf(x[1].toLowerCase()));
+      return !/\b(no|not|without|never|cannot|can't|doesn't|don't|isn't|neither|nor)\b[^.]{0,40}$/i.test(before);
+    });
     if (m && LEGAL.has(path)) {
       // Legal text is the owner's call and is listed in TODO_FOR_SUMIT.md, so it is reported without failing
       legal++;

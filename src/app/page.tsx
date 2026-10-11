@@ -15,6 +15,9 @@ export const metadata = buildMetadata("/");
 const diet = isLive("workout_diet_plans");
 const store = isLive("ecommerce_cart_orders");
 const expiry = isLive("whatsapp_expiry_reminders");
+const branded = isLive("white_label");
+// One app on Google Play serves owners, staff and members; white-label only changes the name and logo shown inside it
+const memberApp = branded ? "the Fitvario Android app with your gym’s name and logo" : "an Android app";
 
 const problems = [
   {
@@ -37,7 +40,7 @@ const problems = [
   },
   {
     bad: "Members forget their plan and stop coming",
-    good: `A gym-branded Android app with their plan, attendance and progress${diet ? ", workouts and diet" : ""}, plus notifications from the gym`,
+    good: `An Android app with their plan, attendance and progress${diet ? ", workouts and diet" : ""}, plus notifications from the gym`,
   },
   {
     bad: "Running multiple branches in separate spreadsheets",
@@ -73,7 +76,7 @@ const platformViews = [
   {
     role: "Member App",
     headline: "Your gym in every member's pocket",
-    sub: "A gym-branded Android app for your members.",
+    sub: branded ? "The Fitvario Android app, with your gym’s name and logo inside it." : "An Android app for your members.",
     points: [
       "Log in with a mobile number and OTP",
       "Scan the gym's QR code to check in and out",
@@ -147,7 +150,7 @@ const faqs = [
   },
   {
     q: "Does my gym get its own member app?",
-    a: `Yes. Members use a gym-branded Android app with their plan${diet ? ", workout and diet plans" : ""}, QR attendance, progress charts and alerts.`,
+    a: `Yes. Members use the Fitvario Android app${branded ? ", with your gym’s name and logo inside it," : ""} for their plan${diet ? ", workout and diet plans" : ""}, QR attendance, progress charts and alerts.`,
   },
   {
     q: "How does QR attendance work?",
@@ -228,7 +231,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 sm:text-xl">
-            {`Fitvario is gym management software for India: digital memberships, QR attendance, member alerts, a CRM for leads${diet ? ", workout and diet plans" : ""} and a gym-branded Android app for your members.`}
+            {`Fitvario is gym management software for India: digital memberships, QR attendance, member alerts, a CRM for leads${diet ? ", workout and diet plans" : ""} and ${memberApp} for your members.`}
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -322,7 +325,7 @@ export default function Home() {
               One platform. Three experiences.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members get a gym-branded Android app. All three stay in sync.
+              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the same app with their own login, and it can show your gym’s name and logo. All three stay in sync.
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">

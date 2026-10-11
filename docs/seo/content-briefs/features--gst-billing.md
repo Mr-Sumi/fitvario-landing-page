@@ -1,6 +1,6 @@
 # Brief: /features/gst-billing
 
-Status: draft · Wave: Wave 1 · Kind: feature
+Status: published · Wave: Wave 1 · Kind: feature
 
 ## Keywords
 - Primary: gym software with gst billing (P1, English, GST billing)

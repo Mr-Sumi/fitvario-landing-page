@@ -1,6 +1,6 @@
 # Brief: /for/franchise-gyms
 
-Status: planned · Wave: Wave 3 · Kind: segment
+Status: published · Wave: Wave 3 · Kind: segment
 
 ## Keywords
 - Primary: franchise gym management software (P2, English, Franchise)

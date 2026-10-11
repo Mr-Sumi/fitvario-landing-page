@@ -4,6 +4,27 @@ Last updated 2026-10-11. Nothing below was guessed. A flag stays `in-code` or `n
 
 The earlier list was incomplete. A fresh audit of the backend (routes, models, management commands) added 20 flags, including the expense manager, recurring expenses, gallery, opening hours, customer categories and account deletion. The full inventory is in `FEATURE_INVENTORY.md`. Each section below is one table; put **Y** or **N** in the last column (Y = works in production today for gym owners or members).
 
+## 0. Answers received (verified by owner, 2026-10-11)
+
+| Flag | Answer | Effect |
+|---|---|---|
+| `gst_tax_lines` | Y | `/features/gst-billing` published; tax-line wording restored |
+| `dues_partial_payments` | Y | Part payments and dues described on the billing page |
+| `biometric_adms` | Y (tested with a real device in production) | `/features/biometric-attendance` published |
+| `qr_attendance` | Y (one QR per gym; first scan checks in, next scan checks out) | `/features/qr-attendance` published; single and dual scan modes explained |
+| `whatsapp_expiry_reminders` | Y (cron scheduled and delivering) | `/features/whatsapp-reminders` published; reminder wording restored |
+| `whatsapp_birthday_messages` | Y | Birthday line added |
+| `notification_campaigns_wallet` | Y | Campaigns card on `/features` |
+| `owner_referral_program` | Y | Owner-referral card on `/features` |
+| `white_label` | Y | `/features/white-label-gym-app` published (name and logo inside the one app) |
+| `multi_branch_franchise` | Y | `/features/multi-branch-gym-software`, `/for/franchise-gyms` published |
+| `template_marketplace` | Y | **Withheld from copy**: the marketplace sells diet and workout templates, which you say are not available. Tell me if you want it described anyway |
+| `self_serve_signup_subscription` | N | Pricing stays custom quote and demo CTA |
+| `diet_plans`, `workout_plans`, `ecommerce_cart_orders`, `due_payment_reminders` | N | Nothing about them on public pages; `/features/diet-workout-plans` stays draft |
+| App | One app: Fitvario on Google Play (`com.fitvario.sumigyan`), role-based login for owners, staff and members | "Gym-branded app" wording replaced by "the Fitvario app with your gym's name and logo" |
+
+Everything else was left unchanged, as you asked. Those flags stay `in-code` and unclaimed.
+
 ## 1. Already decided
 
 | Flag | Status | Source |

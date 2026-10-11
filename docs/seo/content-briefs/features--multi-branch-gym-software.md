@@ -1,6 +1,6 @@
 # Brief: /features/multi-branch-gym-software
 
-Status: planned · Wave: Wave 2 · Kind: feature
+Status: published · Wave: Wave 2 · Kind: feature
 
 ## Keywords
 - Primary: multi branch gym software (P2, English, Franchise)

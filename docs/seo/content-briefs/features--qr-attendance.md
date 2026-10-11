@@ -1,6 +1,6 @@
 # Brief: /features/qr-attendance
 
-Status: planned · Wave: Wave 2 · Kind: feature
+Status: published · Wave: Wave 2 · Kind: feature
 
 ## Keywords
 - Primary: gym attendance app qr code (P2, English, Biometric)

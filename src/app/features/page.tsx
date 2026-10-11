@@ -10,6 +10,12 @@ export const metadata = buildMetadata("/features");
 const diet = isLive("workout_diet_plans");
 const store = isLive("ecommerce_cart_orders");
 const expiry = isLive("whatsapp_expiry_reminders");
+const birthday = isLive("whatsapp_birthday_messages");
+const gst = isLive("gst_tax_lines");
+const biometric = isLive("biometric_adms");
+const whiteLabel = isLive("white_label");
+const campaigns = isLive("notification_campaigns_wallet");
+const ownerReferral = isLive("owner_referral_program");
 
 /* ─── Icons ──────────────────────────────────────────────────────────────── */
 function Icon({ path, className = "h-5 w-5" }: { path: string; className?: string }) {
@@ -111,6 +117,7 @@ const securityPoints: [string, string][] = [
 export default function FeaturesPage() {
   const page = getPage("/features");
   const detail = publishedPages("feature");
+  const segments = publishedPages("segment");
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 pb-20 pt-10 sm:px-6">
@@ -148,6 +155,22 @@ export default function FeaturesPage() {
         </section>
       )}
 
+      {segments.length > 0 && (
+        <section aria-labelledby="segments-heading" className="mb-6 mt-10">
+          <h2 id="segments-heading" className="text-xl font-semibold text-slate-900">By type of gym</h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {segments.map((p) => (
+              <li key={p.path}>
+                <Link href={p.path} className="block h-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-teal-300">
+                  <span className="text-sm font-semibold text-teal-700">{p.navLabel ?? p.title.split("|")[0].trim()}</span>
+                  <span className="mt-1 block text-[13px] leading-relaxed text-slate-600">{p.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <div className="divide-y divide-slate-100">
         <RoleSection
           id="gym-owner"
@@ -160,16 +183,21 @@ export default function FeaturesPage() {
             <FeatureCard iconPath={icons.building} title="Gym profile" desc="Set up your gym name, logo, photo gallery, highlights and opening hours." />
             <FeatureCard iconPath={icons.users} title="Memberships and renewals" desc="Add members, assign plans, generate invoices and handle renewals in one flow." />
             <FeatureCard iconPath={icons.qr} title="QR attendance" desc="Show your gym's QR code at the entrance. Members and staff scan it with the app to check in and out. You can also mark attendance by hand and review logs and analytics." />
+            {biometric && <FeatureCard iconPath={icons.lock} title="Biometric attendance" desc="Connect a fingerprint or face device that pushes punches over ADMS. Members are mapped to device users and blocked on the device when their plan ends." />}
+            {gst && <FeatureCard iconPath={icons.creditcard} title="Tax lines, part payments and dues" desc="Choose which of your tax lines (for example GST) apply to an invoice, take part payments and see who still owes." />}
             <FeatureCard iconPath={icons.chart} title="Revenue and analytics" desc="Track daily collections, expenses and member growth, and see income and expenses side by side." />
             <FeatureCard iconPath={icons.chat} title="CRM and lead management" desc="Log walk-in enquiries, schedule follow-ups and open today's follow-up list." />
             {diet && <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="Build workout and diet plans day by day and assign them to individual members." />}
             <FeatureCard iconPath={icons.star} title="Measurements and progress" desc="Record weight, BMI and body measurements over time. Members see their progress charts in the app." />
-            <FeatureCard iconPath={icons.bell} title={expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts"} desc={expiry ? "Members get WhatsApp reminders before their membership ends and after it expires, without you sending anything." : "Send alerts to members by WhatsApp, SMS and push notification."} />
+            <FeatureCard iconPath={icons.bell} title={expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts"} desc={expiry ? `Members get WhatsApp reminders before their membership ends and after it expires${birthday ? ", and a birthday wish on the day" : ""}, without you sending anything.` : "Send alerts to members by WhatsApp, SMS and push notification."} />
             {store && <FeatureCard iconPath={icons.bag} title="Online store" desc="List supplements, gear or merchandise. Members add items to a cart and place orders, and you approve or reject each order." />}
             <FeatureCard iconPath={icons.creditcard} title="Expense tracking" desc="Record expenses such as rent, utilities and salaries and compare them against revenue." />
             <FeatureCard iconPath={icons.map} title="Multi-branch and franchise" desc="Manage several gym locations under one account, with branch-level views and comparison across locations." />
             <FeatureCard iconPath={icons.users} title="Staff management" desc="Add staff with role-specific permissions, see staff attendance and review activity logs." />
             <FeatureCard iconPath={icons.bolt} title="Referrals and rewards" desc="Set referral rules and reward members with credits for bringing in new sign-ups, and track usage." />
+            {ownerReferral && <FeatureCard iconPath={icons.bolt} title="Refer another gym owner" desc="Owners can refer other gym owners to Fitvario and earn coins when the referral is rewarded." />}
+            {campaigns && <FeatureCard iconPath={icons.chat} title="Message campaigns" desc="Send a message to a chosen group of members from a template, preview the audience first and pay for it from your messaging credit wallet." />}
+            {whiteLabel && <FeatureCard iconPath={icons.phone} title="Your gym's name and logo in the app" desc="Set an app name and logo that your owner, staff and members see inside the Fitvario app." />}
           </div>
         </RoleSection>
 
@@ -197,7 +225,7 @@ export default function FeaturesPage() {
           accent="border-violet-500"
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard iconPath={icons.phone} title="Gym-branded app" desc="Members use an Android app set up for your gym." iconBg="bg-violet-50" iconColor="text-violet-700" />
+            <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Gym-branded app"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo inside it. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.lock} title="Mobile number login" desc="Members log in with their mobile number and an OTP." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.qr} title="QR check-in and check-out" desc="Members scan your gym's QR code with the app to check in, and scan again to check out. Time spent is recorded." iconBg="bg-violet-50" iconColor="text-violet-700" />
             {diet && <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="View assigned workout routines and diet plans, and mark progress as you go." iconBg="bg-violet-50" iconColor="text-violet-700" />}

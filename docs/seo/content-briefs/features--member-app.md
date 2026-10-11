@@ -1,6 +1,6 @@
 # Brief: /features/member-app
 
-Status: planned · Wave: Wave 2 · Kind: feature
+Status: published · Wave: Wave 2 · Kind: feature
 
 ## Keywords
 - Primary: gym member management app (P1, Hinglish, Hindi/Hinglish)

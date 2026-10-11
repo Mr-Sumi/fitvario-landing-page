@@ -15,28 +15,36 @@
       "evidence": "invoice_views.py, members/<id>/renew | Play listing 'What's new' (Sep 28 2026) mentions editing an invoice's plan, dates and paid amount, and a custom date range on Finance."
     },
     "dues_partial_payments": {
-      "status": "in-code",
-      "evidence": "invoices/<id>/collect-payment, dues/today, dues/summary, dues/members"
+      "status": "live",
+      "evidence": "Owner: dues and partial payments work in production. | invoices/<id>/collect-payment, dues/today, dues/summary, dues/members",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "gst_tax_lines": {
-      "status": "in-code",
-      "evidence": "GymTax, InvoiceTax models; tax_views.py; company_gst field (models.py:122). Not verified: CGST/SGST vs IGST split, GSTIN on invoice, HSN/SAC"
+      "status": "live",
+      "evidence": "Owner: GST/tax lines on invoices work in production. | GymTax, InvoiceTax models; tax_views.py; company_gst field (models.py:122). Not verified: CGST/SGST vs IGST split, GSTIN on invoice, HSN/SAC",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "batches_time_slots": {
       "status": "in-code",
       "evidence": "batch_views.py"
     },
     "qr_attendance": {
-      "status": "live-per-site",
-      "evidence": "attendance/scan, owner/gym/<id>/attendance*, qr_views.py"
+      "status": "live",
+      "evidence": "Owner: one QR per gym; first scan checks in, next scan checks out. | attendance/scan, owner/gym/<id>/attendance*, qr_views.py",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "manual_bulk_attendance": {
       "status": "in-code",
       "evidence": "attendance/mark, attendance/bulk-mark"
     },
     "biometric_adms": {
-      "status": "in-code",
-      "evidence": "biometric_adms_views.py, biometric_owner_views.py. Mentioned in passing on /pricing and home FAQ; needs confirmation. Device models unknown."
+      "status": "live",
+      "evidence": "Owner: tested with a real device in production. | biometric_adms_views.py, biometric_owner_views.py. Mentioned in passing on /pricing and home FAQ; needs confirmation. Device models unknown.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "crm_enquiries_followups": {
       "status": "live-per-site",
@@ -51,8 +59,10 @@
       "evidence": "Depends on workout and diet plans, which are not live."
     },
     "template_marketplace": {
-      "status": "in-code",
-      "evidence": "owner/templates/* routes"
+      "status": "live",
+      "evidence": "Owner: template marketplace works in production. | WITHHELD FROM COPY: PlatformTemplate holds diet and workout plan templates, and the owner says diet and workout plans are not available. Do not mention the marketplace while diet_plans and workout_plans are N. | owner/templates/* routes",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "personal_trainer_assignment": {
       "status": "in-code",
@@ -67,16 +77,22 @@
       "evidence": "auth_core/notifications/*; notify_* commands. Provider Fast2SMS WhatsApp: do not say 'WhatsApp Business API' until confirmed"
     },
     "notification_campaigns_wallet": {
-      "status": "in-code",
-      "evidence": "notification_campaign_views.py, notification_wallet_views.py"
+      "status": "live",
+      "evidence": "Owner: campaigns and credit wallet work in production. | notification_campaign_views.py, notification_wallet_views.py",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "ecommerce_cart_orders": {
       "status": "not-live",
-      "evidence": "cart_views.py, order_views.py, product_views.py exist, but Sumit says the store is not available to users. Do not mention online store, products, cart or orders. | The Play listing's feature list does not mention a store or orders."
+      "evidence": "Owner: N. | cart_views.py, order_views.py, product_views.py exist, but Sumit says the store is not available to users. Do not mention online store, products, cart or orders. | The Play listing's feature list does not mention a store or orders.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "multi_branch_franchise": {
-      "status": "live-per-site",
-      "evidence": "owner/franchise, owner/gyms, multi_branch_analytics_views.py"
+      "status": "live",
+      "evidence": "Owner: multi-branch and franchise work in production. | owner/franchise, owner/gyms, multi_branch_analytics_views.py",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "staff_permissions": {
       "status": "live-per-site",
@@ -99,8 +115,10 @@
       "evidence": "dashboard_views.py, whitelabel_views.py. How per-gym branding works in the app is unverified"
     },
     "white_label": {
-      "status": "in-code",
-      "evidence": "owner/whitelabel (OwnerWhitelabelView) | Play listing 'What's new' (Sep 28 2026) says 'Faster app startup for branded gyms', which suggests branded builds exist. Not confirmed live."
+      "status": "live",
+      "evidence": "Owner: white-label works in production. | owner/whitelabel (OwnerWhitelabelView) | Play listing 'What's new' (Sep 28 2026) says 'Faster app startup for branded gyms', which suggests branded builds exist. Not confirmed live.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "razorpay_payments": {
       "status": "live-per-site",
@@ -115,8 +133,10 @@
       "evidence": "PublicGymProfileView (JSON only, marketing_views.py). No consent flag or HTML pages yet"
     },
     "self_serve_signup_subscription": {
-      "status": "in-code",
-      "evidence": "auth/org/register, owner/plans, owner/subscribe. Site says 'we build your account' and 'custom quote'"
+      "status": "not-live",
+      "evidence": "Owner: N. Keep pricing as custom quote and demo CTA; never say owners can sign up and pay by themselves. | auth/org/register, owner/plans, owner/subscribe. Site says 'we build your account' and 'custom quote'",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "class_scheduling_booking": {
       "status": "no-evidence",
@@ -140,17 +160,21 @@
     },
     "due_payment_reminders": {
       "status": "not-live",
-      "evidence": "Owner (Sumit), 2026-10-11: not scheduled yet; will say when it changes. notify_due_payments command exists, but the job is not scheduled in production (25 Sep audit). NO page may claim automated due-payment reminders.",
+      "evidence": "Owner: N. | Owner (Sumit), 2026-10-11: not scheduled yet; will say when it changes. notify_due_payments command exists, but the job is not scheduled in production (25 Sep audit). NO page may claim automated due-payment reminders.",
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11"
     },
     "whatsapp_expiry_reminders": {
-      "status": "in-code",
-      "evidence": "send_membership_alerts: WhatsApp 7, 3 and 1 days before expiry plus the day after, to members. Live only after Sumit confirms the schedule is running."
+      "status": "live",
+      "evidence": "Owner: cron scheduled and delivering. | send_membership_alerts: WhatsApp 7, 3 and 1 days before expiry plus the day after, to members. Live only after Sumit confirms the schedule is running.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "whatsapp_birthday_messages": {
-      "status": "in-code",
-      "evidence": "notify_member_birthdays. Live only after Sumit confirms the schedule is running."
+      "status": "live",
+      "evidence": "Owner: birthday messages work in production. | notify_member_birthdays. Live only after Sumit confirms the schedule is running.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "play_store_listing": {
       "status": "live",
@@ -166,15 +190,15 @@
     },
     "diet_plans": {
       "status": "not-live",
-      "verifiedHow": "owner statement",
+      "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "Split out of workout_diet_plans so each can be answered alone. Owner said diet plans are not available. diet_owner_views.py, diet_member_views.py: templates, per-member assignment, day-by-day completion, restart, member requests."
+      "evidence": "Owner: N. | Split out of workout_diet_plans so each can be answered alone. Owner said diet plans are not available. diet_owner_views.py, diet_member_views.py: templates, per-member assignment, day-by-day completion, restart, member requests."
     },
     "workout_plans": {
       "status": "not-live",
-      "verifiedHow": "owner statement",
+      "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "Split out of workout_diet_plans. Owner said workout plans are not available. workout_owner_views.py, workout_member_views.py: templates, per-member assignment, exercise completion, restart, member requests."
+      "evidence": "Owner: N. | Split out of workout_diet_plans. Owner said workout plans are not available. workout_owner_views.py, workout_member_views.py: templates, per-member assignment, exercise completion, restart, member requests."
     },
     "expense_manager": {
       "status": "in-code",
@@ -213,10 +237,10 @@
       "evidence": "banner_views.py OwnerBannerListView / MemberBannerListView: banners set by the platform admin, shown in the apps."
     },
     "owner_referral_program": {
-      "status": "in-code",
-      "verifiedHow": "code read (backend repo)",
+      "status": "live",
+      "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "GymOwnerReferral, GymOwnerCoinWallet; owner/referral, owner/coin-wallet, owner/apply-coins: owners refer owners and earn coins."
+      "evidence": "Owner: owner referral works in production. | GymOwnerReferral, GymOwnerCoinWallet; owner/referral, owner/coin-wallet, owner/apply-coins: owners refer owners and earn coins."
     },
     "subscription_coupons": {
       "status": "in-code",
@@ -283,6 +307,12 @@
       "verifiedHow": "code read (backend repo)",
       "verifiedOn": "2026-10-11",
       "evidence": "A one-off data-import folder exists beside the repos (used for the RAW FITNESS migration), but there is no self-serve import feature. The site says 'we help you bring in your existing member list'; that is a service claim awaiting owner confirmation."
+    },
+    "single_app_role_login": {
+      "status": "live",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Owner: one app, the Fitvario app on Google Play (com.fitvario.sumigyan), with role-based login for owners, staff and members."
     }
   }
 }

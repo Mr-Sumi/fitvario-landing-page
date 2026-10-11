@@ -173,6 +173,92 @@ const staticPages: PageDef[] = [
     navLabel: "Billing and dues",
     gate: "gst_tax_lines",
   },
+  {
+    path: "/features/member-app",
+    kind: "feature",
+    title: "Gym Member App for Android: Plan, QR, Progress | Fitvario",
+    description:
+      "Members see their plan, check in with a QR scan, track progress and get gym alerts in one Android app. See what the Fitvario member app does.",
+    updated: "2026-10-11",
+    navLabel: "Member app",
+  },
+  {
+    path: "/features/qr-attendance",
+    kind: "feature",
+    title: "Gym Attendance App with QR Code Check-in | Fitvario",
+    description:
+      "One QR code per gym, scanned by members and staff in the Fitvario app. See single and dual scan modes, check-in and check-out and what gets recorded.",
+    updated: "2026-10-11",
+    navLabel: "QR attendance",
+    gate: "qr_attendance",
+  },
+  {
+    path: "/features/biometric-attendance",
+    kind: "feature",
+    title: "Biometric Attendance for Gym: ADMS Devices | Fitvario",
+    description:
+      "Connect a fingerprint or face device that pushes punches over ADMS. Map members to device users, block expired members and see punch logs in Fitvario.",
+    updated: "2026-10-11",
+    navLabel: "Biometric attendance",
+    gate: "biometric_adms",
+  },
+  {
+    path: "/features/white-label-gym-app",
+    kind: "feature",
+    title: "White Label Gym App India: Your Name and Logo | Fitvario",
+    description:
+      "Show your gym's name and logo inside the Fitvario app for your owner, staff and members. See what is branded, what is not and how to switch it on.",
+    updated: "2026-10-11",
+    navLabel: "Gym-branded app",
+    gate: "white_label",
+  },
+  {
+    path: "/features/multi-branch-gym-software",
+    kind: "feature",
+    title: "Multi Branch Gym Software for Gym Chains | Fitvario",
+    description:
+      "Run several gym branches under one owner login, with separate members and enquiries per branch and revenue, members and attendance compared side by side.",
+    updated: "2026-10-11",
+    navLabel: "Multi-branch",
+    gate: "multi_branch_franchise",
+  },
+  {
+    path: "/features/diet-workout-plans",
+    kind: "feature",
+    title: "Gym Diet Plan and Workout Plan Software | Fitvario",
+    description:
+      "Build workout and diet plans day by day and assign them to members. Draft page, held back until workout and diet plans are live for gym owners.",
+    updated: "2026-10-11",
+    navLabel: "Diet and workout plans",
+    gate: "workout_diet_plans",
+  },
+  {
+    path: "/for/small-gyms",
+    kind: "segment",
+    title: "Gym Software for Small Gyms in India: Start Here | Fitvario",
+    description:
+      "What a 100 to 300 member gym needs from software, what to skip for now and a one-evening setup checklist. Written for owners, not for IT teams.",
+    updated: "2026-10-11",
+    navLabel: "Small gyms",
+  },
+  {
+    path: "/for/franchise-gyms",
+    kind: "segment",
+    title: "Franchise Gym Management Software for India | Fitvario",
+    description:
+      "Manage a gym franchise or chain from one owner login: branch-level staff access, separate member lists and comparison reports across your locations.",
+    updated: "2026-10-11",
+    navLabel: "Franchise gyms",
+  },
+  {
+    path: "/for/crossfit-yoga-studios",
+    kind: "segment",
+    title: "CrossFit and Yoga Studio Software India | Fitvario",
+    description:
+      "What Fitvario covers for CrossFit boxes and yoga studios, and what it does not: memberships, QR attendance and renewals, but no class booking.",
+    updated: "2026-10-11",
+    navLabel: "CrossFit and yoga studios",
+  },
 
   // Tools and templates (Prompt 3). Content-gated pages stay draft until reviewed.
   {

@@ -24,15 +24,15 @@ const faqs = [
   },
   {
     q: "Can I turn a reminder off?",
-    a: "Yes. In your notification preferences you can switch individual messages on or off, for example the expiry reminder or the birthday wish. A message you switch off is skipped.",
+    a: "Yes. In your notification preferences you can switch individual messages on or off, for example the expiring-soon message or the birthday wish. A message you switch off is skipped.",
   },
   {
     q: "Do I get a copy of every member's reminder?",
     a: "No. Membership reminders go to the member only. They are a matter between the member and the gym, so they do not flood the owner's phone.",
   },
   {
-    q: "What happens to members whose membership is frozen?",
-    a: "Frozen and terminated memberships are skipped, so someone on a break does not get a reminder to renew.",
+    q: "Do members who have already renewed still get a reminder?",
+    a: "No. The reminder looks at each member's current end date, so a member who has renewed is not reminded about the old one.",
   },
   {
     q: "What does it cost to send reminders?",
@@ -53,7 +53,8 @@ export default function Page() {
         <p>
           This is for gym owners and front-desk teams who lose renewals because nobody remembered to message the
           member in time. It suits a single gym with a few hundred members just as well as a franchise group. The
-          gym membership renewal reminder runs on its own, so it does not depend on who is at the desk that day.
+          gym membership renewal reminder runs on its own, which makes this gym WhatsApp automation for the job that
+          costs gyms the most: renewals. It does not depend on who is at the desk that day.
         </p>
       </Section>
 
@@ -79,8 +80,7 @@ export default function Page() {
             ended yesterday.
           </li>
           <li>
-            It skips memberships that are frozen, terminated or no longer active, so only members who are really
-            about to lapse are contacted.
+            It skips memberships that are not active, so only members who are really about to lapse are contacted.
           </li>
           <li>
             For each of the others it sends a WhatsApp message to the member&apos;s mobile number: an &quot;expiring
@@ -108,18 +108,27 @@ export default function Page() {
 
       <Section id="messages" title="Which WhatsApp messages go out">
         <p>
-          Renewal reminders are the most useful, but Fitvario&apos;s gym WhatsApp automation covers more of the
-          member journey. The messages gym owners can switch on or off include:
+          This page covers two kinds of automatic WhatsApp message, and both run once a day without anyone at the
+          gym sending them:
         </p>
         <ul className="list-disc space-y-2 pl-5">
-          <li>A welcome message when a new member is added.</li>
-          <li>A payment receipt after a payment is recorded.</li>
-          <li>Membership expiring, membership expired and membership renewed messages.</li>
-          {isLive("whatsapp_birthday_messages") && <li>Birthday wishes to the member, with a separate birthday alert to the owner.</li>}
-          {isLive("workout_diet_plans") && <li>A note when a workout plan or diet plan is assigned to a member.</li>}
-          {isLive("ecommerce_cart_orders") && <li>Updates when a store order is placed, approved or rejected.</li>}
-          <li>Notices when a membership is frozen, unfrozen or terminated.</li>
+          <li>
+            <strong>Membership expiring soon:</strong> to the member, 7, 3 and 1 days before the plan ends.
+          </li>
+          <li>
+            <strong>Membership expired:</strong> to the member, the day after the plan ended.
+          </li>
+          {isLive("whatsapp_birthday_messages") && (
+            <li>
+              <strong>Birthday wishes:</strong> to the member on their birthday, with a separate birthday alert to the
+              owner.
+            </li>
+          )}
         </ul>
+        <p>
+          Fitvario does not send automatic WhatsApp reminders for unpaid balances. To follow up on dues, use the dues
+          list in the app and message the member yourself.
+        </p>
         <p>
           WhatsApp lets businesses send this kind of message only from pre-approved templates, so the wording follows
           a template for each message type.

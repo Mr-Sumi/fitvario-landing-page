@@ -1,6 +1,6 @@
 # Brief: /features/whatsapp-reminders
 
-Status: draft · Wave: Wave 1 · Kind: feature
+Status: published · Wave: Wave 1 · Kind: feature
 
 ## Keywords
 - Primary: whatsapp reminders for gym (P1, English, WhatsApp)

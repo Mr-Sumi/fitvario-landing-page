@@ -152,3 +152,15 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Security headers** were added in `next.config.ts`. They are conservative. If anything embeds this site in a frame you control, tell me, because `X-Frame-Options: SAMEORIGIN` would block it.
 - [ ] **Content-Security-Policy** is not set. Worth adding after GA and Turnstile are live, with a tested allow-list.
 - [ ] **Add `docs/seo/keyword-planner.csv`** when you have a Keyword Planner export; run `node scripts/merge-volumes.mjs` to get a ranked top 10 of P1 keywords.
+
+## 17. Added by Prompt 2
+
+- [ ] **Template marketplace:** you answered Y, but it sells diet and workout plan templates and you say those are not available. I have kept it out of all copy. Tell me if you want it described anyway.
+- [ ] **Biometric device list:** the page says "ZKTeco-style and eSSL-style ADMS devices, send us the model first". If you have confirmed models, give me the list and I will name them.
+- [ ] **QR scan mode:** the code has single and dual scan modes (member default is single). Your statement matches dual mode. Confirm which mode new gyms get, so the page can say it.
+- [ ] **White-label meaning:** the page says the gym's app name and logo show inside the one Fitvario app, not a separate store listing, and that colour themes and a branded app icon are not part of it. Confirm that is right.
+- [ ] **Segment pages:** read `/for/crossfit-yoga-studios`. It is published and says plainly that there is no class booking. If you prefer not to publish a page that lists a limitation, set `draft: true` for it in `src/config/pages.ts`.
+- [ ] **Small-gyms checklist and franchise FAQ:** these describe how owners usually work, not Fitvario facts. Skim for anything that does not match how you sell.
+- [ ] **Hinglish FAQs** on member-app and biometric pages are Roman-script drafts; have a Hindi speaker read them.
+- [ ] **Screenshots:** each new page has a labelled screenshot placeholder. Send real screenshots and I will swap them in.
+- [ ] **`/terms` and `/privacy` still list class scheduling, workout and diet content and class bookings.** Legal text, not edited by me.

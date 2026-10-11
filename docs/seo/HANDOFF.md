@@ -1,14 +1,14 @@
 # Handoff
 
-Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10-11, after Prompt 8. Current branch: **`seo-release`**, the integration branch. It contains everything below.
+Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10-11, after Prompt 2. Current branch: **`seo-release`**.
 
-1. **Merged:** `seo-overhaul` (Prompts 1 and 3 plus corrections), `seo-blog` (Prompt 4), `seo-hinglish` (Prompt 5), `seo-compare` (Prompt 6). Conflicts were in `pages.ts` (both sides kept, one closing brace restored), `gen-seo-docs.mjs` (same fix twice) and append-only docs (both sides kept).
-2. **Not built:** Prompt 2 (feature and segment pages), blocked on the owner's flag answers and the one-app-or-separate-apps question; Prompt 7 (Django repo). Pilot feature pages exist: gym CRM (public), WhatsApp reminders and GST billing (drafts).
-3. **Public pages (31):** home, features hub, pricing, about, contact, support and legal pages, gym CRM, four calculators, blog index and seven posts, Hinglish hub and five Hinglish pages.
-4. **Drafts, hidden everywhere and 404 on production:** WhatsApp reminders and GST billing feature pages, four tools or templates (GST calculator, startup cost, invoice generator, diet charts), four blog posts, five comparison pages.
-5. **Checks (`npm run seo:check`):** build, `seo-check` (52 pages, 31 public), `keyword-coverage` (29 keywords, 0 missing, 3 dropped), `feature-truth` (0 failing claims; 1 legal-text item for the owner), `launch-checks` (conversion, crawl hygiene, bundle leaks, security headers). `npm run test:calc` runs the 38 calculator tests.
-6. **Lighthouse (mobile, local production server):** performance 96 to 98, accessibility, best practices and SEO 100 on `/`, `/pricing`, `/features`, `/features/gym-crm`, a tool, a blog post and `/hi`. LCP 2.3 to 2.8 s on simulated slow 4G.
-7. **Security headers** now set in `next.config.ts` (HSTS, nosniff, referrer policy, frame options, permissions policy). No CSP yet: GA and Turnstile need a tested allow-list.
-8. **Owner answers applied:** no owner web dashboard; due-payment reminders not live. The other flags are still unanswered (`OWNER_CONFIRM.md`).
-9. **Next steps for you:** answer the flags; follow `LAUNCH_CHECKLIST.md`; clear the drafts you want live (it lists what unlocks each); set the lead-delivery env vars before deploying.
-10. **Local server:** `npm run dev` on http://localhost:3000.
+1. **Owner answers applied** (`feature-status.json`, "verified by owner", 2026-10-11): live = GST, dues, biometric, QR, WhatsApp expiry and birthday, campaigns, owner referral, white-label, multi-branch, template marketplace. Not live = diet, workout, store, due-payment reminders, self-serve sign-up. One app: Fitvario on Google Play.
+2. **Published now (41 public pages):** GST billing, WhatsApp reminders, member app, QR attendance, biometric attendance, white-label, multi-branch, small gyms, franchise gyms, CrossFit and yoga studios, plus everything from before.
+3. **Draft, hidden and 404 on production (14):** diet-workout-plans (flag N), GST calculator, invoice generator, startup cost calculator, diet charts (reviews), four blog posts (review, pricing, competitor facts), five comparison pages (accuracy and legal).
+4. **Withheld on purpose:** template marketplace (it sells diet and workout templates, which are N); batches (`batches_time_slots` still in-code); freeze, gallery, trainer, expense-manager details (flags unchanged).
+5. **WhatsApp page** describes only expiring-soon (7, 3, 1 days), expired (day after) and birthday. It says outright that automatic due-payment reminders do not exist.
+6. **Wording change site-wide:** "gym-branded Android app" became "the Fitvario app with your gym's name and logo inside it", because it is one app.
+7. **Checks (`npm run seo:check`):** build; `seo-check` 61 pages, 41 public; `keyword-coverage` 52 covered, 0 missing, 3 dropped; `feature-truth` 0 failing (1 legal-text item); `launch-checks` pass; 38 of 38 calculator tests.
+8. **Lighthouse (mobile, 13 pages):** performance 97 to 98, accessibility, best practices and SEO 100, CLS 0, LCP 2.5 to 2.7 s.
+9. **Keywords without a published page:** 21, all behind a review, accuracy, decision or flag gate, or Prompt 7. See `keyword-gaps.md`.
+10. **Next:** your items in `TODO_FOR_SUMIT.md` section 17, then deploy per `LAUNCH_CHECKLIST.md`. Prompt 7 (Django repo) and the gyms pages are still to do.

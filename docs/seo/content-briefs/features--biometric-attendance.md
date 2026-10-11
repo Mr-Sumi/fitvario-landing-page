@@ -1,6 +1,6 @@
 # Brief: /features/biometric-attendance
 
-Status: planned · Wave: Wave 1 · Kind: feature
+Status: published · Wave: Wave 1 · Kind: feature
 
 ## Keywords
 - Primary: biometric attendance for gym (P1, English, Biometric)

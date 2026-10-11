@@ -44,3 +44,13 @@ Ecommerce is a full cart > checkout > order > owner-approval flow, not just "exp
 - **Workout plans and diet plans: NOT live.** Do not mention them, including plan requests and plan-assigned messages.
 - **The phrase "WhatsApp Business API" is banned.** Use "automated WhatsApp reminders" (once expiry reminders are confirmed) or "WhatsApp alerts".
 - **Dropped keywords:** `whatsapp business api for gym`, `free gym software india`, `cheap gym software india`.
+
+## Status corrections from Sumit (2026-10-11). These override everything above.
+
+- **Now live (verified by owner):** GST/tax lines, dues and partial payments, biometric ADMS (tested on a real device), QR attendance (one QR per gym, first scan in, next scan out), WhatsApp expiry reminders (cron scheduled and delivering), birthday messages, notification campaigns and wallet, owner referral, white-label, multi-branch and franchise, template marketplace.
+- **Still not live:** diet plans, workout plans, online store, automated due-payment reminders, self-serve sign-up and pay.
+- **One app:** the Fitvario app on Google Play (`com.fitvario.sumigyan`) with role-based login for owners, staff and members. White-label means the gym's app name and logo show inside it; it is not a separate store listing.
+- **Template marketplace:** live per owner, but it holds diet and workout plan templates, so it is not described anywhere while diet and workout plans are N.
+- **QR modes:** `AttendanceSettings` has `single` (one scan marks present) and `dual` (first scan in, next out). Owner statement describes dual mode; copy explains both.
+- **Biometric devices:** ADMS push protocol, ZKTeco-style and eSSL-style terminals. No model list is published. Fitvario blocks or unblocks the user on the device; it does not drive a door lock.
+- **Class booking:** does not exist. Batches have a capacity that is checked when a member is assigned, but `batches_time_slots` is still `in-code`, so batches are mentioned only if that flag goes live.

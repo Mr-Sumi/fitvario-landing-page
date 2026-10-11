@@ -1,6 +1,6 @@
 # Brief: /features/diet-workout-plans
 
-Status: planned · Wave: Wave 3 · Kind: feature
+Status: draft · Wave: Wave 3 · Kind: feature
 
 ## Keywords
 - Primary: gym diet plan software (P3, English, Diet/workout)

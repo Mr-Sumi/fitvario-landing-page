@@ -143,3 +143,15 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Owner pointed out the flag list was missing features (expense manager and others). Re-audited the backend routes, models and management commands.
 - Added 20 flags to `feature-status.json`, all `in-code` (or `not-live`/`no-evidence` where the owner already said so); none is claimable. New: `diet_plans`, `workout_plans` (split from `workout_diet_plans`), `expense_manager`, `recurring_expenses`, `customer_categories`, `gym_gallery_highlights`, `gym_hours_and_closures`, `platform_banners`, `owner_referral_program`, `subscription_coupons`, `platform_store_for_owners`, `owner_billing_history`, `member_notification_center`, `owner_push_broadcast`, `attendance_analytics`, `auto_absent_marking`, `member_birthdays_list`, `daily_owner_summary`, `account_deletion`, `member_data_import`.
 - New `FEATURE_INVENTORY.md`; `OWNER_CONFIRM.md` rewritten as one Y/N table per area. No existing status changed, so nothing on the site changed.
+
+## 2026-10-11: Prompt 2, feature and segment pages (branch `seo-release`)
+
+- Owner answers applied to `feature-status.json` (verified by owner, 2026-10-11): 11 flags live, 5 not-live, new `single_app_role_login`. Unlisted flags unchanged.
+- Published (flag-gated, now live): `/features/gst-billing`, `/features/whatsapp-reminders`. New and published: `/features/member-app`, `/features/qr-attendance`, `/features/biometric-attendance`, `/features/white-label-gym-app`, `/features/multi-branch-gym-software`, `/for/small-gyms`, `/for/franchise-gyms`, `/for/crossfit-yoga-studios`. Written but held as draft: `/features/diet-workout-plans`.
+- `/features/whatsapp-reminders` trimmed to the verified behaviour only: expiring-soon (7, 3, 1 days before), expired (day after) and birthday. Welcome, receipt, renewed, frozen and plan-assigned messages removed from the copy. It states that automatic due-payment reminders do not exist.
+- Restored on `/features`: biometric attendance, tax lines and part payments, birthday wish, campaigns, owner referral, white-label cards, plus a "By type of gym" section linking the segment pages.
+- "Gym-branded app" wording replaced across home, pricing and JSON-LD by the single-app truth: the Fitvario app with the gym's name and logo inside it.
+- Template marketplace answered Y but withheld from all copy because it sells diet and workout templates.
+- `feature-truth.mjs` no longer flags honest negations ("no class booking").
+- The five comparison pages stay draft; their Fitvario column now reads from the new flags (GST, biometric, QR and others show "Yes").
+- Keyword coverage: 52 covered, 0 missing. Keywords without a published page and why: `keyword-gaps.md`.
