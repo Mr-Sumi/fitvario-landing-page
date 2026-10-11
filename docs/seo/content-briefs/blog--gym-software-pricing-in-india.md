@@ -1,6 +1,6 @@
 # Brief: /blog/gym-software-pricing-in-india
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: draft · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: gym management software cost (P1, English, Pricing)

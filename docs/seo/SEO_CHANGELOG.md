@@ -99,3 +99,13 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Calculations run in paise (`src/lib/calc/`), with 38 unit tests covering zero, negatives, inclusive vs exclusive GST, CGST/SGST odd-paisa split and rounding. `.d.mts` files give TypeScript the types.
 - Home page gets a "Free tools" section once tools are published; footer "Resources" column lists them automatically.
 - Not done: links from matching blog posts and feature pages (those pages do not exist yet).
+
+## 2026-10-11: Prompt 4, blog engine and posts (branch `seo-blog`)
+
+- Engine: Markdown with a small front-matter reader (no YAML dependency) and `marked` for HTML. `scripts/gen-blog-registry.mjs` runs before every build and writes `src/config/blog-pages.generated.ts`, so posts, the index, pagination pages and category pages go through the same registry as every other page (sitemap, footer, breadcrumbs, `seo-check`).
+- Index at `/blog` (10 per page, `/blog/page/N` when needed). Category pages exist but stay `noindex` until a category has 5 public posts, and the index does not link to them while they are noindex. No tag pages. RSS lists public posts only. Draft posts render for review and return 404 on the production deployment.
+- Posts: seven public, four drafts. All 11 are 890 to 1,170 words, written with examples labelled as illustrative and no unsourced statistics.
+- Gates: freeze policy and start-a-gym need expert review; software cost needs real pricing; best-software needs cited competitor facts with dates (no competitor is named yet).
+- Rule 12 respected: renewal and fee-collection posts are hand-sent templates and routines; nothing claims automated reminders.
+- `seo-check` now ignores "Related" card text in the duplicate-sentence test (those cards summarise other pages by design) and knows the RSS route.
+- Not done: links from the posts' matching feature pages to the posts (feature pages are Prompt 2).

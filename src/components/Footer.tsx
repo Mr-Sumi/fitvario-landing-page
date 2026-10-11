@@ -22,7 +22,7 @@ function columns(): { title: string; links: PageDef[] }[] {
       links: [
         ...publishedPages("tool"),
         ...publishedPages("template"),
-        ...publishedPages("blog"),
+        ...publishedPages("blog").filter((p) => p.path === "/blog"),
         ...publishedPages("hinglish"),
       ],
     },

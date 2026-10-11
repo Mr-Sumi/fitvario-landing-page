@@ -1,4 +1,5 @@
 import { isLive, type FeatureKey } from "@/lib/features";
+import { blogPages } from "./blog-pages.generated";
 
 export type PageKind =
   | "core"
@@ -31,7 +32,7 @@ export interface PageDef {
   noindex?: boolean;
 }
 
-export const pages: PageDef[] = [
+const staticPages: PageDef[] = [
   {
     path: "/",
     kind: "core",
@@ -251,6 +252,9 @@ export const pages: PageDef[] = [
     draft: true,
   },
 ];
+
+// Blog posts and blog index/category pages are generated from src/content/blog (npm run gen:blog)
+export const pages: PageDef[] = [...staticPages, ...blogPages];
 
 // A page is public only when it is not a draft, not noindex and its feature gate is live
 export function isDraft(p: PageDef): boolean {

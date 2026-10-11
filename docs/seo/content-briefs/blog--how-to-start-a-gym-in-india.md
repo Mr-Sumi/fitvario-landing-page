@@ -1,6 +1,6 @@
 # Brief: /blog/how-to-start-a-gym-in-india
 
-Status: planned · Wave: Wave 3 · Kind: blog
+Status: draft · Wave: Wave 3 · Kind: blog
 
 ## Keywords
 - Primary: how to start a gym in india (P2, English, Start-a-gym)

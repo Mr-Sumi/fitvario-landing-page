@@ -43,7 +43,10 @@ const entries = parseMap(map).map((e) => ({
 }));
 
 // ---- registry (read the TS file as text, no TS toolchain needed) ------------
-const regSrc = readFileSync(join(root, "src", "config", "pages.ts"), "utf8");
+const regSrc =
+  readFileSync(join(root, "src", "config", "pages.ts"), "utf8") +
+  "\n" +
+  readFileSync(join(root, "src", "config", "blog-pages.generated.ts"), "utf8");
 const registry = [];
 for (const block of regSrc.split(/\n  \{\n/).slice(1)) {
   const g = (k) => (block.match(new RegExp(`${k}:\\s*\\n?\\s*"([^"]*)"`)) ?? [])[1];

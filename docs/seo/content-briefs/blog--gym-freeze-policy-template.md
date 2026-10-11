@@ -1,6 +1,6 @@
 # Brief: /blog/gym-freeze-policy-template
 
-Status: planned · Wave: Wave 3 · Kind: blog
+Status: draft · Wave: Wave 3 · Kind: blog
 
 ## Keywords
 - Primary: gym membership freeze policy (P3, English, Problem-led)

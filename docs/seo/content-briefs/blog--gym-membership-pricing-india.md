@@ -1,6 +1,6 @@
 # Brief: /blog/gym-membership-pricing-india
 
-Status: planned · Wave: Wave 1 · Kind: blog
+Status: published · Wave: Wave 1 · Kind: blog
 
 ## Keywords
 - Primary: gym membership pricing strategy (P1, English, Problem-led)

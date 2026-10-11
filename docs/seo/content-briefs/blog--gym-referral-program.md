@@ -1,6 +1,6 @@
 # Brief: /blog/gym-referral-program
 
-Status: planned · Wave: Wave 3 · Kind: blog
+Status: published · Wave: Wave 3 · Kind: blog
 
 ## Keywords
 - Primary: gym referral program ideas india (P3, English, CRM)

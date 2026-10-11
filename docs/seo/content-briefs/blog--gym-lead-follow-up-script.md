@@ -1,6 +1,6 @@
 # Brief: /blog/gym-lead-follow-up-script
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: published · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: gym lead follow up script (P2, English, CRM)

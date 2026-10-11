@@ -115,3 +115,12 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Expert review** of `/tools/gym-startup-cost-calculator` (draft): licence and cost rules vary by state. The starting figures are placeholders, not market data.
 - [ ] To publish a draft, remove `draft: true` for it in `src/config/pages.ts`.
 - [ ] The four published calculators have illustrative defaults (for example rent per sq ft by city tier). Replace them with numbers you are comfortable standing behind, or leave them labelled as illustrative.
+
+## 13. Added by Prompt 4 (blog)
+
+- [ ] **Author byline:** posts show "Fitvario" as author. Set `NEXT_PUBLIC_AUTHOR_NAME` if you want a person's name, and add a short bio only if you want one shown.
+- [ ] **Expert review** of the two draft posts that give guidance: `gym-freeze-policy-template` (policy wording, "not legal advice") and `how-to-start-a-gym-in-india` (licences, costs, tax: every point says to verify locally).
+- [ ] **`gym-software-pricing-in-india`** stays draft until you confirm Fitvario's real pricing; it has a `{TODO}` marker for the plan table.
+- [ ] **`best-gym-management-software-india`** stays draft until competitor facts are collected with public sources and verified dates. It already carries the disclosure and a "where Fitvario is not the best fit" section; check that section is honest for you.
+- [ ] The posts use illustrative figures (for example rent, fees, referral rewards). They are labelled as examples; replace them if you would rather use your own.
+- [ ] Linking posts from the matching feature pages happens in Prompt 2.

@@ -1,6 +1,6 @@
 # Brief: /blog/gym-renewal-reminder-message-formats
 
-Status: planned · Wave: Wave 1 · Kind: blog
+Status: published · Wave: Wave 1 · Kind: blog
 
 ## Keywords
 - Primary: gym membership renewal message format (P1, English, WhatsApp)

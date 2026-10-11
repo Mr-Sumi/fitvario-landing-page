@@ -1,6 +1,6 @@
 # Brief: /blog/best-gym-management-software-india
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: draft · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: best gym management software in india (P2, English, Head term)

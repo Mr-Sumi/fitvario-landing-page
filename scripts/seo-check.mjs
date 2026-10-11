@@ -154,7 +154,7 @@ if (existsSync(robotsPath)) {
 
 // ---- links, orphans, depth ---------------------------------------------------
 const publicDir = join(root, "public");
-const staticOk = new Set(["/sitemap.xml", "/robots.txt", "/manifest.json", "/favicon.ico"]);
+const staticOk = new Set(["/sitemap.xml", "/robots.txt", "/manifest.json", "/favicon.ico", "/blog/rss.xml"]);
 const links = {};
 for (const p of Object.keys(info)) {
   links[p] = new Set();
@@ -200,6 +200,8 @@ function sentences(html) {
     html
       .replace(/<script[\s\S]*?<\/script>/g, " ")
       .replace(/<style[\s\S]*?<\/style>/g, " ")
+      // "Related" cards summarise other pages by design, so they are not counted as duplicated content
+      .replace(/<section[^>]*aria-labelledby="related-heading"[\s\S]*?<\/section>/g, " ")
       .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ");
   return new Set(

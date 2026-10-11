@@ -1,6 +1,6 @@
 # Brief: /blog/reduce-gym-member-churn-india
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: published · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: how to reduce gym member churn (P1, English, Problem-led)

@@ -1,6 +1,6 @@
 # Brief: /blog/gym-fee-collection-tips
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: published · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: how to collect gym fees on time (P2, English, Problem-led)

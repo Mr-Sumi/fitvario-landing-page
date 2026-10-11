@@ -1,6 +1,6 @@
 # Brief: /blog/get-more-gym-members-india
 
-Status: planned · Wave: Wave 2 · Kind: blog
+Status: published · Wave: Wave 2 · Kind: blog
 
 ## Keywords
 - Primary: how to get more gym members india (P1, English, Problem-led)
