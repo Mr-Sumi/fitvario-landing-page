@@ -37,7 +37,7 @@ export default function SupportPage() {
             <li>Your registered gym/organization name and email address.</li>
             <li>A clear description of the issue or question.</li>
             <li>Screenshots or screen recordings if relevant.</li>
-            <li>Device/browser details for app or web issues.</li>
+            <li>Your phone model and Android version, for app issues.</li>
             <li>Any error messages you see.</li>
           </ul>
         </div>

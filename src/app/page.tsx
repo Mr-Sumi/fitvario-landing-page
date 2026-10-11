@@ -33,7 +33,7 @@ const problems = [
   },
   {
     bad: "No visibility into what you collected today",
-    good: "One dashboard for collections, expenses and member growth",
+    good: "One app for collections, expenses and member growth",
   },
   {
     bad: "Members forget their plan and stop coming",
@@ -49,7 +49,7 @@ const platformViews = [
   {
     role: "Gym Owner",
     headline: "Full control of your gym",
-    sub: "Everything you need to run daily operations, from a browser, anywhere.",
+    sub: "Everything you need to run daily operations, from your phone.",
     points: [
       "Memberships, renewals and digital invoices",
       "QR attendance with full check-in history",
@@ -60,9 +60,9 @@ const platformViews = [
     ],
   },
   {
-    role: "Staff Portal",
+    role: "Staff",
     headline: "Focused tools for your team",
-    sub: "Staff log in and see only what you have allowed.",
+    sub: "Staff log in to the app and see only what you have allowed.",
     points: [
       "View and manage the members you assign them",
       "Mark attendance when permitted",
@@ -113,7 +113,7 @@ const features: { d: string; title: string; desc: string; href?: string }[] = [
   {
     d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
     title: "Revenue and expense tracking",
-    desc: "Track daily collections, log expenses and see your revenue trend, all from one dashboard instead of Excel.",
+    desc: "Track daily collections, log expenses and see your revenue trend, all in one app instead of Excel.",
   },
   {
     d: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
@@ -131,7 +131,7 @@ const steps = [
   {
     n: "2",
     title: "We set it up with you",
-    desc: "We help set up your plans, staff roles and QR code, bring in your existing member list, and walk your team through the dashboard.",
+    desc: "We help set up your plans, staff roles and QR code, bring in your existing member list, and walk your team through the app.",
   },
   {
     n: "3",
@@ -168,7 +168,7 @@ const faqs = [
   },
   {
     q: "How are payments handled?",
-    a: "Fitvario's own subscription payments go through Razorpay, an RBI-authorised payment gateway, by UPI, card or net banking. Card details never touch our servers. Inside the dashboard you record your members' fee payments and issue invoices.",
+    a: "Fitvario's own subscription payments go through Razorpay, an RBI-authorised payment gateway, by UPI, card or net banking. Card details never touch our servers. Inside the app you record your members' fee payments and issue invoices.",
   },
   {
     q: "Is my data safe?",
@@ -313,8 +313,7 @@ export default function Home() {
               One platform. Three experiences.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Gym owners get a web dashboard. Staff get a focused panel. Members get a gym-branded Android app. All
-              three stay in sync.
+              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members get a gym-branded Android app. All three stay in sync.
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">

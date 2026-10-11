@@ -140,7 +140,9 @@
     },
     "due_payment_reminders": {
       "status": "not-live",
-      "evidence": "notify_due_payments command exists, but the job is not scheduled in production (25 Sep audit). NO page may claim automated due-payment reminders."
+      "evidence": "Owner (Sumit), 2026-10-11: not scheduled yet; will say when it changes. notify_due_payments command exists, but the job is not scheduled in production (25 Sep audit). NO page may claim automated due-payment reminders.",
+      "verifiedHow": "verified by owner",
+      "verifiedOn": "2026-10-11"
     },
     "whatsapp_expiry_reminders": {
       "status": "in-code",
@@ -156,11 +158,11 @@
       "verifiedOn": "2026-10-11",
       "evidence": "Chrome in this run: https://app.fitvario.com 301-redirects to https://play.google.com/store/apps/details?id=com.fitvario.sumigyan. The listing loads with an Install button, 'Fitvario – Gym Management App', last updated Sep 28, 2026. Open question: the listing text is aimed at gym owners and trainers, so confirm whether this single app is also the member app."
     },
-    "owner_web_dashboard_reachable": {
-      "status": "in-code",
-      "verifiedHow": "not-verified",
+    "owner_web_dashboard": {
+      "status": "not-live",
+      "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "Browser verification of the owner dashboard was NOT run: no dashboard hostname could be found (dashboard/web/panel/owner/admin/portal/my/manage/gym/login .fitvario.com do not resolve; app.fitvario.com redirects to Google Play) and no signed-in session or test gym was visible. Waiting for Sumit to supply the dashboard URL and confirm the SEO-TEST gym."
+      "evidence": "Owner (Sumit), 2026-10-11: there is no owner web dashboard; owners use the mobile app. Site copy must not mention a web dashboard, web panel or staff portal."
     }
   }
 }

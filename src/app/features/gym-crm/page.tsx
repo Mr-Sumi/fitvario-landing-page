@@ -100,7 +100,7 @@ export default function Page() {
           </p>
         </ExampleBox>
         <ScreenshotPlaceholder
-          alt="The list of today's enquiry follow-ups in the Fitvario dashboard"
+          alt="The list of today's enquiry follow-ups in the Fitvario app"
           caption="Placeholder. TODO: add a real screenshot of the follow-ups list."
         />
       </Section>
@@ -114,7 +114,7 @@ export default function Page() {
           <li>Attach a full history of dated follow-up notes to each enquiry.</li>
           <li>See today&apos;s follow-ups at a glance as a gym enquiry follow up app for the front desk.</li>
           <li>Give staff only the CRM rights you want them to have, including view, add, follow-up and delete.</li>
-          <li>Work from the web dashboard on a phone or a computer.</li>
+          <li>Work from the Fitvario Android app.</li>
         </ul>
         <p>
           Gym CRM software in India is mostly about discipline: the same list, checked every day. Fitvario gives the

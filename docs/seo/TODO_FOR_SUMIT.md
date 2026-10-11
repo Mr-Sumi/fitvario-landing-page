@@ -101,3 +101,9 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **One legal edit I made:** `/refund` said "WhatsApp Business API message delivery"; it now says "WhatsApp message delivery" because the phrase is banned. Confirm you are happy with that wording.
 - [ ] `src/components/AppPreview.tsx` still has a "Storefront / Ecommerce" tile. It is unused, so it is not on the site; delete it or fix it before anyone imports it.
 - [ ] Contact page title changed from "...Free Gym Software Demo" to "...Free Demo for Your Gym" so it no longer matches the dropped keyword "free gym software".
+
+## 11. Owner answers applied (11 Oct)
+
+- [x] "No owner web dashboard; owners use the mobile app": every "web dashboard", "web panel" and "staff portal" claim was removed from home, features hub, pricing, about, support, CRM and billing pages, the page registry and structured data (`operatingSystem` is now "Android"). Legal pages were not touched; `/privacy`, `/terms` and `/delete-account` may still mention web access (see section 10).
+- [x] `due_payment_reminders` recorded as N, "verified by owner".
+- [ ] **Still waiting:** the Y/N for every other flag, and "one app vs separate apps". See `OWNER_CONFIRM.md` section 1 and 2.

@@ -100,7 +100,7 @@ function RoleSection({
 }
 
 const securityPoints: [string, string][] = [
-  ["Encrypted connections", "Every connection between your browser, the app and our servers is encrypted."],
+  ["Encrypted connections", "Every connection between the app and our servers is encrypted."],
   ["Staff see only what you allow", "You control exactly what each staff member can see and do."],
   ["Each gym's data is separate", "No other gym can access your members or records."],
   ["Daily automated backups", "Your data is backed up automatically every day."],
@@ -122,13 +122,12 @@ export default function FeaturesPage() {
           Gym management software features for Indian gyms
         </h1>
         <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
-          Fitvario gives gym owners a web dashboard, staff a focused panel, and members a gym-branded Android app.
-          Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
+          Fitvario gives gym owners and staff an Android app to run the gym, and members a gym-branded Android app. Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
         </p>
         <p className="mt-2 text-sm text-slate-500">Last updated: {formatDate(page.updated)}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           <a href="#gym-owner"><RoleBadge label="Gym Owner" color="bg-teal-50 text-teal-800" dot="bg-teal-500" /></a>
-          <a href="#staff"><RoleBadge label="Staff Portal" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" /></a>
+          <a href="#staff"><RoleBadge label="Staff" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" /></a>
           <a href="#member-app"><RoleBadge label="Member App" color="bg-violet-50 text-violet-800" dot="bg-violet-500" /></a>
         </div>
       </div>
@@ -153,8 +152,8 @@ export default function FeaturesPage() {
         <RoleSection
           id="gym-owner"
           badge={<RoleBadge label="Gym Owner" color="bg-teal-50 text-teal-800" dot="bg-teal-500" />}
-          heading="Gym owner dashboard"
-          sub="A web control panel to run memberships, revenue, staff, plans and leads."
+          heading="For gym owners"
+          sub="Run memberships, revenue, staff and leads from the Fitvario app on your phone."
           accent="border-teal-500"
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -176,9 +175,9 @@ export default function FeaturesPage() {
 
         <RoleSection
           id="staff"
-          badge={<RoleBadge label="Staff Portal" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" />}
-          heading="Staff portal"
-          sub="A focused web panel for trainers and front-desk staff, with access controlled by the gym owner."
+          badge={<RoleBadge label="Staff" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" />}
+          heading="For staff"
+          sub="Focused tools in the app for trainers and front-desk staff, with access controlled by the gym owner."
           accent="border-indigo-500"
         >
           <div className="grid gap-4 sm:grid-cols-2">

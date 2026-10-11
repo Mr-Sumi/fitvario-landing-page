@@ -80,7 +80,7 @@ export default function Page() {
           </p>
         </ExampleBox>
         <ScreenshotPlaceholder
-          alt="An invoice in the Fitvario dashboard showing the tax line and the due amount"
+          alt="An invoice in the Fitvario app showing the tax line and the due amount"
           caption="Placeholder. TODO: add a real screenshot of an invoice with a tax line."
         />
       </Section>
@@ -91,7 +91,7 @@ export default function Page() {
         <p>
           When a payment is only part of the total, the invoice stays open with the remaining due amount. Each time
           you collect more, Fitvario logs the payment with the time it was collected and updates the balance. You can
-          set a date by which to chase the rest, and the dashboard lists dues for today, a summary of what is
+          set a date by which to chase the rest, and the app lists dues for today, a summary of what is
           outstanding and the members who owe money. That is the practical core of gym partial payment dues tracking
           software: one place that remembers who owes what.
         </p>

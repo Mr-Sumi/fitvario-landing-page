@@ -113,7 +113,7 @@ export const pages: PageDef[] = [
     kind: "legal",
     title: "Terms of Service | Fitvario Gym Management Platform",
     description:
-      "The terms that apply when you use Fitvario's gym management website, web panels and member app, including accounts, payments and acceptable use.",
+      "The terms that apply when you use Fitvario's gym management website and Android apps, including accounts, payments and acceptable use.",
     updated: "2026-04-26",
   },
   {

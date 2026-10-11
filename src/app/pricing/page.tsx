@@ -33,7 +33,7 @@ const factors = [
 
 const included = [
   "Multi-gym and franchise management",
-  "Web dashboards for owners and staff",
+  "The Fitvario Android app for owners and staff",
   "Branded Android app for members",
   "QR attendance for members",
   "CRM, enquiries and follow-up reminders",

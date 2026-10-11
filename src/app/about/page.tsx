@@ -20,11 +20,10 @@ export default function AboutPage() {
       <p className="mt-8 text-[17px] leading-relaxed text-slate-600">
         Fitvario is gym management software from Bhopal, built for Indian gym owners and front-desk teams who need
         one place to run memberships, attendance, leads, staff and revenue, instead of a patchwork of spreadsheets,
-        registers and WhatsApp groups. It is a cloud product with web dashboards for gym owners and staff, and an
-        Android app for members.
+        registers and WhatsApp groups. It is a cloud product: gym owners and staff run the gym from the Fitvario Android app, and members get an Android app for their plan, attendance and progress.
       </p>
       <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
-        What it covers: QR attendance, a CRM with follow-up dates, measurement history and progress, expense tracking, analytics dashboards, referral rewards, and alerts to members by WhatsApp, SMS and push. Payments for Fitvario subscriptions run through Razorpay.
+        What it covers: QR attendance, a CRM with follow-up dates, measurement history and progress, expense tracking, analytics and reports, referral rewards, and alerts to members by WhatsApp, SMS and push. Payments for Fitvario subscriptions run through Razorpay.
       </p>
       <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
         Whether you run one gym or a franchise group, Fitvario supports several branches under one account, with
@@ -49,7 +48,7 @@ export default function AboutPage() {
       <section className="mt-10" aria-labelledby="security-heading">
         <h2 id="security-heading" className="text-lg font-semibold text-slate-900">How we look after your data</h2>
         <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
-          <li>Every connection between your browser, the app and our servers is encrypted.</li>
+          <li>Every connection between the app and our servers is encrypted.</li>
           <li>Each gym&apos;s data is kept separate from every other gym&apos;s.</li>
           <li>Staff see only the modules you give them access to, and every action is logged.</li>
           <li>Backups run automatically every day.</li>
