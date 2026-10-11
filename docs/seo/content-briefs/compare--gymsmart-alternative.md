@@ -5,7 +5,7 @@ Status: draft · Wave: Wave 3 · Kind: compare
 ## Keywords
 - Primary: gymsmart alternative (P3, English, Comparison)
 - Secondary: none
-- DROPPED (never target or count): none
+- DROPPED (never target or count): gymsmart alternative (vendor could not be verified (owner decision 2026-10-11); page stays draft)
 
 ## Search intent
 Commercial investigation. One page, one intent. Do not overlap with another page's primary keyword.

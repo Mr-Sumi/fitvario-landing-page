@@ -78,7 +78,7 @@ for (const e of entries) {
 
   for (const k of kws) {
     if (k.dropped) {
-      dropped.push({ path: e.path, kw: k.text, reason: k.reason });
+      dropped.push({ path: e.path, kw: k.text, reason: k.reason, deferred: !!k.deferred });
       continue;
     }
     if (isPattern) {
@@ -95,7 +95,7 @@ for (const e of entries) {
 }
 
 // A dropped keyword must not appear on any published page
-for (const d of dropped) {
+for (const d of dropped.filter((x) => !x.deferred)) {
   const stems = [d.kw.toLowerCase(), d.kw.toLowerCase().replace(/\s+india$/, "")];
   const hits = publishedPages.filter(({ page }) => stems.some((s) => page.body.includes(s) || page.title.includes(s)));
   d.found = hits.map((h) => h.path);
@@ -114,8 +114,12 @@ const byReason = new Map();
 for (const r of blocked) byReason.set(r[3], (byReason.get(r[3]) ?? 0) + 1);
 for (const [reason, n] of byReason) console.log(`  ${n} x ${reason}`);
 
-console.log(`\nDROPPED (skipped, never counted): ${dropped.length}`);
-for (const d of dropped) {
+const deferredKw = dropped.filter((x) => x.deferred);
+console.log(`\nDEFERRED by the owner (skipped, may return): ${deferredKw.length}`);
+for (const d of deferredKw) console.log(`  ${pad(d.kw, 36)} on ${pad(d.path, 34)} reason: ${d.reason}`);
+const droppedOnly = dropped.filter((x) => !x.deferred);
+console.log(`\nDROPPED (skipped, never counted): ${droppedOnly.length}`);
+for (const d of droppedOnly) {
   console.log(`  ${pad(d.kw, 36)} on ${pad(d.path, 22)} reason: ${d.reason}${d.found.length ? `  !! FOUND ON: ${d.found.join(", ")}` : ""}`);
 }
 

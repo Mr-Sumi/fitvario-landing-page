@@ -5,15 +5,19 @@
 
 function parseTag(text, tagStr) {
   const parts = (tagStr ?? "").split(",").map((s) => s.trim()).filter(Boolean);
-  const droppedPart = parts.find((p) => p.startsWith("DROPPED"));
+  // DROPPED = never target. DEFERRED = held by the owner and may come back; both are skipped by the coverage count.
+  const droppedPart = parts.find((p) => p.startsWith("DROPPED") || p.startsWith("DEFERRED"));
+  const deferred = !!droppedPart && droppedPart.startsWith("DEFERRED");
+  const keepMeta = !droppedPart || deferred;
   return {
     text: text.trim(),
     priority: parts.find((p) => /^P\d$/.test(p)) ?? "",
     lang: parts.find((p) => ["English", "Hinglish"].includes(p)) ?? "",
-    cluster: parts[2] && !droppedPart ? parts[2] : "",
-    intent: parts[3] && !droppedPart ? parts[3] : "",
+    cluster: parts[2] && keepMeta ? parts[2] : "",
+    intent: parts[3] && keepMeta && !/^(DROPPED|DEFERRED)/.test(parts[3]) ? parts[3] : "",
     dropped: !!droppedPart,
-    reason: droppedPart ? droppedPart.replace(/^DROPPED:?\s*/, "") : "",
+    deferred,
+    reason: droppedPart ? droppedPart.replace(/^(DROPPED|DEFERRED):?\s*/, "") : "",
   };
 }
 

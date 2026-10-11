@@ -385,7 +385,7 @@ PAGE /compare/okfit-alternative
 
 PAGE /compare/gymsmart-alternative
   wave: Wave 3
-  primary: gymsmart alternative [P3, English, Comparison, Commercial investigation]
+  primary: gymsmart alternative [P3, English, Comparison, Commercial investigation, DEFERRED: vendor could not be verified (owner decision 2026-10-11); page stays draft]
   GATE: ACCURACY GATE: cited public facts with verified dates; legal read; draft until cleared
 
 PAGE /compare/mindbody-alternative-india
