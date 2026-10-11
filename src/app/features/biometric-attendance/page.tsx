@@ -113,10 +113,7 @@ export default function Page() {
             in his attendance.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="The biometric punch log in the Fitvario app"
-          caption="Placeholder. TODO: add a real screenshot of the punch log."
-        />
+        <ScreenshotPlaceholder screen="biometric-punches" />
       </Section>
 
       <MidCta text="Want to see how a device connects to a sample gym?" location="biometric-mid" />

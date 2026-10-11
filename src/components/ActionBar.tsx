@@ -23,7 +23,7 @@ export function ActionBar() {
 
   return (
     <>
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-4px_12px_rgba(15,23,42,0.08)] backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-3 py-2 md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           {wa && (
             <a
@@ -31,7 +31,7 @@ export function ActionBar() {
               target="_blank"
               rel="noopener noreferrer"
               data-cta="action-bar"
-              className="flex h-12 flex-1 items-center justify-center rounded-lg bg-emerald-700 text-sm font-semibold text-white active:bg-emerald-800"
+              className="flex h-12 flex-1 items-center justify-center rounded-[8px] bg-[#0b6b3a] text-sm font-semibold text-white active:bg-[#085530]"
             >
               WhatsApp
             </a>
@@ -40,7 +40,7 @@ export function ActionBar() {
             <a
               href={tel}
               data-cta="action-bar"
-              className="flex h-12 flex-1 items-center justify-center rounded-lg border border-slate-300 bg-white text-sm font-semibold text-slate-800 active:bg-slate-50"
+              className="flex h-12 flex-1 items-center justify-center rounded-[8px] border border-ink text-sm font-semibold text-ink active:bg-black/5"
             >
               Call
             </a>
@@ -48,7 +48,7 @@ export function ActionBar() {
           <Link
             href="/contact#demo"
             data-cta="action-bar"
-            className="flex h-12 flex-[1.4] items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white active:bg-teal-800"
+            className="flex h-12 flex-[1.4] items-center justify-center rounded-[8px] bg-lime text-sm font-semibold text-ink active:brightness-95"
           >
             Book a demo
           </Link>
@@ -62,7 +62,7 @@ export function ActionBar() {
           rel="noopener noreferrer"
           data-cta="floating-whatsapp"
           aria-label="Chat with Fitvario on WhatsApp"
-          className="fixed bottom-6 right-6 z-40 hidden h-14 items-center gap-2 rounded-full bg-emerald-700 px-5 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-800 md:flex"
+          className="fv-frame fixed bottom-6 right-6 z-40 hidden h-12 items-center gap-2 rounded-[8px] bg-[#0b6b3a] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#085530] md:flex"
         >
           Chat on WhatsApp
         </a>

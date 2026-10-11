@@ -79,10 +79,7 @@ export default function Page() {
             rate here is only for the example. Use the rate your CA gives you.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="An invoice in the Fitvario app showing the tax line and the due amount"
-          caption="Placeholder. TODO: add a real screenshot of an invoice with a tax line."
-        />
+        <ScreenshotPlaceholder screen="invoice-tax-due" />
       </Section>
 
       <MidCta text="Want to see an invoice with tax lines and dues?" location="billing-mid" />

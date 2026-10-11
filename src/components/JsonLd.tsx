@@ -73,9 +73,9 @@ export function SoftwareApplicationJsonLd() {
         name: SITE_NAME,
         url: SITE_URL,
         applicationCategory: "BusinessApplication",
-        operatingSystem: "Android",
+        operatingSystem: "Android, Web",
         description:
-          "Gym management software for memberships, QR attendance, CRM, billing and analytics, with an Android app for members.",
+          "Gym management software for memberships, QR attendance, CRM, billing and analytics, with an Android app for members and an owner web dashboard.",
         ...(offers.length ? { offers } : {}),
       }}
     />

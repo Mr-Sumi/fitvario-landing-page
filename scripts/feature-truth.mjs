@@ -20,7 +20,8 @@ const FAIL = [
   ["workout_diet_plans", /\bFitvario[^.]{0,80}\b(workout|diet) plans?\b/i, "Fitvario workout/diet plans"],
   ["ecommerce_cart_orders", /\b(online store|product listings?|shopping cart|store orders?)\b/i, "online store, cart or orders"],
   ["class_scheduling_booking", /\bclass (scheduling|booking)\b|\bbook (a )?class\b/i, "class scheduling or booking"],
-  ["owner_web_dashboard", /\b(web dashboard|web panel|staff portal|owner dashboard|control panel)\b/i, "web dashboard or staff portal"],
+  ["owner_web_dashboard", /\b(web dashboard|web panel|owner dashboard|control panel)\b/i, "web dashboard"],
+  ["web_dashboard_staff_login", /\bstaff portal\b|\bstaff\b[^.]{0,60}\b(web dashboard|dash\.fitvario\.com)\b|\b(web dashboard|dash\.fitvario\.com)\b[^.]{0,60}\bstaff\b/i, "staff using the web dashboard or a staff portal"],
   ["report_export_excel_pdf", /\bexport(s|ed)?\b[^.]{0,40}\b(excel|pdf)\b|\b(excel|pdf) export\b/i, "Excel/PDF export"],
   ["passwordless_otp_only_login", /\bpasswordless\b|\bno password\b/i, "passwordless login"],
   ["due_payment_reminders", /\bautomat\w+[^.]{0,50}\b(due|payment|fee)s?\b[^.]{0,25}reminder/i, "automated due-payment reminders"],
@@ -62,7 +63,11 @@ for (const [path, file] of walk(appDir)) {
   scanned++;
   const main = (html.match(/<main id="main"[^>]*>([\s\S]*?)<\/main>/) ?? [])[1] ?? "";
   const text = decode(
-    main.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ")
+    main
+      .replace(/<script[\s\S]*?<\/script>/g, " ")
+      .replace(/<style[\s\S]*?<\/style>/g, " ")
+      .replace(/<\/(p|li|h[1-6]|dd|dt|td|th|div|section|nav|button)>/g, ". ")
+      .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ");
   const where = LEGAL.has(path) ? "[legal] " : "";
 

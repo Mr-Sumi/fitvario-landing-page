@@ -92,10 +92,7 @@ export default function Page() {
             wrote anything down.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="A member scanning the gym QR code in the Fitvario app"
-          caption="Placeholder. TODO: add a real screenshot of the scan screen."
-        />
+        <ScreenshotPlaceholder screen="qr-scan" />
       </Section>
 
       <MidCta text="Want to see a QR check-in on a sample gym?" location="qr-mid" />

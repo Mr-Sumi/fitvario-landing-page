@@ -53,6 +53,7 @@ export default function SupportPage() {
               "Staff roles, access controls, and permissions",
               "Billing, invoices, and Razorpay payments",
               "Android member app installation and OTP login",
+              "Signing in to the owner web dashboard at dash.fitvario.com",
               "Account deletion requests",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2 text-slate-600">

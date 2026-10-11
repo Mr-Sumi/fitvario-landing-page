@@ -5,6 +5,7 @@ import { PageShell } from "@/components/PageShell";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { ClosingCta } from "@/components/ClosingCta";
+import { ScreenshotFrame } from "@/components/ScreenshotFrame";
 import { author } from "@/config/site";
 
 export interface TocItem {
@@ -42,26 +43,26 @@ export function ContentLayout({
     <PageShell wide lang={lang}>
       <Breadcrumbs path={path} />
       {draft && (
-        <p className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+        <p className="mt-4 rounded-[8px] border border-[#e0c36b] bg-[#fdf6dc] p-3 text-sm text-[#5b4300]">
           Draft. This page is not published: it is noindex, out of the sitemap and out of the navigation until its
           gate is cleared in docs/seo/feature-status.json.
         </p>
       )}
-      <header className="mt-6 max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{h1}</h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-slate-700">{lead}</p>
-        <p className="mt-3 text-sm text-slate-500">
+      <header className="mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
+        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">{h1}</h1>
+        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">{lead}</p>
+        <p className="mt-4 text-sm text-mute">
           {showByline && author ? `By ${author} · ` : ""}Last updated: {formatDate(page.updated)}
         </p>
       </header>
 
       {toc && toc.length > 0 && (
-        <nav aria-label="On this page" className="mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white p-5">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-500">On this page</p>
-          <ul className="mt-3 grid gap-x-6 gap-y-1 sm:grid-cols-2">
+        <nav aria-label="On this page" className="mt-10 max-w-3xl border-y border-line py-5">
+          <p className="text-sm font-semibold text-ink">On this page</p>
+          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-0.5">
             {toc.map((t) => (
               <li key={t.id}>
-                <a href={`#${t.id}`} className="inline-block py-1.5 text-sm text-teal-700 underline-offset-2 hover:underline">
+                <a href={`#${t.id}`} className="fv-link inline-block py-1.5 text-[15px]">
                   {t.label}
                 </a>
               </li>
@@ -70,7 +71,7 @@ export function ContentLayout({
         </nav>
       )}
 
-      <div className="mt-10 max-w-3xl space-y-12">{children}</div>
+      <div className="mt-12 max-w-3xl space-y-16">{children}</div>
 
       <div className="max-w-3xl">
         <RelatedLinks paths={related} />
@@ -80,30 +81,24 @@ export function ContentLayout({
   );
 }
 
-export function Section({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
+export function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{title}</h2>
-      <div className="mt-4 space-y-4 text-[16px] leading-relaxed text-slate-700">{children}</div>
+      <h2 className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">{title}</h2>
+      <div className="fv-section mt-5 space-y-4 text-[1.0625rem] leading-[1.65] text-[#2f393f]">
+        {children}
+      </div>
     </section>
   );
 }
 
 export function Faq({ items }: { items: { q: string; a: string }[] }) {
   return (
-    <dl className="space-y-3">
+    <dl className="divide-y divide-line border-y border-line">
       {items.map((f) => (
-        <div key={f.q} className="rounded-xl border border-slate-200 bg-white p-5">
-          <dt className="text-[15px] font-semibold text-slate-900">{f.q}</dt>
-          <dd className="mt-2 text-[15px] leading-relaxed text-slate-600">{f.a}</dd>
+        <div key={f.q} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-8">
+          <dt className="text-base font-semibold text-ink">{f.q}</dt>
+          <dd className="text-[15px] leading-relaxed text-[#2f393f]">{f.a}</dd>
         </div>
       ))}
     </dl>
@@ -112,25 +107,23 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
 
 export function ExampleBox({ title = "Example", children }: { title?: string; children: React.ReactNode }) {
   return (
-    <aside className="rounded-xl border border-teal-200 bg-teal-50/60 p-5">
-      <p className="text-xs font-bold uppercase tracking-widest text-teal-800">{title} (illustrative)</p>
-      <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-slate-700">{children}</div>
+    <aside className="border-l-4 border-lime bg-white py-4 pl-5 pr-4">
+      <p className="text-sm font-semibold text-ink">{title} (illustrative)</p>
+      <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-[#2f393f]">{children}</div>
     </aside>
   );
 }
 
-// Real product screenshots only. Until one is supplied this shows a clearly marked placeholder.
-export function ScreenshotPlaceholder({ alt, caption }: { alt: string; caption: string }) {
-  return (
-    <figure>
-      <div
-        role="img"
-        aria-label={`Placeholder for screenshot: ${alt}`}
-        className="flex aspect-[16/9] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-100 px-6 text-center text-sm text-slate-600"
-      >
-        Screenshot placeholder. {alt}
-      </div>
-      <figcaption className="mt-2 text-[13px] text-slate-500">{caption}</figcaption>
-    </figure>
-  );
+// Real product screenshots only. Until the owner supplies one, ScreenshotFrame shows a neutral block marked
+// data-placeholder, and the launch check fails while any placeholder is on an indexable page.
+// `alt` and `caption` stay for the page copy; the frame uses the alt text registered in src/config/screens.ts.
+export function ScreenshotPlaceholder({
+  screen,
+  caption,
+}: {
+  screen: string;
+  alt?: string;
+  caption?: string;
+}) {
+  return <ScreenshotFrame screen={screen} caption={caption} />;
 }

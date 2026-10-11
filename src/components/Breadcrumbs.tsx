@@ -30,17 +30,17 @@ export function Breadcrumbs({ path }: { path: string }) {
   return (
     <>
       <BreadcrumbJsonLd items={items} />
-      <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+      <nav aria-label="Breadcrumb" className="text-sm text-mute">
         <ol className="flex flex-wrap items-center gap-1.5">
           {items.map((c, i) => (
             <li key={c.path} className="flex items-center gap-1.5">
               {i > 0 && <span aria-hidden>/</span>}
               {i === items.length - 1 ? (
-                <span aria-current="page" className="text-slate-700">
+                <span aria-current="page" className="text-ink">
                   {c.name}
                 </span>
               ) : (
-                <Link href={c.path} className="py-2 underline-offset-2 hover:text-slate-800 hover:underline">
+                <Link href={c.path} className="py-2 underline-offset-2 hover:text-ink hover:underline">
                   {c.name}
                 </Link>
               )}

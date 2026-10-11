@@ -179,3 +179,37 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **GymSmart:** no official website found. Search results disagree: Techjockey names Bizz1 Technologies and GoodFirms names Ajasys Technologies; the Capterra India and GoodFirms pages returned HTTP 403. If you know the vendor's real site, tell me and I will add it.
 - [ ] **Corrections made to the comparison data** (pages still draft): Okfit's biometric integration is listed only on its US-dollar plans (not the rupee plans); GymMaster also shows JPY for hardware and the branded app; Mindbody's page gives no amount for the branded-app add-on and mentions "North America and Asia" without naming India; Fitvario's door-access cell no longer implies it controls a door lock; Fitvario's "branded app" cells now say what white-label is. The facts file keeps the original rows and appends the corrections.
 - [ ] **Still do before publishing any comparison page:** the legal read and a human check of each vendor page, because the fetch tool summarises.
+
+## 20. Screenshots to supply (numbered, in this order)
+
+Put each file in `docs/seo/screens/` named with the two-digit number, for example `01-owner-home.png`. Demo gym with invented data only: no real member, payment, photo or phone number. Then run `node scripts/process-screens.mjs` (or tell me and I will). The launch check fails until every placeholder on an indexable page is replaced.
+
+| # | Screen | Device and size | Used on |
+|---|---|---|---|
+| 01 | Owner home screen in the Android app (collections, members, today's follow-ups) | Phone, as captured (about 1080 x 2340) | Home hero, features |
+| 02 | Member home screen: plan, end date, check-in button | Phone | Home hero, `/features/member-app` |
+| 03 | A member scanning the gym QR code | Phone | `/features/qr-attendance` |
+| 04 | The gym's QR code screen (owner or staff view) | Phone | `/features/qr-attendance` |
+| 05 | An invoice with a tax line and a due amount | Phone | `/features/gst-billing` |
+| 06 | Dues for today and the dues summary | Phone | `/features/gst-billing` |
+| 07 | The membership-expiring WhatsApp message on a test phone (test number only) | Phone | `/features/whatsapp-reminders` |
+| 08 | Today's enquiry follow-ups list | Phone | `/features/gym-crm` |
+| 09 | Branding settings with app name and logo | Phone | `/features/white-label-gym-app` |
+| 10 | Biometric device list and punch log | Phone | `/features/biometric-attendance` |
+| 11 | Multi-branch overview comparing branches | Phone | `/features/multi-branch-gym-software` |
+| 12 | Owner web dashboard home (dash.fitvario.com), only if you want it shown | Desktop browser window, 1440 x 900 | Home, features |
+
+Also still placeholders: two Hindi demo videos (`/hi/whatsapp-reminder`, `/hi/blog/gym-me-member-kaise-badhaye`). Record them, or tell me to remove the slots.
+
+## 21. Web dashboard answers still blank
+
+- [ ] **Who can log in to dash.fitvario.com:** owners only, or owners and staff? Until you say, the site says only "owner web dashboard" and never mentions staff on it (`web_dashboard_staff_login` is `not-live`).
+- [ ] **Scope:** same as the app, or a subset (list)? Until then no feature list is given for the dashboard.
+- [ ] **Account deletion on the dashboard:** the delete-account page names only the app. Tell me if the dashboard also offers it.
+- [ ] **Chrome evidence** (`docs/seo/dashboard-evidence.md`) was not collected: the extension could not read the page. Nothing was flipped from screen presence.
+
+## 22. Design pass (branch `seo-design`)
+
+- [ ] Read `DESIGN_BRIEF.md`. The palette is now the app's graphite and lime; the site's old teal "F" mark was my placeholder and is replaced by the real app icon.
+- [ ] The old blue Fitvario logo (`iconwithtitletaglineold.jpeg`) is superseded by the lime icon in the app. If the blue one is still your brand in print, tell me and I will adjust the palette.
+- [ ] Before and after screenshots at 390 px and 1440 px are in `docs/seo/design/`.

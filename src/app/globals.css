@@ -1,21 +1,46 @@
 @import "tailwindcss";
 
+/* Design tokens: see docs/seo/DESIGN_BRIEF.md. Palette from the Fitvario app: ink #192126, lime #BBF246. */
 :root {
   color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --surface: #ffffff;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --accent: #0d9488;
-  --accent-hover: #0f766e;
+  --ink: #192126;
+  --lime: #bbf246;
+  --lime-deep: #4d7c0f;
+  --paper: #fafaf6;
+  --line: #e3e5de;
+  --mute: #4b555b;
+  --radius: 8px;
+  --shadow: 0 1px 0 rgb(25 33 38 / 0.05), 0 12px 28px -16px rgb(25 33 38 / 0.35);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --accent: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-text), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-text), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Brand ramp. The older "teal" utility names are kept so existing pages keep working, but they now resolve to
+   the lime family: 400 is the brand lime, 700 is the text-safe deep lime. */
+@theme {
+  --color-ink: #192126;
+  --color-lime: #bbf246;
+  --color-paper: #fafaf6;
+  --color-line: #e3e5de;
+  --color-mute: #4b555b;
+  --color-teal-50: #f7fbe8;
+  --color-teal-100: #eef7cf;
+  --color-teal-200: #dcef9f;
+  --color-teal-300: #c8e66b;
+  --color-teal-400: #bbf246;
+  --color-teal-500: #6f9c12;
+  --color-teal-600: #5c8710;
+  --color-teal-700: #4d7c0f;
+  --color-teal-800: #3f6212;
+  --color-teal-900: #324d10;
 }
 
 *,
@@ -29,10 +54,24 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "tnum" 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Rupee amounts and tables line up when figures are tabular */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Smooth anchor scrolling */
@@ -42,16 +81,106 @@ body {
   }
 }
 
-/* Focus visible ring */
+/* Focus: always visible, 3 px ink */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--ink);
   outline-offset: 2px;
+}
+.on-ink :focus-visible {
+  outline-color: var(--lime);
 }
 
 /* Better tap target on mobile */
 a,
 button {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Text links: ink, underlined with a deep lime line that thickens on hover */
+.fv-link {
+  color: var(--ink);
+  text-decoration-line: underline;
+  text-decoration-color: var(--lime-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-thickness 150ms;
+}
+.fv-link:hover {
+  text-decoration-thickness: 3px;
+}
+
+/* Links written inside page copy get the same underline as .fv-link without touching each page */
+.fv-section a:not([class]),
+.fv-section a.font-medium {
+  color: var(--ink);
+  text-decoration-line: underline;
+  text-decoration-color: var(--lime-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: text-decoration-thickness 150ms;
+}
+.fv-section a:not([class]):hover,
+.fv-section a.font-medium:hover {
+  text-decoration-thickness: 3px;
+}
+.fv-section ul > li::marker {
+  color: var(--lime-deep);
+}
+.fv-section ol > li::marker {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Buttons */
+.fv-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color 150ms, border-color 150ms;
+}
+.fv-btn-primary {
+  background: var(--lime);
+  color: var(--ink);
+  border: 1px solid var(--lime);
+}
+.fv-btn-primary:hover {
+  background: #a9e02c;
+  border-color: #a9e02c;
+}
+.fv-btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.fv-btn-secondary:hover {
+  background: rgb(25 33 38 / 0.06);
+}
+.on-ink .fv-btn-secondary {
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.55);
+}
+.on-ink .fv-btn-secondary:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+/* One card rule: 1 px line border, 8 px radius, no shadow */
+.fv-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* Screenshot / device frames carry the one shadow */
+.fv-frame {
+  box-shadow: var(--shadow);
 }
 
 /* Invoice generator: when printing, show only the invoice. The class is added by the tool while it is on screen. */
@@ -75,32 +204,34 @@ button {
 
 /* Blog article typography (no typography plugin in this project) */
 .fv-prose {
-  color: #334155;
+  color: #2f393f;
   font-size: 1.0625rem;
   line-height: 1.75;
+  max-width: 68ch;
 }
 .fv-prose > * + * {
   margin-top: 1.1em;
 }
 .fv-prose h2 {
   margin-top: 2.2em;
-  color: #0f172a;
+  color: var(--ink);
   font-size: 1.5rem;
   font-weight: 650;
-  line-height: 1.3;
+  line-height: 1.25;
   scroll-margin-top: 6rem;
 }
 .fv-prose h3 {
   margin-top: 1.8em;
-  color: #0f172a;
+  color: var(--ink);
   font-size: 1.2rem;
   font-weight: 650;
   scroll-margin-top: 6rem;
 }
 .fv-prose a {
-  color: #0f766e;
+  color: var(--ink);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--lime-deep);
+  text-underline-offset: 3px;
 }
 .fv-prose ul,
 .fv-prose ol {
@@ -116,14 +247,14 @@ button {
   margin-top: 0.4em;
 }
 .fv-prose strong {
-  color: #0f172a;
+  color: var(--ink);
 }
 .fv-prose blockquote {
-  border-left: 4px solid #99f6e4;
-  background: #f0fdfa;
+  border-left: 4px solid var(--lime);
+  background: #fff;
   padding: 0.9em 1.1em;
-  border-radius: 0.5rem;
-  color: #115e59;
+  border-radius: var(--radius);
+  color: var(--ink);
   white-space: pre-line;
 }
 .fv-prose table {
@@ -133,17 +264,58 @@ button {
 }
 .fv-prose th,
 .fv-prose td {
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--line);
   padding: 0.55em 0.75em;
   text-align: left;
   vertical-align: top;
 }
 .fv-prose th {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: #f1f2ec;
+  color: var(--ink);
 }
 .fv-prose hr {
   border: 0;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--line);
   margin: 2em 0;
+}
+
+/* Legacy normalisation. Pages and tools written before the design pass still use the older utility names. These
+   unlayered rules bring them onto the one radius, no card shadows and the brand neutrals without editing every file.
+   New code should use the .fv-* classes and the ink/paper/line tokens instead. */
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl {
+  border-radius: var(--radius);
+}
+.shadow-sm,
+.shadow-md,
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl {
+  box-shadow: none;
+}
+.bg-slate-50 {
+  background-color: var(--paper);
+}
+.bg-slate-900 {
+  background-color: var(--ink);
+}
+.text-slate-900,
+.text-slate-800 {
+  color: var(--ink);
+}
+.border-slate-200,
+.border-slate-100,
+.border-slate-300 {
+  border-color: var(--line);
+}
+a.bg-teal-700,
+button.bg-teal-700 {
+  background-color: var(--lime);
+  color: var(--ink);
+  font-weight: 600;
+}
+a.bg-teal-700:hover,
+button.bg-teal-700:hover {
+  background-color: #a9e02c;
 }

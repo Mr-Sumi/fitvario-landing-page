@@ -98,10 +98,7 @@ export default function Page() {
             on the 19th. If the plan lapses, a message arrives on the 21st. Nobody at the gym sent any of them.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="The membership expiring WhatsApp message as it appears on a member's phone"
-          caption="Placeholder. TODO: add a real screenshot of the expiry reminder."
-        />
+        <ScreenshotPlaceholder screen="wa-expiry-reminder" />
       </Section>
 
       <MidCta text="Want to see the reminders running on a sample gym?" location="whatsapp-mid" />

@@ -34,6 +34,7 @@ const factors = [
 const included = [
   "Multi-gym and franchise management",
   "The Fitvario Android app for owners and staff",
+  ...(isLive("owner_web_dashboard") ? ["Owner web dashboard at dash.fitvario.com"] : []),
   isLive("white_label") ? "Your gym’s name and logo on the app’s splash and home screens" : "Android app for members",
   "QR attendance for members",
   "CRM, enquiries and follow-up reminders",
@@ -91,37 +92,39 @@ export default function PricingPage() {
       <SoftwareApplicationJsonLd />
       <Breadcrumbs path="/pricing" />
 
-      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-        Gym software price in India: what Fitvario costs and why
-      </h1>
-      <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-slate-600">
-        {haveTiers
-          ? "Fitvario plans are priced in Indian Rupees. Pick the one that fits your gym, or talk to us if you run several branches."
-          : "Fitvario does not publish a fixed price list yet. The gym software price you pay in India depends on your branches, your active members, how much you message and which modules you use. Tell us about your gym and we will send a quote, usually within 1 to 2 business days."}
-      </p>
-      <p className="mt-2 text-sm text-slate-500">Last updated: {formatDate(page.updated)}</p>
+      <header className="mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
+        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">
+          Gym software price in India: what Fitvario costs and why
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">
+          {haveTiers
+            ? "Fitvario plans are priced in Indian Rupees. Pick the one that fits your gym, or talk to us if you run several branches."
+            : "Fitvario does not publish a fixed price list yet. The gym software price you pay in India depends on your branches, your active members, how much you message and which modules you use. Tell us about your gym and we will send a quote, usually within 1 to 2 business days."}
+        </p>
+        <p className="mt-4 text-sm text-mute">Last updated: {formatDate(page.updated)}</p>
+      </header>
 
       {haveTiers && (
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-[8px] border border-line bg-line md:grid-cols-3">
           {pricingTiers.map((t) => (
-            <div key={t.name} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-slate-900">{t.name}</h2>
-              <p className="mt-3 text-3xl font-bold text-slate-900">
+            <div key={t.name} className="flex flex-col bg-white p-6">
+              <h2 className="text-xl font-bold text-ink">{t.name}</h2>
+              <p className="tnum mt-3 font-display text-4xl font-bold text-ink">
                 ₹{t.priceInr.toLocaleString("en-IN")}
-                <span className="ml-1 text-sm font-medium text-slate-500">{periodLabel(t.period)}</span>
+                <span className="ml-1 font-sans text-sm font-medium text-mute">{periodLabel(t.period)}</span>
               </p>
-              <p className="mt-1 text-xs text-slate-500">Plus GST. {t.basis}</p>
-              <ul className="mt-4 flex-1 space-y-2 text-sm text-slate-600">
+              <p className="mt-1 text-xs text-mute">Plus GST. {t.basis}</p>
+              <ul className="mt-4 flex-1 space-y-2 text-sm text-[#2f393f]">
                 {t.highlights.map((h) => (
                   <li key={h}>{h}</li>
                 ))}
               </ul>
               {t.cta === "signup" && selfServeSignup && signupUrl ? (
-                <a href={signupUrl} data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white hover:bg-teal-800">
+                <a href={signupUrl} data-cta="pricing-tier" className="fv-btn fv-btn-primary mt-5">
                   Sign up
                 </a>
               ) : (
-                <Link href="/contact#demo" data-cta="pricing-tier" className="mt-5 inline-flex h-12 items-center justify-center rounded-lg bg-teal-700 text-sm font-semibold text-white hover:bg-teal-800">
+                <Link href="/contact#demo" data-cta="pricing-tier" className="fv-btn fv-btn-primary mt-5">
                   Book a demo
                 </Link>
               )}
@@ -130,84 +133,97 @@ export default function PricingPage() {
         </div>
       )}
 
-      <section className="mt-12" aria-labelledby="factors-heading">
-        <h2 id="factors-heading" className="text-xl font-semibold text-slate-900">What decides your price</h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
-          {factors.map((f) => (
-            <div key={f.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-base font-semibold text-slate-900">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{f.body}</p>
-            </div>
-          ))}
+      <section className="mt-20" aria-labelledby="factors-heading">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <div>
+            <h2 id="factors-heading" className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">What decides your price</h2>
+            {typicalSetupExample && (
+              <p className="mt-5 border-l-4 border-lime bg-white py-3 pl-4 pr-3 text-[15px] leading-relaxed text-[#2f393f]">
+                <strong className="text-ink">Example setup:</strong> {typicalSetupExample.description}
+              </p>
+            )}
+          </div>
+          <dl className="divide-y divide-line border-y border-line">
+            {factors.map((f) => (
+              <div key={f.title} className="grid gap-1 py-5 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-8">
+                <dt className="text-lg font-semibold text-ink">{f.title}</dt>
+                <dd className="text-[15px] leading-relaxed text-[#2f393f]">{f.body}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        {typicalSetupExample && (
-          <p className="mt-5 rounded-lg bg-slate-50 p-4 text-sm text-slate-600">
-            <strong className="text-slate-800">Example setup:</strong> {typicalSetupExample.description}
-          </p>
-        )}
       </section>
 
-      <section className="mt-12 rounded-xl border border-teal-200 bg-teal-50/50 p-7" aria-labelledby="included-heading">
-        <h2 id="included-heading" className="text-xl font-semibold text-slate-900">What is included in every plan</h2>
-        <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+      <section className="on-ink mt-20 rounded-[8px] bg-ink p-7 text-white sm:p-10" aria-labelledby="included-heading">
+        <h2 id="included-heading" className="text-[1.75rem] font-bold leading-tight sm:text-[2rem]">What is included in every plan</h2>
+        <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2">
           {included.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-[14px] leading-relaxed text-slate-700">
-              <svg className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-              </svg>
+            <li key={item} className="flex items-start gap-3 text-[15px] leading-snug text-white/90">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-lime" aria-hidden />
               {item}
             </li>
           ))}
         </ul>
       </section>
 
-      <section id="quote" className="mt-12 scroll-mt-28 rounded-xl border border-slate-200 bg-white p-7 shadow-sm" aria-labelledby="quote-heading">
-        <h2 id="quote-heading" className="text-xl font-semibold text-slate-900">Get a quote for your gym</h2>
-        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-slate-600">
-          Share a few details and we will send a proposal for your setup. Prefer to talk first? You can{" "}
-          <Link href="/contact#demo" className="font-semibold text-teal-700 underline-offset-2 hover:underline">book a demo</Link>{" "}
-          instead.
-        </p>
-        <div className="mt-6">
-          <DemoForm variant="quote" />
+      <section id="quote" className="mt-20 scroll-mt-28" aria-labelledby="quote-heading">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <div>
+            <h2 id="quote-heading" className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">Get a quote for your gym</h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-[#2f393f]">
+              Share a few details and we will send a proposal for your setup. Prefer to talk first? You can{" "}
+              <Link href="/contact#demo" className="fv-link font-medium">book a demo</Link>{" "}
+              instead.
+            </p>
+          </div>
+          <div className="fv-card p-6 sm:p-8">
+            <DemoForm variant="quote" />
+          </div>
         </div>
       </section>
 
-      <section className="mt-12" aria-labelledby="compare-heading">
-        <h2 id="compare-heading" className="text-xl font-semibold text-slate-900">
-          Comparing gym membership software price quotes
-        </h2>
-        <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-slate-600">
-          Two quotes with the same headline number can end up very different a year later. Ask every vendor, us
-          included, these questions before you decide:
-        </p>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
-          {vendorQuestions.map((q) => (
-            <li key={q}>{q}</li>
-          ))}
-        </ul>
+      <section className="mt-20" aria-labelledby="compare-heading">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <div>
+            <h2 id="compare-heading" className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">
+              Comparing gym membership software price quotes
+            </h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-[#2f393f]">
+              Two quotes with the same headline number can end up very different a year later. Ask every vendor, us
+              included, these questions before you decide:
+            </p>
+          </div>
+          <ol className="divide-y divide-line border-y border-line">
+            {vendorQuestions.map((q, i) => (
+              <li key={q} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-4 text-[15px] leading-relaxed text-[#2f393f]">
+                <span className="tnum font-display text-lg font-semibold text-mute">{String(i + 1).padStart(2, "0")}</span>
+                {q}
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
-      <section className="mt-12" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" className="text-xl font-semibold text-slate-900">Pricing questions</h2>
-        <dl className="mt-4 space-y-3">
+      <section className="mt-20" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">Pricing questions</h2>
+        <dl className="mt-6 divide-y divide-line border-y border-line">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <dt className="text-sm font-bold text-slate-900">{f.q}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-slate-600">{f.a}</dd>
+            <div key={f.q} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-8">
+              <dt className="text-base font-semibold text-ink">{f.q}</dt>
+              <dd className="text-[15px] leading-relaxed text-[#2f393f]">{f.a}</dd>
             </div>
           ))}
         </dl>
       </section>
 
-      <div className="mt-8 rounded-lg border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
+      <div className="mt-12 border-t border-line pt-6 text-sm leading-relaxed text-mute">
         All prices are in Indian Rupees (INR) and exclude applicable taxes (GST) unless stated otherwise. Payments are
         processed securely through Razorpay. Subscription fees are non-refundable per our{" "}
-        <Link href="/refund" className="font-medium text-teal-700 underline-offset-2 hover:underline">Refund Policy</Link>.
+        <Link href="/refund" className="fv-link font-medium">Refund Policy</Link>.
         Questions? Email{" "}
-        <a href={`mailto:${contact.email}`} className="font-medium text-teal-700 underline-offset-2 hover:underline">{contact.email}</a>{" "}
+        <a href={`mailto:${contact.email}`} className="fv-link font-medium">{contact.email}</a>{" "}
         or read about{" "}
-        <Link href="/about" className="font-medium text-teal-700 underline-offset-2 hover:underline">Fitvario</Link>.
+        <Link href="/about" className="fv-link font-medium">Fitvario</Link>.
       </div>
 
       <RelatedLinks title="See what you get" paths={["/features", "/features/gym-crm", "/features/whatsapp-reminders"]} />

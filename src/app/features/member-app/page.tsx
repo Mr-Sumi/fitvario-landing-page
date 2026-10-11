@@ -119,10 +119,7 @@ export default function Page() {
             </li>
           )}
         </ul>
-        <ScreenshotPlaceholder
-          alt="A member's home screen in the Fitvario app showing plan status and a check-in button"
-          caption="Placeholder. TODO: add a real screenshot of the member home screen."
-        />
+        <ScreenshotPlaceholder screen="member-home" />
       </Section>
 
       <MidCta text="Want to see the member side on a sample gym?" location="member-app-mid" />

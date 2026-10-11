@@ -13,6 +13,7 @@ if (!existsSync(appDir)) {
 }
 
 const failures = [];
+const placeholders = [];
 const warnings = [];
 const fail = (where, msg) => failures.push(`${where}: ${msg}`);
 const warn = (where, msg) => warnings.push(`${where}: ${msg}`);
@@ -50,6 +51,11 @@ for (const [path, file] of walk(appDir)) {
 
   if (noindex) continue;
   indexable++;
+
+  // ---- placeholders: nothing ships with a placeholder on a page search engines can index ----
+  for (const m of html.matchAll(/data-placeholder="([^"]*)"/g)) {
+    placeholders.push(`${path}  (${m[1]})`);
+  }
 
   // ---- conversion audit (public pages) ----
   const hasDemo = /href="\/contact#demo"/.test(html) || path === "/contact";
@@ -94,6 +100,11 @@ for (const f of staticFiles.filter((x) => /\.(js|css|html|json)$/.test(x))) {
 const cfg = readFileSync(join(root, "next.config.ts"), "utf8");
 for (const h of ["Strict-Transport-Security", "X-Content-Type-Options", "Referrer-Policy"]) {
   if (!cfg.includes(h)) fail("next.config.ts", `header ${h} not configured`);
+}
+
+if (placeholders.length) {
+  fail("placeholders", `${placeholders.length} placeholder(s) on indexable pages. Add the real screenshots (docs/seo/screens, then node scripts/process-screens.mjs) or unpublish the page:`);
+  for (const p of placeholders) failures.push(`    - ${p}`);
 }
 
 console.log(`Checked ${indexable} public pages for conversion, ${staticFiles.length} static files for leaks.`);

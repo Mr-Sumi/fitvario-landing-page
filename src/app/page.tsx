@@ -7,6 +7,7 @@ import { isLive } from "@/lib/features";
 import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
 import { Proof } from "@/components/Proof";
 import { ClosingCta } from "@/components/ClosingCta";
+import { ScreenshotFrame } from "@/components/ScreenshotFrame";
 
 export const metadata = buildMetadata("/");
 
@@ -21,30 +22,30 @@ const memberApp = branded ? "the Fitvario Android app, which can show your gym�
 
 const problems = [
   {
-    bad: "Fee reminders lost in WhatsApp groups",
+    bad: "Renewals chased by hand in WhatsApp groups",
     good: expiry
-      ? "Automated WhatsApp reminders go out before every membership ends, so you stop chasing renewals by hand"
-      : "WhatsApp, SMS and push alerts reach members straight from the gym, not from a message lost in a group",
+      ? "A WhatsApp reminder goes out 7, 3 and 1 days before a plan ends, and one the day after. Nobody at the desk sends it."
+      : "WhatsApp, SMS and push alerts reach members straight from the gym, not from a message lost in a group.",
   },
   {
-    bad: "Paper registers and manual attendance",
-    good: "Members scan your gym's QR code with the app. Check-in, check-out and time spent are logged for you",
+    bad: "A paper register at the door",
+    good: "Members scan the gym's QR code with the app. The visit is saved with the time, and in two-scan mode the time spent.",
   },
   {
-    bad: "Leads walk in and nobody follows up",
-    good: "The CRM keeps every enquiry with a follow-up date and a list of today's calls",
+    bad: "Walk-in enquiries nobody calls back",
+    good: "Every enquiry gets a next follow-up date, and one list shows who to call today.",
   },
   {
-    bad: "No visibility into what you collected today",
-    good: "One app for collections, expenses and member growth",
+    bad: "Not knowing what came in today",
+    good: "Collections, expenses and member growth in one app, not in three sheets.",
   },
   {
-    bad: "Members forget their plan and stop coming",
-    good: `An Android app with their plan, attendance and progress${diet ? ", workouts and diet" : ""}, plus notifications from the gym`,
+    bad: "Members who forget when their plan ends",
+    good: `Members see their plan and end date in the app, with attendance and progress${diet ? ", workouts and diet" : ""}, plus notifications from the gym.`,
   },
   {
-    bad: "Running multiple branches in separate spreadsheets",
-    good: "All branches in one account, with revenue and attendance side by side",
+    bad: "One spreadsheet per branch",
+    good: "All branches under one login, with revenue and attendance side by side.",
   },
 ];
 
@@ -183,163 +184,164 @@ const faqs = [
   },
 ];
 
-/* ─── Small helpers ──────────────────────────────────────────────────────── */
-function Check({ className = "text-teal-600" }: { className?: string }) {
-  return (
-    <svg className={`mt-0.5 h-4 w-4 shrink-0 ${className}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="text-xs font-bold uppercase tracking-widest text-teal-700">{children}</p>;
-}
-
-const roleStyles = [
-  { badge: "bg-teal-100 text-teal-800", card: "border-teal-100 from-teal-50/60", check: "text-teal-500" },
-  { badge: "bg-indigo-100 text-indigo-800", card: "border-indigo-100 from-indigo-50/60", check: "text-indigo-500" },
-  { badge: "bg-violet-100 text-violet-800", card: "border-violet-100 from-violet-50/60", check: "text-violet-500" },
-];
-
 /* ─── Page ───────────────────────────────────────────────────────────────── */
+const wrap = "mx-auto max-w-6xl px-5 sm:px-8";
+const band = "py-[4.5rem] lg:py-28";
+
 export default function Home() {
   const wa = whatsappLink("Hi Fitvario, I'd like a demo for my gym.");
   const segments = publishedPages("segment");
   const tools = publishedPages("tool");
   const isPublished = (path: string) => pages.some((p) => p.path === path && isIndexable(p));
+  const facts = [
+    "Payments via Razorpay",
+    expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts",
+    "Android app for your members",
+    "Registered in Bhopal, India",
+  ];
 
   return (
     <>
       <SoftwareApplicationJsonLd />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40"
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal-400/20 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
-          <span className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-teal-700">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
-            Fitvario gym management, built for gyms across India
-          </span>
-
-          <h1 className="mx-auto max-w-3xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08]">
-            Stop running your gym on WhatsApp groups and spreadsheets
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 sm:text-xl">
-            {`Fitvario is gym management software for India: digital memberships, QR attendance, member alerts, a CRM for leads${diet ? ", workout and diet plans" : ""} and ${memberApp} for your members.`}
-          </p>
-
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/contact#demo"
-              data-cta="hero"
-              className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-700 px-8 text-sm font-bold text-white shadow-md transition hover:bg-teal-800 active:scale-95 sm:w-auto"
-            >
-              Book a free demo
-            </Link>
-            {wa ? (
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cta="hero"
-                className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-emerald-600 bg-white px-8 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 active:scale-95 sm:w-auto"
-              >
-                Chat on WhatsApp
-              </a>
-            ) : (
-              <a
-                href="#problems"
-                className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-95 sm:w-auto"
-              >
-                See what we solve
-              </a>
+      {/* HERO: headline left, real product screens right */}
+      <section className="border-b border-line">
+        <div className={`${wrap} grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:pb-24 lg:pt-20`}>
+          <div>
+            <p className="text-[15px] font-medium text-mute">Fitvario gym management for owners in India</p>
+            <h1 className="mt-4 max-w-2xl text-[2.5rem] font-bold leading-[1.06] text-ink sm:text-6xl">
+              Stop running your gym on WhatsApp groups and spreadsheets
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#2f393f]">
+              {`Fitvario is gym management software for India. It keeps your members and their plan end dates, records attendance when they scan the gym QR code, holds your enquiry list, and gives your members ${memberApp}${diet ? ", with workout and diet plans" : ""}.`}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact#demo" data-cta="hero" className="fv-btn fv-btn-primary">
+                Book a free demo
+              </Link>
+              {wa ? (
+                <a href={wa} target="_blank" rel="noopener noreferrer" data-cta="hero" className="fv-btn fv-btn-secondary">
+                  <span className="h-2 w-2 rounded-full bg-[#25a244]" aria-hidden />
+                  Chat on WhatsApp
+                </a>
+              ) : (
+                <a href="#problems" className="fv-btn fv-btn-secondary">
+                  See what changes
+                </a>
+              )}
+            </div>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-mute">
+              {facts.map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 bg-lime-deep" style={{ background: "var(--lime-deep)" }} aria-hidden />
+                  {t}
+                </li>
+              ))}
+            </ul>
+            {isPublished("/hi") && (
+              <p className="mt-6 text-sm text-mute">
+                Hindi aur Hinglish mein padhna hai?{" "}
+                <Link href="/hi" lang="hi-Latn" className="fv-link font-medium">
+                  Hinglish mein dekhein
+                </Link>
+              </p>
             )}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5">
-            {["Payments via Razorpay", expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts", "Android app for your members", "Registered in Bhopal, India"].map((t) => (
-              <span key={t} className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                <Check className="text-teal-500" />
-                {t}
-              </span>
-            ))}
+          <div className="relative mx-auto flex w-full max-w-md justify-center gap-5 lg:max-w-none lg:justify-end">
+            <div className="w-full max-w-[250px]">
+              <ScreenshotFrame screen="owner-home" priority />
+            </div>
+            <div className="mt-14 hidden w-full max-w-[250px] sm:block">
+              <ScreenshotFrame screen="member-home" />
+            </div>
           </div>
         </div>
-        {isPublished("/hi") && (
-          <p className="relative -mt-8 pb-12 text-center text-sm text-slate-600">
-            Hindi aur Hinglish mein padhna hai?{" "}
-            <Link href="/hi" lang="hi-Latn" className="font-semibold text-teal-700 underline-offset-2 hover:underline">
-              Hinglish mein dekhein
-            </Link>
+      </section>
+
+      {/* WHAT CHANGES: a ruled before and after table, not cards */}
+      <section id="problems" className={band}>
+        <div className={wrap}>
+          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">What changes on a normal Monday</h2>
+          <div className="mt-10 border-t border-ink">
+            <div className="hidden grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-10 border-b border-line py-3 text-sm font-semibold text-mute md:grid">
+              <p>Today</p>
+              <p>With Fitvario</p>
+            </div>
+            <ul className="divide-y divide-line">
+              {problems.map((p) => (
+                <li key={p.bad} className="grid gap-2 py-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
+                  <p className="text-[17px] text-mute">{p.bad}</p>
+                  <p className="text-[17px] font-medium leading-snug text-ink">{p.good}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ONE RENEWAL: a single large number on ink */}
+      {expiry && (
+        <section className="on-ink bg-ink text-white">
+          <div className={`${wrap} grid gap-10 py-[4.5rem] lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20 lg:py-24`}>
+            <div>
+              <h2 className="text-[2rem] font-bold leading-tight sm:text-[2.5rem]">Renewal reminders go out without anyone at the desk</h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-white/80">
+                Once a day Fitvario checks each member&apos;s plan end date. Members who are 7, 3 or 1 days from the end get
+                a WhatsApp message, and members whose plan ended yesterday get one more. Each message uses a credit from your
+                gym&apos;s messaging wallet.
+              </p>
+              {isPublished("/features/whatsapp-reminders") && (
+                <p className="mt-6">
+                  <Link href="/features/whatsapp-reminders" className="font-semibold text-white underline decoration-lime decoration-2 underline-offset-4 hover:decoration-4">
+                    How the reminders work
+                  </Link>
+                </p>
+              )}
+            </div>
+            <div>
+              <ol className="grid grid-cols-4 gap-3 border-t border-white/25 pt-6">
+                {[
+                  ["7", "days before"],
+                  ["3", "days before"],
+                  ["1", "day before"],
+                  ["+1", "day after"],
+                ].map(([n, l]) => (
+                  <li key={l + n}>
+                    <p className="font-display text-5xl font-bold leading-none text-lime sm:text-7xl">{n}</p>
+                    <p className="mt-3 text-sm text-white/80">{l}</p>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-8 text-sm leading-relaxed text-white/70">
+                Example: a plan that ends on the 20th is reminded on the 13th, 17th and 19th, and the expired message goes on
+                the 21st. Dates are illustrative.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ROLES: three rows with a left label, not three tinted cards */}
+      <section id="platform" className={band}>
+        <div className={wrap}>
+          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">One app, three logins</h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#2f393f]">
+            Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the
+            same app with their own login, and it can show your gym’s name and logo on its splash and home screens.
           </p>
-        )}
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-slate-50" aria-hidden />
-      </section>
-
-      {/* PROBLEMS WE SOLVE */}
-      <section id="problems" className="bg-slate-50 py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto mb-12 max-w-xl text-center">
-            <SectionLabel>Why gym owners choose Fitvario</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-              Every gym has these problems.
-              <br className="hidden sm:block" /> Here is how we fix them.
-            </h2>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {problems.map((p) => (
-              <div key={p.bad} className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-50">
-                    <svg className="h-3 w-3 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </span>
-                  <p className="text-sm font-medium leading-snug text-slate-600">{p.bad}</p>
+          <div className="mt-10 divide-y divide-line border-y border-line">
+            {platformViews.map((v) => (
+              <div key={v.role} className="grid gap-5 py-8 md:grid-cols-[minmax(0,3fr)_minmax(0,5fr)] md:gap-12">
+                <div>
+                  <p className="text-sm font-semibold text-mute">{v.role}</p>
+                  <h3 className="mt-1 text-2xl font-bold leading-snug text-ink">{v.headline}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-mute">{v.sub}</p>
                 </div>
-                <div className="mx-5 border-t border-dashed border-slate-100" />
-                <div className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-50">
-                    <Check className="mt-0 text-teal-600" />
-                  </span>
-                  <p className="text-sm font-semibold leading-snug text-slate-800">{p.good}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PLATFORM VIEWS */}
-      <section id="platform" className="border-y border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto mb-12 max-w-xl text-center">
-            <SectionLabel>Platform</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-              One platform. Three experiences.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the same app with their own login, and it can show your gym’s name and logo on its splash and home screens. All three stay in sync.
-            </p>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-3">
-            {platformViews.map((v, i) => (
-              <div key={v.role} className={`flex flex-col rounded-2xl border bg-gradient-to-b to-white p-6 shadow-sm ${roleStyles[i].card}`}>
-                <span className={`mb-4 self-start rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide ${roleStyles[i].badge}`}>
-                  {v.role}
-                </span>
-                <h3 className="text-base font-bold text-slate-900">{v.headline}</h3>
-                <p className="mt-1.5 text-sm text-slate-600">{v.sub}</p>
-                <ul className="mt-5 space-y-2.5">
+                <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                   {v.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2.5 text-sm text-slate-700">
-                      <Check className={roleStyles[i].check} />
+                    <li key={pt} className="flex gap-3 text-[15px] leading-snug text-[#2f393f]">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0" style={{ background: "var(--lime-deep)" }} aria-hidden />
                       {pt}
                     </li>
                   ))}
@@ -350,65 +352,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section id="features" className="bg-slate-50 py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto mb-12 max-w-xl text-center">
-            <SectionLabel>Features</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-              Gym management software India owners can run from a phone
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              From the first member you add to your daily operations, the tools your team actually needs in one place.
-            </p>
-          </div>
-
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <li key={f.title} className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-200 hover:shadow-md">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700 ring-1 ring-teal-100">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={f.d} />
-                  </svg>
-                </span>
-                <div className="min-w-0">
-                  <h3 className="text-sm font-bold text-slate-900">{f.title}</h3>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600">{f.desc}</p>
-                  {f.href && isPublished(f.href) && (
-                    <Link href={f.href} className="mt-2 inline-block py-1 text-[13px] font-semibold text-teal-700 underline-offset-2 hover:underline">
-                      How it works
-                    </Link>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/features"
-              className="inline-flex h-12 items-center justify-center rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
-            >
-              See every feature
-            </Link>
+      {/* FEATURES: numbered list in two columns, no icons */}
+      <section id="features" className="border-t border-line bg-white">
+        <div className={`${wrap} ${band}`}>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+            <div>
+              <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">
+                Gym management software India owners can run from a phone
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#2f393f]">
+                From the first member you add to the daily close, the tools a small team uses most.
+              </p>
+              <p className="mt-6">
+                <Link href="/features" className="fv-btn fv-btn-secondary">
+                  See every feature
+                </Link>
+              </p>
+            </div>
+            <ol className="divide-y divide-line border-y border-line">
+              {features.map((f, i) => (
+                <li key={f.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-5">
+                  <span className="tnum font-display text-lg font-semibold text-mute">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-ink">{f.title}</h3>
+                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#2f393f]">{f.desc}</p>
+                    {f.href && isPublished(f.href) && (
+                      <Link href={f.href} className="fv-link mt-2 inline-block py-1 text-[15px] font-medium">
+                        How it works
+                      </Link>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* WHO IT IS FOR (shows once segment pages are published) */}
+      {/* WHO IT IS FOR */}
       {segments.length > 0 && (
-        <section className="border-t border-slate-200 bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <div className="mx-auto mb-10 max-w-xl text-center">
-              <SectionLabel>Who it is for</SectionLabel>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Built for the way you run your gym</h2>
-            </div>
-            <ul className="grid gap-4 sm:grid-cols-3">
+        <section className={`${band} border-t border-line`}>
+          <div className={wrap}>
+            <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Built for the way you run your gym</h2>
+            <ul className="mt-8 divide-y divide-line border-y border-line">
               {segments.map((s) => (
                 <li key={s.path}>
-                  <Link href={s.path} className="block h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300">
-                    <span className="text-sm font-bold text-teal-700">{s.navLabel ?? s.title.split("|")[0].trim()}</span>
-                    <span className="mt-2 block text-[13px] leading-relaxed text-slate-600">{s.description}</span>
+                  <Link href={s.path} className="group grid gap-1 py-5 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
+                    <span className="text-lg font-semibold text-ink underline decoration-1 underline-offset-4 group-hover:decoration-2" style={{ textDecorationColor: "var(--lime-deep)" }}>
+                      {s.navLabel ?? s.title.split("|")[0].trim()}
+                    </span>
+                    <span className="text-[15px] leading-relaxed text-mute">{s.description}</span>
                   </Link>
                 </li>
               ))}
@@ -417,52 +410,47 @@ export default function Home() {
         </section>
       )}
 
-      {/* FREE TOOLS (shows once tool pages are published) */}
+      {/* FREE TOOLS */}
       {tools.length > 0 && (
-        <section className="border-t border-slate-200 bg-slate-50 py-16 sm:py-20">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <div className="mx-auto mb-10 max-w-xl text-center">
-              <SectionLabel>Free tools</SectionLabel>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Calculators for gym owners
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-slate-600">
-                Work out your break-even, pricing, churn and revenue in your browser. No sign-up.
-              </p>
+        <section className="border-t border-line bg-white">
+          <div className={`${wrap} ${band}`}>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+              <div>
+                <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Calculators for gym owners</h2>
+                <p className="mt-4 text-lg leading-relaxed text-[#2f393f]">
+                  Work out your break-even, pricing, churn and revenue in your browser. No sign-up.
+                </p>
+              </div>
+              <ul className="divide-y divide-line border-y border-line">
+                {tools.map((t) => (
+                  <li key={t.path}>
+                    <Link href={t.path} className="group block py-5">
+                      <span className="text-lg font-semibold text-ink underline decoration-1 underline-offset-4 group-hover:decoration-2" style={{ textDecorationColor: "var(--lime-deep)" }}>
+                        {t.navLabel ?? t.title.split("|")[0].trim()}
+                      </span>
+                      <span className="mt-1.5 block text-[15px] leading-relaxed text-mute">{t.description}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {tools.map((t) => (
-                <li key={t.path}>
-                  <Link href={t.path} className="block h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300">
-                    <span className="text-sm font-bold text-teal-700">{t.navLabel ?? t.title.split("|")[0].trim()}</span>
-                    <span className="mt-2 block text-[13px] leading-relaxed text-slate-600">{t.description}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
       )}
 
-      {/* HOW IT WORKS */}
-      <section className="border-t border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="mx-auto mb-12 max-w-xl text-center">
-            <SectionLabel>Getting started</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">Three steps to go live</h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              We help you set everything up. You don&apos;t need an IT team.
-            </p>
-          </div>
-          <ol className="relative grid gap-6 sm:grid-cols-3">
-            <div className="absolute left-[calc(16.67%+1.5rem)] right-[calc(16.67%+1.5rem)] top-8 hidden border-t-2 border-dashed border-slate-200 sm:block" aria-hidden />
+      {/* HOW IT STARTS */}
+      <section className={`${band} border-t border-line`}>
+        <div className={wrap}>
+          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Three steps to go live</h2>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#2f393f]">
+            We help you set everything up. You do not need an IT team.
+          </p>
+          <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((s) => (
-              <li key={s.n} className="relative flex flex-col items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:items-center sm:text-center">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-700 text-base font-extrabold text-white shadow-md">{s.n}</div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900">{s.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{s.desc}</p>
-                </div>
+              <li key={s.n} className="border-t-2 border-ink pt-4">
+                <p className="font-display text-5xl font-bold leading-none text-ink">{s.n}</p>
+                <h3 className="mt-4 text-xl font-semibold text-ink">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{s.desc}</p>
               </li>
             ))}
           </ol>
@@ -471,65 +459,63 @@ export default function Home() {
 
       <Proof />
 
-      {/* PRICING TEASER */}
-      <section className="border-t border-slate-200 bg-slate-50 py-14 sm:py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <SectionLabel>Pricing</SectionLabel>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            {pricingTiers.length > 0 ? "Plans priced in rupees" : "Priced for your gym's size"}
-          </h2>
-          <p className="mt-3 text-base leading-relaxed text-slate-600">
-            {pricingTiers.length > 0
-              ? "See the plans and what each one includes."
-              : "Your price depends on your branches, active members and how much you message. See what is included in every plan and ask for a quote."}
-          </p>
-          <Link
-            href="/pricing"
-            data-cta="home-pricing"
-            className="mt-6 inline-flex h-12 items-center justify-center rounded-xl border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
-          >
+      {/* PRICING */}
+      <section className="border-y border-line bg-white">
+        <div className={`${wrap} flex flex-col gap-6 py-14 sm:flex-row sm:items-center sm:justify-between`}>
+          <div className="max-w-xl">
+            <h2 className="text-[1.75rem] font-bold leading-tight text-ink">
+              {pricingTiers.length > 0 ? "Plans priced in rupees" : "Priced for your gym's size"}
+            </h2>
+            <p className="mt-2 text-base leading-relaxed text-[#2f393f]">
+              {pricingTiers.length > 0
+                ? "See the plans and what each one includes."
+                : "Your price depends on your branches, active members and how much you message. See what is included in every plan and ask for a quote."}
+            </p>
+          </div>
+          <Link href="/pricing" data-cta="home-pricing" className="fv-btn fv-btn-secondary shrink-0">
             See pricing
           </Link>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="border-t border-slate-200 bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <div className="mb-10 text-center">
-            <SectionLabel>FAQ</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Questions gym owners ask us</h2>
+      <section id="faq" className={band}>
+        <div className={wrap}>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+            <div>
+              <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Questions gym owners ask us</h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-mute">
+                Still have questions?{" "}
+                <Link href="/contact" className="fv-link font-medium">
+                  Talk to our team
+                </Link>
+                . We reply {contact.responseTime}.
+              </p>
+            </div>
+            <dl className="divide-y divide-line border-y border-line">
+              {faqs.map((faq) => (
+                <div key={faq.q} className="py-5">
+                  <dt className="text-lg font-semibold text-ink">{faq.q}</dt>
+                  <dd className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{faq.a}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <dl className="space-y-3">
-            {faqs.map((faq) => (
-              <div key={faq.q} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <dt className="text-sm font-bold text-slate-900">{faq.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-slate-600">{faq.a}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-8 text-center text-sm text-slate-500">
-            Still have questions?{" "}
-            <Link href="/contact" className="font-semibold text-teal-700 underline-offset-2 hover:underline">
-              Talk to our team
-            </Link>
-            . We reply {contact.responseTime}.
-          </p>
         </div>
       </section>
 
       {/* CLOSING CTA */}
-      <section className="bg-slate-50 pb-16 sm:pb-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <section className="pb-16 sm:pb-20">
+        <div className={wrap}>
           <ClosingCta
             heading="Ready to run your gym the right way?"
             body="Book a demo and we will show you memberships, QR attendance, the CRM and the member app. No commitment."
             location="home-closing"
           />
-          <p className="mt-6 text-center text-xs text-slate-500">
+          <p className="mt-6 text-sm text-mute">
             By contacting us you agree to our{" "}
-            <Link href="/privacy" className="underline underline-offset-2 hover:text-slate-700">Privacy Policy</Link> and{" "}
-            <Link href="/terms" className="underline underline-offset-2 hover:text-slate-700">Terms of Service</Link>.
+            <Link href="/privacy" className="fv-link">Privacy Policy</Link> and{" "}
+            <Link href="/terms" className="fv-link">Terms of Service</Link>.
           </p>
         </div>
       </section>

@@ -39,7 +39,7 @@ const staticPages: PageDef[] = [
     title: "Gym Management Software India: Billing, CRM | Fitvario",
     description:
       "Run memberships, QR attendance, CRM and revenue from one place. Gym management software built for Indian gyms. Book a free demo with Fitvario.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
   },
   {
     path: "/features",
@@ -47,7 +47,7 @@ const staticPages: PageDef[] = [
     title: "Gym Management Software Features for Indian Gyms | Fitvario",
     description:
       "See what Fitvario does for gym owners, staff and members: memberships, QR attendance, CRM, billing, revenue analytics and a member app for Android.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "Features",
   },
   {
@@ -56,7 +56,7 @@ const staticPages: PageDef[] = [
     title: "Gym Software Price in India: Custom Quote | Fitvario",
     description:
       "Fitvario pricing depends on your branches, active members and messaging volume. See what is included in every plan and request a quote for your gym.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "Pricing",
   },
   {
@@ -65,7 +65,7 @@ const staticPages: PageDef[] = [
     title: "About Fitvario | Gym Management Software, Bhopal, India",
     description:
       "Fitvario is gym management software from Bhopal for Indian gym owners, staff and members. Learn what we build, who it is for and how to reach us.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "About",
   },
   {
@@ -83,7 +83,7 @@ const staticPages: PageDef[] = [
     title: "Fitvario Support | Help for Gym Owners and Members",
     description:
       "Get help with Fitvario setup, QR attendance, memberships, billing and staff access. Email support@fitvario.com and tell us what you need.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
   },
   {
     path: "/grievance",
@@ -150,7 +150,7 @@ const staticPages: PageDef[] = [
     title: "WhatsApp Reminders for Gym Membership Renewals | Fitvario",
     description:
       "Fitvario sends automated WhatsApp reminders before a gym membership ends and after it expires. See the schedule, the credits used and what you control.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "WhatsApp reminders",
     gate: "whatsapp_expiry_reminders",
   },
@@ -160,7 +160,7 @@ const staticPages: PageDef[] = [
     title: "Gym CRM Software India: Enquiries and Follow-ups | Fitvario",
     description:
       "Log every gym enquiry, set follow-up dates and open today's calls in one list. Fitvario's gym CRM keeps walk-in leads from going cold.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "Gym CRM",
   },
   {
@@ -169,7 +169,7 @@ const staticPages: PageDef[] = [
     title: "Gym Software with GST Billing and Dues Tracking | Fitvario",
     description:
       "Create gym invoices with tax lines, take part payments and see pending dues by member. Fitvario billing keeps fee collection organised.",
-    updated: "2026-10-10",
+    updated: "2026-10-11",
     navLabel: "Billing and dues",
     gate: "gst_tax_lines",
   },

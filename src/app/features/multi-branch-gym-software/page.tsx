@@ -91,10 +91,7 @@ export default function Page() {
             owner now knows which branch to call first.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="The multi-branch overview in the Fitvario app comparing three branches"
-          caption="Placeholder. TODO: add a real screenshot of the multi-branch overview."
-        />
+        <ScreenshotPlaceholder screen="multi-branch" />
       </Section>
 
       <MidCta text="Running more than one gym? See the comparison view." location="multibranch-mid" />

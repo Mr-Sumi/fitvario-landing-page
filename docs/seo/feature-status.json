@@ -183,10 +183,10 @@
       "evidence": "Chrome in this run: https://app.fitvario.com 301-redirects to https://play.google.com/store/apps/details?id=com.fitvario.sumigyan. The listing loads with an Install button, 'Fitvario – Gym Management App', last updated Sep 28, 2026. Open question: the listing text is aimed at gym owners and trainers, so confirm whether this single app is also the member app."
     },
     "owner_web_dashboard": {
-      "status": "not-live",
-      "verifiedHow": "verified by owner",
+      "status": "live",
+      "verifiedHow": "owner statement (2026-10-11); not checked in a browser",
       "verifiedOn": "2026-10-11",
-      "evidence": "Owner (Sumit), 2026-10-11: there is no owner web dashboard; owners use the mobile app. Site copy must not mention a web dashboard, web panel or staff portal."
+      "evidence": "Owner: https://dash.fitvario.com is the owner web dashboard (this replaces the earlier \"none\"). Who can log in (owners only, or owners and staff) and its scope (same as the app, or a subset) were left blank, so copy says only \"owner web dashboard\": no staff, no feature list beyond what supplied screenshots show."
     },
     "diet_plans": {
       "status": "not-live",
@@ -313,6 +313,12 @@
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
       "evidence": "Owner: one app, the Fitvario app on Google Play (com.fitvario.sumigyan), with role-based login for owners, staff and members."
+    },
+    "web_dashboard_staff_login": {
+      "status": "not-live",
+      "verifiedHow": "owner statement (blank)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Owner left \"owners only / owners and staff\" blank. No page may say staff use the web dashboard or call it a staff portal until this is set to live."
     }
   }
 }

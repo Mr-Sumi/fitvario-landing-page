@@ -3,9 +3,10 @@ export function VideoPlaceholder({ title }: { title: string }) {
   return (
     <figure>
       <div
+        data-placeholder="video"
         role="img"
         aria-label={`Video abhi available nahi hai: ${title}`}
-        className="flex aspect-video items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-100 px-6 text-center text-sm text-slate-600"
+        className="flex aspect-video items-center justify-center rounded-[8px] border-2 border-dashed border-line bg-[#eceee6] px-6 text-center text-sm text-slate-600"
       >
         Video placeholder: {title}. TODO: Hindi YouTube demo record hone par yahan embed karein.
       </div>

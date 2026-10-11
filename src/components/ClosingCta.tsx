@@ -12,32 +12,19 @@ export function ClosingCta({
 }) {
   const wa = whatsappLink("Hi Fitvario, I'd like a demo for my gym.");
   return (
-    <section className="mt-16 rounded-2xl bg-slate-900 px-6 py-10 text-center sm:px-10">
-      <h2 className="mx-auto max-w-xl text-balance text-xl font-bold text-white sm:text-2xl">{heading}</h2>
-      <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-slate-300">{body}</p>
-      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <Link
-          href="/contact#demo"
-          data-cta={location}
-          className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-teal-700 px-8 text-sm font-bold text-white transition hover:bg-teal-600 sm:w-auto"
-        >
+    <section className="on-ink mt-20 rounded-[8px] bg-ink px-6 py-10 sm:px-10 sm:py-12">
+      <h2 className="max-w-xl text-[1.75rem] font-bold leading-tight text-white sm:text-3xl">{heading}</h2>
+      <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80">{body}</p>
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <Link href="/contact#demo" data-cta={location} className="fv-btn fv-btn-primary">
           Book a free demo
         </Link>
         {wa ? (
-          <a
-            href={wa}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cta={location}
-            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-600 px-8 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 sm:w-auto"
-          >
+          <a href={wa} target="_blank" rel="noopener noreferrer" data-cta={location} className="fv-btn fv-btn-secondary">
             Chat on WhatsApp
           </a>
         ) : (
-          <a
-            href={`mailto:${contact.email}`}
-            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-600 px-8 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 sm:w-auto"
-          >
+          <a href={`mailto:${contact.email}`} className="fv-btn fv-btn-secondary">
             Email {contact.email}
           </a>
         )}

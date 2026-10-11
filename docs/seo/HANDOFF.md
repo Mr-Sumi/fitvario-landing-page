@@ -1,14 +1,14 @@
 # Handoff
 
-Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10-11, after Prompt 2 and the owner's follow-up decisions. Current branch: **`seo-release`**.
+Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10-11, after the design pass. Current branch: **`seo-design`** (from `seo-release`).
 
-1. **Owner answers applied** (`feature-status.json`, "verified by owner", 2026-10-11): live = GST, dues, biometric, QR, WhatsApp expiry and birthday, campaigns, owner referral, white-label, multi-branch, template marketplace. Not live = diet, workout, store, due-payment reminders, self-serve sign-up. One app: Fitvario on Google Play.
-2. **Published now (40 public pages):** GST billing, WhatsApp reminders, member app, QR attendance, biometric attendance, white-label, multi-branch, small gyms, franchise gyms, plus everything from before. CrossFit and yoga is a draft until class booking exists.
-3. **Draft, hidden and 404 on production (14):** diet-workout-plans (flag N), GST calculator, invoice generator, startup cost calculator, diet charts (reviews), four blog posts (review, pricing, competitor facts), five comparison pages (accuracy and legal).
-4. **Withheld on purpose, pending `docs/seo/verify_features.py` output:** diet plans, workout plans, template marketplace (now `in-code`) and batches. The script is read-only and prints counts only; the owner runs it and pastes the result.
-5. **WhatsApp page** describes only expiring-soon (7, 3, 1 days), expired (day after) and birthday. It says outright that automatic due-payment reminders do not exist.
-6. **White-label** is code-verified: name and logo show on the splash screen, owner home and member dashboard only; the launcher icon, app label, colours and store listing are Fitvario's. Copy says exactly that.
-7. **Checks (`npm run seo:check`):** build; `seo-check` 61 pages, 40 public; `keyword-coverage` 50 covered, 0 missing, 3 dropped; `feature-truth` 0 failing (1 legal-text item); `launch-checks` pass; 38 of 38 calculator tests.
-8. **Lighthouse (mobile, 13 pages):** performance 97 to 98, accessibility, best practices and SEO 100, CLS 0, LCP 2.5 to 2.7 s.
-9. **Keywords without a published page:** 21, all behind a review, accuracy, decision or flag gate, or Prompt 7. See `keyword-gaps.md`.
-10. **Next:** run `verify_features.py`; paste the Play listing's description (the fetch tool could not read it) and GymSmart's real site if you know it; your items in `TODO_FOR_SUMIT.md` sections 17 and 18, then deploy per `LAUNCH_CHECKLIST.md`. Prompt 7 (Django repo) and the gyms pages are still to do.
+1. **Design pass done** per `DESIGN_BRIEF.md`: graphite `#192126` and lime `#BBF246` from the app, Bricolage Grotesque headings with Instrument Sans text, one 8 px radius, one shadow, no gradients. Home, features hub, pricing, header, footer, CTAs and all content pages use it. Before and after shots at 390 and 1440 px are in `docs/seo/design/`.
+2. **No invented UI.** `ScreenshotFrame` renders a neutral block marked `data-placeholder` until a real screenshot exists. `launch-checks.mjs` **fails** while any placeholder is on an indexable page: 12 today (10 screens, 2 Hindi videos). This is deliberate; `npm run seo:check` ends red until they are replaced.
+3. **Screenshots:** the numbered list is in `TODO_FOR_SUMIT.md` section 20. Drop files in `docs/seo/screens/`, then `node scripts/process-screens.mjs` writes WebP and AVIF and the manifest.
+4. **Web dashboard:** `owner_web_dashboard` is live on your word; `web_dashboard_staff_login` is not-live. Copy says only "owner web dashboard at dash.fitvario.com" (about, support, pricing included list, features card, JSON-LD). No staff mention, no feature list. `dashboard-evidence.md` was not written: the Chrome extension could not read the page.
+5. **Brand assets:** the real app icon replaces my placeholder "F" mark (header, footer, apple-touch icon, logo, og-image, manifest).
+6. **GymSmart:** keyword marked DEFERRED, page stays draft.
+7. **Checks:** build, `seo-check` (61 pages, 40 public), `keyword-coverage` (50 covered, 0 missing), `feature-truth` (0 failing, incl. white-label), 38 of 38 calculator tests all pass. `launch-checks` fails only on the 12 placeholders.
+8. **Lighthouse (mobile, 8 pages):** performance 95 to 97, accessibility, best practices and SEO 100, CLS 0. Simulated LCP is 2.6 to 2.9 s, above the 2.5 s target; the browser-observed LCP is about 0.2 s and the element is the lead paragraph. See SEO_CHANGELOG for what I tried.
+9. **Still open:** your answers on dashboard login and scope, the screenshots, `verify_features.py` output, legal pages for an advisor, the Play listing text, comparison and review gates.
+10. **Capture tool:** `node scripts/capture-pages.mjs <before|after> [baseUrl]` uses Chrome device emulation; headless `--window-size` crops 390 px captures.

@@ -99,10 +99,7 @@ export default function Page() {
             Every step is visible to anyone with access.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="The list of today's enquiry follow-ups in the Fitvario app"
-          caption="Placeholder. TODO: add a real screenshot of the follow-ups list."
-        />
+        <ScreenshotPlaceholder screen="crm-followups" />
       </Section>
 
       <MidCta text="Want to see the enquiry list on a sample gym?" location="crm-mid" />

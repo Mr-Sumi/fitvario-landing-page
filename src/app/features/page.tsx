@@ -16,6 +16,7 @@ const biometric = isLive("biometric_adms");
 const whiteLabel = isLive("white_label");
 const campaigns = isLive("notification_campaigns_wallet");
 const ownerReferral = isLive("owner_referral_program");
+const webDashboard = isLive("owner_web_dashboard");
 
 /* ─── Icons ──────────────────────────────────────────────────────────────── */
 function Icon({ path, className = "h-5 w-5" }: { path: string; className?: string }) {
@@ -44,61 +45,45 @@ const icons = {
 };
 
 function FeatureCard({
-  iconPath,
   title,
   desc,
-  iconBg = "bg-teal-50",
-  iconColor = "text-teal-700",
 }: {
-  iconPath: string;
+  iconPath?: string;
   title: string;
   desc: string;
   iconBg?: string;
   iconColor?: string;
 }) {
   return (
-    <div className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconBg} ring-1 ring-black/5`}>
-        <Icon path={iconPath} className={`h-5 w-5 ${iconColor}`} />
-      </span>
-      <div className="min-w-0">
-        <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
-        <p className="mt-1 text-[13px] leading-relaxed text-slate-600">{desc}</p>
-      </div>
+    <div className="grid gap-1 py-5 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
+      <h3 className="text-lg font-semibold text-ink">{title}</h3>
+      <p className="text-[15px] leading-relaxed text-[#2f393f]">{desc}</p>
     </div>
   );
 }
 
-function RoleBadge({ label, color, dot }: { label: string; color: string; dot: string }) {
-  return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${color}`}>
-      <span className={`h-2 w-2 rounded-full ${dot}`} />
-      {label}
-    </span>
-  );
+function RoleBadge({ label }: { label: string; color?: string; dot?: string }) {
+  return <span className="fv-link text-[15px] font-semibold">{label}</span>;
 }
 
 function RoleSection({
   id,
-  badge,
   heading,
   sub,
   children,
-  accent,
 }: {
   id: string;
-  badge: React.ReactNode;
+  badge?: React.ReactNode;
   heading: string;
   sub: string;
   children: React.ReactNode;
-  accent: string;
+  accent?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 py-16 first:pt-0">
-      <div className={`mb-8 border-l-4 pl-5 ${accent}`}>
-        <div className="mb-2">{badge}</div>
-        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{heading}</h2>
-        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-slate-600">{sub}</p>
+    <section id={id} className="scroll-mt-24 py-14 first:pt-0">
+      <div className="mb-6 max-w-2xl border-l-4 border-lime pl-5">
+        <h2 className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">{heading}</h2>
+        <p className="mt-2 text-[17px] leading-relaxed text-[#2f393f]">{sub}</p>
       </div>
       {children}
     </section>
@@ -120,19 +105,18 @@ export default function FeaturesPage() {
   const segments = publishedPages("segment");
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 pb-20 pt-10 sm:px-6">
+    <div className="mx-auto w-full max-w-5xl px-5 pb-24 pt-8 sm:px-8">
       <Breadcrumbs path="/features" />
 
-      <div className="mb-14 mt-6 max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">Platform overview</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+      <div className="mb-14 mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
+        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">
           Gym management software features for Indian gyms
         </h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
+        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">
           Fitvario gives gym owners and staff an Android app to run the gym, and members the same Android app with their own login. Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
         </p>
-        <p className="mt-2 text-sm text-slate-500">Last updated: {formatDate(page.updated)}</p>
-        <div className="mt-6 flex flex-wrap gap-2">
+        <p className="mt-4 text-sm text-mute">Last updated: {formatDate(page.updated)}</p>
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
           <a href="#gym-owner"><RoleBadge label="Gym Owner" color="bg-teal-50 text-teal-800" dot="bg-teal-500" /></a>
           <a href="#staff"><RoleBadge label="Staff" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" /></a>
           <a href="#member-app"><RoleBadge label="Member App" color="bg-violet-50 text-violet-800" dot="bg-violet-500" /></a>
@@ -141,13 +125,13 @@ export default function FeaturesPage() {
 
       {detail.length > 0 && (
         <section aria-labelledby="detail-heading" className="mb-6">
-          <h2 id="detail-heading" className="text-xl font-semibold text-slate-900">Explore in detail</h2>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <h2 id="detail-heading" className="text-2xl font-bold text-ink">Explore in detail</h2>
+          <ul className="mt-4 divide-y divide-line border-y border-line">
             {detail.map((p) => (
               <li key={p.path}>
-                <Link href={p.path} className="block h-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-teal-300">
-                  <span className="text-sm font-semibold text-teal-700">{p.navLabel ?? p.title.split("|")[0].trim()}</span>
-                  <span className="mt-1 block text-[13px] leading-relaxed text-slate-600">{p.description}</span>
+                <Link href={p.path} className="group grid gap-1 py-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
+                  <span className="font-semibold text-ink underline decoration-[#4d7c0f] decoration-1 underline-offset-4 group-hover:decoration-2">{p.navLabel ?? p.title.split("|")[0].trim()}</span>
+                  <span className="text-[15px] leading-relaxed text-mute">{p.description}</span>
                 </Link>
               </li>
             ))}
@@ -157,13 +141,13 @@ export default function FeaturesPage() {
 
       {segments.length > 0 && (
         <section aria-labelledby="segments-heading" className="mb-6 mt-10">
-          <h2 id="segments-heading" className="text-xl font-semibold text-slate-900">By type of gym</h2>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <h2 id="segments-heading" className="text-2xl font-bold text-ink">By type of gym</h2>
+          <ul className="mt-4 divide-y divide-line border-y border-line">
             {segments.map((p) => (
               <li key={p.path}>
-                <Link href={p.path} className="block h-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-teal-300">
-                  <span className="text-sm font-semibold text-teal-700">{p.navLabel ?? p.title.split("|")[0].trim()}</span>
-                  <span className="mt-1 block text-[13px] leading-relaxed text-slate-600">{p.description}</span>
+                <Link href={p.path} className="group grid gap-1 py-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
+                  <span className="font-semibold text-ink underline decoration-[#4d7c0f] decoration-1 underline-offset-4 group-hover:decoration-2">{p.navLabel ?? p.title.split("|")[0].trim()}</span>
+                  <span className="text-[15px] leading-relaxed text-mute">{p.description}</span>
                 </Link>
               </li>
             ))}
@@ -171,7 +155,7 @@ export default function FeaturesPage() {
         </section>
       )}
 
-      <div className="divide-y divide-slate-100">
+      <div>
         <RoleSection
           id="gym-owner"
           badge={<RoleBadge label="Gym Owner" color="bg-teal-50 text-teal-800" dot="bg-teal-500" />}
@@ -179,10 +163,11 @@ export default function FeaturesPage() {
           sub="Run memberships, revenue, staff and leads from the Fitvario app on your phone."
           accent="border-teal-500"
         >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="divide-y divide-line border-y border-line">
             <FeatureCard iconPath={icons.building} title="Gym profile" desc="Set up your gym name, logo, photo gallery, highlights and opening hours." />
             <FeatureCard iconPath={icons.users} title="Memberships and renewals" desc="Add members, assign plans, generate invoices and handle renewals in one flow." />
             <FeatureCard iconPath={icons.qr} title="QR attendance" desc="Show your gym's QR code at the entrance. Members and staff scan it with the app to check in and out. You can also mark attendance by hand and review logs and analytics." />
+            {webDashboard && <FeatureCard iconPath={icons.building} title="Owner web dashboard" desc="Owners can also sign in on a computer at dash.fitvario.com." />}
             {biometric && <FeatureCard iconPath={icons.lock} title="Biometric attendance" desc="Connect a fingerprint or face device that pushes punches over ADMS. Members are mapped to device users and blocked on the device when their plan ends." />}
             {gst && <FeatureCard iconPath={icons.creditcard} title="Tax lines, part payments and dues" desc="Choose which of your tax lines (for example GST) apply to an invoice, take part payments and see who still owes." />}
             <FeatureCard iconPath={icons.chart} title="Revenue and analytics" desc="Track daily collections, expenses and member growth, and see income and expenses side by side." />
@@ -208,7 +193,7 @@ export default function FeaturesPage() {
           sub="Focused tools in the app for trainers and front-desk staff, with access controlled by the gym owner."
           accent="border-indigo-500"
         >
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="divide-y divide-line border-y border-line">
             <FeatureCard iconPath={icons.lock} title="Permission-based login" desc="Staff log in with their own credentials and see only the modules you have given them." iconBg="bg-indigo-50" iconColor="text-indigo-700" />
             <FeatureCard iconPath={icons.users} title="Member management" desc="View and manage the member details you allow, for the members assigned to them." iconBg="bg-indigo-50" iconColor="text-indigo-700" />
             <FeatureCard iconPath={icons.qr} title="Attendance marking" desc="Mark attendance by hand when permitted, and scan the gym's QR code for their own check-in." iconBg="bg-indigo-50" iconColor="text-indigo-700" />
@@ -224,7 +209,7 @@ export default function FeaturesPage() {
           sub="The same Android app, with everything a member needs to stay on track."
           accent="border-violet-500"
         >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="divide-y divide-line border-y border-line">
             <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Android app for members"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo on the opening screen and their home screen. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.lock} title="Mobile number login" desc="Members log in with their mobile number and an OTP." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.qr} title="QR check-in and check-out" desc="Members scan your gym's QR code with the app to check in, and scan again to check out. Time spent is recorded." iconBg="bg-violet-50" iconColor="text-violet-700" />
@@ -238,53 +223,46 @@ export default function FeaturesPage() {
         </RoleSection>
 
         <section className="py-16" aria-labelledby="channels-heading">
-          <div className="mb-8">
-            <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">Payments and communication</p>
-            <h2 id="channels-heading" className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+          <div className="mb-6">
+            <h2 id="channels-heading" className="text-[1.75rem] font-bold text-ink">
               Channels your members already use
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <dl className="divide-y divide-line border-y border-line">
             {[
               ["Razorpay", "UPI, card and net banking for Fitvario subscriptions"],
               ["WhatsApp", expiry ? "Membership reminders" : "Alerts from your gym"],
               ["SMS", "OTP and alerts"],
               ["Android app", "For your members"],
             ].map(([label, sub]) => (
-              <div key={label} className="flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-4 text-center shadow-sm">
-                <p className="text-sm font-semibold text-slate-800">{label}</p>
-                <p className="mt-0.5 text-xs text-slate-500">{sub}</p>
+              <div key={label} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
+                <dt className="font-semibold text-ink">{label}</dt>
+                <dd className="text-[15px] text-mute">{sub}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </section>
 
         <section className="py-16" aria-labelledby="security-heading">
-          <div className="mb-8">
-            <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">Security and reliability</p>
-            <h2 id="security-heading" className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">Your gym data is looked after</h2>
+          <div className="mb-6">
+            <h2 id="security-heading" className="text-[1.75rem] font-bold text-ink">Your gym data is looked after</h2>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="divide-y divide-line border-y border-line">
             {securityPoints.map(([title, desc]) => (
-              <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                <svg className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
-                  <p className="mt-0.5 text-[13px] leading-relaxed text-slate-600">{desc}</p>
-                </div>
+              <div key={title} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
+                <h3 className="font-semibold text-ink">{title}</h3>
+                <p className="text-[15px] leading-relaxed text-[#2f393f]">{desc}</p>
               </div>
             ))}
           </div>
         </section>
       </div>
 
-      <p className="mt-2 text-sm text-slate-600">
+      <p className="mt-10 text-[15px] text-[#2f393f]">
         Wondering what it costs? See{" "}
-        <Link href="/pricing" className="font-semibold text-teal-700 underline-offset-2 hover:underline">how Fitvario pricing works</Link>
+        <Link href="/pricing" className="fv-link font-medium">how Fitvario pricing works</Link>
         , or read{" "}
-        <Link href="/about" className="font-semibold text-teal-700 underline-offset-2 hover:underline">about Fitvario</Link>.
+        <Link href="/about" className="fv-link font-medium">about Fitvario</Link>.
       </p>
       <ClosingCta location="features-closing" />
     </div>

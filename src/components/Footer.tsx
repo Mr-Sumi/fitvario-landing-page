@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { pages, isIndexable, isPublishedPath, publishedPages, type PageDef } from "@/config/pages";
 import { contact, playStoreUrl } from "@/config/site";
@@ -42,14 +43,14 @@ function PlayStoreBadge({ href }: { href: string }) {
       target="_blank"
       rel="noopener noreferrer"
       title="Get it on Google Play"
-      className="inline-flex min-h-12 items-center gap-2.5 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-white transition hover:bg-slate-700"
+      className="fv-btn fv-btn-secondary gap-3 px-4"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 fill-current" aria-hidden>
         <path d="M3.18 23.75c.33.19.7.25 1.07.19l11.72-11.69L12.19 8.4 3.18 23.75zM21.5 10.47l-2.83-1.64-3.28 3.25 3.28 3.28 2.85-1.65a1.83 1.83 0 000-3.24zM2.01 1.27A1.83 1.83 0 001 2.92v18.16c0 .64.34 1.2.84 1.52l.17.1 10.17-10.17v-.24L2.01 1.27zm10.63 9.93L2.26.79l.09.06 11.72 11.71-1.43 1.43-1.43-1.43.05-.05L12.64 11.2z" />
       </svg>
-      <span className="text-left leading-none">
-        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-400">Get it on</span>
-        <span className="block text-sm font-bold">Google Play</span>
+      <span className="text-left leading-tight">
+        <span className="block text-[11px] font-medium text-white/70">Get it on</span>
+        <span className="block text-sm font-semibold">Google Play</span>
       </span>
     </a>
   );
@@ -57,29 +58,27 @@ function PlayStoreBadge({ href }: { href: string }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-900 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-14">
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-14">
-          <div className="lg:w-1/3">
-            <Link href="/" className="inline-flex items-center gap-2.5 text-base font-bold tracking-tight text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500 text-sm font-extrabold text-white">
-                F
-              </span>
+    <footer className="on-ink bg-ink text-white">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-white">
+              <Image src="/fitvario-icon.png" alt="" width={32} height={32} className="rounded-[8px]" />
               Fitvario
             </Link>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400">
+            <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-white/75">
               Gym management software for Indian gyms: memberships, QR attendance, CRM and revenue in one place.
             </p>
-            <div className="mt-4 space-y-1 text-xs leading-relaxed text-slate-400">
+            <div className="mt-5 space-y-1 text-sm leading-relaxed text-white/75">
               <p>Bhopal, Madhya Pradesh, India</p>
               <p>
-                <a href={`mailto:${contact.email}`} className="inline-block py-1 text-teal-400 underline-offset-2 hover:underline">
+                <a href={`mailto:${contact.email}`} className="inline-block py-1 text-white underline decoration-lime underline-offset-4 hover:decoration-2">
                   {contact.email}
                 </a>
               </p>
               {contact.phoneNumber && (
                 <p>
-                  <a href={`tel:+${contact.phoneNumber}`} data-cta="footer" className="inline-block py-1 text-teal-400 underline-offset-2 hover:underline">
+                  <a href={`tel:+${contact.phoneNumber}`} data-cta="footer" className="inline-block py-1 text-white underline decoration-lime underline-offset-4 hover:decoration-2">
                     +{contact.phoneNumber}
                   </a>
                 </p>
@@ -88,29 +87,25 @@ export function Footer() {
             </div>
             {isPublishedPath("/hi") && (
               <p className="mt-4">
-                <Link href="/hi" lang="hi-Latn" className="inline-block py-1 text-sm font-medium text-teal-400 underline-offset-2 hover:underline">
+                <Link href="/hi" lang="hi-Latn" className="inline-block py-1 text-sm font-medium text-white underline decoration-lime underline-offset-4 hover:decoration-2">
                   Hinglish mein dekhein
                 </Link>
               </p>
             )}
             {playStoreUrl && (
-              <div className="mt-5">
+              <div className="mt-6">
                 <PlayStoreBadge href={playStoreUrl} />
               </div>
             )}
           </div>
 
-          <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
             {columns().map((col) => (
               <div key={col.title}>
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-slate-400">{col.title}</p>
+                <p className="mb-3 text-sm font-semibold text-white">{col.title}</p>
                 <nav className="flex flex-col" aria-label={col.title}>
                   {col.links.map((p) => (
-                    <Link
-                      key={p.path}
-                      href={p.path}
-                      className="py-2 text-sm text-slate-400 transition hover:text-white"
-                    >
+                    <Link key={p.path} href={p.path} className="py-1.5 text-[15px] text-white/75 transition-colors hover:text-white">
                       {labelOf(p)}
                     </Link>
                   ))}
@@ -121,19 +116,12 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-800">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 sm:flex-row sm:px-6">
-          <p className="text-center text-xs text-slate-400 sm:text-left">
-            © 2026 Fitvario · Bhopal, Madhya Pradesh, India · All rights reserved.
-          </p>
-          <p className="text-xs text-slate-400">
+      <div className="border-t border-white/15">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-5 py-5 text-sm text-white/70 sm:flex-row sm:px-8">
+          <p>© 2026 Fitvario · Bhopal, Madhya Pradesh, India · All rights reserved.</p>
+          <p>
             Built by{" "}
-            <a
-              href="https://sumigyan.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 underline-offset-2 hover:text-white hover:underline"
-            >
+            <a href="https://sumigyan.in" target="_blank" rel="noopener noreferrer" className="text-white underline decoration-lime underline-offset-4 hover:decoration-2">
               Sumigyan.in
             </a>
           </p>

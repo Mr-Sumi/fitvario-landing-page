@@ -176,3 +176,14 @@
 `- Owner decision: the GymSmart vendor could not be verified, so \`gymsmart alternative\` is marked DEFERRED (not dropped) in the keyword map source (\`PROMPT_PACK_v2.md\`, regenerated into \`keyword-map.md\`). \`/compare/gymsmart-alternative\` stays draft.
 `- \`scripts/lib/keyword-map.mjs\` understands a \`DEFERRED: reason\` tag; \`keyword-coverage.mjs\` reports deferred keywords in their own block and does not require them to be absent from published pages.
 `- Dashboard work (web dashboard evidence, screenshots, claim restoration) is waiting: the Chrome extension loaded https://dash.fitvario.com but would not let me read the page, and it reported disconnected last time. Stopped as instructed.
+
+## 2026-10-11: design pass (branch `seo-design`)
+
+- **Brief first:** `DESIGN_BRIEF.md`. Palette from the app's `AppColors` (ink #192126, lime #BBF246) and its current icon. The site's earlier teal "F" mark was my own placeholder; the real app icon is now the logo.
+- **System:** tokens and `.fv-*` classes in `globals.css`; legacy utility names (rounded-xl, shadows, slate neutrals, teal ramp, teal buttons) are normalised by one block so older pages and tools match without per-file edits. Fonts: Bricolage Grotesque (600, 700) and Instrument Sans (400, 500, 600), self-hosted by next/font.
+- **Rebuilt:** header (no blur, no shadow), footer (ink), CTAs, related links, FAQ, example box, content layout (left rule, ruled lists, no tinted cards), home (hero with product frames, ruled before/after table, one dark section with the 7, 3, 1, +1 numerals, role rows, numbered feature list), features hub, pricing.
+- **Copy:** home rewritten into task-specific lines (renewals, QR, follow-ups); every verified claim, H1, title, meta description, FAQ, internal link and JSON-LD field kept. Eyebrow labels and icon-card grids removed. Dates bumped on pages whose copy changed.
+- **Frames and placeholders:** `ScreenshotFrame` (phone 9:19.5, desktop 16:10, next/image, explicit size), screen list in `src/config/screens.ts`, `process-screens.mjs`. `launch-checks` fails on any `data-placeholder` on an indexable page.
+- **Web dashboard:** owner statement applied (`owner_web_dashboard` live; staff login flag not-live); feature-truth now blocks "staff portal" and staff-on-dashboard claims separately.
+- **Performance:** fonts limited to two families and five weights; no new runtime dependencies; one tiny image (the app icon) preloaded. Simulated LCP stayed at 2.6 to 2.9 s (it was 2.3 to 2.8 before the pass). I tried "optional" font display and dropping the text font: LCP moved by about 0.1 s only, so I kept brand fonts with "swap". The observed LCP is about 0.2 s. Cutting simulated LCP below 2.5 s would need less client JavaScript (cookie banner, analytics, header) and is a separate job.
+- **Tooling:** `capture-pages.mjs` (device-emulated before/after shots), `process-screens.mjs`, and `generate-brand-assets.mjs` now build from the real icon.

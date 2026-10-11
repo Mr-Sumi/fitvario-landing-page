@@ -91,10 +91,7 @@ export default function Page() {
             different owner&apos;s gym see theirs.
           </p>
         </ExampleBox>
-        <ScreenshotPlaceholder
-          alt="The branding settings with an app name and logo in the Fitvario app"
-          caption="Placeholder. TODO: add a real screenshot of the branding settings."
-        />
+        <ScreenshotPlaceholder screen="branding-settings" />
       </Section>
 
       <MidCta text="Want to see a gym name and logo in the app?" location="whitelabel-mid" />

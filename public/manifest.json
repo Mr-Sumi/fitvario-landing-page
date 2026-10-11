@@ -1,18 +1,26 @@
 {
   "name": "Fitvario — Gym Management Software",
   "short_name": "Fitvario",
-  "description": "All-in-one gym management platform with QR attendance, CRM, memberships, analytics, and ecommerce.",
+  "description": "Gym management software for Indian gyms: memberships, QR attendance, CRM, billing and analytics.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#0d9488",
+  "background_color": "#FAFAF6",
+  "theme_color": "#192126",
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "categories": ["business", "productivity"],
+  "categories": [
+    "business",
+    "productivity"
+  ],
   "lang": "en-IN"
 }
