@@ -163,6 +163,126 @@
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
       "evidence": "Owner (Sumit), 2026-10-11: there is no owner web dashboard; owners use the mobile app. Site copy must not mention a web dashboard, web panel or staff portal."
+    },
+    "diet_plans": {
+      "status": "not-live",
+      "verifiedHow": "owner statement",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Split out of workout_diet_plans so each can be answered alone. Owner said diet plans are not available. diet_owner_views.py, diet_member_views.py: templates, per-member assignment, day-by-day completion, restart, member requests."
+    },
+    "workout_plans": {
+      "status": "not-live",
+      "verifiedHow": "owner statement",
+      "verifiedOn": "2026-10-11",
+      "evidence": "Split out of workout_diet_plans. Owner said workout plans are not available. workout_owner_views.py, workout_member_views.py: templates, per-member assignment, exercise completion, restart, member requests."
+    },
+    "expense_manager": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "expense_views.py ExpenseListCreateView/ExpenseDetailView: dated expenses with line items per gym. The older revenue_expense_analytics flag lumps this with analytics; answer this one for the expense screens themselves."
+    },
+    "recurring_expenses": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "RecurringExpense + RecurringExpensePauseView; management command process_recurring_expenses creates the entries. Cron schedule not verified."
+    },
+    "customer_categories": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "customer-categories routes and CustomerCategory model: owner-defined member groups per gym."
+    },
+    "gym_gallery_highlights": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "marketing_views.py Gallery and Highlight views (owner/gym/gallery, highlights); plan-gated by the 'gallery' feature."
+    },
+    "gym_hours_and_closures": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "schedule_views.py: weekly schedule with slots, temporary closures, open-status (also public). GymSchedule, GymScheduleSlot, GymTemporaryClosure."
+    },
+    "platform_banners": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "banner_views.py OwnerBannerListView / MemberBannerListView: banners set by the platform admin, shown in the apps."
+    },
+    "owner_referral_program": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "GymOwnerReferral, GymOwnerCoinWallet; owner/referral, owner/coin-wallet, owner/apply-coins: owners refer owners and earn coins."
+    },
+    "subscription_coupons": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "PlatformCoupon; owner/apply-coupon on the Fitvario subscription. Internal pricing tool, rarely a marketing claim."
+    },
+    "platform_store_for_owners": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "platform_store_views.py, owner/store, gym/store: PlatformProduct, PlatformOrder, PlatformInvoice. Owners buy products from Fitvario; different from ecommerce_cart_orders (a gym selling to its members)."
+    },
+    "owner_billing_history": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "owner_billing_views.py OwnerBillingHistoryView / TransactionDetail / Queue: invoices and payments for the owner's Fitvario subscription."
+    },
+    "member_notification_center": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "InAppNotification; notifications/ routes (list, unread-count, mark-all-read) and notification-preferences/reminder-preferences for members."
+    },
+    "owner_push_broadcast": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "owner/send-push route: owner sends a push message to members. Uses notification wallet credits."
+    },
+    "attendance_analytics": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "attendance/analytics and attendance/top-attenders routes (attendance_views.py)."
+    },
+    "auto_absent_marking": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "management command mark_absent_attendance. Cron schedule not verified."
+    },
+    "member_birthdays_list": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "members/birthdays route (owner list). The automatic birthday message is the separate whatsapp_birthday_messages flag."
+    },
+    "daily_owner_summary": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "management command notify_daily_summary. Per the 25 Sep audit it was NOT scheduled; do not claim it."
+    },
+    "account_deletion": {
+      "status": "in-code",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "owner/delete-account and member/account routes. The /delete-account page and Play Data safety rely on this being true."
+    },
+    "member_data_import": {
+      "status": "no-evidence",
+      "verifiedHow": "code read (backend repo)",
+      "verifiedOn": "2026-10-11",
+      "evidence": "A one-off data-import folder exists beside the repos (used for the RAW FITNESS migration), but there is no self-serve import feature. The site says 'we help you bring in your existing member list'; that is a service claim awaiting owner confirmation."
     }
   }
 }

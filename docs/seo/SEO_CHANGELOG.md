@@ -137,3 +137,9 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Added security headers in `next.config.ts` and confirmed them on a production server. No Content-Security-Policy yet by design.
 - Lighthouse on seven page types: see HANDOFF. Written `docs/seo/LAUNCH_CHECKLIST.md`.
 - Known: legal pages still mention class scheduling, workout and diet content, and "WhatsApp Business messaging" (`/terms`), biometric events and class bookings (`/privacy`). These are in `TODO_FOR_SUMIT.md` for the owner's review.
+
+## 2026-10-11: feature list completed (branch `seo-release`)
+
+- Owner pointed out the flag list was missing features (expense manager and others). Re-audited the backend routes, models and management commands.
+- Added 20 flags to `feature-status.json`, all `in-code` (or `not-live`/`no-evidence` where the owner already said so); none is claimable. New: `diet_plans`, `workout_plans` (split from `workout_diet_plans`), `expense_manager`, `recurring_expenses`, `customer_categories`, `gym_gallery_highlights`, `gym_hours_and_closures`, `platform_banners`, `owner_referral_program`, `subscription_coupons`, `platform_store_for_owners`, `owner_billing_history`, `member_notification_center`, `owner_push_broadcast`, `attendance_analytics`, `auto_absent_marking`, `member_birthdays_list`, `daily_owner_summary`, `account_deletion`, `member_data_import`.
+- New `FEATURE_INVENTORY.md`; `OWNER_CONFIRM.md` rewritten as one Y/N table per area. No existing status changed, so nothing on the site changed.
