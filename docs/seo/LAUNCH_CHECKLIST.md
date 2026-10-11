@@ -114,3 +114,11 @@ The full list of keywords still without a published page, and why, is in `keywor
 - Decide which blog topics to add next from real queries, not guesses.
 - Re-verify competitor facts and publish comparison pages only if cleared.
 - Review the Hinglish pages against what you saw in the phone-SERP check.
+
+## Search Console: sitemap "could not be read" (2026-10-12)
+
+Cause: the sitemap was submitted for the apex host (`https://fitvario.com/sitemap.xml`). That URL answers with a 307 redirect to `www`, and Search Console does not follow a redirect for a sitemap. The file itself is fine: `https://www.fitvario.com/sitemap.xml` returns 200, `application/xml`, 40 URLs.
+
+Fix:
+1. In Search Console, open the property for `https://www.fitvario.com/` (or a Domain property, which covers both hosts) and submit `https://www.fitvario.com/sitemap.xml`. Remove the apex sitemap entry.
+2. In Vercel, Domains: change the `fitvario.com` to `www.fitvario.com` redirect from 307 (temporary) to **308 (permanent)**, so the apex is treated as an alias of www.

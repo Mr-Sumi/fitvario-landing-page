@@ -51,30 +51,37 @@ async function sendToBackend(lead: Record<string, string>, input: LeadInput, att
   const url = process.env.LEAD_BACKEND_URL;
   const key = process.env.LEAD_BACKEND_KEY;
   if (!url || !key) return false;
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-Lead-Key": key, "X-Forwarded-For": ip },
-      body: JSON.stringify({
-        name: input.name,
-        gym_name: input.gymName,
-        city: input.city,
-        members: input.members,
-        mobile: lead.mobile,
-        email: input.email,
-        current_method: input.currentMethod,
-        variant: lead.variant,
-        page: lead.page,
-        consent: true,
-        attribution,
-      }),
-      signal: AbortSignal.timeout(8000),
-    });
-    // 201 stored, 200 duplicate of a lead already stored in the last day
-    return res.status === 201 || res.status === 200;
-  } catch {
-    return false;
+  const body = JSON.stringify({
+    name: input.name,
+    gym_name: input.gymName,
+    city: input.city,
+    members: input.members,
+    mobile: lead.mobile,
+    email: input.email,
+    current_method: input.currentMethod,
+    variant: lead.variant,
+    page: lead.page,
+    consent: true,
+    attribution,
+  });
+  // Two attempts: a restart or a network blip must not cost a lead. A 4xx is final (retrying cannot fix it), and
+  // the backend de-duplicates the same number within a day, so a retry after a slow success is harmless.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Lead-Key": key, "X-Forwarded-For": ip },
+        body,
+        signal: AbortSignal.timeout(8000),
+      });
+      // 201 stored, 200 duplicate of a lead already stored in the last day
+      if (res.status === 201 || res.status === 200) return true;
+      if (res.status >= 400 && res.status < 500) return false;
+    } catch {
+      // network error or timeout: try once more
+    }
   }
+  return false;
 }
 
 async function sendWebhook(payload: Record<string, unknown>): Promise<boolean> {

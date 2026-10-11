@@ -65,6 +65,39 @@ for (const [path, file] of walk(appDir)) {
   if (path !== "/contact" && ctaCount < 2) warn(path, `only ${ctaCount} demo CTA link(s); aim for a mid-page and an end CTA`);
 }
 
+// ---- one route for every form: nothing may collect a lead anywhere else ----
+{
+  const srcRoot = join(root, "src");
+  const files = [];
+  const walkSrc = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      if (e.isDirectory()) walkSrc(p);
+      else if (/\.(tsx|ts)$/.test(e.name)) files.push(p);
+    }
+  };
+  walkSrc(srcRoot);
+  for (const f of files) {
+    const rel = f.slice(root.length).replace(/\\/g, "/").replace(/^\//, "");
+    const t = readFileSync(f, "utf8");
+    if (/<form[\s>]/.test(t) && rel !== "src/components/DemoForm.tsx") {
+      fail(rel, "has its own <form>; every lead form must be the shared DemoForm that posts to /api/lead");
+    }
+    if (rel !== "src/components/DemoForm.tsx") {
+      for (const m of t.matchAll(/fetch\(\s*["'`](\/api\/[^"'`?]+)/g)) {
+        if (m[1] !== "/api/lead") fail(rel, `posts to ${m[1]}; leads must go to /api/lead`);
+      }
+    }
+  }
+  const demo = readFileSync(join(root, "src", "components", "DemoForm.tsx"), "utf8");
+  if (!/fetch\(\s*["'`]\/api\/lead["'`]/.test(demo)) fail("src/components/DemoForm.tsx", "does not post to /api/lead");
+  const pagesWithForm = [];
+  for (const [path, file] of walk(appDir)) {
+    if (/<form[\s>]/.test(readFileSync(file, "utf8"))) pagesWithForm.push(path);
+  }
+  console.log(`Lead forms found on: ${pagesWithForm.join(", ") || "none"} (all post to /api/lead)`);
+}
+
 // ---- form + thank-you ----
 const contact = readFileSync(join(appDir, "contact.html"), "utf8");
 if (!/<form[^>]*aria-label="Request a demo"/.test(contact)) fail("/contact", "demo form not found");
