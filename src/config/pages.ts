@@ -306,6 +306,7 @@ const staticPages: PageDef[] = [
       "Gym me member kaise badhaye: Google Maps, Instagram, referral, trial aur enquiry follow-up. Chhote gym ke liye 7 practical tarike, Hinglish mein.",
     updated: "2026-10-11",
     navLabel: "Gym me member kaise badhaye",
+  },
 
   // Comparison pages (Prompt 6): DRAFT only until Sumit clears accuracy and a legal read.
   {
