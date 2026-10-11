@@ -1,6 +1,6 @@
 # Brief: /compare/mindbody-alternative-india
 
-Status: planned · Wave: Wave 2 · Kind: compare
+Status: draft · Wave: Wave 2 · Kind: compare
 
 ## Keywords
 - Primary: mindbody alternative india (P2, English, Comparison)

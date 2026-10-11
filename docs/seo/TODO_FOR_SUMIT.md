@@ -132,3 +132,14 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Hindi YouTube demos:** two marked placeholders await a recording (WhatsApp fee reminder, Instagram reels for gyms). Replace `VideoPlaceholder` with an embed when ready.
 - [ ] **Devanagari versions** are out of scope for now.
 - [ ] `/hi/gym-billing-software` links to `/tools/gym-gst-calculator` only while that page is public (it is a draft until CA review).
+
+## 15. Added by Prompt 6 (comparison pages, all draft)
+
+- [ ] **Legal read** of all five comparison pages before publishing (Easy Gym Software, Okfit, GymSmart, Mindbody, GymMaster).
+- [ ] **Re-verify every fact** in `competitor-facts.csv` on the live vendor pages. The facts were read through a tool that summarises pages; quotes may not be word-for-word.
+- [ ] **GymSmart:** find the official website. Until then the page compares nothing line by line and should stay unpublished.
+- [ ] **Mindbody and GymMaster for India:** ask each vendor (or check their sales pages) whether they serve Indian gyms in rupees and handle GST invoices. The pages currently say "not found" and invite the reader to ask.
+- [ ] **Monthly review:** re-check prices and terms on all five pages each month and update `VERIFIED_ON` and `VERIFIED_LABEL` in `src/content/compare.ts`. These are separate from the sitemap `lastmod`, which does not move.
+- [ ] **Fitvario cells will change on their own** when you flip flags in `feature-status.json` (for example GST or biometric). Re-read the pages after each flip.
+- [ ] **Free trial and published prices:** the pages say Fitvario has neither stated on this site. If you decide to offer a trial or publish prices, tell me and I will update the rows.
+- [ ] When the comparison pages go live, link them from the footer "Compare" column (automatic) and from the "best gym management software" post.

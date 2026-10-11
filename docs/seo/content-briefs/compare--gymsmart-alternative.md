@@ -1,6 +1,6 @@
 # Brief: /compare/gymsmart-alternative
 
-Status: planned · Wave: Wave 3 · Kind: compare
+Status: draft · Wave: Wave 3 · Kind: compare
 
 ## Keywords
 - Primary: gymsmart alternative (P3, English, Comparison)

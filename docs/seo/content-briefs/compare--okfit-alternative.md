@@ -1,6 +1,6 @@
 # Brief: /compare/okfit-alternative
 
-Status: planned · Wave: Wave 2 · Kind: compare
+Status: draft · Wave: Wave 2 · Kind: compare
 
 ## Keywords
 - Primary: okfit alternative (P2, English, Comparison)

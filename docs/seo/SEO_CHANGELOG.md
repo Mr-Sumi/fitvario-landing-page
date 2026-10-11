@@ -120,3 +120,11 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - "Hinglish mein dekhein" link added to the footer and below the home hero, shown only while `/hi` is public.
 - Fee-reminder pages follow keyword-map RULE lines: template messages and manual routines only. They say plainly that messages are sent by hand and that Fitvario's alert set-up should be checked in a demo.
 - `gen-seo-docs.mjs` now treats `/hi/` and `/hi` as the same page and reads CRLF registry files.
+
+## 2026-10-11: Prompt 6, comparison pages (branch `seo-compare`)
+
+- Fact collection first: 38 statements recorded in `docs/seo/competitor-facts.csv` from the vendors' own pages (Easy Gym Software, Okfit, Mindbody, GymMaster) and one third-party listing (GymSmart), each with source URL and date. Pages that returned 404 (Easy Gym and Okfit `/pricing`) were not used. Where a page did not say something, the comparison says "not stated" and not "no".
+- Five DRAFT pages built from that data (`src/content/compare.ts`), none published. Layout per the prompt: who each is for, feature table, where the competitor may be better, where Fitvario may fit better, pricing as publicly stated with date, decision checklist, sources, "Last verified" date, trademark footnote and a correction contact.
+- Fitvario's table cells are computed from `feature-status.json`, so the page can never claim a feature that is not live.
+- The competitor's own claim of an official WhatsApp integration is paraphrased, because the exact phrase is banned on this site.
+- Not included: migration notes (Fitvario's import help is an unverified service claim), competitor logos, "best" claims.
