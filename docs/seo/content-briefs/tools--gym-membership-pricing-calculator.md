@@ -1,6 +1,6 @@
 # Brief: /tools/gym-membership-pricing-calculator
 
-Status: planned · Wave: Wave 2 · Kind: tool
+Status: published · Wave: Wave 2 · Kind: tool
 
 ## Keywords
 - Primary: gym membership pricing calculator (P1, English, Tools)

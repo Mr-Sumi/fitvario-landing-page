@@ -1,6 +1,6 @@
 # Brief: /templates/diet-charts
 
-Status: planned · Wave: Wave 3 · Kind: template
+Status: draft · Wave: Wave 3 · Kind: template
 
 ## Keywords
 - Primary: indian diet chart for gym members (P3, English, Diet/workout)

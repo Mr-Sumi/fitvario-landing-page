@@ -1,6 +1,6 @@
 # Brief: /tools/gym-revenue-calculator
 
-Status: planned · Wave: Wave 3 · Kind: tool
+Status: published · Wave: Wave 3 · Kind: tool
 
 ## Keywords
 - Primary: gym revenue calculator (P3, English, Tools)

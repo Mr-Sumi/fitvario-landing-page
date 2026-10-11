@@ -107,3 +107,11 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [x] "No owner web dashboard; owners use the mobile app": every "web dashboard", "web panel" and "staff portal" claim was removed from home, features hub, pricing, about, support, CRM and billing pages, the page registry and structured data (`operatingSystem` is now "Android"). Legal pages were not touched; `/privacy`, `/terms` and `/delete-account` may still mention web access (see section 10).
 - [x] `due_payment_reminders` recorded as N, "verified by owner".
 - [ ] **Still waiting:** the Y/N for every other flag, and "one app vs separate apps". See `OWNER_CONFIRM.md` section 1 and 2.
+
+## 12. Added by Prompt 3
+
+- [ ] **CA review** of `/tools/gym-gst-calculator` and `/tools/gym-invoice-generator` wording (both draft). The GST rate is a user input that starts at 18%; the pages do not assert a rate.
+- [ ] **Nutritionist review** of `/templates/diet-charts` (draft, no calorie numbers, general information only).
+- [ ] **Expert review** of `/tools/gym-startup-cost-calculator` (draft): licence and cost rules vary by state. The starting figures are placeholders, not market data.
+- [ ] To publish a draft, remove `draft: true` for it in `src/config/pages.ts`.
+- [ ] The four published calculators have illustrative defaults (for example rent per sq ft by city tier). Replace them with numbers you are comfortable standing behind, or leave them labelled as illustrative.

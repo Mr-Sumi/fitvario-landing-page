@@ -1,6 +1,6 @@
 # Brief: /tools/gym-break-even-calculator
 
-Status: planned · Wave: Wave 1 · Kind: tool
+Status: published · Wave: Wave 1 · Kind: tool
 
 ## Keywords
 - Primary: gym break even calculator (P1, English, Tools)

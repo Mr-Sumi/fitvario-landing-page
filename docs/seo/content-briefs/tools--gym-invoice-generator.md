@@ -1,6 +1,6 @@
 # Brief: /tools/gym-invoice-generator
 
-Status: planned · Wave: Wave 2 · Kind: tool
+Status: draft · Wave: Wave 2 · Kind: tool
 
 ## Keywords
 - Primary: gym invoice format gst (P2, English, GST billing)

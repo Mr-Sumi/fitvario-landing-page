@@ -172,6 +172,84 @@ export const pages: PageDef[] = [
     navLabel: "Billing and dues",
     gate: "gst_tax_lines",
   },
+
+  // Tools and templates (Prompt 3). Content-gated pages stay draft until reviewed.
+  {
+    path: "/tools/gym-break-even-calculator",
+    kind: "tool",
+    title: "Gym Break Even Calculator India | Members Needed | Fitvario",
+    description:
+      "Work out how many members your gym needs to cover rent, salaries and EMI. A free break even calculator for Indian gyms, with GST and fee sensitivity.",
+    updated: "2026-10-11",
+    navLabel: "Break-even calculator",
+  },
+  {
+    path: "/tools/gym-membership-pricing-calculator",
+    kind: "tool",
+    title: "Gym Membership Pricing Calculator: Plans and Fees | Fitvario",
+    description:
+      "Set gym membership prices from your own costs. Cost-plus and target-margin methods, with a 1, 3, 6 and 12 month plan ladder and discounts you choose.",
+    updated: "2026-10-11",
+    navLabel: "Membership pricing calculator",
+  },
+  {
+    path: "/tools/gym-churn-calculator",
+    kind: "tool",
+    title: "Gym Churn Rate Calculator: Retention and Lifetime | Fitvario",
+    description:
+      "Calculate your gym's monthly churn, retention and average member lifetime, and see what cutting churn by 10 to 30 percent is worth in fees.",
+    updated: "2026-10-11",
+    navLabel: "Churn calculator",
+  },
+  {
+    path: "/tools/gym-revenue-calculator",
+    kind: "tool",
+    title: "Gym Revenue Calculator: 12-Month Projection | Fitvario",
+    description:
+      "Project your gym's income for 12 months from members, plan fees, personal training and other income, with a monthly growth rate you control.",
+    updated: "2026-10-11",
+    navLabel: "Revenue calculator",
+  },
+  {
+    path: "/tools/gym-gst-calculator",
+    kind: "tool",
+    title: "Gym Membership GST Calculator | CGST, SGST, IGST | Fitvario",
+    description:
+      "Add GST to a gym membership fee or take it out. Splits CGST and SGST or IGST, rounds to the paisa and shows invoice lines you can copy.",
+    updated: "2026-10-11",
+    navLabel: "GST calculator",
+    draft: true,
+  },
+  {
+    path: "/tools/gym-startup-cost-calculator",
+    kind: "tool",
+    title: "Gym Business Cost in India: Setup Cost Calculator | Fitvario",
+    description:
+      "Budget what it costs to start a gym in India: equipment, interiors, deposits, licences, working capital and a contingency buffer in one total.",
+    updated: "2026-10-11",
+    navLabel: "Startup cost calculator",
+    draft: true,
+  },
+  {
+    path: "/tools/gym-invoice-generator",
+    kind: "tool",
+    title: "Gym Invoice Format GST: Free Invoice Generator | Fitvario",
+    description:
+      "Make a sample gym invoice or fee receipt with optional GST lines, then print it or save it as a PDF. Nothing you type leaves your browser.",
+    updated: "2026-10-11",
+    navLabel: "Invoice generator",
+    draft: true,
+  },
+  {
+    path: "/templates/diet-charts",
+    kind: "template",
+    title: "Indian Diet Chart for Gym Members | Templates | Fitvario",
+    description:
+      "Printable Indian diet chart templates for gym members: vegetarian, eggetarian and non-vegetarian, for fat loss, muscle gain and maintenance.",
+    updated: "2026-10-11",
+    navLabel: "Diet chart templates",
+    draft: true,
+  },
 ];
 
 // A page is public only when it is not a draft, not noindex and its feature gate is live

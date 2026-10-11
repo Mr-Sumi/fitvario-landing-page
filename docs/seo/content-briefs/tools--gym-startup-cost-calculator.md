@@ -1,6 +1,6 @@
 # Brief: /tools/gym-startup-cost-calculator
 
-Status: planned · Wave: Wave 3 · Kind: tool
+Status: draft · Wave: Wave 3 · Kind: tool
 
 ## Keywords
 - Primary: gym business cost in india (P3, English, Start-a-gym)

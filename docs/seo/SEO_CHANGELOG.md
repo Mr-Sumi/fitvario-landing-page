@@ -90,3 +90,12 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - `scripts/keyword-coverage.mjs` (new): skips DROPPED keywords and lists them separately, fails on a missing keyword or a dropped keyword still present. `scripts/lib/keyword-map.mjs` is the shared parser.
 - `scripts/seo-check.mjs`: now fails on the banned phrase, on claims of automated due-payment/fee reminders, and on "free/cheap gym software".
 - Found by the new checks and fixed: `/contact` title contained "Free Gym Software Demo"; the CRM page linked to a draft; home was missing "gym management system in India". Removed the banned phrase from `/refund`.
+
+## 2026-10-11: Prompt 3, tools and templates
+
+- Owner answers applied first: no owner web dashboard (all "web dashboard", "web panel", "staff portal" claims removed; `operatingSystem` is "Android"); `due_payment_reminders` N.
+- Four published tools: `/tools/gym-break-even-calculator`, `/tools/gym-membership-pricing-calculator`, `/tools/gym-churn-calculator`, `/tools/gym-revenue-calculator`. Four drafts awaiting review: `/tools/gym-gst-calculator`, `/tools/gym-startup-cost-calculator`, `/tools/gym-invoice-generator` (CA), `/templates/diet-charts` (nutritionist).
+- All client-side, no data sent anywhere. State lives in the URL so a result can be shared, except the invoice generator, which keeps member details out of the URL. Defaults are labelled illustrative. `calculator_use` fires once per page on first input.
+- Calculations run in paise (`src/lib/calc/`), with 38 unit tests covering zero, negatives, inclusive vs exclusive GST, CGST/SGST odd-paisa split and rounding. `.d.mts` files give TypeScript the types.
+- Home page gets a "Free tools" section once tools are published; footer "Resources" column lists them automatically.
+- Not done: links from matching blog posts and feature pages (those pages do not exist yet).

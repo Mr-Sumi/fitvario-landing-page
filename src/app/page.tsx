@@ -203,6 +203,7 @@ const roleStyles = [
 export default function Home() {
   const wa = whatsappLink("Hi Fitvario, I'd like a demo for my gym.");
   const segments = publishedPages("segment");
+  const tools = publishedPages("tool");
   const isPublished = (path: string) => pages.some((p) => p.path === path && isIndexable(p));
 
   return (
@@ -397,6 +398,33 @@ export default function Home() {
                   <Link href={s.path} className="block h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300">
                     <span className="text-sm font-bold text-teal-700">{s.navLabel ?? s.title.split("|")[0].trim()}</span>
                     <span className="mt-2 block text-[13px] leading-relaxed text-slate-600">{s.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* FREE TOOLS (shows once tool pages are published) */}
+      {tools.length > 0 && (
+        <section className="border-t border-slate-200 bg-slate-50 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="mx-auto mb-10 max-w-xl text-center">
+              <SectionLabel>Free tools</SectionLabel>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Calculators for gym owners
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-slate-600">
+                Work out your break-even, pricing, churn and revenue in your browser. No sign-up.
+              </p>
+            </div>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {tools.map((t) => (
+                <li key={t.path}>
+                  <Link href={t.path} className="block h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-teal-300">
+                    <span className="text-sm font-bold text-teal-700">{t.navLabel ?? t.title.split("|")[0].trim()}</span>
+                    <span className="mt-2 block text-[13px] leading-relaxed text-slate-600">{t.description}</span>
                   </Link>
                 </li>
               ))}

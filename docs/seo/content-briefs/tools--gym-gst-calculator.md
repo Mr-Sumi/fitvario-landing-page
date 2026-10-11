@@ -1,6 +1,6 @@
 # Brief: /tools/gym-gst-calculator
 
-Status: planned · Wave: Wave 2 · Kind: tool
+Status: draft · Wave: Wave 2 · Kind: tool
 
 ## Keywords
 - Primary: gym membership gst calculator (P1, English, GST billing)
