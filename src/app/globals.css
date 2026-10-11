@@ -363,3 +363,161 @@ a.bg-teal-700:hover,
 button.bg-teal-700:hover {
   background-color: #2c373d;
 }
+
+/* ─── Motion ─────────────────────────────────────────────────────────────────
+   Transform and opacity only. One easing curve. Everything below is switched off for visitors who ask for
+   reduced motion, and the content is fully visible without any of it. */
+:root {
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Scroll reveal (see Reveal.tsx) */
+.rv-pending,
+.rv-in {
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.rv-pending {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.rv-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero cards arrive once, then drift slowly */
+@keyframes fv-enter {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes fv-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+.fv-float-in {
+  animation: fv-enter 0.9s var(--ease) both, fv-float 7s ease-in-out 1s infinite;
+  animation-delay: var(--d, 0s), calc(var(--d, 0s) + 1s);
+}
+
+/* Doodles draw themselves, the sparkle breathes */
+@keyframes fv-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.fv-draw path {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: fv-draw 1.6s var(--ease) 0.7s forwards;
+}
+@keyframes fv-breathe {
+  0%,
+  100% {
+    rotate: 0deg;
+    scale: 1;
+  }
+  50% {
+    rotate: 18deg;
+    scale: 1.14;
+  }
+}
+.fv-breathe {
+  animation: fv-breathe 5s ease-in-out infinite;
+}
+
+/* Marquee of plain text chips */
+@keyframes fv-marquee {
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+.fv-marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+.fv-marquee-track {
+  animation: fv-marquee 42s linear infinite;
+}
+.fv-marquee:hover .fv-marquee-track,
+.fv-marquee:focus-within .fv-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Interaction: lift on cards that are links, nudge the arrow on buttons, press feedback */
+.fv-lift {
+  transition: translate 0.35s var(--ease), box-shadow 0.35s var(--ease), background-color 0.2s;
+}
+.fv-lift:hover {
+  translate: 0 -5px;
+  box-shadow: 0 18px 36px -22px rgb(25 33 38 / 0.45);
+}
+.fv-btn svg {
+  transition: translate 0.25s var(--ease);
+}
+.fv-btn:hover svg {
+  translate: 4px 0;
+}
+.fv-btn:active {
+  scale: 0.98;
+}
+
+/* Header gains a hairline shadow once the page has scrolled */
+.fv-header {
+  transition: box-shadow 0.25s, background-color 0.25s;
+}
+.fv-header.is-scrolled {
+  box-shadow: 0 10px 30px -22px rgb(25 33 38 / 0.5);
+}
+
+/* FAQ accordion: answer eases open where the browser supports it */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 0.35s var(--ease), content-visibility 0.35s allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fv-float-in,
+  .fv-breathe,
+  .fv-marquee-track,
+  .fv-draw path {
+    animation: none !important;
+  }
+  .fv-draw path {
+    stroke-dashoffset: 0;
+  }
+  .fv-marquee-track {
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .rv-pending,
+  .rv-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .fv-lift,
+  .fv-btn svg,
+  details::details-content {
+    transition: none;
+  }
+}

@@ -47,6 +47,8 @@ try {
   for (const [name, path] of PAGES) {
     for (const w of WIDTHS) {
       await send("Emulation.setDeviceMetricsOverride", { width: w, height: 900, deviceScaleFactor: 1, mobile: w < 600 });
+      // Full-page captures show every block, so switch off scroll-in animation for the shot
+      await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
       await send("Page.navigate", { url: base + path });
       await sleep(2500);
       // Decline cookies so the banner is not in the shot (the site reads this from localStorage)

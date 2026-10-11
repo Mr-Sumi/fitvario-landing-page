@@ -9,6 +9,7 @@ import { Proof } from "@/components/Proof";
 import { ClosingCta } from "@/components/ClosingCta";
 import { Sparkle, LoopArrow, Squiggle, PulseLine, TileArtRings, TileArtBlocks } from "@/components/Doodles";
 import { ReminderCard, AttendanceCard, DuesCard } from "@/components/FactCards";
+import { Marquee } from "@/components/Marquee";
 
 export const metadata = buildMetadata("/");
 
@@ -266,9 +267,9 @@ export default function Home() {
             </div>
 
             <div className="relative grid gap-4 sm:grid-cols-2 lg:block lg:min-h-[34rem]">
-              <ReminderCard className="lg:absolute lg:left-0 lg:top-0 lg:w-[22rem] lg:-rotate-2" />
-              <AttendanceCard className="lg:absolute lg:right-0 lg:top-[11.5rem] lg:w-[19rem] lg:rotate-2" />
-              <DuesCard className="hidden lg:absolute lg:left-8 lg:top-[24rem] lg:block lg:w-[21rem] lg:-rotate-1" />
+              <ReminderCard delay={0.15} className="lg:absolute lg:left-0 lg:top-0 lg:w-[22rem] lg:-rotate-2" />
+              <AttendanceCard delay={0.35} className="lg:absolute lg:right-0 lg:top-[11.5rem] lg:w-[19rem] lg:rotate-2" />
+              <DuesCard delay={0.55} className="hidden lg:absolute lg:left-8 lg:top-[24rem] lg:block lg:w-[21rem] lg:-rotate-1" />
             </div>
           </div>
         </div>
@@ -280,7 +281,7 @@ export default function Home() {
           <h2 className={`${h2} max-w-xl`}>What changes on a normal Monday</h2>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            <div className="fv-tile relative overflow-hidden p-7 sm:p-9">
+            <div className="fv-tile fv-lift relative overflow-hidden p-7 sm:p-9">
               <h3 className="max-w-[16rem] text-2xl font-bold leading-tight text-ink">{problems[0].bad}</h3>
               <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-[#2f393f]">{problems[0].good}</p>
               {isPublished("/features/whatsapp-reminders") && (
@@ -290,7 +291,7 @@ export default function Home() {
               )}
               <TileArtRings className="pointer-events-none absolute -bottom-2 right-0 h-36 w-52" />
             </div>
-            <div className="fv-tile relative overflow-hidden p-7 sm:p-9">
+            <div className="fv-tile fv-lift relative overflow-hidden p-7 sm:p-9">
               <h3 className="max-w-[16rem] text-2xl font-bold leading-tight text-ink">{problems[1].bad}</h3>
               <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-[#2f393f]">{problems[1].good}</p>
               {isPublished("/features/qr-attendance") && (
@@ -322,13 +323,9 @@ export default function Home() {
       <section className="border-y border-line">
         <div className={`${wrap} py-12 text-center lg:py-14`}>
           <h2 className="text-2xl font-bold text-ink sm:text-3xl">Built around how Indian gyms collect and communicate</h2>
-          <ul className="mt-7 flex flex-wrap justify-center gap-3">
-            {chips.map((c) => (
-              <li key={c} className="rounded-full bg-soft px-5 py-3 text-[15px] font-semibold text-ink">
-                {c}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-8">
+            <Marquee items={chips} />
+          </div>
         </div>
       </section>
 
@@ -389,7 +386,7 @@ export default function Home() {
             {platformViews.map((v, i) => (
               <div
                 key={v.role}
-                className={`fv-panel flex flex-col p-7 sm:p-8 ${i === 0 ? "bg-lime text-ink" : i === 1 ? "bg-soft text-ink" : "bg-ink text-white on-ink"}`}
+                className={`fv-panel fv-lift flex flex-col p-7 sm:p-8 ${i === 0 ? "bg-lime text-ink" : i === 1 ? "bg-soft text-ink" : "bg-ink text-white on-ink"}`}
                 style={{ borderRadius: 28 }}
               >
                 <p className={`text-sm font-semibold ${i === 2 ? "text-lime" : "text-ink/70"}`}>{v.role}</p>
@@ -449,7 +446,7 @@ export default function Home() {
             </div>
             <ol className="grid gap-4 sm:grid-cols-2">
               {features.map((f, i) => (
-                <li key={f.title} className="fv-tile p-6">
+                <li key={f.title} className="fv-tile fv-lift p-6">
                   <span className="tnum flex h-9 w-9 items-center justify-center rounded-full bg-lime font-display text-sm font-bold text-ink">
                     {i + 1}
                   </span>
@@ -474,7 +471,7 @@ export default function Home() {
           <ul className="mt-8 grid gap-4 md:grid-cols-2">
             {segments.map((s) => (
               <li key={s.path}>
-                <Link href={s.path} className="fv-tile group flex h-full flex-col p-6 transition-colors hover:bg-[#e9edda]">
+                <Link href={s.path} className="fv-tile fv-lift group flex h-full flex-col p-6 hover:bg-[#e9edda]">
                   <span className="flex items-center justify-between gap-3 text-xl font-bold text-ink">
                     {s.navLabel ?? s.title.split("|")[0].trim()}
                     <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
@@ -501,7 +498,7 @@ export default function Home() {
               <ul className="grid gap-4 sm:grid-cols-2">
                 {tools.map((t) => (
                   <li key={t.path}>
-                    <Link href={t.path} className="group flex h-full flex-col rounded-[24px] bg-white p-6 transition-shadow hover:shadow-md">
+                    <Link href={t.path} className="fv-lift group flex h-full flex-col rounded-[24px] bg-white p-6">
                       <span className="flex items-center justify-between gap-3 text-lg font-bold text-ink">
                         {t.navLabel ?? t.title.split("|")[0].trim()}
                         <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
@@ -525,7 +522,7 @@ export default function Home() {
           </p>
           <ol className="mt-10 grid gap-5 md:grid-cols-3">
             {steps.map((s) => (
-              <li key={s.n} className="rounded-[24px] border border-line p-7">
+              <li key={s.n} className="fv-lift rounded-[24px] border border-line p-7">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-lime font-display text-xl font-bold text-ink">{s.n}</span>
                 <h3 className="mt-5 text-xl font-bold text-ink">{s.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{s.desc}</p>

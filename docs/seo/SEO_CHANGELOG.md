@@ -196,3 +196,13 @@
 - **No invented screens:** the floating cards are information graphics of facts the site already states, with example amounts labelled as examples (arithmetic checked: 3,000 + 540 - 2,000 = 1,540).
 - **Fonts:** Outfit (headings) and Instrument Sans (text) as variable fonts, one file each. The rupee sign is drawn with the system font because it sits in the fonts' latin-ext subset and would add two downloads.
 - **Not copied:** the references' partner logos, stock-market screens, copy and artwork were not used. Doodles and shape art are original.
+
+## 2026-10-11: motion and polish (branch `seo-design`)
+
+- **Why:** owner feedback: the page felt boring and static. Layout unchanged; this pass adds movement and finish.
+- **Scroll reveal** (`AutoReveal.tsx`, mounted once in the layout): blocks, list items and grid cards below the fold ease in with a small stagger. Content is fully visible on the server, without JavaScript and before hydration; the hidden state is applied after mount and only to blocks that start below the fold, so crawlers, LCP and the hero are unaffected. Verified with real scrolling (home: 40 blocks pending then released; feature page: 21).
+- **Hero:** the three cards arrive in sequence and then drift slowly; the loop-arrow doodle draws itself; the sparkle breathes.
+- **Marquee:** the plain text chips scroll slowly, pause on hover or focus, and become a wrapped static list for reduced motion.
+- **Interaction:** cards and tiles lift on hover, button arrows nudge, buttons press, links underline, the FAQ answer eases open (where the browser supports it), the header gains a hairline shadow once scrolled, and a thin progress line fills under the header while reading.
+- **Rules:** transform and opacity only, one easing curve, everything off for `prefers-reduced-motion`. No new dependencies.
+- **Performance:** unchanged. Lighthouse mobile: home 96, feature page 96, pricing 96; accessibility, best practices and SEO 100; CLS 0.

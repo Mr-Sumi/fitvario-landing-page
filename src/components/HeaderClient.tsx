@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 interface NavLink {
   href: string;
@@ -20,7 +21,15 @@ const linkBase = "rounded-md px-3.5 py-3 text-[15px] font-medium transition-colo
 
 export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -40,7 +49,8 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
     isActive(href) ? "text-ink underline decoration-lime decoration-[3px] underline-offset-[10px]" : "text-mute hover:text-ink";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper">
+    <header className={`fv-header sticky top-0 z-50 border-b border-line bg-paper ${scrolled ? "is-scrolled" : ""}`}>
+      <ScrollProgress />
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2.5 font-display text-xl font-bold tracking-tight text-ink">
           <Image src="/fitvario-icon.png" alt="" width={32} height={32} className="rounded-[8px]" priority />

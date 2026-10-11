@@ -24,7 +24,10 @@ function Tag({ children }: { children: React.ReactNode }) {
   return <span className="rounded-full bg-lime px-2.5 py-1 text-[11px] font-semibold text-ink">{children}</span>;
 }
 
-export function ReminderCard({ className = "" }: { className?: string }) {
+type CardProps = { className?: string; delay?: number };
+const floatStyle = (delay = 0) => ({ "--d": `${delay}s` }) as React.CSSProperties;
+
+export function ReminderCard({ className = "", delay = 0 }: CardProps) {
   if (!isLive("whatsapp_expiry_reminders")) return null;
   const steps = [
     ["7", "days before"],
@@ -33,7 +36,7 @@ export function ReminderCard({ className = "" }: { className?: string }) {
     ["+1", "day after"],
   ];
   return (
-    <div className={`fv-frame rounded-[22px] bg-white p-5 ${className}`}>
+    <div style={floatStyle(delay)} className={`fv-frame fv-float-in rounded-[22px] bg-white p-5 ${className}`}>
       <div className="flex items-center justify-between gap-3">
         <p className="font-display text-base font-bold text-ink">Renewal reminders</p>
         <Tag>WhatsApp</Tag>
@@ -51,11 +54,11 @@ export function ReminderCard({ className = "" }: { className?: string }) {
   );
 }
 
-export function AttendanceCard({ className = "" }: { className?: string }) {
+export function AttendanceCard({ className = "", delay = 0 }: CardProps) {
   if (!isLive("qr_attendance")) return null;
   const flow = ["Scan the gym QR", "Check-in saved", "Scan again", "Check-out and time"];
   return (
-    <div className={`fv-frame rounded-[22px] bg-ink p-5 text-white ${className}`}>
+    <div style={floatStyle(delay)} className={`fv-frame fv-float-in rounded-[22px] bg-ink p-5 text-white ${className}`}>
       <div className="flex items-center justify-between gap-3">
         <p className="font-display text-base font-bold">QR attendance</p>
         <span className="rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold">Two-scan mode</span>
@@ -72,7 +75,7 @@ export function AttendanceCard({ className = "" }: { className?: string }) {
   );
 }
 
-export function DuesCard({ className = "" }: { className?: string }) {
+export function DuesCard({ className = "", delay = 0 }: CardProps) {
   if (!isLive("gst_tax_lines") || !isLive("dues_partial_payments")) return null;
   const rows: [string, string][] = [
     ["3-month plan", "₹3,000"],
@@ -80,7 +83,7 @@ export function DuesCard({ className = "" }: { className?: string }) {
     ["Paid in cash today", "−₹2,000"],
   ];
   return (
-    <div className={`fv-frame rounded-[22px] bg-white p-5 ${className}`}>
+    <div style={floatStyle(delay)} className={`fv-frame fv-float-in rounded-[22px] bg-white p-5 ${className}`}>
       <div className="flex items-center justify-between gap-3">
         <p className="font-display text-base font-bold text-ink">Part payment and dues</p>
         <Tag>Example</Tag>

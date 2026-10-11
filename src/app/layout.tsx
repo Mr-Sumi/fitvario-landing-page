@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Analytics } from "@/components/Analytics";
 import { ActionBar } from "@/components/ActionBar";
+import { AutoReveal } from "@/components/AutoReveal";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { OG_IMAGE } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/config/site";
@@ -92,6 +93,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ActionBar />
+        <AutoReveal />
         <CookieBanner />
         <Analytics />
       </body>

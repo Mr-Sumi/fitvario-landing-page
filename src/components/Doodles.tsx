@@ -2,7 +2,7 @@
 
 export function Sparkle({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+    <svg viewBox="0 0 48 48" className={`fv-breathe ${className}`} aria-hidden>
       <path className="fv-doodle" d="M24 4 C25.5 15 33 22.5 44 24 C33 25.5 25.5 33 24 44 C22.5 33 15 25.5 4 24 C15 22.5 22.5 15 24 4 Z" />
     </svg>
   );
@@ -11,7 +11,7 @@ export function Sparkle({ className = "" }: { className?: string }) {
 // A loose loop with an arrowhead, drawn from the headline towards the main button
 export function LoopArrow({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 260 200" className={className} aria-hidden fill="none">
+    <svg viewBox="0 0 260 200" className={`fv-draw ${className}`} aria-hidden fill="none">
       <path
         className="fv-doodle"
         d="M8 12 C120 6 214 40 208 100 C204 140 160 150 150 126 C142 106 170 96 184 112 C206 138 150 188 52 176"
@@ -23,7 +23,7 @@ export function LoopArrow({ className = "" }: { className?: string }) {
 
 export function Squiggle({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 160 24" className={className} aria-hidden fill="none">
+    <svg viewBox="0 0 160 24" className={`fv-draw ${className}`} aria-hidden fill="none">
       <path className="fv-doodle" d="M4 14 C20 2 28 24 44 12 C60 0 68 24 84 12 C100 0 108 24 124 12 C136 4 146 10 156 8" />
     </svg>
   );
