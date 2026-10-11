@@ -115,3 +115,14 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Expert review** of `/tools/gym-startup-cost-calculator` (draft): licence and cost rules vary by state. The starting figures are placeholders, not market data.
 - [ ] To publish a draft, remove `draft: true` for it in `src/config/pages.ts`.
 - [ ] The four published calculators have illustrative defaults (for example rent per sq ft by city tier). Replace them with numbers you are comfortable standing behind, or leave them labelled as illustrative.
+
+## 15. Added by Prompt 6 (comparison pages, all draft)
+
+- [ ] **Legal read** of all five comparison pages before publishing (Easy Gym Software, Okfit, GymSmart, Mindbody, GymMaster).
+- [ ] **Re-verify every fact** in `competitor-facts.csv` on the live vendor pages. The facts were read through a tool that summarises pages; quotes may not be word-for-word.
+- [ ] **GymSmart:** find the official website. Until then the page compares nothing line by line and should stay unpublished.
+- [ ] **Mindbody and GymMaster for India:** ask each vendor (or check their sales pages) whether they serve Indian gyms in rupees and handle GST invoices. The pages currently say "not found" and invite the reader to ask.
+- [ ] **Monthly review:** re-check prices and terms on all five pages each month and update `VERIFIED_ON` and `VERIFIED_LABEL` in `src/content/compare.ts`. These are separate from the sitemap `lastmod`, which does not move.
+- [ ] **Fitvario cells will change on their own** when you flip flags in `feature-status.json` (for example GST or biometric). Re-read the pages after each flip.
+- [ ] **Free trial and published prices:** the pages say Fitvario has neither stated on this site. If you decide to offer a trial or publish prices, tell me and I will update the rows.
+- [ ] When the comparison pages go live, link them from the footer "Compare" column (automatic) and from the "best gym management software" post.

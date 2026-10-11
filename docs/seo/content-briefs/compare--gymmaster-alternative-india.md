@@ -1,6 +1,6 @@
 # Brief: /compare/gymmaster-alternative-india
 
-Status: planned · Wave: Wave 3 · Kind: compare
+Status: draft · Wave: Wave 3 · Kind: compare
 
 ## Keywords
 - Primary: gymmaster alternative india (P3, English, Comparison)

@@ -45,7 +45,7 @@ const entries = parseMap(map).map((e) => ({
 // ---- registry (read the TS file as text, no TS toolchain needed) ------------
 const regSrc = readFileSync(join(root, "src", "config", "pages.ts"), "utf8");
 const registry = [];
-for (const block of regSrc.split(/\n  \{\n/).slice(1)) {
+for (const block of regSrc.replace(/\r\n/g, "\n").split(/\n  \{\n/).slice(1)) {
   const g = (k) => (block.match(new RegExp(`${k}:\\s*\\n?\\s*"([^"]*)"`)) ?? [])[1];
   registry.push({
     path: g("path"),
@@ -58,7 +58,7 @@ for (const block of regSrc.split(/\n  \{\n/).slice(1)) {
 const statusJson = JSON.parse(readFileSync(join(docs, "feature-status.json"), "utf8")).features;
 const live = (k) => ["live", "live-per-site"].includes(statusJson[k]?.status);
 function statusOf(path) {
-  const r = registry.find((x) => x.path === path);
+  const r = registry.find((x) => x.path.replace(/\/$/, "") === path.replace(/\/$/, ""));
   if (!r) return "planned";
   if (r.noindex) return "noindex";
   if (r.draft || (r.gate && !live(r.gate))) return "draft";
@@ -254,7 +254,7 @@ for (const e of entries) {
   ]);
 }
 for (const r of registry) {
-  if (entries.some((e) => e.path === r.path)) continue;
+  if (entries.some((e) => e.path.replace(/\/$/, "") === r.path.replace(/\/$/, ""))) continue;
   rows.push([r.path, "(none)", "", "", statusOf(r.path), "Support", "", "Claude Code"]);
 }
 writeFileSync(join(docs, "page-tracker.csv"), rows.map((r) => r.map(csv).join(",")).join("\n") + "\n");

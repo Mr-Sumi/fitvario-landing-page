@@ -99,3 +99,11 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Calculations run in paise (`src/lib/calc/`), with 38 unit tests covering zero, negatives, inclusive vs exclusive GST, CGST/SGST odd-paisa split and rounding. `.d.mts` files give TypeScript the types.
 - Home page gets a "Free tools" section once tools are published; footer "Resources" column lists them automatically.
 - Not done: links from matching blog posts and feature pages (those pages do not exist yet).
+
+## 2026-10-11: Prompt 6, comparison pages (branch `seo-compare`)
+
+- Fact collection first: 38 statements recorded in `docs/seo/competitor-facts.csv` from the vendors' own pages (Easy Gym Software, Okfit, Mindbody, GymMaster) and one third-party listing (GymSmart), each with source URL and date. Pages that returned 404 (Easy Gym and Okfit `/pricing`) were not used. Where a page did not say something, the comparison says "not stated" and not "no".
+- Five DRAFT pages built from that data (`src/content/compare.ts`), none published. Layout per the prompt: who each is for, feature table, where the competitor may be better, where Fitvario may fit better, pricing as publicly stated with date, decision checklist, sources, "Last verified" date, trademark footnote and a correction contact.
+- Fitvario's table cells are computed from `feature-status.json`, so the page can never claim a feature that is not live.
+- The competitor's own claim of an official WhatsApp integration is paraphrased, because the exact phrase is banned on this site.
+- Not included: migration notes (Fitvario's import help is an unverified service claim), competitor logos, "best" claims.

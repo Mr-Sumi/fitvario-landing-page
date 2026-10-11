@@ -250,6 +250,58 @@ export const pages: PageDef[] = [
     navLabel: "Diet chart templates",
     draft: true,
   },
+
+  // Comparison pages (Prompt 6): DRAFT only until Sumit clears accuracy and a legal read.
+  {
+    path: "/compare/easy-gym-software-alternative",
+    kind: "compare",
+    title: "Easy Gym Software Alternative: Fitvario Compared | Fitvario",
+    description:
+      "A fair, sourced comparison of Fitvario and Easy Gym Software for Indian gyms: what each states, pricing as published and who each suits. Dated.",
+    updated: "2026-10-11",
+    navLabel: "Easy Gym alternative",
+    draft: true,
+  },
+  {
+    path: "/compare/okfit-alternative",
+    kind: "compare",
+    title: "Okfit Alternative: A Fair Comparison for Gyms | Fitvario",
+    description:
+      "A fair, sourced comparison of Fitvario and Okfit for Indian gyms: published plans, trial, features each states and who each suits. Dated.",
+    updated: "2026-10-11",
+    navLabel: "Okfit alternative",
+    draft: true,
+  },
+  {
+    path: "/compare/gymsmart-alternative",
+    kind: "compare",
+    title: "GymSmart Alternative: A Fair Comparison for Gyms | Fitvario",
+    description:
+      "What we could and could not confirm about GymSmart, how to check it yourself and how Fitvario compares where facts are sourced. Dated.",
+    updated: "2026-10-11",
+    navLabel: "GymSmart alternative",
+    draft: true,
+  },
+  {
+    path: "/compare/mindbody-alternative-india",
+    kind: "compare",
+    title: "Mindbody Alternative India: A Fair Comparison | Fitvario",
+    description:
+      "A fair, sourced look at Mindbody for an Indian gym: what it states about price and plans, what we could not confirm, and how Fitvario compares. Dated.",
+    updated: "2026-10-11",
+    navLabel: "Mindbody alternative India",
+    draft: true,
+  },
+  {
+    path: "/compare/gymmaster-alternative-india",
+    kind: "compare",
+    title: "GymMaster Alternative India: A Fair Comparison | Fitvario",
+    description:
+      "A fair, sourced look at GymMaster for an Indian gym: plans by member count, terms it states, what is not stated for India, and how Fitvario compares.",
+    updated: "2026-10-11",
+    navLabel: "GymMaster alternative India",
+    draft: true,
+  },
 ];
 
 // A page is public only when it is not a draft, not noindex and its feature gate is live
