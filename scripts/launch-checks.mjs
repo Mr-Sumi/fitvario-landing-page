@@ -107,6 +107,16 @@ if (placeholders.length) {
   for (const p of placeholders) failures.push(`    - ${p}`);
 }
 
+// Screens the site is ready to show once real screenshots exist (frames render nothing until then)
+{
+  const scr = readFileSync(join(root, "src", "config", "screens.ts"), "utf8");
+  const man = JSON.parse(readFileSync(join(root, "public", "screens", "manifest.json"), "utf8"));
+  const missing = [...scr.matchAll(/\{ n: (\d+), id: "([^"]+)"[^}]*usedOn: \[([^\]]*)\]/g)]
+    .filter((m) => !man[m[2]])
+    .map((m) => `${String(m[1]).padStart(2, "0")} ${m[2]} (${m[3].replace(/"/g, "")})`);
+  if (missing.length) warn("screenshots", `${missing.length} still to supply, frames are hidden until then: ${missing.join("; ")}`);
+}
+
 console.log(`Checked ${indexable} public pages for conversion, ${staticFiles.length} static files for leaks.`);
 for (const w of warnings) console.log(`WARN  ${w}`);
 if (failures.length) {

@@ -3,6 +3,7 @@ import { buildMetadata, formatDate } from "@/lib/seo";
 import { getPage } from "@/config/pages";
 import { PageShell } from "@/components/PageShell";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PageHero } from "@/components/PageHero";
 import { DemoForm } from "@/components/DemoForm";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
@@ -92,17 +93,15 @@ export default function PricingPage() {
       <SoftwareApplicationJsonLd />
       <Breadcrumbs path="/pricing" />
 
-      <header className="mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
-        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">
-          Gym software price in India: what Fitvario costs and why
-        </h1>
-        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">
-          {haveTiers
+      <PageHero
+        h1="Gym software price in India: what Fitvario costs and why"
+        lead={
+          haveTiers
             ? "Fitvario plans are priced in Indian Rupees. Pick the one that fits your gym, or talk to us if you run several branches."
-            : "Fitvario does not publish a fixed price list yet. The gym software price you pay in India depends on your branches, your active members, how much you message and which modules you use. Tell us about your gym and we will send a quote, usually within 1 to 2 business days."}
-        </p>
-        <p className="mt-4 text-sm text-mute">Last updated: {formatDate(page.updated)}</p>
-      </header>
+            : "Fitvario does not publish a fixed price list yet. The gym software price you pay in India depends on your branches, your active members, how much you message and which modules you use. Tell us about your gym and we will send a quote, usually within 1 to 2 business days."
+        }
+        meta={<>Last updated: {formatDate(page.updated)}</>}
+      />
 
       {haveTiers && (
         <div className="mt-12 grid gap-px overflow-hidden rounded-[8px] border border-line bg-line md:grid-cols-3">
@@ -154,7 +153,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="on-ink mt-20 rounded-[8px] bg-ink p-7 text-white sm:p-10" aria-labelledby="included-heading">
+      <section className="on-ink fv-panel mt-20 bg-ink p-7 text-white sm:p-12" aria-labelledby="included-heading">
         <h2 id="included-heading" className="text-[1.75rem] font-bold leading-tight sm:text-[2rem]">What is included in every plan</h2>
         <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2">
           {included.map((item) => (

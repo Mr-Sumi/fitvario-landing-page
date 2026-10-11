@@ -4,6 +4,7 @@ import { getPage, publishedPages } from "@/config/pages";
 import { isLive } from "@/lib/features";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ClosingCta } from "@/components/ClosingCta";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata = buildMetadata("/features");
 
@@ -81,7 +82,7 @@ function RoleSection({
 }) {
   return (
     <section id={id} className="scroll-mt-24 py-14 first:pt-0">
-      <div className="mb-6 max-w-2xl border-l-4 border-lime pl-5">
+      <div className="mb-6 max-w-2xl">
         <h2 className="text-[1.75rem] font-bold leading-tight text-ink sm:text-[2rem]">{heading}</h2>
         <p className="mt-2 text-[17px] leading-relaxed text-[#2f393f]">{sub}</p>
       </div>
@@ -108,19 +109,24 @@ export default function FeaturesPage() {
     <div className="mx-auto w-full max-w-5xl px-5 pb-24 pt-8 sm:px-8">
       <Breadcrumbs path="/features" />
 
-      <div className="mb-14 mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
-        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">
-          Gym management software features for Indian gyms
-        </h1>
-        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">
-          Fitvario gives gym owners and staff an Android app to run the gym, and members the same Android app with their own login. Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
-        </p>
-        <p className="mt-4 text-sm text-mute">Last updated: {formatDate(page.updated)}</p>
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-          <a href="#gym-owner"><RoleBadge label="Gym Owner" color="bg-teal-50 text-teal-800" dot="bg-teal-500" /></a>
-          <a href="#staff"><RoleBadge label="Staff" color="bg-indigo-50 text-indigo-800" dot="bg-indigo-500" /></a>
-          <a href="#member-app"><RoleBadge label="Member App" color="bg-violet-50 text-violet-800" dot="bg-violet-500" /></a>
-        </div>
+      <div className="mb-14">
+        <PageHero
+          h1="Gym management software features for Indian gyms"
+          lead="Fitvario gives gym owners and staff an Android app to run the gym, and members the same Android app with their own login. Each one is built for that person's job. Jump to a section below, or open a feature in detail."
+          meta={<>Last updated: {formatDate(page.updated)}</>}
+        >
+          <div className="mt-6 flex flex-wrap gap-3">
+            {[
+              ["#gym-owner", "Gym owner"],
+              ["#staff", "Staff"],
+              ["#member-app", "Member app"],
+            ].map(([href, label]) => (
+              <a key={href} href={href} className="rounded-full bg-white px-5 py-2.5 text-[15px] font-semibold text-ink hover:bg-ink hover:text-white">
+                {label}
+              </a>
+            ))}
+          </div>
+        </PageHero>
       </div>
 
       {detail.length > 0 && (

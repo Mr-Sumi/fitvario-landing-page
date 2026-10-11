@@ -6,10 +6,12 @@
   --ink: #192126;
   --lime: #bbf246;
   --lime-deep: #4d7c0f;
-  --paper: #fafaf6;
+  --paper: #ffffff;
+  --soft: #f3f5ec;
   --line: #e3e5de;
   --mute: #4b555b;
-  --radius: 8px;
+  --radius: 14px;
+  --radius-panel: 32px;
   --shadow: 0 1px 0 rgb(25 33 38 / 0.05), 0 12px 28px -16px rgb(25 33 38 / 0.35);
   --background: var(--paper);
   --foreground: var(--ink);
@@ -28,7 +30,8 @@
 @theme {
   --color-ink: #192126;
   --color-lime: #bbf246;
-  --color-paper: #fafaf6;
+  --color-paper: #ffffff;
+  --color-soft: #f3f5ec;
   --color-line: #e3e5de;
   --color-mute: #4b555b;
   --color-teal-50: #f7fbe8;
@@ -70,6 +73,9 @@ h3 {
 }
 
 /* Rupee amounts and tables line up when figures are tabular */
+.fv-rs {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+}
 .tnum {
   font-variant-numeric: tabular-nums;
 }
@@ -132,46 +138,75 @@ button {
   font-weight: 600;
 }
 
-/* Buttons */
+/* Buttons: black pill is the primary action (as in the reference), outlined pill the quiet one */
 .fv-btn {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 52px;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border-radius: var(--radius);
-  padding: 0 1.5rem;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0 1.75rem;
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1;
-  transition: background-color 150ms, border-color 150ms;
+  transition: background-color 150ms, border-color 150ms, color 150ms;
 }
 .fv-btn-primary {
+  background: var(--ink);
+  color: #fff;
+  border: 1px solid var(--ink);
+}
+.fv-btn-primary:hover {
+  background: #2c373d;
+  border-color: #2c373d;
+}
+.fv-btn-secondary {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.fv-btn-secondary:hover {
+  border-color: var(--ink);
+}
+.fv-btn-lime {
   background: var(--lime);
   color: var(--ink);
   border: 1px solid var(--lime);
 }
-.fv-btn-primary:hover {
+.fv-btn-lime:hover {
   background: #a9e02c;
   border-color: #a9e02c;
 }
-.fv-btn-secondary {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--ink);
-}
-.fv-btn-secondary:hover {
-  background: rgb(25 33 38 / 0.06);
-}
 .on-ink .fv-btn-secondary {
+  background: transparent;
   color: #fff;
-  border-color: rgb(255 255 255 / 0.55);
+  border-color: rgb(255 255 255 / 0.5);
 }
 .on-ink .fv-btn-secondary:hover {
   background: rgb(255 255 255 / 0.1);
 }
+.on-ink .fv-btn-primary {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+.on-ink .fv-btn-primary:hover {
+  background: var(--lime);
+  border-color: var(--lime);
+}
 
-/* One card rule: 1 px line border, 8 px radius, no shadow */
+/* Big rounded colour panels (hero, page headers, banners) */
+.fv-panel {
+  border-radius: var(--radius-panel);
+}
+/* Soft grey cards like the reference's "Read more" tiles */
+.fv-tile {
+  background: var(--soft);
+  border-radius: 24px;
+}
+
+/* Cards: 1 px line border, 14 px radius */
 .fv-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -287,6 +322,14 @@ button {
 .rounded-2xl {
   border-radius: var(--radius);
 }
+/* Doodles: hand-drawn strokes drawn with a round cap */
+.fv-doodle {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .shadow-sm,
 .shadow-md,
 .shadow-lg,
@@ -311,11 +354,12 @@ button {
 }
 a.bg-teal-700,
 button.bg-teal-700 {
-  background-color: var(--lime);
-  color: var(--ink);
+  background-color: var(--ink);
+  color: #fff;
   font-weight: 600;
+  border-radius: 999px;
 }
 a.bg-teal-700:hover,
 button.bg-teal-700:hover {
-  background-color: #a9e02c;
+  background-color: #2c373d;
 }

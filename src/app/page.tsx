@@ -7,7 +7,8 @@ import { isLive } from "@/lib/features";
 import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
 import { Proof } from "@/components/Proof";
 import { ClosingCta } from "@/components/ClosingCta";
-import { ScreenshotFrame } from "@/components/ScreenshotFrame";
+import { Sparkle, LoopArrow, Squiggle, PulseLine, TileArtRings, TileArtBlocks } from "@/components/Doodles";
+import { ReminderCard, AttendanceCard, DuesCard } from "@/components/FactCards";
 
 export const metadata = buildMetadata("/");
 
@@ -186,162 +187,218 @@ const faqs = [
 
 /* ─── Page ───────────────────────────────────────────────────────────────── */
 const wrap = "mx-auto max-w-6xl px-5 sm:px-8";
-const band = "py-[4.5rem] lg:py-28";
+const band = "py-16 lg:py-24";
+const h2 = "text-[2rem] font-bold leading-[1.1] text-ink sm:text-[2.5rem]";
+
+// Simple outline icons for the "what changes" grid, matched to the order of `problems`
+const problemIcons = [features[3].d, features[1].d, features[2].d, features[4].d, features[0].d, features[5].d];
+
+function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" className={className} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M4 10h12M11 5l5 5-5 5" />
+    </svg>
+  );
+}
 
 export default function Home() {
   const wa = whatsappLink("Hi Fitvario, I'd like a demo for my gym.");
   const segments = publishedPages("segment");
   const tools = publishedPages("tool");
   const isPublished = (path: string) => pages.some((p) => p.path === path && isIndexable(p));
-  const facts = [
-    "Payments via Razorpay",
-    expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts",
-    "Android app for your members",
-    "Registered in Bhopal, India",
-  ];
+  const chips = ["UPI", "Razorpay", "WhatsApp", "SMS", "Push notifications", "Android app", "GST invoices"];
 
   return (
     <>
       <SoftwareApplicationJsonLd />
 
-      {/* HERO: headline left, real product screens right */}
-      <section className="border-b border-line">
-        <div className={`${wrap} grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:pb-24 lg:pt-20`}>
-          <div>
-            <p className="text-[15px] font-medium text-mute">Fitvario gym management for owners in India</p>
-            <h1 className="mt-4 max-w-2xl text-[2.5rem] font-bold leading-[1.06] text-ink sm:text-6xl">
-              Stop running your gym on WhatsApp groups and spreadsheets
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#2f393f]">
-              {`Fitvario is gym management software for India. It keeps your members and their plan end dates, records attendance when they scan the gym QR code, holds your enquiry list, and gives your members ${memberApp}${diet ? ", with workout and diet plans" : ""}.`}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact#demo" data-cta="hero" className="fv-btn fv-btn-primary">
-                Book a free demo
-              </Link>
-              {wa ? (
-                <a href={wa} target="_blank" rel="noopener noreferrer" data-cta="hero" className="fv-btn fv-btn-secondary">
-                  <span className="h-2 w-2 rounded-full bg-[#25a244]" aria-hidden />
-                  Chat on WhatsApp
-                </a>
-              ) : (
-                <a href="#problems" className="fv-btn fv-btn-secondary">
-                  See what changes
-                </a>
-              )}
-            </div>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-mute">
-              {facts.map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-lime-deep" style={{ background: "var(--lime-deep)" }} aria-hidden />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            {isPublished("/hi") && (
-              <p className="mt-6 text-sm text-mute">
-                Hindi aur Hinglish mein padhna hai?{" "}
-                <Link href="/hi" lang="hi-Latn" className="fv-link font-medium">
-                  Hinglish mein dekhein
+      {/* HERO: big lime panel, black headline, cards floating over its edge */}
+      <section className="mx-auto max-w-[88rem] px-3 pt-3 sm:px-5 sm:pt-5">
+        <div className="on-lime fv-panel relative bg-lime px-6 pb-12 pt-12 sm:px-12 sm:pt-16 lg:pb-24 lg:pt-20">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+            <div className="relative">
+              <Sparkle className="absolute -top-2 right-2 hidden h-10 w-10 sm:right-10 sm:block lg:-right-2" />
+              <p className="text-[15px] font-semibold text-ink/80">Fitvario gym management for owners in India</p>
+              <h1 className="mt-4 max-w-2xl text-[2.6rem] font-bold leading-[1.02] text-ink sm:text-6xl lg:text-[4.5rem]">
+                Stop running your gym on WhatsApp groups and spreadsheets
+              </h1>
+              <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink/90 sm:text-lg">
+                {`Fitvario is gym management software for India. It keeps your members and their plan end dates, records attendance when they scan the gym QR code, holds your enquiry list, and gives your members ${memberApp}${diet ? ", with workout and diet plans" : ""}.`}
+              </p>
+              <div className="relative mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <LoopArrow className="pointer-events-none absolute -top-9 left-[23.5rem] hidden h-20 w-32 lg:block" />
+                <Link href="/contact#demo" data-cta="hero" className="fv-btn fv-btn-primary">
+                  Book a free demo
+                  <ArrowRight />
                 </Link>
-              </p>
-            )}
-          </div>
-
-          <div className="relative mx-auto flex w-full max-w-md justify-center gap-5 lg:max-w-none lg:justify-end">
-            <div className="w-full max-w-[250px]">
-              <ScreenshotFrame screen="owner-home" priority />
-            </div>
-            <div className="mt-14 hidden w-full max-w-[250px] sm:block">
-              <ScreenshotFrame screen="member-home" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT CHANGES: a ruled before and after table, not cards */}
-      <section id="problems" className={band}>
-        <div className={wrap}>
-          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">What changes on a normal Monday</h2>
-          <div className="mt-10 border-t border-ink">
-            <div className="hidden grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-10 border-b border-line py-3 text-sm font-semibold text-mute md:grid">
-              <p>Today</p>
-              <p>With Fitvario</p>
-            </div>
-            <ul className="divide-y divide-line">
-              {problems.map((p) => (
-                <li key={p.bad} className="grid gap-2 py-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
-                  <p className="text-[17px] text-mute">{p.bad}</p>
-                  <p className="text-[17px] font-medium leading-snug text-ink">{p.good}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ONE RENEWAL: a single large number on ink */}
-      {expiry && (
-        <section className="on-ink bg-ink text-white">
-          <div className={`${wrap} grid gap-10 py-[4.5rem] lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20 lg:py-24`}>
-            <div>
-              <h2 className="text-[2rem] font-bold leading-tight sm:text-[2.5rem]">Renewal reminders go out without anyone at the desk</h2>
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-white/80">
-                Once a day Fitvario checks each member&apos;s plan end date. Members who are 7, 3 or 1 days from the end get
-                a WhatsApp message, and members whose plan ended yesterday get one more. Each message uses a credit from your
-                gym&apos;s messaging wallet.
-              </p>
-              {isPublished("/features/whatsapp-reminders") && (
-                <p className="mt-6">
-                  <Link href="/features/whatsapp-reminders" className="font-semibold text-white underline decoration-lime decoration-2 underline-offset-4 hover:decoration-4">
-                    How the reminders work
+                {wa ? (
+                  <a href={wa} target="_blank" rel="noopener noreferrer" data-cta="hero" className="fv-btn fv-btn-secondary">
+                    <span className="h-2 w-2 rounded-full bg-[#25a244]" aria-hidden />
+                    Chat on WhatsApp
+                  </a>
+                ) : (
+                  <a href="#problems" className="fv-btn fv-btn-secondary">
+                    See what changes
+                  </a>
+                )}
+              </div>
+              <ul className="mt-9 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-ink/85">
+                {[
+                  "Payments via Razorpay",
+                  expiry ? "Automated WhatsApp reminders" : "WhatsApp, SMS and push alerts",
+                  "Android app for your members",
+                  "Registered in Bhopal, India",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-ink" aria-hidden />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              {isPublished("/hi") && (
+                <p className="mt-5 text-sm text-ink/80">
+                  Hindi aur Hinglish mein padhna hai?{" "}
+                  <Link href="/hi" lang="hi-Latn" className="font-semibold text-ink underline underline-offset-4">
+                    Hinglish mein dekhein
                   </Link>
                 </p>
               )}
             </div>
+
+            <div className="relative grid gap-4 sm:grid-cols-2 lg:block lg:min-h-[34rem]">
+              <ReminderCard className="lg:absolute lg:left-0 lg:top-0 lg:w-[22rem] lg:-rotate-2" />
+              <AttendanceCard className="lg:absolute lg:right-0 lg:top-[11.5rem] lg:w-[19rem] lg:rotate-2" />
+              <DuesCard className="hidden lg:absolute lg:left-8 lg:top-[24rem] lg:block lg:w-[21rem] lg:-rotate-1" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT CHANGES: two soft tiles, then a two-column grid with lime icon dots */}
+      <section id="problems" className={`${band} lg:pt-40`}>
+        <div className={wrap}>
+          <h2 className={`${h2} max-w-xl`}>What changes on a normal Monday</h2>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            <div className="fv-tile relative overflow-hidden p-7 sm:p-9">
+              <h3 className="max-w-[16rem] text-2xl font-bold leading-tight text-ink">{problems[0].bad}</h3>
+              <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-[#2f393f]">{problems[0].good}</p>
+              {isPublished("/features/whatsapp-reminders") && (
+                <Link href="/features/whatsapp-reminders" className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-ink">
+                  How the reminders work <ArrowRight />
+                </Link>
+              )}
+              <TileArtRings className="pointer-events-none absolute -bottom-2 right-0 h-36 w-52" />
+            </div>
+            <div className="fv-tile relative overflow-hidden p-7 sm:p-9">
+              <h3 className="max-w-[16rem] text-2xl font-bold leading-tight text-ink">{problems[1].bad}</h3>
+              <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-[#2f393f]">{problems[1].good}</p>
+              {isPublished("/features/qr-attendance") && (
+                <Link href="/features/qr-attendance" className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-ink">
+                  How QR attendance works <ArrowRight />
+                </Link>
+              )}
+              <TileArtBlocks className="pointer-events-none absolute -bottom-2 right-0 h-36 w-52" />
+            </div>
+          </div>
+
+          <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+            {problems.slice(2).map((p, i) => (
+              <li key={p.bad}>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-lime">
+                  <svg className="h-5 w-5 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={problemIcons[i + 2]} />
+                  </svg>
+                </span>
+                <p className="mt-4 text-sm font-medium text-mute">{p.bad}</p>
+                <p className="mt-1.5 text-[1.0625rem] font-semibold leading-snug text-ink">{p.good}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* WORKS WITH: chips, not logos */}
+      <section className="border-y border-line">
+        <div className={`${wrap} py-12 text-center lg:py-14`}>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl">Built around how Indian gyms collect and communicate</h2>
+          <ul className="mt-7 flex flex-wrap justify-center gap-3">
+            {chips.map((c) => (
+              <li key={c} className="rounded-full bg-soft px-5 py-3 text-[15px] font-semibold text-ink">
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* BLACK BANNER: the reminder schedule, with the numerals as the visual */}
+      {expiry && (
+        <section className={`${wrap} py-16 lg:py-24`}>
+          <div className="on-ink fv-panel relative grid items-center gap-10 overflow-hidden bg-ink px-6 py-12 sm:px-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:py-16">
+            <PulseLine className="pointer-events-none absolute bottom-6 right-8 hidden h-16 w-44 text-white/25 lg:block" />
+            <div className="lg:pl-14">
+              <h2 className="text-[2rem] font-bold leading-[1.1] text-white sm:text-[2.5rem]">
+                Renewal reminders go out without anyone at the desk
+              </h2>
+              <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-white/80">
+                Once a day Fitvario checks each member&apos;s plan end date. Members who are 7, 3 or 1 days from the end get a
+                WhatsApp message, and members whose plan ended yesterday get one more. Each message uses a credit from your
+                gym&apos;s messaging wallet.
+              </p>
+              {isPublished("/features/whatsapp-reminders") && (
+                <Link href="/features/whatsapp-reminders" className="fv-btn fv-btn-primary mt-7">
+                  How the reminders work
+                </Link>
+              )}
+            </div>
             <div>
-              <ol className="grid grid-cols-4 gap-3 border-t border-white/25 pt-6">
+              <ol className="grid grid-cols-4 gap-3">
                 {[
                   ["7", "days before"],
                   ["3", "days before"],
                   ["1", "day before"],
                   ["+1", "day after"],
                 ].map(([n, l]) => (
-                  <li key={l + n}>
-                    <p className="font-display text-5xl font-bold leading-none text-lime sm:text-7xl">{n}</p>
-                    <p className="mt-3 text-sm text-white/80">{l}</p>
+                  <li key={l + n} className="rounded-[20px] bg-white/10 px-3 py-5 text-center">
+                    <p className="font-display text-5xl font-bold leading-none text-lime sm:text-6xl">{n}</p>
+                    <p className="mt-3 text-[13px] text-white/80">{l}</p>
                   </li>
                 ))}
               </ol>
-              <p className="mt-8 text-sm leading-relaxed text-white/70">
-                Example: a plan that ends on the 20th is reminded on the 13th, 17th and 19th, and the expired message goes on
-                the 21st. Dates are illustrative.
+              <p className="mt-5 text-sm leading-relaxed text-white/70">
+                Example: a plan that ends on the 20th is reminded on the 13th, 17th and 19th, and the expired message goes
+                on the 21st. Dates are illustrative.
               </p>
             </div>
           </div>
         </section>
       )}
 
-      {/* ROLES: three rows with a left label, not three tinted cards */}
-      <section id="platform" className={band}>
+      {/* ROLES: three coloured columns */}
+      <section id="platform" className={`${band} pt-0`}>
         <div className={wrap}>
-          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">One app, three logins</h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#2f393f]">
-            Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the
-            same app with their own login, and it can show your gym’s name and logo on its splash and home screens.
-          </p>
-          <div className="mt-10 divide-y divide-line border-y border-line">
-            {platformViews.map((v) => (
-              <div key={v.role} className="grid gap-5 py-8 md:grid-cols-[minmax(0,3fr)_minmax(0,5fr)] md:gap-12">
-                <div>
-                  <p className="text-sm font-semibold text-mute">{v.role}</p>
-                  <h3 className="mt-1 text-2xl font-bold leading-snug text-ink">{v.headline}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-mute">{v.sub}</p>
-                </div>
-                <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          <div className="max-w-2xl">
+            <h2 className={h2}>One app, three logins</h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#2f393f]">
+              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the
+              same app with their own login, and it can show your gym’s name and logo on its splash and home screens.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {platformViews.map((v, i) => (
+              <div
+                key={v.role}
+                className={`fv-panel flex flex-col p-7 sm:p-8 ${i === 0 ? "bg-lime text-ink" : i === 1 ? "bg-soft text-ink" : "bg-ink text-white on-ink"}`}
+                style={{ borderRadius: 28 }}
+              >
+                <p className={`text-sm font-semibold ${i === 2 ? "text-lime" : "text-ink/70"}`}>{v.role}</p>
+                <h3 className="mt-2 text-2xl font-bold leading-snug">{v.headline}</h3>
+                <p className={`mt-2 text-[15px] leading-relaxed ${i === 2 ? "text-white/75" : "text-ink/80"}`}>{v.sub}</p>
+                <ul className="mt-6 space-y-3">
                   {v.points.map((pt) => (
-                    <li key={pt} className="flex gap-3 text-[15px] leading-snug text-[#2f393f]">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0" style={{ background: "var(--lime-deep)" }} aria-hidden />
+                    <li key={pt} className="flex gap-3 text-[15px] leading-snug">
+                      <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${i === 2 ? "bg-lime" : "bg-ink"}`} aria-hidden />
                       {pt}
                     </li>
                   ))}
@@ -352,36 +409,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES: numbered list in two columns, no icons */}
-      <section id="features" className="border-t border-line bg-white">
-        <div className={`${wrap} ${band}`}>
+      {/* DUES: a big lime circle with floating cards, as in the reference's last feature row */}
+      <section className="border-t border-line">
+        <div className={`${wrap} grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24`}>
+          <div>
+            <h2 className={h2}>Part payments stay on the invoice until they are paid</h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-[#2f393f]">
+              Record what the member paid today and the invoice keeps the balance, with a dues list for who still owes. You
+              choose which of your tax lines apply, and each shows as its own line.
+            </p>
+            {isPublished("/features/gst-billing") && (
+              <Link href="/features/gst-billing" className="fv-btn fv-btn-primary mt-7">
+                How billing and dues work
+                <ArrowRight />
+              </Link>
+            )}
+            <Squiggle className="mt-8 h-6 w-28" />
+          </div>
+          <div className="relative mx-auto min-h-[19rem] w-full max-w-md">
+            <div className="absolute -right-6 top-2 h-72 w-72 rounded-full bg-lime sm:h-80 sm:w-80" aria-hidden />
+            <DuesCard className="relative z-10 mx-auto mt-10 w-[21rem] max-w-full -rotate-2" />
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES: soft tiles, numbered */}
+      <section id="features" className={`${band} border-t border-line`}>
+        <div className={wrap}>
           <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
             <div>
-              <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">
-                Gym management software India owners can run from a phone
-              </h2>
+              <h2 className={h2}>Gym management software India owners can run from a phone</h2>
               <p className="mt-4 text-lg leading-relaxed text-[#2f393f]">
                 From the first member you add to the daily close, the tools a small team uses most.
               </p>
-              <p className="mt-6">
-                <Link href="/features" className="fv-btn fv-btn-secondary">
-                  See every feature
-                </Link>
-              </p>
+              <Link href="/features" className="fv-btn fv-btn-secondary mt-7">
+                See every feature
+                <ArrowRight />
+              </Link>
             </div>
-            <ol className="divide-y divide-line border-y border-line">
+            <ol className="grid gap-4 sm:grid-cols-2">
               {features.map((f, i) => (
-                <li key={f.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-5">
-                  <span className="tnum font-display text-lg font-semibold text-mute">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-ink">{f.title}</h3>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#2f393f]">{f.desc}</p>
-                    {f.href && isPublished(f.href) && (
-                      <Link href={f.href} className="fv-link mt-2 inline-block py-1 text-[15px] font-medium">
-                        How it works
-                      </Link>
-                    )}
-                  </div>
+                <li key={f.title} className="fv-tile p-6">
+                  <span className="tnum flex h-9 w-9 items-center justify-center rounded-full bg-lime font-display text-sm font-bold text-ink">
+                    {i + 1}
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold text-ink">{f.title}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-[#2f393f]">{f.desc}</p>
+                  {f.href && isPublished(f.href) && (
+                    <Link href={f.href} className="mt-3 inline-flex items-center gap-1.5 py-1 text-[15px] font-semibold text-ink">
+                      How it works <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ol>
@@ -391,44 +469,44 @@ export default function Home() {
 
       {/* WHO IT IS FOR */}
       {segments.length > 0 && (
-        <section className={`${band} border-t border-line`}>
-          <div className={wrap}>
-            <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Built for the way you run your gym</h2>
-            <ul className="mt-8 divide-y divide-line border-y border-line">
-              {segments.map((s) => (
-                <li key={s.path}>
-                  <Link href={s.path} className="group grid gap-1 py-5 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
-                    <span className="text-lg font-semibold text-ink underline decoration-1 underline-offset-4 group-hover:decoration-2" style={{ textDecorationColor: "var(--lime-deep)" }}>
-                      {s.navLabel ?? s.title.split("|")[0].trim()}
-                    </span>
-                    <span className="text-[15px] leading-relaxed text-mute">{s.description}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section className={`${wrap} pb-16 lg:pb-24`}>
+          <h2 className={`${h2} max-w-2xl`}>Built for the way you run your gym</h2>
+          <ul className="mt-8 grid gap-4 md:grid-cols-2">
+            {segments.map((s) => (
+              <li key={s.path}>
+                <Link href={s.path} className="fv-tile group flex h-full flex-col p-6 transition-colors hover:bg-[#e9edda]">
+                  <span className="flex items-center justify-between gap-3 text-xl font-bold text-ink">
+                    {s.navLabel ?? s.title.split("|")[0].trim()}
+                    <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <span className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{s.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
       {/* FREE TOOLS */}
       {tools.length > 0 && (
-        <section className="border-t border-line bg-white">
+        <section className="bg-soft">
           <div className={`${wrap} ${band}`}>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
               <div>
-                <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Calculators for gym owners</h2>
+                <h2 className={h2}>Calculators for gym owners</h2>
                 <p className="mt-4 text-lg leading-relaxed text-[#2f393f]">
                   Work out your break-even, pricing, churn and revenue in your browser. No sign-up.
                 </p>
               </div>
-              <ul className="divide-y divide-line border-y border-line">
+              <ul className="grid gap-4 sm:grid-cols-2">
                 {tools.map((t) => (
                   <li key={t.path}>
-                    <Link href={t.path} className="group block py-5">
-                      <span className="text-lg font-semibold text-ink underline decoration-1 underline-offset-4 group-hover:decoration-2" style={{ textDecorationColor: "var(--lime-deep)" }}>
+                    <Link href={t.path} className="group flex h-full flex-col rounded-[24px] bg-white p-6 transition-shadow hover:shadow-md">
+                      <span className="flex items-center justify-between gap-3 text-lg font-bold text-ink">
                         {t.navLabel ?? t.title.split("|")[0].trim()}
+                        <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
                       </span>
-                      <span className="mt-1.5 block text-[15px] leading-relaxed text-mute">{t.description}</span>
+                      <span className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{t.description}</span>
                     </Link>
                   </li>
                 ))}
@@ -439,17 +517,17 @@ export default function Home() {
       )}
 
       {/* HOW IT STARTS */}
-      <section className={`${band} border-t border-line`}>
+      <section className={band}>
         <div className={wrap}>
-          <h2 className="max-w-2xl text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Three steps to go live</h2>
+          <h2 className={`${h2} max-w-2xl`}>Three steps to go live</h2>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#2f393f]">
             We help you set everything up. You do not need an IT team.
           </p>
-          <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+          <ol className="mt-10 grid gap-5 md:grid-cols-3">
             {steps.map((s) => (
-              <li key={s.n} className="border-t-2 border-ink pt-4">
-                <p className="font-display text-5xl font-bold leading-none text-ink">{s.n}</p>
-                <h3 className="mt-4 text-xl font-semibold text-ink">{s.title}</h3>
+              <li key={s.n} className="rounded-[24px] border border-line p-7">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-lime font-display text-xl font-bold text-ink">{s.n}</span>
+                <h3 className="mt-5 text-xl font-bold text-ink">{s.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{s.desc}</p>
               </li>
             ))}
@@ -460,8 +538,8 @@ export default function Home() {
       <Proof />
 
       {/* PRICING */}
-      <section className="border-y border-line bg-white">
-        <div className={`${wrap} flex flex-col gap-6 py-14 sm:flex-row sm:items-center sm:justify-between`}>
+      <section className={`${wrap} pb-16 lg:pb-24`}>
+        <div className="fv-tile flex flex-col gap-6 px-7 py-9 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <div className="max-w-xl">
             <h2 className="text-[1.75rem] font-bold leading-tight text-ink">
               {pricingTiers.length > 0 ? "Plans priced in rupees" : "Priced for your gym's size"}
@@ -472,52 +550,54 @@ export default function Home() {
                 : "Your price depends on your branches, active members and how much you message. See what is included in every plan and ask for a quote."}
             </p>
           </div>
-          <Link href="/pricing" data-cta="home-pricing" className="fv-btn fv-btn-secondary shrink-0">
+          <Link href="/pricing" data-cta="home-pricing" className="fv-btn fv-btn-primary shrink-0">
             See pricing
+            <ArrowRight />
           </Link>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className={band}>
-        <div className={wrap}>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
-            <div>
-              <h2 className="text-[2rem] font-bold leading-tight text-ink sm:text-[2.5rem]">Questions gym owners ask us</h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-mute">
-                Still have questions?{" "}
-                <Link href="/contact" className="fv-link font-medium">
-                  Talk to our team
-                </Link>
-                . We reply {contact.responseTime}.
-              </p>
-            </div>
-            <dl className="divide-y divide-line border-y border-line">
-              {faqs.map((faq) => (
-                <div key={faq.q} className="py-5">
-                  <dt className="text-lg font-semibold text-ink">{faq.q}</dt>
-                  <dd className="mt-2 text-[15px] leading-relaxed text-[#2f393f]">{faq.a}</dd>
-                </div>
-              ))}
-            </dl>
+      {/* FAQ: native accordion */}
+      <section id="faq" className={`${wrap} pb-16 lg:pb-24`}>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <div>
+            <h2 className={h2}>Questions gym owners ask us</h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-mute">
+              Still have questions?{" "}
+              <Link href="/contact" className="fv-link font-medium">
+                Talk to our team
+              </Link>
+              . We reply {contact.responseTime}.
+            </p>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="group fv-tile open:bg-lime/30">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[1.0625rem] font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                  {faq.q}
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-lg leading-none transition-transform group-open:rotate-45" aria-hidden>
+                    +
+                  </span>
+                </summary>
+                <p className="px-6 pb-6 text-[15px] leading-relaxed text-[#2f393f]">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CLOSING CTA */}
-      <section className="pb-16 sm:pb-20">
-        <div className={wrap}>
-          <ClosingCta
-            heading="Ready to run your gym the right way?"
-            body="Book a demo and we will show you memberships, QR attendance, the CRM and the member app. No commitment."
-            location="home-closing"
-          />
-          <p className="mt-6 text-sm text-mute">
-            By contacting us you agree to our{" "}
-            <Link href="/privacy" className="fv-link">Privacy Policy</Link> and{" "}
-            <Link href="/terms" className="fv-link">Terms of Service</Link>.
-          </p>
-        </div>
+      <section className={`${wrap} pb-16 sm:pb-20`}>
+        <ClosingCta
+          heading="Ready to run your gym the right way?"
+          body="Book a demo and we will show you memberships, QR attendance, the CRM and the member app. No commitment."
+          location="home-closing"
+        />
+        <p className="mt-6 text-sm text-mute">
+          By contacting us you agree to our{" "}
+          <Link href="/privacy" className="fv-link">Privacy Policy</Link> and{" "}
+          <Link href="/terms" className="fv-link">Terms of Service</Link>.
+        </p>
       </section>
     </>
   );

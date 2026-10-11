@@ -39,22 +39,22 @@ Rules: one accent. Lime appears as a solid fill with ink text on it, never as th
 
 One deliberate pairing:
 
-- **Display: Bricolage Grotesque** (600 and 700). Used for H1, H2 and large numbers. It has a slightly uneven, human shape that stops headings looking like default sans-serif.
+- **Display: Outfit**, variable. Used for H1, H2 and large numbers. A round geometric sans that matches the confident, large headline style of the reference designs.
 - **Text and UI: Instrument Sans** (400, 500, 600). Used for everything else. Clear at small sizes on low-end Android screens, and it supports tabular figures for rupee amounts.
 
-Both are self-hosted by `next/font`, `display: swap`, only the weights listed, Latin subset. Nothing else.
+Both are self-hosted by `next/font` as variable fonts, `display: swap`, Latin subset, one file each. The rupee sign is drawn with the system font to avoid the latin-ext subset download.
 
 Scale (mobile / desktop): H1 `2.25rem / 3.5rem`, H2 `1.75rem / 2.5rem`, H3 `1.25rem`, body `1.0625rem` at 1.65 line height, small `0.875rem`. Headings use tight line height (1.08 to 1.15) and slight negative tracking; body uses none. Maximum line length 68 characters.
 
 ## Spacing, radius, shadow
 
 - **Spacing scale (rem):** 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4.5, 7. Sections use 4.5 on mobile and 7 on desktop; nothing else.
-- **One radius:** 8 px for buttons, inputs, cards, frames. Pills are not used. Phone frames use 28 px because that is the shape of a phone.
+- **Radii:** 999 px (pill) for buttons and chips; 14 px for cards and inputs; 24 px for soft tiles; 32 px for big colour panels. Phone frames use 28 px.
 - **One shadow:** `0 1px 0 rgb(25 33 38 / 0.05), 0 12px 28px -16px rgb(25 33 38 / 0.35)`, used only on screenshot frames and the sticky header. Cards use a 1 px `line` border and no shadow.
 
 ## Buttons and links
 
-- **Primary:** lime fill, ink text, 600 weight, 48 px high, 8 px radius. Hover darkens the lime by 8 percent. Used for "Book a free demo".
+- **Primary:** black (ink) pill, white text, 600 weight, 52 px high. On ink panels it inverts to a white pill. Used for "Book a free demo".
 - **Secondary:** transparent, 1 px ink border, ink text. Used for "Chat on WhatsApp" (with a WhatsApp-green dot) and quiet alternatives.
 - **Text link:** ink text, underlined with a 1 px `lime-deep` line, 3 px offset. No colour change on hover, the underline thickens.
 - **Focus:** 3 px ink outline with 2 px offset, always visible.
@@ -105,3 +105,7 @@ Lighthouse mobile on home, pricing, features, a feature page, a tool, a blog pos
 ## Out of scope for this pass
 
 Hinglish and comparison pages inherit the shared components and tokens but are not individually redesigned. Real screenshots arrive from the owner; wiring them in is a follow-up.
+
+## Revision, design v2
+
+The first pass was too quiet. v2 keeps the palette but uses it as large colour fields: a lime hero panel, a lime page panel on every content page, a black banner and footer, soft grey tiles, and lime dots. Hand-drawn doodles (sparkle, loop arrow, squiggle) and abstract shape art add warmth. Product imagery rules are unchanged: no invented app screens, and frames render nothing until a real screenshot exists.

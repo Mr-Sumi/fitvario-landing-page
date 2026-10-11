@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Outfit, Instrument_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -10,17 +10,15 @@ import { OG_IMAGE } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import "./globals.css";
 
-// One pairing: Bricolage Grotesque for headings, Instrument Sans for text. Weights limited to what is used.
-const heading = Bricolage_Grotesque({
+// One pairing: Outfit (a round geometric sans) for headings, Instrument Sans for text. Variable fonts: one file each.
+const heading = Outfit({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["600", "700"],
   display: "swap",
 });
 const text = Instrument_Sans({
   variable: "--font-text",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 

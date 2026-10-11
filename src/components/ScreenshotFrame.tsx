@@ -24,6 +24,10 @@ export function ScreenshotFrame({
   const file = screenFile(screen);
   const phone = def.device === "phone";
 
+  // No file yet: render nothing. A placeholder is only shown when NEXT_PUBLIC_SHOW_PLACEHOLDERS=1 (local review), so
+  // visitors never see one, and the launch check fails if one is ever rendered into a built indexable page.
+  if (!file && process.env.NEXT_PUBLIC_SHOW_PLACEHOLDERS !== "1") return null;
+
   const inner = file ? (
     <Image
       src={file.src}

@@ -58,7 +58,7 @@ function PlayStoreBadge({ href }: { href: string }) {
 
 export function Footer() {
   return (
-    <footer className="on-ink bg-ink text-white">
+    <footer className="on-ink mt-8 rounded-t-[32px] bg-ink text-white">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
           <div>

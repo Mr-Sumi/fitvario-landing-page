@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { ClosingCta } from "@/components/ClosingCta";
 import { ScreenshotFrame } from "@/components/ScreenshotFrame";
+import { PageHero } from "@/components/PageHero";
 import { author } from "@/config/site";
 
 export interface TocItem {
@@ -48,16 +49,14 @@ export function ContentLayout({
           gate is cleared in docs/seo/feature-status.json.
         </p>
       )}
-      <header className="mt-8 max-w-3xl border-l-4 border-lime pl-5 sm:pl-7">
-        <h1 className="text-[2.25rem] font-bold leading-[1.1] text-ink sm:text-5xl">{h1}</h1>
-        <p className="mt-5 text-lg leading-relaxed text-[#2f393f]">{lead}</p>
-        <p className="mt-4 text-sm text-mute">
-          {showByline && author ? `By ${author} · ` : ""}Last updated: {formatDate(page.updated)}
-        </p>
-      </header>
+      <PageHero
+        h1={h1}
+        lead={lead}
+        meta={<>{showByline && author ? `By ${author} · ` : ""}Last updated: {formatDate(page.updated)}</>}
+      />
 
       {toc && toc.length > 0 && (
-        <nav aria-label="On this page" className="mt-10 max-w-3xl border-y border-line py-5">
+        <nav aria-label="On this page" className="fv-tile mt-6 max-w-3xl px-6 py-5">
           <p className="text-sm font-semibold text-ink">On this page</p>
           <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-0.5">
             {toc.map((t) => (
@@ -107,8 +106,8 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
 
 export function ExampleBox({ title = "Example", children }: { title?: string; children: React.ReactNode }) {
   return (
-    <aside className="border-l-4 border-lime bg-white py-4 pl-5 pr-4">
-      <p className="text-sm font-semibold text-ink">{title} (illustrative)</p>
+    <aside className="rounded-[18px] bg-soft p-5">
+      <p className="inline-block rounded-full bg-lime px-3 py-1 text-xs font-semibold text-ink">{title} (illustrative)</p>
       <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-[#2f393f]">{children}</div>
     </aside>
   );

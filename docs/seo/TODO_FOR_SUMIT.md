@@ -213,3 +213,9 @@ Also still placeholders: two Hindi demo videos (`/hi/whatsapp-reminder`, `/hi/bl
 - [ ] Read `DESIGN_BRIEF.md`. The palette is now the app's graphite and lime; the site's old teal "F" mark was my placeholder and is replaced by the real app icon.
 - [ ] The old blue Fitvario logo (`iconwithtitletaglineold.jpeg`) is superseded by the lime icon in the app. If the blue one is still your brand in print, tell me and I will adjust the palette.
 - [ ] Before and after screenshots at 390 px and 1440 px are in `docs/seo/design/`.
+
+## 23. Design v2
+
+- [ ] Look at the home page and tell me what is still off (more colour, less, different sections). The hero is lime like the reference; say if you want the panel in another brand colour.
+- [ ] The floating cards are examples, not screenshots. When the real screenshots arrive (section 20) they replace or sit beside the cards.
+- [ ] The "UPI, Razorpay, WhatsApp, SMS" chips are text. If you want the real brand logos there, say so; they are third-party marks and I would use them only as plain logos with no claim of partnership.
