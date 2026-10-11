@@ -216,6 +216,6 @@ Also still placeholders: two Hindi demo videos (`/hi/whatsapp-reminder`, `/hi/bl
 
 ## 23. Design v2
 
-- [ ] Look at the home page and tell me what is still off (more colour, less, different sections). The hero is lime like the reference; say if you want the panel in another brand colour.
+- [x] **Decided 2026-10-11:** keep the lime panels (the app's `#BBF246`).
 - [ ] The floating cards are examples, not screenshots. When the real screenshots arrive (section 20) they replace or sit beside the cards.
-- [ ] The "UPI, Razorpay, WhatsApp, SMS" chips are text. If you want the real brand logos there, say so; they are third-party marks and I would use them only as plain logos with no claim of partnership.
+- [x] **Decided 2026-10-11:** the chips stay plain text, no third-party logos.
