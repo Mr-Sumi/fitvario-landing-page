@@ -21,7 +21,7 @@ const toc = [
 const faqs = [
   {
     q: "Is there one QR code per member?",
-    a: "No. There is one QR code per gym. Every member scans the same code with their own app, and the app knows who is scanning.",
+    a: "No. There is one QR code per gym. Every member scans the same code with the app on their own phone, and the app knows who is scanning.",
   },
   {
     q: "Can someone scan from home?",

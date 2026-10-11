@@ -92,7 +92,7 @@ export const competitors: Competitor[] = [
     },
     rows: [
       { feature: "GST invoicing", theirs: "Listed from the entry plan", fitvarioKey: "gst_tax_lines" },
-      { feature: "Biometric check-in", theirs: "Listed: RFID, fingerprint and face; Matrix biometric access on higher plans", fitvarioKey: "biometric_adms" },
+      { feature: "Biometric check-in", theirs: "Fingerprint, RFID and face recognition are named in its feature list; a \"Biometric Integration\" line appears only on its US-dollar Professional and Business plans, not on the rupee plans", fitvarioKey: "biometric_adms" },
       { feature: "QR attendance", theirs: "Not stated on the page read", fitvarioKey: "qr_attendance" },
       { feature: "Enquiry and lead follow-up", theirs: "Not stated on the page read", fitvarioKey: "crm_enquiries_followups" },
       { feature: "WhatsApp, SMS and push alerts", theirs: "SMS and WhatsApp listed from the Basic plan", fitvarioKey: "whatsapp_sms_push_alerts" },
@@ -107,7 +107,7 @@ export const competitors: Competitor[] = [
     ],
     better: [
       "You want to read prices, start a free trial and decide without talking to sales.",
-      "You need GST invoicing, biometric check-in or smart-scale integration, which Okfit lists.",
+      "You need GST invoicing on a rupee plan or a published rupee price list, which Okfit shows. Check which plan includes biometric integration, because the page lists it only on its US-dollar plans.",
       "You want a member app and a manager app by plan, at a published price.",
     ],
     fitvarioFits: [
@@ -159,7 +159,7 @@ export const competitors: Competitor[] = [
       "Check data export and cancellation terms.",
     ],
     notes: [
-      "Another listing in search results names a different company as GymSmart's maker. We did not fetch it and did not rely on it.",
+      "Search results show one listing naming Bizz1 Technologies and another naming Ajasys Technologies as the maker. The Capterra India and GoodFirms pages returned an access error (HTTP 403) when we tried to open them, so we relied on neither.",
     ],
   },
   {
@@ -176,12 +176,12 @@ export const competitors: Competitor[] = [
       { feature: "Starting price", theirs: "US$79 a month per location (US page, updated 8 Oct 2026)", fitvario: "No published price list yet; priced by quote in rupees, GST extra" },
       { feature: "Plans", theirs: "Starter, Accelerate and Ultimate; the higher two are priced on contact", fitvario: "Quote by branches, members, messaging and modules" },
       { feature: "Unlimited staff users", theirs: "Stated: included at every tier", fitvario: "Not stated" },
-      { feature: "Branded app", theirs: "Available as an add-on for an extra monthly fee", fitvarioKey: "branded_android_member_app" },
+      { feature: "Branded app", theirs: "Available as an add-on for an extra monthly fee", fitvario: "Your gym's name and logo on the app's splash screen and on the owner and member home screens; not a separate app, and the app name, icon and colours stay Fitvario's" },
       { feature: "India availability and rupee pricing", theirs: "Not found on Mindbody's own pages in this check", fitvario: "Built for India; quoted in rupees, GST extra" },
       { feature: "Contract terms and free trial", theirs: "Not stated on the page read", fitvario: "Not stated on this site (a demo is offered)" },
     ],
     pricing: [
-      "Mindbody's US page states that plans start at US$79 a month per location and that the higher plans are priced on contact. Add-ons such as a branded app and payment processing cost extra. We did not find a rupee price.",
+      "Mindbody's pricing page for the United States states that plans start at US$79 a month per location and that the higher plans are priced on contact. The page also mentions North America and Asia without naming India. Add-ons such as a branded app and payment processing cost extra. We did not find a rupee price.",
       "Fitvario does not publish prices yet and quotes in rupees, with GST on top. See how Fitvario pricing works on the pricing page.",
     ],
     better: [
@@ -213,15 +213,15 @@ export const competitors: Competitor[] = [
     },
     rows: [
       { feature: "Plans by member count", theirs: "Up to 100, 400 and 1,300 current members, plus Enterprise", fitvario: "Quote by branches, members, messaging and modules" },
-      { feature: "Door access control", theirs: "Available at about US$40 a month more per plan", fitvarioKey: "biometric_adms" },
-      { feature: "Branded member app", theirs: "US$150 a month plus a US$450 setup fee", fitvarioKey: "branded_android_member_app" },
+      { feature: "Door access control", theirs: "Available at about US$40 a month more per plan", fitvario: "Blocks an expired member on a compatible biometric device. It does not control a door lock itself" },
+      { feature: "Branded member app", theirs: "US$150 a month plus a US$450 setup fee", fitvario: "Your gym's name and logo on the app's splash screen and on the owner and member home screens; not a separate app, and the app name, icon and colours stay Fitvario's" },
       { feature: "Lock-in and refund", theirs: "No lock-in contract; 60-day money-back guarantee", fitvario: "Not stated on this site; see the refund policy" },
       { feature: "Free trial", theirs: "Not stated (a free demo is offered)", fitvario: "Not stated on this site (a demo is offered)" },
       { feature: "India and rupee pricing", theirs: "Not stated on the pricing page", fitvario: "Built for India; quoted in rupees, GST extra" },
       { feature: "GST invoicing", theirs: "Not stated on the pricing page", fitvarioKey: "gst_tax_lines" },
     ],
     pricing: [
-      "GymMaster lists software plans per site per month, excluding tax: US$89 for up to 100 current members, US$129 for up to 400 and US$209 for up to 1,300, with Enterprise by quote. Paying yearly gives a 10% discount. Add-ons such as a branded app and SMS are priced separately.",
+      "GymMaster lists software plans per site per month, excluding tax: US$89 for up to 100 current members, US$129 for up to 400 and US$209 for up to 1,300, with Enterprise by quote. Paying yearly gives a 10% discount. Prices are shown in US, Australian and New Zealand dollars. Add-ons such as a branded app and SMS are priced separately.",
       "Fitvario does not publish prices yet and quotes in rupees, with GST on top. See how Fitvario pricing works on the pricing page.",
     ],
     better: [

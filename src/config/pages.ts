@@ -209,7 +209,7 @@ const staticPages: PageDef[] = [
     description:
       "Show your gym's name and logo on the Fitvario app's splash screen and on the owner and member home screens. See what is branded and what is not.",
     updated: "2026-10-11",
-    navLabel: "Gym-branded app",
+    navLabel: "Name and logo in the app",
     gate: "white_label",
   },
   {

@@ -163,3 +163,10 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - **Template marketplace** moved back to `in-code`; diet, workout and batches stay out of public copy. `docs/seo/verify_features.py` written (read-only, aggregate counts only) so the flags can be set from real production usage.
 - Legal pages untouched.
 - Public pages: 40 (was 41). Keyword coverage: 50 covered, 0 missing.
+
+## 2026-10-11: white-label wording sweep, feature-truth check, public checks (branch `seo-release`)
+
+- Swept src for "branded", "gym-branded", "own app", "your app", "your brand" and "own branding". Brought home, pricing, features, member app, franchise, QR, nav label, structured data and the comparison tables in line with: name and logo on the splash screen, owner home and member dashboard only; app label, launcher icon, colours and store listing stay Fitvario's.
+- `feature-truth.mjs` now fails a build if any built page, drafts included (visible text, meta tags and JSON-LD), promises more: a branded app, "your brand", "your app", an own icon, colours or listing, staff seeing the branding, or a sentence about the name and logo that names no allowed surface. Questions, negated sentences and competitor descriptions are skipped. Verified with an injected overpromise (6 failures) and restored (0).
+- Comparison pages (still draft): Fitvario's "door access control" cell no longer implies door-lock control; "branded app" cells describe white-label accurately.
+- Public checks via the web-fetch tool: competitor facts re-fetched, corrections appended to `competitor-facts.csv`; GymSmart site not found; Play Data safety page read.

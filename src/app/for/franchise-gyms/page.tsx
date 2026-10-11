@@ -25,7 +25,7 @@ const faqs = [
     a: "Not if you set it up with separate staff accounts for each location. Staff accounts are assigned to specific gyms and see only the permissions you give them.",
   },
   {
-    q: "Can we use one brand across all locations?",
+    q: "Can we show one name and logo across all locations?",
     a: "Yes. The app name and logo you set belong to the owner, so every location shows the same ones on the splash screen and on the owner and member home screens.",
   },
   {
@@ -62,7 +62,7 @@ export default function Page() {
             enquiries, so one location&apos;s front desk is not working in a shared list.
           </li>
           <li>
-            <strong>The same brand everywhere.</strong> One app name and logo for every branch.{" "}
+            <strong>The same name and logo everywhere.</strong> One app name and logo on the splash and home screens of every branch.{" "}
             <PageLink href="/features/white-label-gym-app">See branding</PageLink>.
           </li>
           <li>

@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Will my gym have its own listing on Google Play?",
-    a: "No. Members install the Fitvario app from Google Play. Your gym's name and logo then show inside it. If you need an app published under your own name in the store, this is not that.",
+    a: "No. Members install the Fitvario app from Google Play. Your gym's name and logo then show on the splash screen and on the owner and member home screens. If you need an app published under your own name in the store, this is not that.",
   },
   {
     q: "Who sees the branding?",
@@ -53,17 +53,18 @@ export default function Page() {
     >
       <Section id="who" title="Who it is for">
         <p>
-          This is for owners who want members to feel the app belongs to their gym: a premium gym, a gym group or
-          a studio that spends money on its name. If you want a gym app with your own branding without paying for a
-          custom app, this covers that. If you need your own store listing, it does not.
+          This is for owners who want their gym&apos;s name and logo in front of members when they open the app: a
+          premium gym, a gym group or a studio that spends money on its name. It puts your name and logo on the
+          opening screen and the home screens. If you need your own store listing, your own app icon or your own
+          colours, it does not cover that.
         </p>
       </Section>
 
       <Section id="problem" title="The problem today">
         <p>
-          A generic app asks the member to trust a name they do not know. Owners who invest in their gym&apos;s brand
-          would rather see their own name when the member opens the phone. Building a custom app for one gym costs
-          far more than most gyms should spend, and it has to be kept up to date.
+          A generic app asks the member to trust a name they do not know. Owners who invest in their gym&apos;s name
+          would rather members saw it when they open the phone. Building a custom app for one gym costs far more than
+          most gyms should spend, and it has to be kept up to date.
         </p>
       </Section>
 
@@ -96,7 +97,7 @@ export default function Page() {
         />
       </Section>
 
-      <MidCta text="Want to see a branded gym in the app?" location="whitelabel-mid" />
+      <MidCta text="Want to see a gym name and logo in the app?" location="whitelabel-mid" />
 
       <Section id="what" title="What is and is not branded">
         <p>

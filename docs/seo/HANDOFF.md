@@ -11,4 +11,4 @@ Resume from here in a fresh session. Do not push or deploy. Last updated 2026-10
 7. **Checks (`npm run seo:check`):** build; `seo-check` 61 pages, 40 public; `keyword-coverage` 50 covered, 0 missing, 3 dropped; `feature-truth` 0 failing (1 legal-text item); `launch-checks` pass; 38 of 38 calculator tests.
 8. **Lighthouse (mobile, 13 pages):** performance 97 to 98, accessibility, best practices and SEO 100, CLS 0, LCP 2.5 to 2.7 s.
 9. **Keywords without a published page:** 21, all behind a review, accuracy, decision or flag gate, or Prompt 7. See `keyword-gaps.md`.
-10. **Next:** run `verify_features.py`; reconnect Chrome for the public checks (Play listing, GymSmart site, competitor facts); your items in `TODO_FOR_SUMIT.md` sections 17 and 18, then deploy per `LAUNCH_CHECKLIST.md`. Prompt 7 (Django repo) and the gyms pages are still to do.
+10. **Next:** run `verify_features.py`; paste the Play listing's description (the fetch tool could not read it) and GymSmart's real site if you know it; your items in `TODO_FOR_SUMIT.md` sections 17 and 18, then deploy per `LAUNCH_CHECKLIST.md`. Prompt 7 (Django repo) and the gyms pages are still to do.

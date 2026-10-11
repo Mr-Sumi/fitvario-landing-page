@@ -129,7 +129,7 @@ export default function FeaturesPage() {
           Gym management software features for Indian gyms
         </h1>
         <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
-          Fitvario gives gym owners and staff an Android app to run the gym, and members a gym-branded Android app. Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
+          Fitvario gives gym owners and staff an Android app to run the gym, and members the same Android app with their own login. Each one is built for that person&apos;s job. Jump to a section below, or open a feature in detail.
         </p>
         <p className="mt-2 text-sm text-slate-500">Last updated: {formatDate(page.updated)}</p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -221,11 +221,11 @@ export default function FeaturesPage() {
           id="member-app"
           badge={<RoleBadge label="Member App · Android" color="bg-violet-50 text-violet-800" dot="bg-violet-500" />}
           heading="Member app (Android)"
-          sub="A gym-branded Android app with everything a member needs to stay on track."
+          sub="The same Android app, with everything a member needs to stay on track."
           accent="border-violet-500"
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Gym-branded app"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo on the opening screen and their home screen. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
+            <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Android app for members"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo on the opening screen and their home screen. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.lock} title="Mobile number login" desc="Members log in with their mobile number and an OTP." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.qr} title="QR check-in and check-out" desc="Members scan your gym's QR code with the app to check in, and scan again to check out. Time spent is recorded." iconBg="bg-violet-50" iconColor="text-violet-700" />
             {diet && <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="View assigned workout routines and diet plans, and mark progress as you go." iconBg="bg-violet-50" iconColor="text-violet-700" />}

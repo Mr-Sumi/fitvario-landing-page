@@ -132,8 +132,8 @@ export default function Page() {
           The member app is the Fitvario app. It is not a separate app published under your gym&apos;s name.{" "}
           {isLive("white_label") ? (
             <>
-              What you can do is brand it, which makes it a branded gym app for members in name and logo, not in the store listing: set your gym&apos;s app name and logo, and they show on the splash screen and
-              on the owner&apos;s and members&apos; home screens. See{" "}
+              It is not a branded gym app for members with its own store listing. What you can do is set your gym&apos;s app name
+              and logo, and they show on the splash screen and on the owner&apos;s and members&apos; home screens. See{" "}
               <PageLink href="/features/white-label-gym-app">how the white-label branding works</PageLink> for what is
               and is not branded.
             </>

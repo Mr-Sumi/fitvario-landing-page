@@ -168,6 +168,14 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 ## 18. Added after your decisions
 
 - [ ] **Run `docs/seo/verify_features.py`** against production and paste the output. How: `python manage.py shell < docs/seo/verify_features.py` from the backend folder, ideally with a read-only database role or a replica; the script also opens a read-only transaction. It prints aggregate counts only. I will set diet, workout, template marketplace, batches, white-label and self-serve from it.
-- [ ] **Competitor facts and GymSmart's website**: Chrome was not connected when I tried (the browser extension reported it was not connected), so the public checks (Play listing text against the site, GymSmart's official site, re-verifying the comparison facts) are still pending. Reconnect the Claude Chrome extension and say so, or allow the web-fetch tool.
+- [x] **Public checks done with the web-fetch tool (2026-10-11):** competitor facts re-fetched and four corrections made (see section 19). GymSmart's official site is still not found. The Play listing's description text could not be read by the fetch tool (it is rendered by script); only its Data safety page could.
 - [ ] **Legal pages** (`/terms`, `/privacy`, `/refund`, `/cookies`, `/delete-account`): not edited, as you asked. `/terms` and `/privacy` still mention class scheduling, workout and diet content, class bookings and "WhatsApp Business messaging". For an advisor.
 - [ ] **`/for/crossfit-yoga-studios`** goes live when class booking exists: remove `draft: true` in `src/config/pages.ts`.
+
+## 19. Public checks, 2026-10-11 (web-fetch, read-only)
+
+- [ ] **Play listing:** the Data safety page says the app collects precise location, photos (optional), name and phone number, and shares nothing with other companies. The long description could not be fetched. Please paste the listing's "About this app" text, or the Play Console description, so I can compare it with the site line by line.
+- [ ] **Privacy text vs Data safety:** Data safety lists precise location and photos. Check that `/privacy` says the same (legal text, not edited by me).
+- [ ] **GymSmart:** no official website found. Search results disagree: Techjockey names Bizz1 Technologies and GoodFirms names Ajasys Technologies; the Capterra India and GoodFirms pages returned HTTP 403. If you know the vendor's real site, tell me and I will add it.
+- [ ] **Corrections made to the comparison data** (pages still draft): Okfit's biometric integration is listed only on its US-dollar plans (not the rupee plans); GymMaster also shows JPY for hardware and the branded app; Mindbody's page gives no amount for the branded-app add-on and mentions "North America and Asia" without naming India; Fitvario's door-access cell no longer implies it controls a door lock; Fitvario's "branded app" cells now say what white-label is. The facts file keeps the original rows and appends the corrections.
+- [ ] **Still do before publishing any comparison page:** the legal read and a human check of each vendor page, because the fetch tool summarises.

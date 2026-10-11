@@ -17,7 +17,7 @@ const store = isLive("ecommerce_cart_orders");
 const expiry = isLive("whatsapp_expiry_reminders");
 const branded = isLive("white_label");
 // One app on Google Play serves owners, staff and members; white-label only changes the name and logo shown inside it
-const memberApp = branded ? "the Fitvario Android app with your gym’s name and logo" : "an Android app";
+const memberApp = branded ? "the Fitvario Android app, which can show your gym’s name and logo on its splash and home screens" : "an Android app";
 
 const problems = [
   {
@@ -76,7 +76,7 @@ const platformViews = [
   {
     role: "Member App",
     headline: "Your gym in every member's pocket",
-    sub: branded ? "The Fitvario Android app, with your gym’s name and logo inside it." : "An Android app for your members.",
+    sub: branded ? "The Fitvario Android app, which can show your gym’s name and logo on its splash and home screens." : "An Android app for your members.",
     points: [
       "Log in with a mobile number and OTP",
       "Scan the gym's QR code to check in and out",
@@ -150,7 +150,7 @@ const faqs = [
   },
   {
     q: "Does my gym get its own member app?",
-    a: `Yes. Members use the Fitvario Android app${branded ? ", with your gym’s name and logo inside it," : ""} for their plan${diet ? ", workout and diet plans" : ""}, QR attendance, progress charts and alerts.`,
+    a: `Yes. Members use the Fitvario Android app${branded ? ", which can show your gym’s name and logo on its splash and home screens," : ""} for their plan${diet ? ", workout and diet plans" : ""}, QR attendance, progress charts and alerts.`,
   },
   {
     q: "How does QR attendance work?",
@@ -325,7 +325,7 @@ export default function Home() {
               One platform. Three experiences.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the same app with their own login, and it can show your gym’s name and logo. All three stay in sync.
+              Owners and staff run the gym from the Fitvario Android app, with staff access set by the owner. Members use the same app with their own login, and it can show your gym’s name and logo on its splash and home screens. All three stay in sync.
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
