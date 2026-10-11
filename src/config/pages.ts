@@ -251,6 +251,62 @@ const staticPages: PageDef[] = [
     navLabel: "Diet chart templates",
     draft: true,
   },
+
+  // Hinglish section (Prompt 5). Phone-SERP validation is still pending, so expectations are lower.
+  {
+    path: "/hi",
+    kind: "hinglish",
+    title: "Gym Management Software Hindi: Gym Ke Liye | Fitvario",
+    description:
+      "Gym ke liye software kya karta hai? Members, fees, attendance aur enquiry ek jagah. Hinglish mein samjhaya hua Fitvario gym management software.",
+    updated: "2026-10-11",
+    navLabel: "Hinglish mein dekhein",
+  },
+  {
+    path: "/hi/gym-billing-software",
+    kind: "hinglish",
+    title: "Gym Ka Billing Software: Fees aur Invoice | Fitvario",
+    description:
+      "Gym ka billing software kaise kaam karta hai: member ki fees, invoice aur renewal ek jagah. Register aur Excel se aage ka simple tareeka.",
+    updated: "2026-10-11",
+    navLabel: "Gym ka billing software",
+  },
+  {
+    path: "/hi/whatsapp-reminder",
+    kind: "hinglish",
+    title: "Gym Ka Fees Reminder WhatsApp Par Kaise Bhejein | Fitvario",
+    description:
+      "Gym ka fees reminder WhatsApp par kab aur kaise bhejein: simple routine, ready messages aur galtiyan jo avoid karni chahiye. Hinglish mein.",
+    updated: "2026-10-11",
+    navLabel: "WhatsApp par fees reminder",
+  },
+  {
+    path: "/hi/gym-fee-reminder-message",
+    kind: "hinglish",
+    title: "Gym Fee Reminder Message in Hindi: Copy Karein | Fitvario",
+    description:
+      "Gym fee reminder message in Hindi (Hinglish): 10 ready messages, copy button ke saath. Fees, due date aur renewal ke liye sahi shabd.",
+    updated: "2026-10-11",
+    navLabel: "Fee reminder messages",
+  },
+  {
+    path: "/hi/gym-software-kaise-chune",
+    kind: "hinglish",
+    title: "Gym Software Kaise Chune: Owner Ke Liye Checklist | Fitvario",
+    description:
+      "Gym software kaise chune: kya check karein, vendor se kya poochein aur kaun se red flags dekhein. Koi bhi software lene se pehle ye checklist padhein.",
+    updated: "2026-10-11",
+    navLabel: "Gym software kaise chune",
+  },
+  {
+    path: "/hi/blog/gym-me-member-kaise-badhaye",
+    kind: "hinglish",
+    title: "Gym Me Member Kaise Badhaye: 7 Aasan Tarike | Fitvario",
+    description:
+      "Gym me member kaise badhaye: Google Maps, Instagram, referral, trial aur enquiry follow-up. Chhote gym ke liye 7 practical tarike, Hinglish mein.",
+    updated: "2026-10-11",
+    navLabel: "Gym me member kaise badhaye",
+  },
 ];
 
 // Blog posts and blog index/category pages are generated from src/content/blog (npm run gen:blog)

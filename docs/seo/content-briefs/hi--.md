@@ -1,6 +1,6 @@
 # Brief: /hi/
 
-Status: planned · Wave: Wave 2 · Kind: hinglish
+Status: published · Wave: Wave 2 · Kind: hinglish
 
 ## Keywords
 - Primary: gym management software hindi (P1, Hinglish, Hindi/Hinglish)

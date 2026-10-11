@@ -1,6 +1,6 @@
 # Brief: /hi/whatsapp-reminder
 
-Status: planned · Wave: Wave 2 · Kind: hinglish
+Status: published · Wave: Wave 2 · Kind: hinglish
 
 ## Keywords
 - Primary: gym ka fees reminder whatsapp (P1, Hinglish, Hindi/Hinglish)

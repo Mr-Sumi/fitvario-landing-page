@@ -1,6 +1,6 @@
 # Brief: /hi/gym-software-kaise-chune
 
-Status: planned · Wave: Wave 2 · Kind: hinglish
+Status: published · Wave: Wave 2 · Kind: hinglish
 
 ## Keywords
 - Primary: gym software kaise chune (P2, Hinglish, Hindi/Hinglish)

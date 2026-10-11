@@ -109,3 +109,14 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Rule 12 respected: renewal and fee-collection posts are hand-sent templates and routines; nothing claims automated reminders.
 - `seo-check` now ignores "Related" card text in the duplicate-sentence test (those cards summarise other pages by design) and knows the RSS route.
 - Not done: links from the posts' matching feature pages to the posts (feature pages are Prompt 2).
+
+## 2026-10-11: Prompt 5, Hinglish section (branch `seo-hinglish`)
+
+- Six pages: `/hi`, `/hi/gym-billing-software`, `/hi/whatsapp-reminder`, `/hi/gym-fee-reminder-message`, `/hi/gym-software-kaise-chune`, `/hi/blog/gym-me-member-kaise-badhaye`. Written in Roman-script Hinglish as an owner would type it, each for its own query and not translated from an English page.
+- Step 0 skipped on instruction: phone-SERP validation is **pending**. Pages are public; the hub's VALIDATION GATE in the keyword map is waived by that instruction and recorded here.
+- `PageShell` and `ContentLayout` take a `lang` prop. The content wrapper carries `lang="hi-Latn"`; the document `<html lang>` stays `en-IN` because the app has a single root layout (a second root layout would mean restructuring every route).
+- hreflang: none. No Hinglish page is a true equivalent of an English page, so pairing them would be wrong.
+- New components: `CopyBlock` (message with a copy button) and `VideoPlaceholder` (marked slot, no fake player).
+- "Hinglish mein dekhein" link added to the footer and below the home hero, shown only while `/hi` is public.
+- Fee-reminder pages follow keyword-map RULE lines: template messages and manual routines only. They say plainly that messages are sent by hand and that Fitvario's alert set-up should be checked in a demo.
+- `gen-seo-docs.mjs` now treats `/hi/` and `/hi` as the same page and reads CRLF registry files.

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { pages, isIndexable, publishedPages, type PageDef } from "@/config/pages";
+import { pages, isIndexable, isPublishedPath, publishedPages, type PageDef } from "@/config/pages";
 import { contact, playStoreUrl } from "@/config/site";
 
 const labelOf = (p: PageDef) => p.navLabel ?? p.title.split("|")[0].trim();
@@ -86,6 +86,13 @@ export function Footer() {
               )}
               {contact.hours && <p>{contact.hours}</p>}
             </div>
+            {isPublishedPath("/hi") && (
+              <p className="mt-4">
+                <Link href="/hi" lang="hi-Latn" className="inline-block py-1 text-sm font-medium text-teal-400 underline-offset-2 hover:underline">
+                  Hinglish mein dekhein
+                </Link>
+              </p>
+            )}
             {playStoreUrl && (
               <div className="mt-5">
                 <PlayStoreBadge href={playStoreUrl} />
