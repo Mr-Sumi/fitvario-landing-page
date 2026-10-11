@@ -207,7 +207,7 @@ const staticPages: PageDef[] = [
     kind: "feature",
     title: "White Label Gym App India: Your Name and Logo | Fitvario",
     description:
-      "Show your gym's name and logo inside the Fitvario app for your owner, staff and members. See what is branded, what is not and how to switch it on.",
+      "Show your gym's name and logo on the Fitvario app's splash screen and on the owner and member home screens. See what is branded and what is not.",
     updated: "2026-10-11",
     navLabel: "Gym-branded app",
     gate: "white_label",
@@ -258,6 +258,8 @@ const staticPages: PageDef[] = [
       "What Fitvario covers for CrossFit boxes and yoga studios, and what it does not: memberships, QR attendance and renewals, but no class booking.",
     updated: "2026-10-11",
     navLabel: "CrossFit and yoga studios",
+    // Draft until class booking exists (owner decision, 2026-10-11)
+    draft: true,
   },
 
   // Tools and templates (Prompt 3). Content-gated pages stay draft until reviewed.

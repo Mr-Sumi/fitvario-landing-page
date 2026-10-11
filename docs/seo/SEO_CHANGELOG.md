@@ -155,3 +155,11 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - `feature-truth.mjs` no longer flags honest negations ("no class booking").
 - The five comparison pages stay draft; their Fitvario column now reads from the new flags (GST, biometric, QR and others show "Yes").
 - Keyword coverage: 52 covered, 0 missing. Keywords without a published page and why: `keyword-gaps.md`.
+
+## 2026-10-11: owner decisions, white-label verified against the app (branch `seo-release`)
+
+- **White-label checked against the code**, including the Flutter app (`pr-gym-saas-ui-app`). The name and logo show on three surfaces: the splash screen, the owner home screen and the member dashboard. The Android app label and launcher icon stay "Fitvario"; there is no colour theme; no branding bar was found on staff screens. All copy was narrowed to exactly that: `/features/white-label-gym-app`, `/features/member-app` (English and Hinglish), `/features`, `/for/franchise-gyms`, and the registry description.
+- **`/for/crossfit-yoga-studios` set back to draft** until class booking exists. It is noindex, out of the sitemap and 404 on production; its two keywords moved to `keyword-gaps.md`.
+- **Template marketplace** moved back to `in-code`; diet, workout and batches stay out of public copy. `docs/seo/verify_features.py` written (read-only, aggregate counts only) so the flags can be set from real production usage.
+- Legal pages untouched.
+- Public pages: 40 (was 41). Keyword coverage: 50 covered, 0 missing.

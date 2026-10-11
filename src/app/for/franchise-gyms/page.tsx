@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Can we use one brand across all locations?",
-    a: "Yes. The app name and logo you set show to the owner, staff and members of every location in your organisation.",
+    a: "Yes. The app name and logo you set belong to the owner, so every location shows the same ones on the splash screen and on the owner and member home screens.",
   },
   {
     q: "Is a separate login needed for each branch?",

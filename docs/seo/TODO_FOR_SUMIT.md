@@ -164,3 +164,10 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Hinglish FAQs** on member-app and biometric pages are Roman-script drafts; have a Hindi speaker read them.
 - [ ] **Screenshots:** each new page has a labelled screenshot placeholder. Send real screenshots and I will swap them in.
 - [ ] **`/terms` and `/privacy` still list class scheduling, workout and diet content and class bookings.** Legal text, not edited by me.
+
+## 18. Added after your decisions
+
+- [ ] **Run `docs/seo/verify_features.py`** against production and paste the output. How: `python manage.py shell < docs/seo/verify_features.py` from the backend folder, ideally with a read-only database role or a replica; the script also opens a read-only transaction. It prints aggregate counts only. I will set diet, workout, template marketplace, batches, white-label and self-serve from it.
+- [ ] **Competitor facts and GymSmart's website**: Chrome was not connected when I tried (the browser extension reported it was not connected), so the public checks (Play listing text against the site, GymSmart's official site, re-verifying the comparison facts) are still pending. Reconnect the Claude Chrome extension and say so, or allow the web-fetch tool.
+- [ ] **Legal pages** (`/terms`, `/privacy`, `/refund`, `/cookies`, `/delete-account`): not edited, as you asked. `/terms` and `/privacy` still mention class scheduling, workout and diet content, class bookings and "WhatsApp Business messaging". For an advisor.
+- [ ] **`/for/crossfit-yoga-studios`** goes live when class booking exists: remove `draft: true` in `src/config/pages.ts`.

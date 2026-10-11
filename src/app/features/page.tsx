@@ -197,7 +197,7 @@ export default function FeaturesPage() {
             <FeatureCard iconPath={icons.bolt} title="Referrals and rewards" desc="Set referral rules and reward members with credits for bringing in new sign-ups, and track usage." />
             {ownerReferral && <FeatureCard iconPath={icons.bolt} title="Refer another gym owner" desc="Owners can refer other gym owners to Fitvario and earn coins when the referral is rewarded." />}
             {campaigns && <FeatureCard iconPath={icons.chat} title="Message campaigns" desc="Send a message to a chosen group of members from a template, preview the audience first and pay for it from your messaging credit wallet." />}
-            {whiteLabel && <FeatureCard iconPath={icons.phone} title="Your gym's name and logo in the app" desc="Set an app name and logo that your owner, staff and members see inside the Fitvario app." />}
+            {whiteLabel && <FeatureCard iconPath={icons.phone} title="Your gym's name and logo in the app" desc="Set an app name and logo that show on the splash screen and on the owner and member home screens of the Fitvario app." />}
           </div>
         </RoleSection>
 
@@ -225,7 +225,7 @@ export default function FeaturesPage() {
           accent="border-violet-500"
         >
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Gym-branded app"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo inside it. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
+            <FeatureCard iconPath={icons.phone} title={whiteLabel ? "Your gym's name and logo" : "Gym-branded app"} desc={whiteLabel ? "Members use the Fitvario Android app and see your gym's name and logo on the opening screen and their home screen. It is one app for owners, staff and members, with a login for each role." : "Members use an Android app set up for your gym."} iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.lock} title="Mobile number login" desc="Members log in with their mobile number and an OTP." iconBg="bg-violet-50" iconColor="text-violet-700" />
             <FeatureCard iconPath={icons.qr} title="QR check-in and check-out" desc="Members scan your gym's QR code with the app to check in, and scan again to check out. Time spent is recorded." iconBg="bg-violet-50" iconColor="text-violet-700" />
             {diet && <FeatureCard iconPath={icons.dumbbell} title="Workout and diet plans" desc="View assigned workout routines and diet plans, and mark progress as you go." iconBg="bg-violet-50" iconColor="text-violet-700" />}

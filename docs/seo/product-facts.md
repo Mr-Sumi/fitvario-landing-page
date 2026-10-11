@@ -53,4 +53,6 @@ Ecommerce is a full cart > checkout > order > owner-approval flow, not just "exp
 - **Template marketplace:** live per owner, but it holds diet and workout plan templates, so it is not described anywhere while diet and workout plans are N.
 - **QR modes:** `AttendanceSettings` has `single` (one scan marks present) and `dual` (first scan in, next out). Owner statement describes dual mode; copy explains both.
 - **Biometric devices:** ADMS push protocol, ZKTeco-style and eSSL-style terminals. No model list is published. Fitvario blocks or unblocks the user on the device; it does not drive a door lock.
+- **White-label, code-verified (2026-10-11):** the name and logo appear on the app's splash screen, the owner home screen and the member dashboard. The Android app label and launcher icon stay "Fitvario", there is no colour theming, and the store listing is Fitvario's. Staff screens were not found to show it.
+- **Held pending usage data (owner, 2026-10-11):** diet plans, workout plans, template marketplace and batches stay out of public copy until `verify_features.py` shows real usage.
 - **Class booking:** does not exist. Batches have a capacity that is checked when a member is assigned, but `batches_time_slots` is still `in-code`, so batches are mentioned only if that flag goes live.

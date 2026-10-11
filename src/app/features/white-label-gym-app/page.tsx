@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Who sees the branding?",
-    a: "Everyone in your organisation: you, your staff and your members. A different gym owner's members see that owner's branding, not yours.",
+    a: "You see it on your home screen and your members see it on theirs, and both see it on the splash screen when the app opens. A different gym owner's members see that owner's branding, not yours.",
   },
   {
     q: "What do I need to set it up?",
@@ -47,7 +47,7 @@ export default function Page() {
     <ContentLayout
       path={PATH}
       h1="White label gym app for India: your gym's name and logo"
-      lead="Fitvario lets a gym owner set an app name and upload a logo, and those show inside the Fitvario Android app for the owner, the staff and every member. It is a white label gym app in the sense of branding what your people see, not a separate app published under your name. Members install the same Fitvario app from Google Play, log in with their number and see your gym's name and logo."
+      lead="Fitvario lets a gym owner set an app name and upload a logo, and those show inside the Fitvario Android app: on the opening splash screen, on the owner's home screen and on the member's home screen. It is a white label gym app in the sense of branding what your people see, not a separate app published under your name. Members install the same Fitvario app from Google Play and log in with their number."
       toc={toc}
       related={["/features/member-app", "/features/multi-branch-gym-software", "/pricing"]}
     >
@@ -86,7 +86,8 @@ export default function Page() {
         <ExampleBox title="Example">
           <p>
             A gym called Iron Temple sets &quot;Iron Temple Fitness&quot; and its logo. When its members open the
-            Fitvario app they see that name and logo. Members of a different owner&apos;s gym see theirs.
+            Fitvario app they see that name and logo on the opening screen and on their home screen. Members of a
+            different owner&apos;s gym see theirs.
           </p>
         </ExampleBox>
         <ScreenshotPlaceholder
@@ -99,14 +100,15 @@ export default function Page() {
 
       <Section id="what" title="What is and is not branded">
         <p>
-          Your app name and logo show to your owner, staff and members inside the app. The app itself is still the
-          Fitvario app on Google Play: its store name, icon and listing are Fitvario&apos;s. If you manage several
-          locations, the branding belongs to the owner, so all of your branches show the same name and logo.{" "}
+          Your app name and logo show in three places inside the app: the splash screen when the app opens, the
+          owner&apos;s home screen and the member&apos;s home screen. Everything else in the app stays as it is. The
+          app itself is still the Fitvario app on Google Play: its store name, home-screen icon and listing are
+          Fitvario&apos;s. The branding belongs to the owner, so all of your branches use the same name and logo.{" "}
           <PageLink href="/features/multi-branch-gym-software">See how multi-branch works</PageLink>.
         </p>
         <p>
-          Colour themes and a branded app icon are not part of this feature. If those matter, tell us before you
-          decide.
+          Colour themes, a branded app icon and a branded store listing are not part of this feature. If those matter,
+          tell us before you decide.
         </p>
       </Section>
 

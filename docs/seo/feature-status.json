@@ -28,7 +28,7 @@
     },
     "batches_time_slots": {
       "status": "in-code",
-      "evidence": "batch_views.py"
+      "evidence": "batch_views.py | Owner 2026-10-11: stay unclaimed until verify_features.py shows real usage."
     },
     "qr_attendance": {
       "status": "live",
@@ -59,9 +59,9 @@
       "evidence": "Depends on workout and diet plans, which are not live."
     },
     "template_marketplace": {
-      "status": "live",
-      "evidence": "Owner: template marketplace works in production. | WITHHELD FROM COPY: PlatformTemplate holds diet and workout plan templates, and the owner says diet and workout plans are not available. Do not mention the marketplace while diet_plans and workout_plans are N. | owner/templates/* routes",
-      "verifiedHow": "verified by owner",
+      "status": "in-code",
+      "evidence": "Owner answered Y, then asked to keep it out of public copy until docs/seo/verify_features.py shows real usage. Also: PlatformTemplate holds diet and workout plan templates, and diet_plans and workout_plans are N. | owner/templates/* routes",
+      "verifiedHow": "owner statement, then held pending usage check",
       "verifiedOn": "2026-10-11"
     },
     "personal_trainer_assignment": {
@@ -116,7 +116,7 @@
     },
     "white_label": {
       "status": "live",
-      "evidence": "Owner: white-label works in production. | owner/whitelabel (OwnerWhitelabelView) | Play listing 'What's new' (Sep 28 2026) says 'Faster app startup for branded gyms', which suggests branded builds exist. Not confirmed live.",
+      "evidence": "Owner: white-label works in production. | Code-verified 2026-10-11: backend WhitelabelConfig (app_name, logo_url, is_enabled; live only when name and logo are set and the switch is on) served by GET /api/app-config; Flutter app shows it on the splash screen (name and logo), the owner home BrandingBar and the member dashboard BrandingBar. NOT branded: Android app label and launcher icon (fixed to Fitvario), colours or theme, store listing. No branding bar was found on staff screens. | owner/whitelabel",
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11"
     },
@@ -192,13 +192,13 @@
       "status": "not-live",
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "Owner: N. | Split out of workout_diet_plans so each can be answered alone. Owner said diet plans are not available. diet_owner_views.py, diet_member_views.py: templates, per-member assignment, day-by-day completion, restart, member requests."
+      "evidence": "Owner: N. | Split out of workout_diet_plans so each can be answered alone. Owner said diet plans are not available. diet_owner_views.py, diet_member_views.py: templates, per-member assignment, day-by-day completion, restart, member requests. | Owner 2026-10-11: keep out of public copy until verify_features.py shows real usage."
     },
     "workout_plans": {
       "status": "not-live",
       "verifiedHow": "verified by owner",
       "verifiedOn": "2026-10-11",
-      "evidence": "Owner: N. | Split out of workout_diet_plans. Owner said workout plans are not available. workout_owner_views.py, workout_member_views.py: templates, per-member assignment, exercise completion, restart, member requests."
+      "evidence": "Owner: N. | Split out of workout_diet_plans. Owner said workout plans are not available. workout_owner_views.py, workout_member_views.py: templates, per-member assignment, exercise completion, restart, member requests. | Owner 2026-10-11: keep out of public copy until verify_features.py shows real usage."
     },
     "expense_manager": {
       "status": "in-code",

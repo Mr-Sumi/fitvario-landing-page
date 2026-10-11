@@ -57,7 +57,7 @@ const hinglish = [
   },
   {
     q: "Kya gym ka naam aur logo app mein dikh sakta hai?",
-    a: "Haan, gym owner apna app naam aur logo set kar sakta hai, jo owner, staff aur members ko app ke andar dikhta hai.",
+    a: "Haan, gym owner apna app naam aur logo set kar sakta hai, jo splash screen par aur owner aur member ki home screen par dikhta hai.",
   },
 ];
 
@@ -132,8 +132,8 @@ export default function Page() {
           The member app is the Fitvario app. It is not a separate app published under your gym&apos;s name.{" "}
           {isLive("white_label") ? (
             <>
-              What you can do is brand it, which makes it a branded gym app for members in name and logo, not in the store listing: set your gym&apos;s app name and logo, and they show to your owner, staff
-              and members inside the app. See{" "}
+              What you can do is brand it, which makes it a branded gym app for members in name and logo, not in the store listing: set your gym&apos;s app name and logo, and they show on the splash screen and
+              on the owner&apos;s and members&apos; home screens. See{" "}
               <PageLink href="/features/white-label-gym-app">how the white-label branding works</PageLink> for what is
               and is not branded.
             </>

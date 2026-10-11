@@ -1,6 +1,6 @@
 # Brief: /for/crossfit-yoga-studios
 
-Status: published · Wave: Wave 3 · Kind: segment
+Status: draft · Wave: Wave 3 · Kind: segment
 
 ## Keywords
 - Primary: crossfit gym software india (P3, English, Segment)

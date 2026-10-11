@@ -84,7 +84,9 @@ Lab results from the last run (2026-10-11, 13 pages including all new feature an
 
 | Page or section | Unlocks when |
 |---|---|
-| `/features/gst-billing`, `/features/whatsapp-reminders`, `/features/biometric-attendance`, `/features/qr-attendance`, `/features/white-label-gym-app`, `/features/multi-branch-gym-software`, `/features/member-app`, `/for/*` | **Published** on 2026-10-11 after your answers |
+| `/features/gst-billing`, `/features/whatsapp-reminders`, `/features/biometric-attendance`, `/features/qr-attendance`, `/features/white-label-gym-app`, `/features/multi-branch-gym-software`, `/features/member-app`, `/for/small-gyms`, `/for/franchise-gyms` | **Published** on 2026-10-11 after your answers |
+| `/for/crossfit-yoga-studios` | Draft until class booking exists (your decision) |
+| Diet, workout, template marketplace and batches | Run `docs/seo/verify_features.py` against production (read-only), paste the output, and I set the flags from real usage |
 | `/features/diet-workout-plans` | `workout_diet_plans` (with `diet_plans` and `workout_plans`) set to live. Written and ready, 404 on production until then |
 | Store, workout, diet and template-marketplace claims on the site | Their flags go live (the marketplace sells diet and workout templates) |
 | Sign-up and pay by yourself wording | `self_serve_signup_subscription` set to live |
