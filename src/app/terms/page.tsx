@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "Fitvario Terms of Service — acceptable use, subscriptions, Razorpay payments, disclaimers, governing law (India), and Grievance Officer.",
-  alternates: { canonical: "https://fitvario.com/terms" },
-};
+export const metadata = buildMetadata("/terms");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;
@@ -19,7 +15,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function TermsPage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Terms of Service — Fitvario</h1>
+      <Breadcrumbs path="/terms" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Terms of Service — Fitvario</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
       <P>
         These Terms of Service (&quot;Terms&quot;) govern access to and use of Fitvario websites, web applications,

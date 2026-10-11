@@ -1,137 +1,69 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Instrument_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CookieBanner } from "@/components/CookieBanner";
+import { Analytics } from "@/components/Analytics";
+import { ActionBar } from "@/components/ActionBar";
+import { AutoReveal } from "@/components/AutoReveal";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
+import { OG_IMAGE } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// One pairing: Outfit (a round geometric sans) for headings, Instrument Sans for text. Variable fonts: one file each.
+const heading = Outfit({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+});
+const text = Instrument_Sans({
+  variable: "--font-text",
+  subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const DEFAULT_TITLE = "Fitvario | Gym Management Software for Indian Gyms";
+const DEFAULT_DESCRIPTION =
+  "Gym management software for Indian gyms: memberships, QR attendance, CRM, billing and analytics.";
 
-const BASE_URL = "https://fitvario.com";
-
+// Pages set their own canonical and Open Graph via buildMetadata(); nothing page-specific lives here
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: "Fitvario — Gym Management App & Software with Ecommerce",
-    template: "%s | Fitvario",
-  },
-  description:
-    "Fitvario is gym management software and app for memberships, QR attendance, CRM, workouts, analytics, messaging, and ecommerce — built for single clubs and franchise groups across India.",
-  keywords: [
-    "gym management software",
-    "gym management app",
-    "gym membership software",
-    "gym CRM",
-    "gym attendance app",
-    "QR attendance",
-    "fitness app India",
-    "gym software India",
-    "gym billing software",
-    "fitness studio management",
-    "gym franchise software",
-    "member app gym",
-  ],
-  authors: [{ name: "Fitvario", url: BASE_URL }],
-  creator: "Sumigyan.in",
-  publisher: "Fitvario",
+  metadataBase: new URL(SITE_URL),
+  title: { default: DEFAULT_TITLE, template: "%s" },
+  description: DEFAULT_DESCRIPTION,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  publisher: SITE_NAME,
   category: "Software",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: BASE_URL,
-    siteName: "Fitvario",
-    title: "Fitvario — Gym Management App & Software with Ecommerce",
-    description:
-      "Run memberships, QR attendance, CRM, workouts, analytics, and ecommerce from one gym management platform — for single clubs and growing franchise groups.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Fitvario — Gym Management Software",
-      },
-    ],
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fitvario — Gym Management App & Software",
-    description:
-      "All-in-one gym management platform: memberships, QR attendance, CRM, workouts, analytics, and ecommerce — built for India.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: BASE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   verification: {
-    // Add your Google Search Console verification token here when you have it
-    // google: "your-google-verification-token",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
   },
   manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  // Icons come from the file convention: src/app/favicon.ico, icon.png and apple-icon.png (scripts/make-favicon.mjs)
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d9488",
+  themeColor: "#192126",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Fitvario",
-  url: BASE_URL,
-  description:
-    "Fitvario is gym management software with memberships, QR attendance, CRM, WhatsApp alerts, analytics, and a branded Android app — for single gyms and franchise groups across India.",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Android, Web",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "INR",
-    description: "Contact for custom pricing",
-  },
-  provider: {
-    "@type": "Organization",
-    name: "Fitvario",
-    url: BASE_URL,
-    email: "support@fitvario.com",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      email: "support@fitvario.com",
-      availableLanguage: ["English", "Hindi"],
-    },
-    areaServed: "IN",
-    foundingLocation: {
-      "@type": "Country",
-      name: "India",
-    },
-  },
-  screenshot: `${BASE_URL}/og-image.png`,
 };
 
 export default function RootLayout({
@@ -140,18 +72,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}>
+    <html lang="en-IN" className={`${heading.variable} ${text.variable} h-full scroll-smooth antialiased`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
       </head>
-      <body className="flex min-h-full flex-col bg-slate-50 font-sans text-slate-900">
+      <body className="flex min-h-full flex-col bg-paper pb-16 font-sans text-ink md:pb-0">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+        >
+          Skip to content
+        </a>
         <Header />
-        <div className="flex flex-1 flex-col">{children}</div>
+        <main id="main" className="flex flex-1 flex-col">
+          {children}
+        </main>
         <Footer />
+        <ActionBar />
+        <AutoReveal />
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );

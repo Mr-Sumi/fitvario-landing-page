@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "Fitvario Privacy Policy — data collection, third-party processors (Razorpay, Meta, WhatsApp, Zoho, Firebase), security, retention, and your rights under India's DPDP Act 2023.",
-  alternates: { canonical: "https://fitvario.com/privacy" },
-};
+export const metadata = buildMetadata("/privacy");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;
@@ -19,7 +15,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function PrivacyPage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Privacy Policy — Fitvario</h1>
+      <Breadcrumbs path="/privacy" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Privacy Policy — Fitvario</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
       <P>
         Fitvario (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) provides a cloud-based gym management software

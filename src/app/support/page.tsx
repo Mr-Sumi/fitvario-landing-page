@@ -1,22 +1,22 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Support",
-  description:
-    "Fitvario support — get help with gym management software setup, QR attendance, CRM, memberships, and billing. Email: support@fitvario.com",
-  alternates: { canonical: "https://fitvario.com/support" },
-};
+export const metadata = buildMetadata("/support");
 
 export default function SupportPage() {
   return (
     <PageShell>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Fitvario Support</h1>
+      <Breadcrumbs path="/support" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Fitvario Support</h1>
       <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
         We&apos;re here to help you get the most out of Fitvario—whether you&apos;re setting up your gym, troubleshooting
         an issue, or need billing help.
       </p>
+
+      <p className="mt-2 text-sm text-slate-500">Last updated: 10 October 2026</p>
+
 
       <div className="mt-10 space-y-5">
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -37,7 +37,7 @@ export default function SupportPage() {
             <li>Your registered gym/organization name and email address.</li>
             <li>A clear description of the issue or question.</li>
             <li>Screenshots or screen recordings if relevant.</li>
-            <li>Device/browser details for app or web issues.</li>
+            <li>Your phone model and Android version, for app issues.</li>
             <li>Any error messages you see.</li>
           </ul>
         </div>
@@ -51,10 +51,10 @@ export default function SupportPage() {
               "Configuring WhatsApp / SMS messaging credits",
               "Setting up subscription plans and pricing",
               "Staff roles, access controls, and permissions",
-              "Ecommerce and product listings",
               "Billing, invoices, and Razorpay payments",
               "Android member app installation and OTP login",
-              "Account deletion and data export",
+              "Signing in to the owner web dashboard at dash.fitvario.com",
+              "Account deletion requests",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2 text-slate-600">
                 <span className="mt-0.5 h-4 w-4 shrink-0 text-teal-600">

@@ -6,16 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:calc": "node --test src/lib/calc/calc.test.mjs",
+    "seo:check": "node scripts/seo-check.mjs && node scripts/keyword-coverage.mjs && node scripts/feature-truth.mjs && node scripts/launch-checks.mjs",
+    "gen:blog": "node scripts/gen-blog-registry.mjs",
+    "prebuild": "node scripts/gen-blog-registry.mjs"
   },
   "dependencies": {
+    "marked": "^18.1.0",
     "next": "16.2.3",
+    "nodemailer": "^10.0.16",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

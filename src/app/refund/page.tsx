@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Refund Policy",
-  description:
-    "Fitvario refund and cancellation policy for SaaS subscriptions, Razorpay payments, messaging credits, and Google Play purchases.",
-  alternates: { canonical: "https://fitvario.com/refund" },
-};
+export const metadata = buildMetadata("/refund");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;
@@ -20,7 +16,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function RefundPage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Refund &amp; Cancellation Policy — Fitvario</h1>
+      <Breadcrumbs path="/refund" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Refund &amp; Cancellation Policy — Fitvario</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
       <P>
         This Refund and Cancellation Policy explains how refunds may apply to Fitvario software subscriptions,
@@ -73,7 +70,7 @@ export default function RefundPage() {
       <ul className="mt-3 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
         <li>If you were charged for credits not received due to a system error, contact support within 7 days.</li>
         <li>Credits consumed for messages already delivered are non-refundable.</li>
-        <li>WhatsApp Business API message delivery is subject to Meta&apos;s policies; failures due to Meta&apos;s infrastructure are outside our control.</li>
+        <li>WhatsApp message delivery is subject to Meta&apos;s policies; failures due to Meta&apos;s infrastructure are outside our control.</li>
       </ul>
 
       <H2>4. Google Play Store purchases</H2>

@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Grievance Officer",
-  description:
-    "Fitvario Grievance Officer contact — complaints under IT Act 2000, IT Rules 2021, and DPDP Act 2023. Email support@fitvario.com.",
-  alternates: { canonical: "https://fitvario.com/grievance" },
-};
+export const metadata = buildMetadata("/grievance");
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-10 text-lg font-semibold text-slate-900 first:mt-8">{children}</h2>;
@@ -19,7 +15,8 @@ function P({ children }: { children: React.ReactNode }) {
 export default function GrievancePage() {
   return (
     <PageShell wide>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Grievance Officer</h1>
+      <Breadcrumbs path="/grievance" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Grievance Officer</h1>
       <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
 
       <P>

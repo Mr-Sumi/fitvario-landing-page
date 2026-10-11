@@ -1,29 +1,29 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-export const metadata: Metadata = {
-  title: "Delete Account",
-  description:
-    "How to delete your Fitvario account and request data erasure under India's DPDP Act 2023.",
-  alternates: { canonical: "https://fitvario.com/delete-account" },
-};
+export const metadata = buildMetadata("/delete-account");
 
 export default function DeleteAccountPage() {
   return (
     <PageShell>
-      <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Delete Your Fitvario Account</h1>
+      <Breadcrumbs path="/delete-account" />
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900">Delete Your Fitvario Account</h1>
       <p className="mt-4 text-[17px] leading-relaxed text-slate-600">
         You have the right to delete your account and associated personal data at any time, in line with
         India&apos;s Digital Personal Data Protection Act, 2023 (DPDP Act) and Google Play Store data deletion
         requirements.
       </p>
 
+      <p className="mt-2 text-sm text-slate-500">Last updated: 26 April 2026</p>
+
+
       <div className="mt-10 space-y-6">
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-base font-semibold text-slate-900">Option 1 — Delete from app or web</h2>
+          <h2 className="text-base font-semibold text-slate-900">Option 1 — Delete from the app</h2>
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
-            <li>Open the Fitvario web dashboard or Android member app.</li>
+            <li>Open the Fitvario Android app.</li>
             <li>Go to <strong className="text-slate-800">Account Settings</strong>.</li>
             <li>Select <strong className="text-slate-800">Delete Account</strong>.</li>
             <li>Confirm your identity and submit the deletion request.</li>

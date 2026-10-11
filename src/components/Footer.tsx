@@ -1,38 +1,56 @@
+import Image from "next/image";
 import Link from "next/link";
+import { pages, isIndexable, isPublishedPath, publishedPages, type PageDef } from "@/config/pages";
+import { contact, playStoreUrl } from "@/config/site";
 
-const productLinks = [
-  { href: "/features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+const labelOf = (p: PageDef) => p.navLabel ?? p.title.split("|")[0].trim();
 
-const supportLinks = [
-  { href: "/support", label: "Support" },
-  { href: "/delete-account", label: "Delete Account" },
-  { href: "/grievance", label: "Grievance Officer" },
-];
+function pick(...paths: string[]): PageDef[] {
+  return paths.map((x) => pages.find((p) => p.path === x)).filter((p): p is PageDef => !!p && isIndexable(p));
+}
 
-const legalLinks = [
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms of Service" },
-  { href: "/refund", label: "Refund Policy" },
-  { href: "/cookies", label: "Cookie Policy" },
-];
+// Columns come from the page registry, so unpublished (draft) pages never show up here.
+// A column with no published pages is dropped.
+function columns(): { title: string; links: PageDef[] }[] {
+  return [
+    {
+      title: "Product",
+      links: [...pick("/features", "/pricing"), ...publishedPages("feature")],
+    },
+    { title: "Solutions", links: publishedPages("segment") },
+    {
+      title: "Resources",
+      links: [
+        ...publishedPages("tool"),
+        ...publishedPages("template"),
+        ...publishedPages("blog").filter((p) => p.path === "/blog"),
+        ...publishedPages("hinglish"),
+      ],
+    },
+    { title: "Compare", links: publishedPages("compare") },
+    {
+      title: "Company",
+      links: pick("/about", "/contact", "/support", "/grievance", "/delete-account"),
+    },
+    { title: "Legal", links: pick("/privacy", "/terms", "/refund", "/cookies") },
+  ].filter((c) => c.links.length > 0);
+}
 
-function PlayStoreBadge() {
+function PlayStoreBadge({ href }: { href: string }) {
   return (
     <a
-      href="#"
-      aria-label="Get it on Google Play"
-      className="inline-flex items-center gap-2.5 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-white transition hover:bg-slate-700"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Get it on Google Play"
+      className="fv-btn fv-btn-secondary gap-3 px-4"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 fill-current" aria-hidden>
         <path d="M3.18 23.75c.33.19.7.25 1.07.19l11.72-11.69L12.19 8.4 3.18 23.75zM21.5 10.47l-2.83-1.64-3.28 3.25 3.28 3.28 2.85-1.65a1.83 1.83 0 000-3.24zM2.01 1.27A1.83 1.83 0 001 2.92v18.16c0 .64.34 1.2.84 1.52l.17.1 10.17-10.17v-.24L2.01 1.27zm10.63 9.93L2.26.79l.09.06 11.72 11.71-1.43 1.43-1.43-1.43.05-.05L12.64 11.2z" />
       </svg>
-      <span className="text-left leading-none">
-        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-400">Get it on</span>
-        <span className="block text-sm font-bold">Google Play</span>
+      <span className="text-left leading-tight">
+        <span className="block text-[11px] font-medium text-white/70">Get it on</span>
+        <span className="block text-sm font-semibold">Google Play</span>
       </span>
     </a>
   );
@@ -40,103 +58,70 @@ function PlayStoreBadge() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-900 text-white">
-      {/* Main grid */}
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
-
-          {/* Brand — wider column */}
-          <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2.5 text-base font-bold tracking-tight text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500 text-sm font-extrabold text-white">
-                F
-              </span>
+    <footer className="on-ink mt-8 rounded-t-[32px] bg-ink text-white">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-white">
+              <Image src="/fitvario-icon.png" alt="" width={32} height={32} className="rounded-[8px]" />
               Fitvario
             </Link>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400">
-              All-in-one gym management software for memberships, QR attendance, CRM, analytics, messaging, and
-              ecommerce — built for India.
+            <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-white/75">
+              Gym management software for Indian gyms: memberships, QR attendance, CRM and revenue in one place.
             </p>
-            <div className="mt-4 text-xs leading-relaxed text-slate-500">
-              <p className="font-medium text-slate-400">Fitvario</p>
+            <div className="mt-5 space-y-1 text-sm leading-relaxed text-white/75">
               <p>Bhopal, Madhya Pradesh, India</p>
-              <a
-                href="mailto:support@fitvario.com"
-                className="mt-1 inline-block text-teal-400 underline-offset-2 hover:underline"
-              >
-                support@fitvario.com
-              </a>
+              <p>
+                <a href={`mailto:${contact.email}`} className="inline-block py-1 text-white underline decoration-lime underline-offset-4 hover:decoration-2">
+                  {contact.email}
+                </a>
+              </p>
+              {contact.phoneNumber && (
+                <p>
+                  <a href={`tel:+${contact.phoneNumber}`} data-cta="footer" className="inline-block py-1 text-white underline decoration-lime underline-offset-4 hover:decoration-2">
+                    +{contact.phoneNumber}
+                  </a>
+                </p>
+              )}
+              {contact.hours && <p>{contact.hours}</p>}
             </div>
-            <div className="mt-5">
-              <PlayStoreBadge />
-            </div>
-          </div>
-
-          {/* Product */}
-          <div>
-            <p className="mb-4 text-[11px] font-bold uppercase tracking-widest text-slate-500">Product</p>
-            <nav className="flex flex-col gap-2.5">
-              {productLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-slate-400 transition hover:text-white"
-                >
-                  {item.label}
+            {isPublishedPath("/hi") && (
+              <p className="mt-4">
+                <Link href="/hi" lang="hi-Latn" className="inline-block py-1 text-sm font-medium text-white underline decoration-lime underline-offset-4 hover:decoration-2">
+                  Hinglish mein dekhein
                 </Link>
-              ))}
-            </nav>
+              </p>
+            )}
+            {playStoreUrl && (
+              <div className="mt-6">
+                <PlayStoreBadge href={playStoreUrl} />
+              </div>
+            )}
           </div>
 
-          {/* Support */}
-          <div>
-            <p className="mb-4 text-[11px] font-bold uppercase tracking-widest text-slate-500">Support</p>
-            <nav className="flex flex-col gap-2.5">
-              {supportLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-slate-400 transition hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
+            {columns().map((col) => (
+              <div key={col.title}>
+                <p className="mb-3 text-sm font-semibold text-white">{col.title}</p>
+                <nav className="flex flex-col" aria-label={col.title}>
+                  {col.links.map((p) => (
+                    <Link key={p.path} href={p.path} className="py-1.5 text-[15px] text-white/75 transition-colors hover:text-white">
+                      {labelOf(p)}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            ))}
           </div>
-
-          {/* Legal */}
-          <div>
-            <p className="mb-4 text-[11px] font-bold uppercase tracking-widest text-slate-500">Legal</p>
-            <nav className="flex flex-col gap-2.5">
-              {legalLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-slate-400 transition hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-slate-800">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 sm:flex-row sm:px-6">
-          <p className="text-center text-xs text-slate-600 sm:text-left">
-            © 2026 Fitvario · Bhopal, Madhya Pradesh, India · All rights reserved.
-          </p>
-          <p className="text-xs text-slate-600">
+      <div className="border-t border-white/15">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-5 py-5 text-sm text-white/70 sm:flex-row sm:px-8">
+          <p>© 2026 Fitvario · Bhopal, Madhya Pradesh, India · All rights reserved.</p>
+          <p>
             Built by{" "}
-            <a
-              href="https://sumigyan.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 underline-offset-2 hover:text-slate-300 hover:underline"
-            >
+            <a href="https://sumigyan.in" target="_blank" rel="noopener noreferrer" className="text-white underline decoration-lime underline-offset-4 hover:decoration-2">
               Sumigyan.in
             </a>
           </p>
