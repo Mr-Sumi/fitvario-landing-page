@@ -128,3 +128,12 @@ Triggered by Sumit: due-payment reminders, online store, workout plans and diet 
 - Fitvario's table cells are computed from `feature-status.json`, so the page can never claim a feature that is not live.
 - The competitor's own claim of an official WhatsApp integration is paraphrased, because the exact phrase is banned on this site.
 - Not included: migration notes (Fitvario's import help is an unverified service claim), competitor logos, "best" claims.
+
+## 2026-10-11: Prompt 8, integration and launch QA (branch `seo-release`)
+
+- Integration branch built from `seo-overhaul` by merging `seo-blog`, `seo-hinglish` and `seo-compare`. All three merged without losing content. The build failed once after the merge because the both-sides resolver dropped a shared closing brace in the page registry; restored and committed separately.
+- New scripts: `feature-truth.mjs` (flags wording that claims a capability whose flag is not live; legal text is reported but does not fail), `launch-checks.mjs` (conversion audit, mixed content, trailing slashes, apex links, source maps, secrets in the bundle, header config), `merge-volumes.mjs` (Keyword Planner export to a ranked list; verified with a dummy file). `npm run seo:check` runs all four checkers.
+- Found and fixed: `/delete-account` told people to use a "web dashboard" (there is none) and now says the Android app; the Play badge's `aria-label` did not match its visible text (the only failing audit on every page).
+- Added security headers in `next.config.ts` and confirmed them on a production server. No Content-Security-Policy yet by design.
+- Lighthouse on seven page types: see HANDOFF. Written `docs/seo/LAUNCH_CHECKLIST.md`.
+- Known: legal pages still mention class scheduling, workout and diet content, and "WhatsApp Business messaging" (`/terms`), biometric events and class bookings (`/privacy`). These are in `TODO_FOR_SUMIT.md` for the owner's review.

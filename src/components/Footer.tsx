@@ -41,7 +41,7 @@ function PlayStoreBadge({ href }: { href: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Get it on Google Play"
+      title="Get it on Google Play"
       className="inline-flex min-h-12 items-center gap-2.5 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-white transition hover:bg-slate-700"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 fill-current" aria-hidden>

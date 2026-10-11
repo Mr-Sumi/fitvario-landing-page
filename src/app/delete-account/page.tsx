@@ -21,9 +21,9 @@ export default function DeleteAccountPage() {
 
       <div className="mt-10 space-y-6">
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-base font-semibold text-slate-900">Option 1 — Delete from app or web</h2>
+          <h2 className="text-base font-semibold text-slate-900">Option 1 — Delete from the app</h2>
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-slate-600">
-            <li>Open the Fitvario web dashboard or Android member app.</li>
+            <li>Open the Fitvario Android app.</li>
             <li>Go to <strong className="text-slate-800">Account Settings</strong>.</li>
             <li>Select <strong className="text-slate-800">Delete Account</strong>.</li>
             <li>Confirm your identity and submit the deletion request.</li>

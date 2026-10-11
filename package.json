@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:calc": "node --test src/lib/calc/calc.test.mjs",
-    "seo:check": "node scripts/seo-check.mjs && node scripts/keyword-coverage.mjs",
+    "seo:check": "node scripts/seo-check.mjs && node scripts/keyword-coverage.mjs && node scripts/feature-truth.mjs && node scripts/launch-checks.mjs",
     "gen:blog": "node scripts/gen-blog-registry.mjs",
     "prebuild": "node scripts/gen-blog-registry.mjs"
   },

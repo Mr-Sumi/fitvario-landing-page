@@ -143,3 +143,12 @@ Flags in `docs/seo/feature-status.json` are now: `due_payment_reminders` not-liv
 - [ ] **Fitvario cells will change on their own** when you flip flags in `feature-status.json` (for example GST or biometric). Re-read the pages after each flip.
 - [ ] **Free trial and published prices:** the pages say Fitvario has neither stated on this site. If you decide to offer a trial or publish prices, tell me and I will update the rows.
 - [ ] When the comparison pages go live, link them from the footer "Compare" column (automatic) and from the "best gym management software" post.
+
+## 16. Added by Prompt 8
+
+- [ ] **Read `LAUNCH_CHECKLIST.md`** and work through sections 1 to 3 before and after you deploy.
+- [ ] **Legal text still mentions things that are not live** (reported by `feature-truth.mjs`): `/terms` lists class scheduling, workout and diet content and "WhatsApp Business messaging"; `/privacy` mentions class bookings and biometric events. I did not edit legal wording. Have it reviewed.
+- [ ] **`/delete-account` was edited** (one heading and one list item) to remove the "web dashboard" reference. Confirm the Android app really offers Account Settings > Delete (the Play listing says owners can delete from Settings).
+- [ ] **Security headers** were added in `next.config.ts`. They are conservative. If anything embeds this site in a frame you control, tell me, because `X-Frame-Options: SAMEORIGIN` would block it.
+- [ ] **Content-Security-Policy** is not set. Worth adding after GA and Turnstile are live, with a tested allow-list.
+- [ ] **Add `docs/seo/keyword-planner.csv`** when you have a Keyword Planner export; run `node scripts/merge-volumes.mjs` to get a ranked top 10 of P1 keywords.
