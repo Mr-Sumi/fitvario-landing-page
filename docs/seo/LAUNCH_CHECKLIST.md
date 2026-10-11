@@ -6,7 +6,7 @@ Plain steps for you. Nothing here deploys the site; that is your call. Branch to
 
 1. Read `TODO_FOR_SUMIT.md` and `OWNER_CONFIRM.md`. Anything you leave blank stays hidden or generic on the site, which is safe.
 2. Set these in Vercel (Production and Preview). `NEXT_PUBLIC_*` values are baked in at build time, so redeploy after changing them.
-   - Lead delivery (needed, otherwise the form shows an error in production): `LEAD_WEBHOOK_URL` and/or `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `LEAD_EMAIL_FROM`, `LEAD_EMAIL_TO`.
+   - Lead delivery (needed, otherwise the form shows an error in production). Best: `LEAD_BACKEND_URL` (the backend's `/api/public/leads`) and `LEAD_BACKEND_KEY`, which must equal `WEBSITE_LEAD_KEY` in the backend environment; leads then appear in the admin dashboard under Enquiries, category "Website". Optional extras: `LEAD_WEBHOOK_URL` and/or `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `LEAD_EMAIL_FROM`, `LEAD_EMAIL_TO`. A lead counts as delivered if any one channel works.
    - Spam protection: `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` (and add the domain in Cloudflare).
    - Contact details (optional, hidden if empty): `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_PHONE_NUMBER`, `NEXT_PUBLIC_WORKING_HOURS`.
    - Analytics and verification: `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`.

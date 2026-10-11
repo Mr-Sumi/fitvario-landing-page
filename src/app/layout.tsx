@@ -56,10 +56,7 @@ export const metadata: Metadata = {
       : undefined,
   },
   manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  // Icons come from the file convention: src/app/favicon.ico, icon.png and apple-icon.png (scripts/make-favicon.mjs)
 };
 
 export const viewport: Viewport = {

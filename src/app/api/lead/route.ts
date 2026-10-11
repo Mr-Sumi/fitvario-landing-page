@@ -45,6 +45,38 @@ async function verifyTurnstile(token: string | undefined, ip: string): Promise<b
   }
 }
 
+// The Fitvario backend stores the lead as an enquiry that shows up in the admin dashboard's Enquiries screen.
+// Server to server only: the key never reaches a browser.
+async function sendToBackend(lead: Record<string, string>, input: LeadInput, attribution: Record<string, string>, ip: string): Promise<boolean> {
+  const url = process.env.LEAD_BACKEND_URL;
+  const key = process.env.LEAD_BACKEND_KEY;
+  if (!url || !key) return false;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Lead-Key": key, "X-Forwarded-For": ip },
+      body: JSON.stringify({
+        name: input.name,
+        gym_name: input.gymName,
+        city: input.city,
+        members: input.members,
+        mobile: lead.mobile,
+        email: input.email,
+        current_method: input.currentMethod,
+        variant: lead.variant,
+        page: lead.page,
+        consent: true,
+        attribution,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    // 201 stored, 200 duplicate of a lead already stored in the last day
+    return res.status === 201 || res.status === 200;
+  } catch {
+    return false;
+  }
+}
+
 async function sendWebhook(payload: Record<string, unknown>): Promise<boolean> {
   const url = process.env.LEAD_WEBHOOK_URL;
   if (!url) return false;
@@ -142,28 +174,34 @@ export async function POST(req: Request) {
     ...attribution,
   };
 
+  const backendConfigured = !!(process.env.LEAD_BACKEND_URL && process.env.LEAD_BACKEND_KEY);
   const webhookConfigured = !!process.env.LEAD_WEBHOOK_URL;
   const emailConfigured = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 
-  if (!webhookConfigured && !emailConfigured) {
+  if (!backendConfigured && !webhookConfigured && !emailConfigured) {
     if (process.env.NODE_ENV !== "production") {
       console.log("[lead] no delivery configured, dev mode. Lead received for", lead.gymName, lead.city);
       return NextResponse.json({ ok: true, dev: true });
     }
     // Never pretend a lead was saved when nothing can save it
-    console.error("[lead] LEAD_WEBHOOK_URL and SMTP_* are both unset; lead was NOT stored");
+    console.error("[lead] LEAD_BACKEND_URL, LEAD_WEBHOOK_URL and SMTP_* are all unset; lead was NOT stored");
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
   const subject = `New ${lead.variant === "quote" ? "quote" : "demo"} request: ${lead.gymName}, ${lead.city}`;
-  const [hook, mail] = await Promise.all([sendWebhook(lead), sendEmail(lead, subject)]);
+  const [stored, hook, mail] = await Promise.all([
+    sendToBackend(lead, input, attribution, ip),
+    sendWebhook(lead),
+    sendEmail(lead, subject),
+  ]);
 
-  if (!hook && !mail) {
+  if (!stored && !hook && !mail) {
     console.error("[lead] every configured delivery channel failed");
     return NextResponse.json({ error: "delivery_failed" }, { status: 502 });
   }
-  if (webhookConfigured && !hook) console.error("[lead] webhook failed, delivered by email only");
-  if (emailConfigured && !mail) console.error("[lead] email failed, delivered by webhook only");
+  if (backendConfigured && !stored) console.error("[lead] backend did not store the lead; check LEAD_BACKEND_URL and the key");
+  if (webhookConfigured && !hook) console.error("[lead] webhook failed");
+  if (emailConfigured && !mail) console.error("[lead] email failed");
 
   return NextResponse.json({ ok: true });
 }

@@ -206,3 +206,9 @@
 - **Interaction:** cards and tiles lift on hover, button arrows nudge, buttons press, links underline, the FAQ answer eases open (where the browser supports it), the header gains a hairline shadow once scrolled, and a thin progress line fills under the header while reading.
 - **Rules:** transform and opacity only, one easing curve, everything off for `prefers-reduced-motion`. No new dependencies.
 - **Performance:** unchanged. Lighthouse mobile: home 96, feature page 96, pricing 96; accessibility, best practices and SEO 100; CLS 0.
+
+## 2026-10-12: favicon and lead storage (branch `seo-design`)
+
+- **Favicon:** the landing site was still serving the default Next.js favicon. `scripts/make-favicon.mjs` now builds `src/app/favicon.ico` (16, 32 and 48 px), `icon.png` and `apple-icon.png` from the app icon, and the metadata uses the file convention. The same script was run for the dashboard repo.
+- **Leads go to the backend:** `/api/lead` now also posts each lead server to server to the backend's new `POST /api/public/leads` (header `X-Lead-Key`). The backend stores it as a platform enquiry (category "Website", type "Demo Request" or "Quote Request"), which the admin dashboard's Enquiries screen already lists through its proxy API. A lead counts as delivered if any one of backend, webhook or email succeeds. New env vars: `LEAD_BACKEND_URL`, `LEAD_BACKEND_KEY` (see `.env.example`).
+- **Verified:** against a stand-in backend, the correct key stored the lead with the mapped fields and UTM data, and a wrong key returned an honest `delivery_failed`. Nothing was run against production.

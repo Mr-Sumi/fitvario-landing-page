@@ -219,3 +219,11 @@ Also still placeholders: two Hindi demo videos (`/hi/whatsapp-reminder`, `/hi/bl
 - [x] **Decided 2026-10-11:** keep the lime panels (the app's `#BBF246`).
 - [ ] The floating cards are examples, not screenshots. When the real screenshots arrive (section 20) they replace or sit beside the cards.
 - [x] **Decided 2026-10-11:** the chips stay plain text, no third-party logos.
+
+## 24. Lead storage (needs your deploy)
+
+- [ ] **Backend:** set `WEBSITE_LEAD_KEY` (a long random string) in the backend environment and deploy `auth_core/views/public_lead_views.py`, the `public/leads` route and the `WEBSITE_LEAD_KEY` setting. No migration is needed. Run `pytest tests/test_website_leads.py` where the test database is reachable (I could not run it from here).
+- [ ] **Landing (Vercel):** set `LEAD_BACKEND_URL` to the backend's `/api/public/leads` and `LEAD_BACKEND_KEY` to the same value as `WEBSITE_LEAD_KEY`.
+- [ ] **Dashboard:** deploy the Enquiries screen change (Website badge, gym and city on the row, line breaks in the description).
+- [ ] **Check:** submit one test demo request with a number you control, then open the admin dashboard, Enquiries, and look for it under category "Website". Delete the test enquiry afterwards.
+- [ ] **Privacy:** the form's consent checkbox is stored as "Consent to be contacted: yes (timestamp)" inside the enquiry description. Say if you want a dedicated column instead.
