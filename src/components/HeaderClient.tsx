@@ -20,9 +20,11 @@ const flatNav: NavLink[] = [
 const linkBase = "rounded-md px-3.5 py-3 text-[15px] font-medium transition-colors";
 
 export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  // The mobile menu remembers the page it was opened on, so a route change closes it
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,11 +32,6 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -97,7 +94,7 @@ export function HeaderClient({ featureLinks }: { featureLinks: NavLink[] }) {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpenOn(open ? null : pathname)}
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
             {open ? (

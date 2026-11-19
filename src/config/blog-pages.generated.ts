@@ -8,7 +8,7 @@ export const blogPages: PageDef[] = [
     title: "Fitvario Blog: Practical Advice for Indian Gym Owners",
     description:
       "Practical guides for Indian gym owners on membership pricing, renewals, retention, lead follow-up and running a gym, with templates you can copy.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Blog",
   },
   {
@@ -16,10 +16,9 @@ export const blogPages: PageDef[] = [
     kind: "blog",
     title: "Best Gym Management Software in India 2026 | Fitvario",
     description:
-      "A buyer's guide to the best gym management software in India in 2026: criteria, a scoring worksheet and where Fitvario is not the best fit. Disclosure included.",
-    updated: "2026-10-11",
+      "A buyer's guide to the best gym management software in India in 2026: criteria, published prices checked with sources, and where Fitvario falls short.",
+    updated: "2026-11-19",
     navLabel: "Best gym management software in India 2026: how to choose, and where we fall short",
-    draft: true,
   },
   {
     path: "/blog/get-more-gym-members-india",
@@ -115,12 +114,22 @@ export const blogPages: PageDef[] = [
     navLabel: "How to reduce gym member churn: a practical guide for Indian gyms",
   },
   {
+    path: "/blog/category/software",
+    kind: "blog",
+    title: "Software: Fitvario Blog Posts for Gym Owners",
+    description:
+      "Fitvario blog posts about software for Indian gym owners: guides, scripts and checklists you can use in your gym.",
+    updated: "2026-11-19",
+    navLabel: "Software",
+    noindex: true,
+  },
+  {
     path: "/blog/category/marketing",
     kind: "blog",
     title: "Marketing: Fitvario Blog Posts for Gym Owners",
     description:
       "Fitvario blog posts about marketing for Indian gym owners: guides, scripts and checklists you can use in your gym.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Marketing",
     noindex: true,
   },
@@ -130,7 +139,7 @@ export const blogPages: PageDef[] = [
     title: "Operations: Fitvario Blog Posts for Gym Owners",
     description:
       "Fitvario blog posts about operations for Indian gym owners: guides, scripts and checklists you can use in your gym.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Operations",
     noindex: true,
   },
@@ -140,7 +149,7 @@ export const blogPages: PageDef[] = [
     title: "Pricing: Fitvario Blog Posts for Gym Owners",
     description:
       "Fitvario blog posts about pricing for Indian gym owners: guides, scripts and checklists you can use in your gym.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Pricing",
     noindex: true,
   },
@@ -150,7 +159,7 @@ export const blogPages: PageDef[] = [
     title: "Renewals: Fitvario Blog Posts for Gym Owners",
     description:
       "Fitvario blog posts about renewals for Indian gym owners: guides, scripts and checklists you can use in your gym.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Renewals",
     noindex: true,
   },
@@ -160,7 +169,7 @@ export const blogPages: PageDef[] = [
     title: "Retention: Fitvario Blog Posts for Gym Owners",
     description:
       "Fitvario blog posts about retention for Indian gym owners: guides, scripts and checklists you can use in your gym.",
-    updated: "2026-10-11",
+    updated: "2026-11-19",
     navLabel: "Retention",
     noindex: true,
   },

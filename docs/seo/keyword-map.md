@@ -76,6 +76,12 @@ PAGE /features/diet-workout-plans
   sheet notes: plan builders exist in code but Sumit says workout and diet plans are not available to users
   GATE: FEATURE GATE: NOT LIVE. Draft until workout_diet_plans is live in feature-status.json.
 
+PAGE /features/razorpay-payments
+  wave: New
+  primary: gym software with razorpay [P2, English, Payments, Commercial]
+  sheet notes: gym software with razorpay: added 2026-11-19, not in the original sheet; searchers often want members to pay gym fees online
+  GATE: FEATURE GATE: draft until Sumit confirms scope. feature-status.json razorpay_payments is "live-per-site" (payments/razorpay_service.py, owner/subscribe, verify-payment), which covers owners paying their Fitvario subscription and messaging credits through Razorpay. No evidence that members pay gym fees through Razorpay inside Fitvario: never claim member fee collection, payment links, reading the gym's own Razorpay settlements or recurring UPI mandates (not verified). WhatsApp wording follows rule 12 of SEO_RULES.md (provider is Fast2SMS). Never say owners sign up and pay by themselves (self_serve_signup_subscription is not-live). Remove `draft: true` in src/config/pages.ts to publish.
+
 PAGE /for/franchise-gyms
   wave: Wave 3
   primary: franchise gym management software [P2, English, Franchise, Commercial]

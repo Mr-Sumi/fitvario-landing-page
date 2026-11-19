@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { invoiceTotals } from "@/lib/calc/invoice.mjs";
 import { track } from "@/lib/track";
 import { ErrorNote, Panel, inr } from "./ToolKit";
@@ -21,7 +21,8 @@ type Form = {
   supply: "intra" | "inter";
   method: string;
   number: string;
-  date: string;
+  /** null until the user edits it; today's date is shown meanwhile */
+  date: string | null;
 };
 
 const EMPTY: Form = {
@@ -40,8 +41,11 @@ const EMPTY: Form = {
   supply: "intra",
   method: "Cash",
   number: "INV-0001",
-  date: "",
+  date: null,
 };
+
+const noSubscribe = () => () => {};
+const todayIso = () => new Date().toISOString().slice(0, 10);
 
 const input =
   "mt-1.5 block h-12 w-full rounded-lg border border-slate-300 bg-white px-3.5 text-[15px] text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/30";
@@ -80,9 +84,11 @@ function Num({ id, label, value, onChange }: { id: string; label: string; value:
 export function InvoiceTool() {
   const [f, setF] = useState<Form>(EMPTY);
   const used = useRef(false);
+  // Empty on the server so the static HTML does not carry the build date
+  const today = useSyncExternalStore(noSubscribe, todayIso, () => "");
+  const date = f.date ?? today;
 
   useEffect(() => {
-    setF((s) => ({ ...s, date: new Date().toISOString().slice(0, 10) }));
     document.body.classList.add("printing-invoice");
     return () => document.body.classList.remove("printing-invoice");
   }, []);
@@ -127,7 +133,7 @@ export function InvoiceTool() {
             <Text id="iv-no" label="Invoice number" value={f.number} onChange={(v) => update("number", v)} />
             <div>
               <label htmlFor="iv-date" className="block text-sm font-medium text-slate-800">Date</label>
-              <input id="iv-date" type="date" className={input} value={f.date} onChange={(e) => update("date", e.target.value)} />
+              <input id="iv-date" type="date" className={input} value={date} onChange={(e) => update("date", e.target.value)} />
             </div>
           </div>
           <Text id="iv-item" label="What was bought" value={f.item} onChange={(v) => update("item", v)} />
@@ -193,7 +199,7 @@ export function InvoiceTool() {
             <div className="text-sm sm:text-right">
               <p className="text-lg font-semibold">{f.gstOn ? "Tax invoice" : "Invoice"}</p>
               <p>No: {f.number || "-"}</p>
-              <p>Date: {f.date || "-"}</p>
+              <p>Date: {date || "-"}</p>
             </div>
           </header>
 

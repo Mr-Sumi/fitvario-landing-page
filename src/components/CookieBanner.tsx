@@ -1,19 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
-export function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+function subscribe(onChange: () => void) {
+  window.addEventListener("fitvario:consent", onChange);
+  return () => window.removeEventListener("fitvario:consent", onChange);
+}
 
-  useEffect(() => {
-    try {
-      const consent = localStorage.getItem("fitvario_cookie_consent");
-      if (!consent) setVisible(true);
-    } catch {
-      // localStorage blocked
-    }
-  }, []);
+function noChoiceYet(): boolean {
+  try {
+    return !localStorage.getItem("fitvario_cookie_consent");
+  } catch {
+    // localStorage blocked
+    return false;
+  }
+}
+
+export function CookieBanner() {
+  // Server render and first paint stay hidden; the stored choice is read on the client only
+  const needsChoice = useSyncExternalStore(subscribe, noChoiceYet, () => false);
+  const [dismissed, setDismissed] = useState(false);
+  const visible = needsChoice && !dismissed;
 
   function accept() {
     try {
@@ -22,7 +30,7 @@ export function CookieBanner() {
       // ignore
     }
     window.dispatchEvent(new Event("fitvario:consent"));
-    setVisible(false);
+    setDismissed(true);
   }
 
   function decline() {
@@ -32,7 +40,7 @@ export function CookieBanner() {
       // ignore
     }
     window.dispatchEvent(new Event("fitvario:consent"));
-    setVisible(false);
+    setDismissed(true);
   }
 
   if (!visible) return null;

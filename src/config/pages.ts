@@ -223,6 +223,17 @@ const staticPages: PageDef[] = [
     gate: "multi_branch_franchise",
   },
   {
+    path: "/features/razorpay-payments",
+    kind: "feature",
+    title: "Gym Software with Razorpay: What Is Connected | Fitvario",
+    description:
+      "How Fitvario gym software works with Razorpay: pay your subscription by UPI, card or net banking, and record members' UPI payments against invoices.",
+    updated: "2026-11-19",
+    navLabel: "Razorpay payments",
+    // Draft until Sumit confirms scope: razorpay_payments evidence covers the owner's Fitvario subscription only
+    draft: true,
+  },
+  {
     path: "/features/diet-workout-plans",
     kind: "feature",
     title: "Gym Diet Plan and Workout Plan Software | Fitvario",
