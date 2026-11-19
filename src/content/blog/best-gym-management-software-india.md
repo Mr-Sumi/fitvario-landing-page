@@ -40,7 +40,7 @@ Prices change, so treat this table as a snapshot. We read each vendor's own pric
 
 | Product | What its own page shows | Currency | Trial or demo |
 | --- | --- | --- | --- |
-| Fitvario | No published price list yet; quoted in rupees by branches, members and messaging, GST extra | Rupees | Free demo |
+| Fitvario | No published price list yet; quoted in rupees by branches, members and messaging, GST extra | Rupees | Free demo for up to 10 members and 1 branch, no time limit |
 | Okfit | Lite ₹500, Basic ₹1,000, Essential ₹2,000 and Growth ₹3,000 a month, exclusive of tax; 20% off on yearly plans | Rupees for India | 7-day free trial, no credit card |
 | Easy Gym Software | "Plans start at ₹799"; billing period not stated; price depends on gym size, branches and features | Rupees | Free demo; free data migration for new signups |
 | GymMaster | USD 89 (up to 100 members), USD 129 (up to 400) and USD 209 (up to 1,300) per site per month, before tax; Enterprise by quote | USD, AUD, NZD | Free demo; no free trial stated; 60-day money-back guarantee |
