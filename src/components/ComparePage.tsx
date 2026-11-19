@@ -47,16 +47,16 @@ export function ComparePage({ path }: { path: string }) {
             <thead>
               <tr className="border-b border-slate-200 text-slate-600">
                 <th className="py-2 pr-4 font-medium">Feature</th>
-                <th className="py-2 pr-4 font-medium">{c.shortName} (as stated by the source)</th>
-                <th className="py-2 font-medium">Fitvario (as stated on this site)</th>
+                <th className="py-2 pr-4 font-medium">Fitvario (as stated on this site)</th>
+                <th className="py-2 font-medium">{c.shortName} (as stated by the source)</th>
               </tr>
             </thead>
             <tbody>
               {c.rows.map((r) => (
                 <tr key={r.feature} className="border-b border-slate-100 align-top">
                   <td className="py-2 pr-4 font-medium text-slate-900">{r.feature}</td>
-                  <td className="py-2 pr-4 text-slate-700">{r.theirs}</td>
-                  <td className="py-2 text-slate-700">{r.fitvarioKey ? fitvarioCell(r.fitvarioKey) : r.fitvario}</td>
+                  <td className="py-2 pr-4 text-slate-700">{r.fitvarioKey ? fitvarioCell(r.fitvarioKey) : r.fitvario}</td>
+                  <td className="py-2 text-slate-700">{r.theirs}</td>
                 </tr>
               ))}
             </tbody>
